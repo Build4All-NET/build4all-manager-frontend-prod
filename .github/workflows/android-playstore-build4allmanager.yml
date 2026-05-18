@@ -102,11 +102,6 @@ jobs:
             > android/key.properties
           echo "✅ android/key.properties created"
 
-      # --------------------------------------------------
-      # Version: name from pubspec, code = 1000 + run number
-      # Offset of 1000 ensures code is always above any
-      # previously manually-uploaded build (e.g. code 53).
-      # --------------------------------------------------
       - name: Compute build name & number
         shell: bash
         run: |
@@ -120,14 +115,13 @@ jobs:
           PY
           )"
 
-          # Add offset so version code is always > any manually uploaded build
-          BUILD_NUMBER="$((1000 + GITHUB_RUN_NUMBER))"
+          BUILD_NUMBER="${GITHUB_RUN_NUMBER}"
 
           echo "BUILD_NAME=$BUILD_NAME" >> $GITHUB_ENV
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
 
           echo "✅ BUILD_NAME=$BUILD_NAME"
-          echo "✅ BUILD_NUMBER=$BUILD_NUMBER  (1000 + $GITHUB_RUN_NUMBER)"
+          echo "✅ BUILD_NUMBER=$BUILD_NUMBER"
 
       - name: Build Android App Bundle (AAB)
         shell: bash
@@ -180,11 +174,6 @@ jobs:
           print("type:", j.get("type"))
           PY
 
-      # --------------------------------------------------
-      # Upload to Google Play
-      # Push-triggered: alpha + completed (Closed Testing)
-      # Manual dispatch: use chosen inputs
-      # --------------------------------------------------
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
         with:
