@@ -6,11 +6,11 @@ on:
       track:
         description: "Track: internal | alpha | beta | production"
         required: true
-        default: "internal"
+        default: "alpha"
       release_status:
         description: "draft | inProgress | completed"
         required: true
-        default: "draft"
+        default: "completed"
 
       changelog:
         description: "Release notes"
@@ -110,19 +110,6 @@ jobs:
           echo "sdk.dir=$ANDROID_SDK_ROOT" > android/local.properties
           flutter config --android-sdk "$ANDROID_SDK_ROOT"
           echo "✅ local.properties configured"
-
-      # --------------------------------------------------
-      # Clean Gradle cache
-      # --------------------------------------------------
-     # - name: Clean Gradle cache
-      #  shell: bash
-      #  run: |
-       #   set -euo pipefail
-        #  cd android
-         # rm -rf .gradle build
-          #cd ..
-          #flutter clean
-          #echo "✅ Gradle cache cleaned"
 
       # --------------------------------------------------
       # Android signing (NO heredoc, NO syntax traps)
@@ -238,8 +225,11 @@ jobs:
           print("project_id exists:", "project_id" in j)
           print("type:", j.get("type"))
           PY
+
       # --------------------------------------------------
       # Upload to Google Play
+      # Push-triggered: alpha + completed (Closed Testing, live)
+      # Manual dispatch: use chosen inputs
       # --------------------------------------------------
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1
@@ -247,6 +237,6 @@ jobs:
           serviceAccountJson: service-account.json
           packageName: ${{ env.PACKAGE_NAME }}
           releaseFiles: build/app/outputs/bundle/release/*.aab
-          track: ${{ github.event.inputs.track || 'internal' }}
-          status: ${{ github.event.inputs.release_status || 'draft' }}
+          track: ${{ github.event.inputs.track || 'alpha' }}
+          status: ${{ github.event.inputs.release_status || 'completed' }}
           whatsNewDirectory: distribution/whatsnew
