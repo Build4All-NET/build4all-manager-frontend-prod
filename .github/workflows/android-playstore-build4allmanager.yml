@@ -43,15 +43,9 @@ jobs:
       ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
 
     steps:
-      # --------------------------------------------------
-      # Checkout
-      # --------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # --------------------------------------------------
-      # Java + Flutter
-      # --------------------------------------------------
       - name: Setup Java 17
         uses: actions/setup-java@v4
         with:
@@ -66,11 +60,6 @@ jobs:
           channel: stable
           cache: true
 
-      # --------------------------------------------------
-      # Android SDK — accept licences & pre-install
-      # platforms so Gradle never attempts a mid-build
-      # download (which fails with corrupt ZIP errors)
-      # --------------------------------------------------
       - name: Accept Android SDK licenses
         shell: bash
         run: |
@@ -82,27 +71,17 @@ jobs:
         run: |
           set -euo pipefail
           SDKMANAGER="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
-
-          echo "📦 Installing Android SDK components..."
-
           "$SDKMANAGER" --install \
             "platforms;android-23" \
             "platforms;android-33" \
             "platforms;android-34" \
             "build-tools;33.0.2" \
             "build-tools;34.0.0"
-
           echo "✅ SDK components installed"
 
-      # --------------------------------------------------
-      # Flutter deps
-      # --------------------------------------------------
       - name: Flutter pub get
         run: flutter pub get
 
-      # --------------------------------------------------
-      # Setup Android local.properties (FIX)
-      # --------------------------------------------------
       - name: Setup Android local.properties
         shell: bash
         run: |
@@ -111,28 +90,22 @@ jobs:
           flutter config --android-sdk "$ANDROID_SDK_ROOT"
           echo "✅ local.properties configured"
 
-      # --------------------------------------------------
-      # Android signing (NO heredoc, NO syntax traps)
-      # --------------------------------------------------
       - name: Prepare Android signing
         shell: bash
         run: |
           set -euo pipefail
-
-          echo "🔐 Preparing Android upload keystore"
-
           echo "${ANDROID_KEYSTORE_B64}" | tr -d '\n\r ' | base64 --decode > android/upload-keystore.jks
-
           printf "storeFile=upload-keystore.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n" \
             "${ANDROID_KEYSTORE_PASSWORD}" \
             "${ANDROID_KEY_ALIAS}" \
             "${ANDROID_KEY_PASSWORD}" \
             > android/key.properties
-
           echo "✅ android/key.properties created"
 
       # --------------------------------------------------
-      # Compute version
+      # Version: name from pubspec, code = 1000 + run number
+      # Offset of 1000 ensures code is always above any
+      # previously manually-uploaded build (e.g. code 53).
       # --------------------------------------------------
       - name: Compute build name & number
         shell: bash
@@ -146,17 +119,16 @@ jobs:
           print(m.group(1) if m else "1.0.0")
           PY
           )"
-          BUILD_NUMBER="${GITHUB_RUN_NUMBER}"
+
+          # Add offset so version code is always > any manually uploaded build
+          BUILD_NUMBER="$((1000 + GITHUB_RUN_NUMBER))"
 
           echo "BUILD_NAME=$BUILD_NAME" >> $GITHUB_ENV
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
 
           echo "✅ BUILD_NAME=$BUILD_NAME"
-          echo "✅ BUILD_NUMBER=$BUILD_NUMBER"
+          echo "✅ BUILD_NUMBER=$BUILD_NUMBER  (1000 + $GITHUB_RUN_NUMBER)"
 
-      # --------------------------------------------------
-      # Build AAB
-      # --------------------------------------------------
       - name: Build Android App Bundle (AAB)
         shell: bash
         run: |
@@ -172,48 +144,31 @@ jobs:
           path: build/app/outputs/bundle/release/*.aab
           if-no-files-found: error
 
-      # --------------------------------------------------
-      # Release notes
-      # --------------------------------------------------
       - name: Prepare Play Store release notes
         shell: bash
         run: |
           set -euo pipefail
-
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             CHANGELOG="${{ github.event.inputs.changelog }}"
           else
             CHANGELOG="CI build (push)"
           fi
-
           mkdir -p distribution/whatsnew
           echo "$CHANGELOG" > distribution/whatsnew/whatsnew-en-US
-
-          echo "✅ Release notes:"
           cat distribution/whatsnew/whatsnew-en-US
 
-      # --------------------------------------------------
-      # Write service account json
-      # --------------------------------------------------
       - name: Write Play service account json
         shell: bash
         run: |
           set -euo pipefail
-      
           if [ -z "${PLAY_SERVICE_ACCOUNT_JSON:-}" ]; then
             echo "❌ PLAY_SERVICE_ACCOUNT_JSON secret is empty"
             exit 1
           fi
-      
           printf '%s' "$PLAY_SERVICE_ACCOUNT_JSON" > service-account.json
-      
-          echo "✅ service-account.json written"
-          echo "📏 File size:"
-          wc -c service-account.json
-      
           python3 -m json.tool service-account.json > /dev/null
           echo "✅ service-account.json is valid JSON"
-      
+
       - name: Debug service account metadata
         shell: bash
         run: |
@@ -222,13 +177,12 @@ jobs:
           with open("service-account.json", "r", encoding="utf-8") as f:
               j = json.load(f)
           print("client_email exists:", "client_email" in j)
-          print("project_id exists:", "project_id" in j)
           print("type:", j.get("type"))
           PY
 
       # --------------------------------------------------
       # Upload to Google Play
-      # Push-triggered: alpha + completed (Closed Testing, live)
+      # Push-triggered: alpha + completed (Closed Testing)
       # Manual dispatch: use chosen inputs
       # --------------------------------------------------
       - name: Upload to Google Play
