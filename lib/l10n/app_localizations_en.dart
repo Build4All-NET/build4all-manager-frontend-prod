@@ -2437,6 +2437,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get periodEndLabel => 'Period end';
 
   @override
+  String get license_timeline_title => 'Timeline';
+
+  @override
+  String get subscription_status_scheduled => 'Scheduled';
+
+  @override
+  String get payment_status_paid => 'Paid';
+
+  @override
+  String get payment_status_failed => 'Failed';
+
+  @override
+  String get app_licenses_cancel_title => 'Cancel license';
+
+  @override
+  String app_licenses_cancel_confirm(Object plan) {
+    return 'Cancel the $plan license? Once the app has no active license the owner is blocked from the dashboard (the app stays open to end users, and the owner can renew).';
+  }
+
+  @override
+  String get app_licenses_cancel_confirm_action => 'Yes, cancel';
+
+  @override
+  String get app_licenses_cancel_done => 'License canceled.';
+
+  @override
+  String get app_licenses_owner_blocked =>
+      'No active license — the owner is blocked from the dashboard. The app stays open to end users; the owner can renew to regain access.';
+
+  @override
   String get daysLeftLabel => 'Days left';
 
   @override
@@ -3340,4 +3370,229 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get common_processing => 'Processing...';
+
+  @override
+  String get lblCountry => 'Country';
+
+  @override
+  String get hintSelectCountry => 'Select your country';
+
+  @override
+  String get errCountryRequired => 'Please select your country';
+
+  @override
+  String get super_proj_display_title => 'Display title';
+
+  @override
+  String get super_proj_display_title_hint => 'Short title shown on the app card (e.g. E-commerce)';
+
+  @override
+  String get super_proj_display_description => 'Card description';
+
+  @override
+  String get super_proj_display_description_hint => 'Brief description shown under the title';
+
+  @override
+  String get super_proj_icon_name => 'Icon name';
+
+  @override
+  String get super_proj_icon_name_hint => 'Flutter icon key (e.g. shopping_bag_rounded)';
+
+  @override
+  String get super_proj_card_color => 'Card accent color';
+
+  @override
+  String get super_proj_card_color_hint => 'Hex color (e.g. #2563EB)';
+
+  @override
+  String get super_proj_display_order => 'Display order';
+
+  @override
+  String get super_proj_display_order_hint => 'Lower numbers appear first (e.g. 1)';
+
+  @override
+  String get publish_firebase_project_label => 'Firebase Project';
+
+  @override
+  String get publish_firebase_auto_full => 'AUTO – best available account';
+
+  @override
+  String get publish_firebase_auto_short => 'AUTO';
+
+  @override
+  String get publish_firebase_default_full => 'DEFAULT';
+
+  @override
+  String get publish_firebase_default_short => 'DEF';
+
+  @override
+  String get publish_firebase_load_failed => 'Could not load Firebase accounts';
+
+  @override
+  String publish_firebase_load_error_auto(String error) {
+    return '$error – AUTO selection will be used';
+  }
+
+  @override
+  String publish_firebase_remaining(int android, int ios) {
+    return '$android Android / $ios iOS remaining';
+  }
+
+  @override
+  String get publish_sheet_notes_optional => 'Notes (optional)';
+
+  @override
+  String get publish_share_package_title => 'Share publishing package';
+
+  @override
+  String get publish_share_package_subtitle => 'Send app info, store listing, build links, and assets by email.';
+
+  @override
+  String get publish_share_email => 'Email';
+
+  @override
+  String publish_share_email_subject(String appName) {
+    return 'Publish Request - $appName';
+  }
+
+  @override
+  String get publish_share_email_intro => 'Hello,\n\nPlease find below the publishing information for this app.';
+
+  @override
+  String get publish_share_email_footer => 'Regards,\nBuild4All Super Admin';
+
+  @override
+  String get publish_share_email_failed => 'Could not open email app';
+
+  @override
+  String get publish_share_link_copied => 'Link copied';
+
+  @override
+  String get publish_share_section_app_info => 'APP INFORMATION';
+
+  @override
+  String get publish_share_section_android => 'ANDROID';
+
+  @override
+  String get publish_share_section_ios => 'IOS';
+
+  @override
+  String get publish_share_section_publisher => 'PUBLISHER PROFILE';
+
+  @override
+  String get publish_share_section_assets => 'ASSETS';
+
+  @override
+  String get publish_share_section_notes => 'ADMIN NOTES';
+
+  @override
+  String get publish_share_app_name => 'App Name';
+
+  @override
+  String get publish_share_developer_name => 'Developer Name';
+
+  @override
+  String get publish_share_developer_email => 'Developer Email';
+
+  @override
+  String get publish_share_privacy_policy => 'Privacy Policy';
+
+  @override
+  String get publish_asset_open => 'Open';
+
+  @override
+  String get publish_asset_download => 'Download';
+
+  @override
+  String get publish_asset_copy_link => 'Copy link';
+
+  @override
+  String get publish_label_logo => 'Logo';
+
+  @override
+  String get publish_label_screenshot => 'Screenshot';
+
+  @override
+  String get publish_details_label_category => 'Category';
+
+  @override
+  String get publish_details_label_pricing => 'Pricing';
+
+  @override
+  String get publish_share_assets_hint => 'For full image preview, zoom, and download actions, open the publish request details screen.';
+
+  @override
+  String get publish_assets_view_all => 'View all';
+
+  @override
+  String get publish_assets_download_all => 'Download all';
+
+  @override
+  String get publish_assets_download_all_failed => 'Could not download all assets';
+
+  @override
+  String get publish_assets_zoom_hint => 'Pinch to zoom • Swipe to view more images';
+
+  @override
+  String get super_nav_firebase_pool => 'Firebase Pool';
+
+  @override
+  String get super_nav_plans => 'Plans';
+
+  @override
+  String get super_nav_plan_pricing => 'Plan Pricing';
+
+  @override
+  String get super_nav_payment_methods => 'Payment Methods';
+
+  @override
+  String get super_nav_billing_types => 'Billing Types';
+
+  @override
+  String get super_nav_workflows => 'Workflows';
+
+  @override
+  String get super_nav_payment => 'Payment';
+
+  @override
+  String get super_payment_title => 'Payment';
+
+  @override
+  String get super_payment_management_title => 'Payment Management';
+
+  @override
+  String get super_payment_management_subtitle => 'Manage plans, pricing, payment methods, and billing types from one place.';
+
+  @override
+  String get super_payment_plans_title => 'Plans';
+
+  @override
+  String get super_payment_plans_subtitle => 'Create and manage subscription plans.';
+
+  @override
+  String get super_payment_plan_pricing_title => 'Plan Pricing';
+
+  @override
+  String get super_payment_plan_pricing_subtitle => 'Manage prices, discounts, and billing cycles.';
+
+  @override
+  String get super_payment_payment_methods_title => 'Payment Methods';
+
+  @override
+  String get super_payment_payment_methods_subtitle => 'Manage billing methods used by owners.';
+
+  @override
+  String get super_payment_billing_types_title => 'Billing Types';
+
+  @override
+  String get super_payment_billing_types_subtitle => 'Manage billing method categories.';
+
+  @override
+  String get super_payment_hint => 'Choose a payment module to configure subscription billing.';
+
+  @override
+  String get super_nav_licenses => 'Licenses';
+
+  @override
+  String get super_nav_upgrade_requests => 'Upgrade Requests';
 }

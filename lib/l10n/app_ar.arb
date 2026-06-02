@@ -186,7 +186,7 @@
   "owner_projects_title": "المشاريع",
   "owner_requests_title": "الطلبات",
   "owner_profile_title": "الملف الشخصي",
-  "owner_home_hello": "👋 مرحباً،",
+  "owner_home_hello": "👋مرحباً،",
   "owner_home_subtitle": "إدارة تطبيقاتك بسهولة",
   "owner_home_requestApp": "اطلب تطبيقي",
   "owner_home_myProjects": "مشاريعي النشطة",
@@ -959,6 +959,15 @@
   "planLabel": "الخطة",
   "subscriptionStatusLabel": "حالة الاشتراك",
   "periodEndLabel": "نهاية المدة",
+  "license_timeline_title": "الجدول الزمني",
+  "subscription_status_scheduled": "مجدول",
+  "payment_status_paid": "مدفوع",
+  "payment_status_failed": "فشل",
+  "app_licenses_cancel_title": "إلغاء الترخيص",
+  "app_licenses_cancel_confirm": "إلغاء ترخيص {plan}؟ عندما لا يبقى للتطبيق أي ترخيص نشط، يُمنع المالك من لوحة التحكم (يبقى التطبيق متاحًا للمستخدمين، ويمكن للمالك التجديد).",
+  "app_licenses_cancel_confirm_action": "نعم، إلغاء",
+  "app_licenses_cancel_done": "تم إلغاء الترخيص.",
+  "app_licenses_owner_blocked": "لا يوجد ترخيص نشط — المالك ممنوع من لوحة التحكم. يبقى التطبيق متاحًا للمستخدمين؛ ويمكن للمالك التجديد لاستعادة الوصول.",
   "daysLeftLabel": "الأيام المتبقية",
   "usersLabel": "المستخدمون",
   "remainingLabel": "المتبقي",
@@ -1315,5 +1324,106 @@
   "owner_proj_details_municipality_i1": "يثق السكان أكثر بالأنظمة التي تجعل المتابعة واضحة وبسيطة.",
   "owner_proj_details_municipality_i2": "التواصل الرقمي السريع يحسن جودة الاستجابة عبر الخدمات.",
    "common_tryAgain": "حاول مرة أخرى",
-  "common_processing": "جارٍ المعالجة..."
+  "common_processing": "جارٍ المعالجة...",
+
+  "lblCountry": "الدولة",
+  "hintSelectCountry": "اختر دولتك",
+  "errCountryRequired": "يرجى اختيار الدولة",
+
+  "super_proj_display_title": "العنوان التعريفي",
+  "super_proj_display_title_hint": "عنوان قصير يظهر على بطاقة التطبيق",
+  "super_proj_display_description": "وصف البطاقة",
+  "super_proj_display_description_hint": "وصف مختصر يظهر أسفل العنوان",
+  "super_proj_icon_name": "اسم الأيقونة",
+  "super_proj_icon_name_hint": "مفتاح أيقونة Flutter (مثال: shopping_bag_rounded)",
+  "super_proj_card_color": "لون بطاقة المشروع",
+  "super_proj_card_color_hint": "لون Hex (مثال: #2563EB)",
+  "super_proj_display_order": "ترتيب العرض",
+  "super_proj_display_order_hint": "الأرقام الأصغر تظهر أولاً (مثال: 1)",
+  "publish_firebase_project_label": "مشروع Firebase",
+"publish_firebase_auto_full": "تلقائي – أفضل حساب متاح",
+"publish_firebase_auto_short": "تلقائي",
+"publish_firebase_default_full": "افتراضي",
+"publish_firebase_default_short": "افتراضي",
+"publish_firebase_load_failed": "تعذر تحميل حسابات Firebase",
+"publish_firebase_load_error_auto": "{error} – سيتم استخدام الاختيار التلقائي",
+"@publish_firebase_load_error_auto": {
+  "placeholders": {
+    "error": {
+      "type": "String"
+    }
+  }
+},
+"publish_firebase_remaining": "المتبقي: {android} أندرويد / {ios} iOS",
+"@publish_firebase_remaining": {
+  "placeholders": {
+    "android": {
+      "type": "int"
+    },
+    "ios": {
+      "type": "int"
+    }
+  }
+},
+"publish_sheet_notes_optional": "ملاحظات (اختياري)",
+"publish_share_package_title": "مشاركة ملف النشر",
+"publish_share_package_subtitle": "إرسال معلومات التطبيق، بيانات المتجر، روابط البناء، والصور عبر البريد الإلكتروني.",
+"publish_share_email": "إيميل",
+"publish_share_email_subject": "طلب نشر - {appName}",
+"@publish_share_email_subject": {
+  "placeholders": {
+    "appName": {
+      "type": "String"
+    }
+  }
+},
+"publish_share_email_intro": "مرحباً،\n\nيرجى الاطلاع أدناه على معلومات النشر الخاصة بهذا التطبيق.",
+"publish_share_email_footer": "مع التحية،\nBuild4All Super Admin",
+"publish_share_email_failed": "تعذر فتح تطبيق البريد الإلكتروني",
+"publish_share_link_copied": "تم نسخ الرابط",
+"publish_share_section_app_info": "معلومات التطبيق",
+"publish_share_section_android": "أندرويد",
+"publish_share_section_ios": "iOS",
+"publish_share_section_publisher": "ملف الناشر",
+"publish_share_section_assets": "الصور والملفات",
+"publish_share_section_notes": "ملاحظات الإدارة",
+"publish_share_app_name": "اسم التطبيق",
+"publish_share_developer_name": "اسم المطوّر",
+"publish_share_developer_email": "بريد المطوّر",
+"publish_share_privacy_policy": "سياسة الخصوصية",
+"publish_asset_open": "فتح",
+"publish_asset_download": "تحميل",
+"publish_asset_copy_link": "نسخ الرابط",
+"publish_label_logo": "الشعار",
+"publish_label_screenshot": "صورة",
+"publish_details_label_category": "الفئة",
+"publish_details_label_pricing": "السعر",
+"publish_share_assets_hint": "لعرض الصور بشكل كامل مع التكبير وخيارات التحميل، افتح شاشة تفاصيل طلب النشر.",
+"publish_assets_view_all": "عرض الكل",
+"publish_assets_download_all": "تحميل الكل",
+"publish_assets_download_all_failed": "تعذر تحميل كل الصور",
+"publish_assets_zoom_hint": "كبّر بإصبعين • اسحب للتنقل بين الصور",
+  "super_nav_firebase_pool": "مجموعة Firebase",
+  "super_nav_plans": "الخطط",
+  "super_nav_plan_pricing": "تسعير الخطط",
+  "super_nav_payment_methods": "طرق الدفع",
+  "super_nav_billing_types": "أنواع الفوترة",
+  "super_nav_workflows": "مسارات العمل",
+   "super_nav_payment":  "الدفع",
+   "super_nav_payment": "الدفع",
+"super_payment_title": "الدفع",
+"super_payment_management_title": "إدارة الدفع",
+"super_payment_management_subtitle": "إدارة الخطط والأسعار وطرق الدفع وأنواع الفوترة من مكان واحد.",
+"super_payment_plans_title": "الخطط",
+"super_payment_plans_subtitle": "إنشاء وإدارة خطط الاشتراك.",
+"super_payment_plan_pricing_title": "تسعير الخطط",
+"super_payment_plan_pricing_subtitle": "إدارة الأسعار والخصومات ودورات الفوترة.",
+"super_payment_payment_methods_title": "طرق الدفع",
+"super_payment_payment_methods_subtitle": "إدارة طرق الدفع المستخدمة لفوترة أصحاب المشاريع.",
+"super_payment_billing_types_title": "أنواع الفوترة",
+"super_payment_billing_types_subtitle": "إدارة تصنيفات طرق الفوترة.",
+"super_payment_hint": "اختاري قسماً من أقسام الدفع لإعداد فوترة الاشتراكات.",
+"super_nav_licenses": "التراخيص",
+"super_nav_upgrade_requests": "طلبات الترقية"
+
 }

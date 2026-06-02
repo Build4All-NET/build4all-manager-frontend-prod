@@ -2437,6 +2437,36 @@ class AppLocalizationsFr extends AppLocalizations {
   String get periodEndLabel => 'Fin de période';
 
   @override
+  String get license_timeline_title => 'Chronologie';
+
+  @override
+  String get subscription_status_scheduled => 'Planifié';
+
+  @override
+  String get payment_status_paid => 'Payé';
+
+  @override
+  String get payment_status_failed => 'Échoué';
+
+  @override
+  String get app_licenses_cancel_title => 'Annuler la licence';
+
+  @override
+  String app_licenses_cancel_confirm(Object plan) {
+    return 'Annuler la licence $plan ? Une fois que l\'application n\'a plus de licence active, le propriétaire est bloqué du tableau de bord (l\'application reste ouverte aux utilisateurs, et le propriétaire peut renouveler).';
+  }
+
+  @override
+  String get app_licenses_cancel_confirm_action => 'Oui, annuler';
+
+  @override
+  String get app_licenses_cancel_done => 'Licence annulée.';
+
+  @override
+  String get app_licenses_owner_blocked =>
+      'Aucune licence active — le propriétaire est bloqué du tableau de bord. L\'application reste ouverte aux utilisateurs ; le propriétaire peut renouveler pour récupérer l\'accès.';
+
+  @override
   String get daysLeftLabel => 'Jours restants';
 
   @override
@@ -3340,4 +3370,229 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get common_processing => 'Traitement...';
+
+  @override
+  String get lblCountry => 'Pays';
+
+  @override
+  String get hintSelectCountry => 'Sélectionnez votre pays';
+
+  @override
+  String get errCountryRequired => 'Veuillez sélectionner votre pays';
+
+  @override
+  String get super_proj_display_title => 'Titre affiché';
+
+  @override
+  String get super_proj_display_title_hint => 'Titre court affiché sur la carte de l\'application';
+
+  @override
+  String get super_proj_display_description => 'Description de la carte';
+
+  @override
+  String get super_proj_display_description_hint => 'Description courte affichée sous le titre';
+
+  @override
+  String get super_proj_icon_name => 'Nom de l\'icône';
+
+  @override
+  String get super_proj_icon_name_hint => 'Clé d\'icône Flutter (ex: shopping_bag_rounded)';
+
+  @override
+  String get super_proj_card_color => 'Couleur accentuée de la carte';
+
+  @override
+  String get super_proj_card_color_hint => 'Couleur Hex (ex: #2563EB)';
+
+  @override
+  String get super_proj_display_order => 'Ordre d\'affichage';
+
+  @override
+  String get super_proj_display_order_hint => 'Les numéros inférieurs apparaissent en premier (ex: 1)';
+
+  @override
+  String get publish_firebase_project_label => 'Projet Firebase';
+
+  @override
+  String get publish_firebase_auto_full => 'AUTO – meilleur compte disponible';
+
+  @override
+  String get publish_firebase_auto_short => 'AUTO';
+
+  @override
+  String get publish_firebase_default_full => 'PAR DÉFAUT';
+
+  @override
+  String get publish_firebase_default_short => 'DEF';
+
+  @override
+  String get publish_firebase_load_failed => 'Impossible de charger les comptes Firebase';
+
+  @override
+  String publish_firebase_load_error_auto(String error) {
+    return '$error – la sélection AUTO sera utilisée';
+  }
+
+  @override
+  String publish_firebase_remaining(int android, int ios) {
+    return '$android Android / $ios iOS restants';
+  }
+
+  @override
+  String get publish_sheet_notes_optional => 'Notes (optionnel)';
+
+  @override
+  String get publish_share_package_title => 'Partager le dossier de publication';
+
+  @override
+  String get publish_share_package_subtitle => 'Envoyer les informations de l’application, les données du store, les liens de build et les assets par email.';
+
+  @override
+  String get publish_share_email => 'Email';
+
+  @override
+  String publish_share_email_subject(String appName) {
+    return 'Demande de publication - $appName';
+  }
+
+  @override
+  String get publish_share_email_intro => 'Bonjour,\n\nVeuillez trouver ci-dessous les informations de publication de cette application.';
+
+  @override
+  String get publish_share_email_footer => 'Cordialement,\nBuild4All Super Admin';
+
+  @override
+  String get publish_share_email_failed => 'Impossible d’ouvrir l’application email';
+
+  @override
+  String get publish_share_link_copied => 'Lien copié';
+
+  @override
+  String get publish_share_section_app_info => 'INFORMATIONS APPLICATION';
+
+  @override
+  String get publish_share_section_android => 'ANDROID';
+
+  @override
+  String get publish_share_section_ios => 'IOS';
+
+  @override
+  String get publish_share_section_publisher => 'PROFIL ÉDITEUR';
+
+  @override
+  String get publish_share_section_assets => 'ASSETS';
+
+  @override
+  String get publish_share_section_notes => 'NOTES ADMIN';
+
+  @override
+  String get publish_share_app_name => 'Nom de l’application';
+
+  @override
+  String get publish_share_developer_name => 'Nom du développeur';
+
+  @override
+  String get publish_share_developer_email => 'Email du développeur';
+
+  @override
+  String get publish_share_privacy_policy => 'Politique de confidentialité';
+
+  @override
+  String get publish_asset_open => 'Ouvrir';
+
+  @override
+  String get publish_asset_download => 'Télécharger';
+
+  @override
+  String get publish_asset_copy_link => 'Copier le lien';
+
+  @override
+  String get publish_label_logo => 'Logo';
+
+  @override
+  String get publish_label_screenshot => 'Capture';
+
+  @override
+  String get publish_details_label_category => 'Catégorie';
+
+  @override
+  String get publish_details_label_pricing => 'Prix';
+
+  @override
+  String get publish_share_assets_hint => 'Pour afficher les images avec zoom et options de téléchargement, ouvrez l’écran des détails de la demande de publication.';
+
+  @override
+  String get publish_assets_view_all => 'Tout voir';
+
+  @override
+  String get publish_assets_download_all => 'Tout télécharger';
+
+  @override
+  String get publish_assets_download_all_failed => 'Impossible de télécharger tous les assets';
+
+  @override
+  String get publish_assets_zoom_hint => 'Pincez pour zoomer • Glissez pour voir les autres images';
+
+  @override
+  String get super_nav_firebase_pool => 'Pool Firebase';
+
+  @override
+  String get super_nav_plans => 'Forfaits';
+
+  @override
+  String get super_nav_plan_pricing => 'Tarification des forfaits';
+
+  @override
+  String get super_nav_payment_methods => 'Méthodes de paiement';
+
+  @override
+  String get super_nav_billing_types => 'Types de facturation';
+
+  @override
+  String get super_nav_workflows => 'Flux de travail';
+
+  @override
+  String get super_nav_payment => 'Paiement';
+
+  @override
+  String get super_payment_title => 'Paiement';
+
+  @override
+  String get super_payment_management_title => 'Gestion des paiements';
+
+  @override
+  String get super_payment_management_subtitle => 'Gérez les forfaits, les tarifs, les méthodes de paiement et les types de facturation depuis un seul endroit.';
+
+  @override
+  String get super_payment_plans_title => 'Forfaits';
+
+  @override
+  String get super_payment_plans_subtitle => 'Créer et gérer les forfaits d’abonnement.';
+
+  @override
+  String get super_payment_plan_pricing_title => 'Tarification des forfaits';
+
+  @override
+  String get super_payment_plan_pricing_subtitle => 'Gérer les prix, les remises et les cycles de facturation.';
+
+  @override
+  String get super_payment_payment_methods_title => 'Méthodes de paiement';
+
+  @override
+  String get super_payment_payment_methods_subtitle => 'Gérer les méthodes de paiement utilisées pour facturer les propriétaires.';
+
+  @override
+  String get super_payment_billing_types_title => 'Types de facturation';
+
+  @override
+  String get super_payment_billing_types_subtitle => 'Gérer les catégories des méthodes de facturation.';
+
+  @override
+  String get super_payment_hint => 'Choisissez un module de paiement pour configurer la facturation des abonnements.';
+
+  @override
+  String get super_nav_licenses => 'Licences';
+
+  @override
+  String get super_nav_upgrade_requests => 'Demandes de mise à niveau';
 }

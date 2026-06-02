@@ -86,6 +86,31 @@ String? _asNonEmptyStr(dynamic v) {
   return s.isEmpty ? null : s;
 }
 
+String _kindFromType(String type) {
+  switch (type.toUpperCase()) {
+    case 'ECOMMERCE':
+    case 'E_COMMERCE':
+      return 'ecommerce';
+    case 'GYM':
+    case 'FITNESS':
+      return 'gym';
+    case 'WHOLESALE':
+    case 'WHOLE_SALE':
+      return 'wholesale';
+    case 'MUNICIPALITY':
+    case 'MUNICIPAL':
+      return 'municipality';
+    case 'ACTIVITIES':
+    case 'ACTIVITY':
+      return 'activities';
+    case 'SERVICES':
+    case 'SERVICE':
+      return 'services';
+    default:
+      return type.toLowerCase();
+  }
+}
+
 Widget _withOwnerRegBloc(Widget child) {
   final authApi = AuthApi(DioClient.ensure());
   final sessionManager = SessionManager(
@@ -138,10 +163,6 @@ final router = GoRouter(
     ),
 
     // ── Payment Management deep-link routes (SUPER_ADMIN only) ───────────────
-    // All paths under /manager/* are guarded by _authRedirect:
-    //   role != SUPER_ADMIN → redirect to /owner/home
-    // These routes let notifications, emails, or external links open a
-    // specific payment screen directly without going through the Profile tab.
     GoRoute(
       path: '/manager/payment/methods',
       builder: (_, __) => const PaymentMethodsScreen(),
@@ -152,7 +173,6 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/manager/payment/methods/edit',
-      // Pass the PaymentMethod entity via GoRouter.go/push(extra: method)
       builder: (_, state) => PaymentMethodFormScreen(
         existing: state.extra as PaymentMethod?,
       ),
@@ -167,7 +187,6 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/manager/payment/types/edit',
-      // Pass the ManagedPaymentType entity via GoRouter.go/push(extra: type)
       builder: (_, state) => PaymentTypeFormScreen(
         existing: state.extra as ManagedPaymentType?,
       ),
@@ -226,10 +245,24 @@ final router = GoRouter(
                 '${projectTemplates.first.id}';
             final id = int.tryParse(idStr) ?? projectTemplates.first.id;
 
-            final tpl = projectTemplates.firstWhere(
-              (t) => t.id == id,
-              orElse: () => projectTemplates.first,
-            );
+            final extra = (state.extra ?? {}) as Map;
+            final projectType =
+                (extra['projectType'] ?? '').toString().toUpperCase();
+
+            final tpl = projectType.isNotEmpty
+                ? projectTemplates.firstWhere(
+                    (t) => t.kind.toUpperCase() == projectType ||
+                        t.kind.toUpperCase() ==
+                            _kindFromType(projectType).toUpperCase(),
+                    orElse: () => projectTemplates.firstWhere(
+                      (t) => t.id == id,
+                      orElse: () => projectTemplates.first,
+                    ),
+                  )
+                : projectTemplates.firstWhere(
+                    (t) => t.id == id,
+                    orElse: () => projectTemplates.first,
+                  );
 
             return OwnerProjectDetailsScreen(
               tpl: tpl,
@@ -286,6 +319,7 @@ final router = GoRouter(
           builder: (ctx, st) => _withOwnerRegBloc(
             OwnerRegisterProfileScreen(
               registrationToken: (st.extra ?? '') as String,
+              dio: DioClient.ensure(),
             ),
           ),
         ),
@@ -316,7 +350,6 @@ Future<String?> _authRedirect(
   if (role == 'SUPER_ADMIN' && loc.startsWith('/owner')) {
     return '/manager';
   }
-  // Covers /manager and all /manager/payment/* routes
   if (role != 'SUPER_ADMIN' && loc.startsWith('/manager')) {
     return '/owner/home';
   }
@@ -327,9 +360,36 @@ Future<String?> _authRedirect(
 String? _extractDisplayName(Map<String, dynamic>? claims) {
   if (claims == null) return null;
 
-  String? pick(dynamic v) {
-    final s = v?.toString().trim();
-    return (s == null || s.isEmpty) ? null : s;
+  String? pick(dynamic value) {
+    final text = value?.toString().trim();
+    return text == null || text.isEmpty ? null : text;
+  }
+
+  bool isEmail(String value) {
+    return RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value.trim());
+  }
+
+  bool looksLikeUsernameOrEmail(String value) {
+    final s = value.trim();
+
+    if (s.isEmpty) return true;
+    if (isEmail(s)) return true;
+    if (s.startsWith('@')) return true;
+
+    if (s.contains('_')) return true;
+    if (s.contains('.')) return true;
+    if (s.contains('-')) return true;
+    if (RegExp(r'\d').hasMatch(s)) return true;
+
+    final lower = s.toLowerCase();
+
+    if (lower.contains('owner')) return true;
+    if (lower.contains('admin')) return true;
+    if (lower.contains('user')) return true;
+    if (lower.contains('manager')) return true;
+    if (lower.contains('build4all')) return true;
+
+    return false;
   }
 
   final first = pick(claims['firstName']) ??
@@ -337,34 +397,30 @@ String? _extractDisplayName(Map<String, dynamic>? claims) {
       pick(claims['givenName']) ??
       pick(claims['firstname']);
 
-  final last = pick(claims['lastName']) ??
-      pick(claims['family_name']) ??
-      pick(claims['familyName']) ??
-      pick(claims['lastname']);
-
-  String? fullFromParts;
-  if (first != null && last != null) {
-    fullFromParts = '$first $last'.trim();
-  } else if (first != null) {
-    fullFromParts = first;
+  if (first != null && !looksLikeUsernameOrEmail(first)) {
+    return first.split(RegExp(r'\s+')).first.trim();
   }
 
-  final raw = fullFromParts ??
-      pick(claims['name']) ??
-      pick(claims['fullName']) ??
-      pick(claims['displayName']) ??
-      pick(claims['ownerName']) ??
-      pick(claims['adminName']) ??
-      pick(claims['username']) ??
-      pick(claims['preferred_username']);
+  final nameCandidates = [
+    pick(claims['name']),
+    pick(claims['fullName']),
+    pick(claims['displayName']),
+    pick(claims['ownerName']),
+    pick(claims['adminName']),
+  ];
 
-  if (raw == null) return null;
+  for (final candidate in nameCandidates) {
+    if (candidate == null) continue;
 
-  final isEmail =
-      RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(raw);
-  if (isEmail) return null;
+    if (!looksLikeUsernameOrEmail(candidate)) {
+      return candidate.split(RegExp(r'\s+')).first.trim();
+    }
+  }
 
-  return raw;
+  // Important:
+  // Do NOT fallback to username/preferred_username.
+  // It causes "Hello username" flash before /me returns firstName.
+  return null;
 }
 
 Future<(int?, String?)> _loadOwnerProfileFromJwt() async {
@@ -388,16 +444,34 @@ Future<(int?, String?)> _loadOwnerProfileFromJwt() async {
   }
 }
 
-class _OwnerSessionLoader extends StatelessWidget {
+// _OwnerSessionLoader is StatefulWidget so the future is created once in
+// initState and cached.  When GoRouter rebuilds the shell on tab switches,
+// didUpdateWidget is called but _future never changes, so FutureBuilder
+// immediately returns the already-completed result without flashing a
+// loading screen.
+class _OwnerSessionLoader extends StatefulWidget {
   final Widget child;
   const _OwnerSessionLoader({required this.child});
+
+  @override
+  State<_OwnerSessionLoader> createState() => _OwnerSessionLoaderState();
+}
+
+class _OwnerSessionLoaderState extends State<_OwnerSessionLoader> {
+  late final Future<(int?, String?)> _future;
+
+  @override
+  void initState() {
+    super.initState();
+    _future = _loadOwnerProfileFromJwt();
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return FutureBuilder<(int?, String?)>(
-      future: _loadOwnerProfileFromJwt(),
+      future: _future,
       builder: (context, snap) {
         if (snap.connectionState != ConnectionState.done) {
           return const Scaffold(
@@ -415,14 +489,14 @@ class _OwnerSessionLoader extends StatelessWidget {
         }
 
         final Dio dio = DioClient.ensure();
-        final backendMenuType = 'bottom';
+        const backendMenuType = 'bottom';
 
         return OwnerSessionScope(
           ownerId: ownerId,
           ownerName: ownerName,
           dio: dio,
           backendMenuType: backendMenuType,
-          child: child,
+          child: widget.child,
         );
       },
     );
@@ -439,6 +513,9 @@ class _OwnerNavWrapper extends StatefulWidget {
 
 class _OwnerNavWrapperState extends State<_OwnerNavWrapper> {
   late final OwnerNavCubit _nav;
+  // All four tab screens built once and kept alive via IndexedStack.
+  // Using ??= ensures they survive GoRouter rebuilds on every tab switch.
+  List<Widget>? _screens;
 
   @override
   void initState() {
@@ -491,6 +568,18 @@ class _OwnerNavWrapperState extends State<_OwnerNavWrapper> {
       ),
     ];
 
+    // Build the four screens once; ??= keeps them alive on subsequent builds.
+    _screens ??= [
+      OwnerHomeScreen(
+        ownerId: session.ownerId,
+        dio: session.dio,
+        ownerName: session.ownerName,
+      ),
+      OwnerProjectsScreen(ownerId: session.ownerId, dio: session.dio),
+      const AdminNotificationsScreen(),
+      OwnerProfileScreen(dio: session.dio),
+    ];
+
     final loc = GoRouterState.of(context).uri.toString();
     final idx = _indexForLoc(loc);
 
@@ -515,7 +604,7 @@ class _OwnerNavWrapperState extends State<_OwnerNavWrapper> {
           backendMenuType: session.backendMenuType,
           destinations: destinations,
           initialIndex: idx,
-          child: widget.child,
+          screens: _screens!,
         ),
       ),
     );

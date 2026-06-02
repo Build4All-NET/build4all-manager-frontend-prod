@@ -193,7 +193,7 @@
   "owner_projects_title": "Projects",
   "owner_requests_title": "Requests",
   "owner_profile_title": "Profile",
-  "owner_home_hello": "👋 Hi,",
+  "owner_home_hello":"👋Hi,",
   "owner_home_subtitle": "Manage your apps easily",
   "owner_home_requestApp": "Request My App",
   "owner_home_myProjects": "My Active Projects",
@@ -1022,6 +1022,20 @@
   "planLabel": "Plan",
   "subscriptionStatusLabel": "Subscription status",
   "periodEndLabel": "Period end",
+  "license_timeline_title": "Timeline",
+  "subscription_status_scheduled": "Scheduled",
+  "payment_status_paid": "Paid",
+  "payment_status_failed": "Failed",
+  "app_licenses_cancel_title": "Cancel license",
+  "app_licenses_cancel_confirm": "Cancel the {plan} license? Once the app has no active license the owner is blocked from the dashboard (the app stays open to end users, and the owner can renew).",
+  "@app_licenses_cancel_confirm": {
+    "placeholders": {
+      "plan": {}
+    }
+  },
+  "app_licenses_cancel_confirm_action": "Yes, cancel",
+  "app_licenses_cancel_done": "License canceled.",
+  "app_licenses_owner_blocked": "No active license — the owner is blocked from the dashboard. The app stays open to end users; the owner can renew to regain access.",
   "daysLeftLabel": "Days left",
   "usersLabel": "Users",
   "remainingLabel": "Remaining",
@@ -1377,7 +1391,106 @@
   "owner_proj_details_municipality_i2": "Fast digital communication improves response quality across services.",
   
   "common_tryAgain": "Try again",
-  "common_processing": "Processing..."
+  "common_processing": "Processing...",
+
+  "lblCountry": "Country",
+  "hintSelectCountry": "Select your country",
+  "errCountryRequired": "Please select your country",
+
+  "super_proj_display_title": "Display title",
+  "super_proj_display_title_hint": "Short title shown on the app card (e.g. E-commerce)",
+  "super_proj_display_description": "Card description",
+  "super_proj_display_description_hint": "Brief description shown under the title",
+  "super_proj_icon_name": "Icon name",
+  "super_proj_icon_name_hint": "Flutter icon key (e.g. shopping_bag_rounded)",
+  "super_proj_card_color": "Card accent color",
+  "super_proj_card_color_hint": "Hex color (e.g. #2563EB)",
+  "super_proj_display_order": "Display order",
+  "super_proj_display_order_hint": "Lower numbers appear first (e.g. 1)",
+  "publish_firebase_project_label": "Firebase Project",
+"publish_firebase_auto_full": "AUTO – best available account",
+"publish_firebase_auto_short": "AUTO",
+"publish_firebase_default_full": "DEFAULT",
+"publish_firebase_default_short": "DEF",
+"publish_firebase_load_failed": "Could not load Firebase accounts",
+"publish_firebase_load_error_auto": "{error} – AUTO selection will be used",
+"@publish_firebase_load_error_auto": {
+  "placeholders": {
+    "error": {
+      "type": "String"
+    }
+  }
+},
+"publish_firebase_remaining": "{android} Android / {ios} iOS remaining",
+"@publish_firebase_remaining": {
+  "placeholders": {
+    "android": {
+      "type": "int"
+    },
+    "ios": {
+      "type": "int"
+    }
+  }
+},
+"publish_sheet_notes_optional": "Notes (optional)",
+"publish_share_package_title": "Share publishing package",
+"publish_share_package_subtitle": "Send app info, store listing, build links, and assets by email.",
+"publish_share_email": "Email",
+"publish_share_email_subject": "Publish Request - {appName}",
+"@publish_share_email_subject": {
+  "placeholders": {
+    "appName": {
+      "type": "String"
+    }
+  }
+},
+"publish_share_email_intro": "Hello,\n\nPlease find below the publishing information for this app.",
+"publish_share_email_footer": "Regards,\nBuild4All Super Admin",
+"publish_share_email_failed": "Could not open email app",
+"publish_share_link_copied": "Link copied",
+"publish_share_section_app_info": "APP INFORMATION",
+"publish_share_section_android": "ANDROID",
+"publish_share_section_ios": "IOS",
+"publish_share_section_publisher": "PUBLISHER PROFILE",
+"publish_share_section_assets": "ASSETS",
+"publish_share_section_notes": "ADMIN NOTES",
+"publish_share_app_name": "App Name",
+"publish_share_developer_name": "Developer Name",
+"publish_share_developer_email": "Developer Email",
+"publish_share_privacy_policy": "Privacy Policy",
+"publish_asset_open": "Open",
+"publish_asset_download": "Download",
+"publish_asset_copy_link": "Copy link",
+"publish_label_logo": "Logo",
+"publish_label_screenshot": "Screenshot",
+"publish_details_label_category": "Category",
+"publish_details_label_pricing": "Pricing",
+"publish_share_assets_hint": "For full image preview, zoom, and download actions, open the publish request details screen.",
+"publish_assets_view_all": "View all",
+"publish_assets_download_all": "Download all",
+"publish_assets_download_all_failed": "Could not download all assets",
+"publish_assets_zoom_hint": "Pinch to zoom • Swipe to view more images",
+"super_nav_firebase_pool": "Firebase Pool",
+  "super_nav_plans": "Plans",
+  "super_nav_plan_pricing": "Plan Pricing",
+  "super_nav_payment_methods": "Payment Methods",
+  "super_nav_billing_types": "Billing Types",
+  "super_nav_workflows": "Workflows",
+  "super_nav_payment": "Payment",
+"super_payment_title": "Payment",
+"super_payment_management_title": "Payment Management",
+"super_payment_management_subtitle": "Manage plans, pricing, payment methods, and billing types from one place.",
+"super_payment_plans_title": "Plans",
+"super_payment_plans_subtitle": "Create and manage subscription plans.",
+"super_payment_plan_pricing_title": "Plan Pricing",
+"super_payment_plan_pricing_subtitle": "Manage prices, discounts, and billing cycles.",
+"super_payment_payment_methods_title": "Payment Methods",
+"super_payment_payment_methods_subtitle": "Manage billing methods used by owners.",
+"super_payment_billing_types_title": "Billing Types",
+"super_payment_billing_types_subtitle": "Manage billing method categories.",
+"super_payment_hint": "Choose a payment module to configure subscription billing.",
+"super_nav_licenses": "Licenses",
+"super_nav_upgrade_requests": "Upgrade Requests"
 
 
 

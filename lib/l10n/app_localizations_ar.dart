@@ -371,7 +371,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get owner_profile_title => 'الملف الشخصي';
 
   @override
-  String get owner_home_hello => '👋 مرحباً،';
+  String get owner_home_hello => '👋مرحباً،';
 
   @override
   String get owner_home_subtitle => 'إدارة تطبيقاتك بسهولة';
@@ -2437,6 +2437,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get periodEndLabel => 'نهاية المدة';
 
   @override
+  String get license_timeline_title => 'الجدول الزمني';
+
+  @override
+  String get subscription_status_scheduled => 'مجدول';
+
+  @override
+  String get payment_status_paid => 'مدفوع';
+
+  @override
+  String get payment_status_failed => 'فشل';
+
+  @override
+  String get app_licenses_cancel_title => 'إلغاء الترخيص';
+
+  @override
+  String app_licenses_cancel_confirm(Object plan) {
+    return 'إلغاء ترخيص $plan؟ عندما لا يبقى للتطبيق أي ترخيص نشط، يُمنع المالك من لوحة التحكم (يبقى التطبيق متاحًا للمستخدمين، ويمكن للمالك التجديد).';
+  }
+
+  @override
+  String get app_licenses_cancel_confirm_action => 'نعم، إلغاء';
+
+  @override
+  String get app_licenses_cancel_done => 'تم إلغاء الترخيص.';
+
+  @override
+  String get app_licenses_owner_blocked =>
+      'لا يوجد ترخيص نشط — المالك ممنوع من لوحة التحكم. يبقى التطبيق متاحًا للمستخدمين؛ ويمكن للمالك التجديد لاستعادة الوصول.';
+
+  @override
   String get daysLeftLabel => 'الأيام المتبقية';
 
   @override
@@ -3340,4 +3370,229 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get common_processing => 'جارٍ المعالجة...';
+
+  @override
+  String get lblCountry => 'الدولة';
+
+  @override
+  String get hintSelectCountry => 'اختر دولتك';
+
+  @override
+  String get errCountryRequired => 'يرجى اختيار الدولة';
+
+  @override
+  String get super_proj_display_title => 'العنوان التعريفي';
+
+  @override
+  String get super_proj_display_title_hint => 'عنوان قصير يظهر على بطاقة التطبيق';
+
+  @override
+  String get super_proj_display_description => 'وصف البطاقة';
+
+  @override
+  String get super_proj_display_description_hint => 'وصف مختصر يظهر أسفل العنوان';
+
+  @override
+  String get super_proj_icon_name => 'اسم الأيقونة';
+
+  @override
+  String get super_proj_icon_name_hint => 'مفتاح أيقونة Flutter (مثال: shopping_bag_rounded)';
+
+  @override
+  String get super_proj_card_color => 'لون بطاقة المشروع';
+
+  @override
+  String get super_proj_card_color_hint => 'لون Hex (مثال: #2563EB)';
+
+  @override
+  String get super_proj_display_order => 'ترتيب العرض';
+
+  @override
+  String get super_proj_display_order_hint => 'الأرقام الأصغر تظهر أولاً (مثال: 1)';
+
+  @override
+  String get publish_firebase_project_label => 'مشروع Firebase';
+
+  @override
+  String get publish_firebase_auto_full => 'تلقائي – أفضل حساب متاح';
+
+  @override
+  String get publish_firebase_auto_short => 'تلقائي';
+
+  @override
+  String get publish_firebase_default_full => 'افتراضي';
+
+  @override
+  String get publish_firebase_default_short => 'افتراضي';
+
+  @override
+  String get publish_firebase_load_failed => 'تعذر تحميل حسابات Firebase';
+
+  @override
+  String publish_firebase_load_error_auto(String error) {
+    return '$error – سيتم استخدام الاختيار التلقائي';
+  }
+
+  @override
+  String publish_firebase_remaining(int android, int ios) {
+    return 'المتبقي: $android أندرويد / $ios iOS';
+  }
+
+  @override
+  String get publish_sheet_notes_optional => 'ملاحظات (اختياري)';
+
+  @override
+  String get publish_share_package_title => 'مشاركة ملف النشر';
+
+  @override
+  String get publish_share_package_subtitle => 'إرسال معلومات التطبيق، بيانات المتجر، روابط البناء، والصور عبر البريد الإلكتروني.';
+
+  @override
+  String get publish_share_email => 'إيميل';
+
+  @override
+  String publish_share_email_subject(String appName) {
+    return 'طلب نشر - $appName';
+  }
+
+  @override
+  String get publish_share_email_intro => 'مرحباً،\n\nيرجى الاطلاع أدناه على معلومات النشر الخاصة بهذا التطبيق.';
+
+  @override
+  String get publish_share_email_footer => 'مع التحية،\nBuild4All Super Admin';
+
+  @override
+  String get publish_share_email_failed => 'تعذر فتح تطبيق البريد الإلكتروني';
+
+  @override
+  String get publish_share_link_copied => 'تم نسخ الرابط';
+
+  @override
+  String get publish_share_section_app_info => 'معلومات التطبيق';
+
+  @override
+  String get publish_share_section_android => 'أندرويد';
+
+  @override
+  String get publish_share_section_ios => 'iOS';
+
+  @override
+  String get publish_share_section_publisher => 'ملف الناشر';
+
+  @override
+  String get publish_share_section_assets => 'الصور والملفات';
+
+  @override
+  String get publish_share_section_notes => 'ملاحظات الإدارة';
+
+  @override
+  String get publish_share_app_name => 'اسم التطبيق';
+
+  @override
+  String get publish_share_developer_name => 'اسم المطوّر';
+
+  @override
+  String get publish_share_developer_email => 'بريد المطوّر';
+
+  @override
+  String get publish_share_privacy_policy => 'سياسة الخصوصية';
+
+  @override
+  String get publish_asset_open => 'فتح';
+
+  @override
+  String get publish_asset_download => 'تحميل';
+
+  @override
+  String get publish_asset_copy_link => 'نسخ الرابط';
+
+  @override
+  String get publish_label_logo => 'الشعار';
+
+  @override
+  String get publish_label_screenshot => 'صورة';
+
+  @override
+  String get publish_details_label_category => 'الفئة';
+
+  @override
+  String get publish_details_label_pricing => 'السعر';
+
+  @override
+  String get publish_share_assets_hint => 'لعرض الصور بشكل كامل مع التكبير وخيارات التحميل، افتح شاشة تفاصيل طلب النشر.';
+
+  @override
+  String get publish_assets_view_all => 'عرض الكل';
+
+  @override
+  String get publish_assets_download_all => 'تحميل الكل';
+
+  @override
+  String get publish_assets_download_all_failed => 'تعذر تحميل كل الصور';
+
+  @override
+  String get publish_assets_zoom_hint => 'كبّر بإصبعين • اسحب للتنقل بين الصور';
+
+  @override
+  String get super_nav_firebase_pool => 'مجموعة Firebase';
+
+  @override
+  String get super_nav_plans => 'الخطط';
+
+  @override
+  String get super_nav_plan_pricing => 'تسعير الخطط';
+
+  @override
+  String get super_nav_payment_methods => 'طرق الدفع';
+
+  @override
+  String get super_nav_billing_types => 'أنواع الفوترة';
+
+  @override
+  String get super_nav_workflows => 'مسارات العمل';
+
+  @override
+  String get super_nav_payment => 'الدفع';
+
+  @override
+  String get super_payment_title => 'الدفع';
+
+  @override
+  String get super_payment_management_title => 'إدارة الدفع';
+
+  @override
+  String get super_payment_management_subtitle => 'إدارة الخطط والأسعار وطرق الدفع وأنواع الفوترة من مكان واحد.';
+
+  @override
+  String get super_payment_plans_title => 'الخطط';
+
+  @override
+  String get super_payment_plans_subtitle => 'إنشاء وإدارة خطط الاشتراك.';
+
+  @override
+  String get super_payment_plan_pricing_title => 'تسعير الخطط';
+
+  @override
+  String get super_payment_plan_pricing_subtitle => 'إدارة الأسعار والخصومات ودورات الفوترة.';
+
+  @override
+  String get super_payment_payment_methods_title => 'طرق الدفع';
+
+  @override
+  String get super_payment_payment_methods_subtitle => 'إدارة طرق الدفع المستخدمة لفوترة أصحاب المشاريع.';
+
+  @override
+  String get super_payment_billing_types_title => 'أنواع الفوترة';
+
+  @override
+  String get super_payment_billing_types_subtitle => 'إدارة تصنيفات طرق الفوترة.';
+
+  @override
+  String get super_payment_hint => 'اختاري قسماً من أقسام الدفع لإعداد فوترة الاشتراكات.';
+
+  @override
+  String get super_nav_licenses => 'التراخيص';
+
+  @override
+  String get super_nav_upgrade_requests => 'طلبات الترقية';
 }

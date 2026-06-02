@@ -11,6 +11,7 @@ class LicensePlanPricingState extends Equatable {
   final String? error;
   final String? success;
   final Set<int> togglingIds;
+  final Set<int> deletingIds;
 
   const LicensePlanPricingState({
     this.loading = false,
@@ -19,6 +20,7 @@ class LicensePlanPricingState extends Equatable {
     this.error,
     this.success,
     this.togglingIds = const {},
+    this.deletingIds = const {},
   });
 
   LicensePlanPricingState copyWith({
@@ -28,6 +30,7 @@ class LicensePlanPricingState extends Equatable {
     Object? error = _omit,
     Object? success = _omit,
     Set<int>? togglingIds,
+    Set<int>? deletingIds,
   }) =>
       LicensePlanPricingState(
         loading: loading ?? this.loading,
@@ -36,9 +39,10 @@ class LicensePlanPricingState extends Equatable {
         error: identical(error, _omit) ? this.error : error as String?,
         success: identical(success, _omit) ? this.success : success as String?,
         togglingIds: togglingIds ?? this.togglingIds,
+        deletingIds: deletingIds ?? this.deletingIds,
       );
 
   @override
   List<Object?> get props =>
-      [loading, saving, items, error, success, togglingIds];
+      [loading, saving, items, error, success, togglingIds, deletingIds];
 }

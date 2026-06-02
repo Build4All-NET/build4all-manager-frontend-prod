@@ -15,6 +15,7 @@ import 'package:go_router/go_router.dart';
 import '../../../payment_management/presentation/screens/license_plan_pricings_screen.dart';
 import '../../../payment_management/presentation/screens/payment_methods_screen.dart';
 import '../../../payment_management/presentation/screens/payment_types_screen.dart';
+import '../../../payment_management/presentation/screens/plans_screen.dart';
 import '../../data/repositories/admin_repository_impl.dart';
 import '../../data/services/admin_api.dart';
 import '../../domain/entities/admin_profile.dart';
@@ -226,87 +227,8 @@ class _ProfileView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
-                        _SectionTitle(
-                          icon: Icons.payments_rounded,
-                          title: 'Subscription Billing',
-                        ),
-                        const SizedBox(height: 10),
-                        Card(
-                          elevation: 0,
-                          clipBehavior: Clip.antiAlias,
-                          child: Column(
-                            children: [
-                              ListTile(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 6),
-                                leading: const Icon(Icons.credit_card_rounded),
-                                title: const Text('Billing Methods'),
-                                subtitle: const Text(
-                                    'Stripe / bank accounts used to bill owners'),
-                                trailing: const Icon(
-                                    Icons.chevron_right_rounded),
-                                onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (_) =>
-                                        const PaymentMethodsScreen(),
-                                  ),
-                                ),
-                              ),
-                              Divider(
-                                height: 1,
-                                indent: 16,
-                                endIndent: 16,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .outlineVariant,
-                              ),
-                              ListTile(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 6),
-                                leading:
-                                    const Icon(Icons.category_rounded),
-                                title: const Text('Billing Types'),
-                                subtitle: const Text(
-                                    'Categories of billing methods (Card, Bank…)'),
-                                trailing: const Icon(
-                                    Icons.chevron_right_rounded),
-                                onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (_) =>
-                                        const PaymentTypesScreen(),
-                                  ),
-                                ),
-                              ),
-                              Divider(
-                                height: 1,
-                                indent: 16,
-                                endIndent: 16,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .outlineVariant,
-                              ),
-                              ListTile(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 6),
-                                leading:
-                                    const Icon(Icons.sell_rounded),
-                                title: const Text('Plan Pricing'),
-                                subtitle: const Text(
-                                    'Manage license plan prices and discounts'),
-                                trailing: const Icon(
-                                    Icons.chevron_right_rounded),
-                                onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (_) =>
-                                        const LicensePlanPricingsScreen(),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 16),
+                        
+                           
                         Card(
                           elevation: 0,
                           clipBehavior: Clip.antiAlias,
