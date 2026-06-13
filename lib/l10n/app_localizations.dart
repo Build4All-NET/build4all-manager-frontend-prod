@@ -517,6 +517,24 @@ abstract class AppLocalizations {
   /// **'Enter email'**
   String get profile_email_hint;
 
+  /// No description provided for @profile_phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number (support contact)'**
+  String get profile_phone;
+
+  /// No description provided for @profile_phone_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. +216 12 345 678'**
+  String get profile_phone_hint;
+
+  /// No description provided for @profile_phone_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get profile_phone_invalid;
+
   /// No description provided for @profile_save_changes.
   ///
   /// In en, this message translates to:
@@ -3960,6 +3978,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Use TestFlight to open'**
   String get download_ios;
+
+  /// No description provided for @contact_support_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact support'**
+  String get contact_support_title;
+
+  /// No description provided for @open_ticket_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a ticket'**
+  String get open_ticket_title;
+
+  /// No description provided for @open_ticket_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit an issue to our support team'**
+  String get open_ticket_subtitle;
+
+  /// No description provided for @open_ticket_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the ticket portal.'**
+  String get open_ticket_failed;
+
+  /// No description provided for @contact_support_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with us on WhatsApp'**
+  String get contact_support_subtitle;
+
+  /// No description provided for @contact_support_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, I need help with the Build4All manager app.'**
+  String get contact_support_message;
+
+  /// No description provided for @contact_support_unavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Support contact is not available right now.'**
+  String get contact_support_unavailable;
 
   /// No description provided for @owner_profile_edit_title.
   ///

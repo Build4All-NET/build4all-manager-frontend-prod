@@ -219,6 +219,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile_email_hint => 'Saisir l’e-mail';
 
   @override
+  String get profile_phone => 'Numéro de téléphone (contact support)';
+
+  @override
+  String get profile_phone_hint => 'ex. +216 12 345 678';
+
+  @override
+  String get profile_phone_invalid => 'Saisissez un numéro de téléphone valide';
+
+  @override
   String get profile_save_changes => 'Enregistrer les modifications';
 
   @override
@@ -1967,6 +1976,29 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get download_ios => 'Installez TestFlight pour ouvrir l’application';
+
+  @override
+  String get contact_support_title => 'Contacter le support';
+
+  @override
+  String get open_ticket_title => 'Ouvrir un ticket';
+
+  @override
+  String get open_ticket_subtitle =>
+      'Soumettez un problème à notre équipe d\'assistance';
+
+  @override
+  String get open_ticket_failed =>
+      'Impossible d\'ouvrir le portail des tickets.';
+
+  @override
+  String get contact_support_subtitle => 'Discutez avec nous sur WhatsApp';
+
+  @override
+  String get contact_support_message => 'Bonjour, j\'ai besoin d\'aide avec l\'application Build4All manager.';
+
+  @override
+  String get contact_support_unavailable => 'Le support n\'est pas disponible pour le moment.';
 
   @override
   String get owner_profile_edit_title => 'Modifier le profil';
