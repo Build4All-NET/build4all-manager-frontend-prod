@@ -391,18 +391,35 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BUILD_NAME="$(python3 - <<'PY'
+      
+          # Read base version from pubspec.yaml, example: 1.1.0+1
+          PUBSPEC_VERSION="$(python3 - <<'PY'
           import re
           t=open("pubspec.yaml","r",encoding="utf-8").read()
-          m=re.search(r"^version:\s*([0-9]+(?:\.[0-9]+){1,3})", t, re.M)
-          print(m.group(1) if m else "1.0.0")
+          m=re.search(r"^version:\s*([0-9]+)\.([0-9]+)\.([0-9]+)(?:\+[0-9]+)?", t, re.M)
+          if not m:
+              print("1.0.0")
+          else:
+              print(".".join(m.groups()))
           PY
           )"
+      
+          MAJOR="$(echo "$PUBSPEC_VERSION" | cut -d. -f1)"
+          MINOR="$(echo "$PUBSPEC_VERSION" | cut -d. -f2)"
+      
+          # Important:
+          # Marketing version must increase when Apple closes the previous train.
+          # We use GitHub run number as patch version to guarantee it is always higher.
+          BUILD_NAME="${MAJOR}.${MINOR}.${GITHUB_RUN_NUMBER}"
+      
+          # Build number also must be unique.
           BUILD_NUMBER="$((1000 + GITHUB_RUN_NUMBER))"
-
-          echo "BUILD_NAME=$BUILD_NAME" >> $GITHUB_ENV
-          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
-          echo "✅ Using BUILD_NAME=$BUILD_NAME BUILD_NUMBER=$BUILD_NUMBER"
+      
+          echo "BUILD_NAME=$BUILD_NAME" >> "$GITHUB_ENV"
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
+      
+          echo "✅ Using BUILD_NAME=$BUILD_NAME"
+          echo "✅ Using BUILD_NUMBER=$BUILD_NUMBER"
 
       - name: Build iOS (flutter)
         shell: bash
