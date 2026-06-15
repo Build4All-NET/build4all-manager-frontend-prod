@@ -372,8 +372,11 @@ class _HomeBodyState extends State<_HomeBody> {
                                   ? ''
                                   : _firstNameOnly(rawStored);
 
-                              final greeting =
-                                  display.isEmpty ? hello : '$hello $display';
+                              final helloBase =
+                                  hello.replaceAll(RegExp(r'[,،]\s*$'), '');
+                              final greeting = display.isEmpty
+                                  ? hello
+                                  : '$helloBase $display,';
 
                               return Row(
                                 children: [
