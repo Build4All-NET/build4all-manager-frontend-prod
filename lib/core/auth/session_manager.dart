@@ -51,7 +51,10 @@ class SessionManager {
     DioClient.clearToken();
   }
 
-  bool isJwtExpired(String token) {
+  /// Returns true if [token] is expired. [leewaySeconds] treats a token that
+  /// expires within that window as already expired, so callers can refresh
+  /// proactively (covers clock skew + in-flight request time).
+  bool isJwtExpired(String token, {int leewaySeconds = 0}) {
     try {
       final parts = token.split('.');
       if (parts.length < 2) return true;
@@ -69,7 +72,7 @@ class SessionManager {
           (exp is num) ? exp.toInt() : int.parse(exp.toString());
       final nowSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-      return nowSeconds >= expSeconds;
+      return (nowSeconds + leewaySeconds) >= expSeconds;
     } catch (_) {
       return true;
     }
