@@ -458,10 +458,13 @@ jobs:
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
+        # Don't let a full artifact storage quota block the TestFlight upload below.
+        continue-on-error: true
         with:
           name: ios-ipa
           path: build/ios/ipa/**/*.ipa
           if-no-files-found: error
+          retention-days: 7
 
       - name: Upload to TestFlight
         shell: bash
