@@ -25,8 +25,29 @@ class AuthInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
+    // Never attach a token to (or refresh for) the auth endpoints themselves.
+    if (_isAuthPath(options)) {
+      return handler.next(options);
+    }
+
     final (token, _, _) = await sessionManager.readSession();
-    final t = token.trim();
+    var t = token.trim();
+
+    // ✅ Proactive refresh: if the access token is expired (or about to expire
+    // within the leeway), refresh BEFORE sending so the request goes out
+    // authenticated. This makes refresh fully silent and avoids replaying
+    // non-repeatable requests (e.g. file uploads) through the 401 path.
+    if (t.isNotEmpty && sessionManager.isJwtExpired(t, leewaySeconds: 30)) {
+      try {
+        final newToken = await sessionManager.refreshTokens();
+        if (newToken != null && newToken.trim().isNotEmpty) {
+          t = newToken.trim();
+        }
+      } catch (_) {
+        // Keep the (expired) token; the reactive onError 401 path is the
+        // fallback and will surface a genuine failure if refresh truly failed.
+      }
+    }
 
     if (t.isNotEmpty) {
       options.headers['Authorization'] =

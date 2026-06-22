@@ -3,10 +3,12 @@ import 'package:build4all_manager/features/auth/data/services/country_api.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/countries.dart' as phone_countries;
+import 'package:phone_numbers_parser/phone_numbers_parser.dart' as pnp;
 
 import '../../../../../l10n/app_localizations.dart';
 import '../../../../../shared/widgets/app_text_field.dart';
@@ -112,6 +114,25 @@ class _OwnerRegisterProfileScreenState
 
   String? _required(String? v, String msg) =>
       (v == null || v.trim().isEmpty) ? msg : null;
+
+  /// Parses a phone number against the rules of the selected country.
+  ///
+  /// [isoCode] is the ISO-2 code coming from [IntlPhoneField] (e.g. `LB`),
+  /// and [nationalNumber] is the digits the user typed (may include a
+  /// leading national prefix `0`, which the parser strips automatically).
+  ///
+  /// Returns `null` if the country/number cannot be parsed.
+  pnp.PhoneNumber? _parsePhone(String isoCode, String nationalNumber) {
+    final trimmed = nationalNumber.trim();
+    if (trimmed.isEmpty) return null;
+
+    try {
+      final iso = pnp.IsoCode.values.byName(isoCode.toUpperCase());
+      return pnp.PhoneNumber.parse(trimmed, callerCountry: iso);
+    } catch (_) {
+      return null;
+    }
+  }
 
   void _submit(AppLocalizations l10n) {
     final form = _form.currentState;
@@ -233,6 +254,11 @@ class _OwnerRegisterProfileScreenState
                           label: l10n.lblUsername,
                           hint: l10n.hintUsername,
                           prefix: const Icon(Icons.alternate_email),
+                          // Username must never contain whitespace.
+                          // Block typing/pasting any space at the source.
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                          ],
                           validator: (v) =>
                               _required(v, l10n.errUsernameRequired),
                         ),
@@ -264,6 +290,10 @@ class _OwnerRegisterProfileScreenState
                         IntlPhoneField(
                           countries: _phoneCountries,
                           initialCountryCode: 'CA',
+                          // Validation is handled by phone_numbers_parser
+                          // below, so disable the widget's generic length
+                          // check (and its non-localized error message).
+                          disableLengthCheck: true,
                           decoration: _inputDeco(
                             context,
                             label: l10n.lblPhone,
@@ -271,7 +301,18 @@ class _OwnerRegisterProfileScreenState
                             prefixIcon: const Icon(Icons.phone_outlined),
                           ),
                           onChanged: (phone) {
-                            _fullPhone = phone.completeNumber;
+                            // Store the normalized E.164 number (e.g.
+                            // "+9613123123") when it is valid for the
+                            // selected country, otherwise keep the raw
+                            // value so validation can flag it.
+                            final parsed = _parsePhone(
+                              phone.countryISOCode,
+                              phone.number,
+                            );
+
+                            _fullPhone = parsed != null && parsed.isValid()
+                                ? parsed.international
+                                : phone.completeNumber;
                           },
                           validator: (phone) {
                             if (phone == null ||
@@ -279,7 +320,15 @@ class _OwnerRegisterProfileScreenState
                               return l10n.errPhoneRequired;
                             }
 
-                            if (phone.number.trim().length < 6) {
+                            // Validate against the rules of the selected
+                            // country (length, prefixes, etc.) instead of a
+                            // generic minimum length.
+                            final parsed = _parsePhone(
+                              phone.countryISOCode,
+                              phone.number,
+                            );
+
+                            if (parsed == null || !parsed.isValid()) {
                               return l10n.errPhoneInvalid;
                             }
 
