@@ -175,10 +175,13 @@ jobs:
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
+        # Don't let a full artifact storage quota block the Play Store upload below.
+        continue-on-error: true
         with:
           name: android-aab
           path: build/app/outputs/bundle/release/*.aab
           if-no-files-found: error
+          retention-days: 7
 
       # --------------------------------------------------
       # Release notes
