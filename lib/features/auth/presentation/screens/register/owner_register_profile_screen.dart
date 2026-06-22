@@ -3,6 +3,7 @@ import 'package:build4all_manager/features/auth/data/services/country_api.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -253,6 +254,11 @@ class _OwnerRegisterProfileScreenState
                           label: l10n.lblUsername,
                           hint: l10n.hintUsername,
                           prefix: const Icon(Icons.alternate_email),
+                          // Username must never contain whitespace.
+                          // Block typing/pasting any space at the source.
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                          ],
                           validator: (v) =>
                               _required(v, l10n.errUsernameRequired),
                         ),
