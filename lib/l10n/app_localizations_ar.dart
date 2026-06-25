@@ -2128,6 +2128,38 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hintPasswordRuleOwner => 'كلمة المرور يجب أن تكون على الأقل 6 أحرف.';
 
   @override
+  String get lblConfirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get hintConfirmPassword => 'أعد إدخال كلمة المرور';
+
+  @override
+  String get errConfirmPasswordRequired => 'يرجى تأكيد كلمة المرور';
+
+  @override
+  String get errPasswordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get forgotPasswordTitle => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get forgotPasswordEmailSubtitle =>
+      'أدخل البريد الإلكتروني لحسابك وسنرسل لك رمزًا مكونًا من 6 أرقام لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get lblNewPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get hintNewPassword => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get btnResetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get msgPasswordResetSuccess =>
+      'تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول.';
+
+  @override
   String get owner_projects_filter_platform_ready => 'جاهزية المنصة';
 
   @override

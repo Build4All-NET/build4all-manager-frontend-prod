@@ -1447,5 +1447,15 @@
 "accountPendingDeletionTitle": " الحساب قيد الحذف",
 "accountPendingDeletionMessage": "طلب حذف حسابك قيد المعالجة. إذا غيرت رأيك، يمكنك إعادة تنشيط حسابك قبل أن يتم الحذف النهائي بعد 30 يومًا.",
 "reactivateAccount": "إعادة تنشيط الحساب",
-"accountReactivatedSuccessfully": "تم إعادة تنشيط حسابك بنجاح. إذا لم تكن أنت من طلب الحذف، نوصي بتغيير كلمة المرور الخاصة بك كإجراء أمني."
+"accountReactivatedSuccessfully": "تم إعادة تنشيط حسابك بنجاح. إذا لم تكن أنت من طلب الحذف، نوصي بتغيير كلمة المرور الخاصة بك كإجراء أمني.",
+"lblConfirmPassword": "تأكيد كلمة المرور",
+"hintConfirmPassword": "أعد إدخال كلمة المرور",
+"errConfirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+"errPasswordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+"forgotPasswordTitle": "إعادة تعيين كلمة المرور",
+"forgotPasswordEmailSubtitle": "أدخل البريد الإلكتروني لحسابك وسنرسل لك رمزًا مكونًا من 6 أرقام لإعادة تعيين كلمة المرور.",
+"lblNewPassword": "كلمة المرور الجديدة",
+"hintNewPassword": "أدخل كلمة المرور الجديدة",
+"btnResetPassword": "إعادة تعيين كلمة المرور",
+"msgPasswordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول."
 }

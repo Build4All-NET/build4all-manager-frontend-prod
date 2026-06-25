@@ -44,6 +44,14 @@ import 'package:build4all_manager/features/auth/presentation/screens/register/ow
 import 'package:build4all_manager/features/auth/presentation/screens/register/owner_register_otp_screen.dart';
 import 'package:build4all_manager/features/auth/presentation/screens/register/owner_register_profile_screen.dart';
 
+import 'package:build4all_manager/features/auth/domain/usecases/ForgotPasswordSendCode.dart';
+import 'package:build4all_manager/features/auth/domain/usecases/ForgotPasswordVerifyCode.dart';
+import 'package:build4all_manager/features/auth/domain/usecases/ForgotPasswordReset.dart';
+import 'package:build4all_manager/features/auth/presentation/bloc/forgot_password/forgot_password_bloc.dart';
+import 'package:build4all_manager/features/auth/presentation/screens/forgot_password/forgot_password_email_screen.dart';
+import 'package:build4all_manager/features/auth/presentation/screens/forgot_password/forgot_password_otp_screen.dart';
+import 'package:build4all_manager/features/auth/presentation/screens/forgot_password/forgot_password_reset_screen.dart';
+
 import 'package:build4all_manager/core/network/dio_client.dart';
 import 'package:build4all_manager/core/auth/jwt_claims.dart';
 
@@ -133,6 +141,28 @@ Widget _withOwnerRegBloc(Widget child) {
   );
 }
 
+Widget _withForgotPwdBloc(Widget child) {
+  final authApi = AuthApi(DioClient.ensure());
+  final sessionManager = SessionManager(
+    store: JwtLocalDataSource(),
+    authApi: authApi,
+  );
+
+  final IAuthRepository repo = AuthRepositoryImpl(
+    api: authApi,
+    sessionManager: sessionManager,
+  );
+
+  return BlocProvider(
+    create: (_) => ForgotPasswordBloc(
+      ForgotPasswordSendCodeUseCase(repo),
+      ForgotPasswordVerifyCodeUseCase(repo),
+      ForgotPasswordResetUseCase(repo),
+    ),
+    child: child,
+  );
+}
+
 const _publicPaths = <String>{
   '/',
   '/login',
@@ -140,6 +170,9 @@ const _publicPaths = <String>{
   '/owner/register',
   '/owner/register/otp',
   '/owner/register/profile',
+  '/owner/forgot-password',
+  '/owner/forgot-password/otp',
+  '/owner/forgot-password/reset',
 };
 
 final _ownerSessionShellKey =
@@ -325,6 +358,32 @@ final router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: '/owner/forgot-password',
+      builder: (_, __) =>
+          _withForgotPwdBloc(const ForgotPasswordEmailScreen()),
+      routes: [
+        GoRoute(
+          path: 'otp',
+          builder: (ctx, st) {
+            final extra = (st.extra ?? {}) as Map;
+            return _withForgotPwdBloc(
+              ForgotPasswordOtpScreen(
+                email: (extra['email'] ?? '') as String,
+              ),
+            );
+          },
+        ),
+        GoRoute(
+          path: 'reset',
+          builder: (ctx, st) => _withForgotPwdBloc(
+            ForgotPasswordResetScreen(
+              resetToken: (st.extra ?? '') as String,
+            ),
+          ),
+        ),
+      ],
+    ),
   ],
   redirect: _authRedirect,
 );
@@ -342,8 +401,9 @@ Future<String?> _authRedirect(
     return isPublic ? null : '/login';
   }
 
-  final goingToAuth =
-      loc.startsWith('/login') || loc.startsWith('/owner/register');
+  final goingToAuth = loc.startsWith('/login') ||
+      loc.startsWith('/owner/register') ||
+      loc.startsWith('/owner/forgot-password');
   if (goingToAuth)
     return role == 'SUPER_ADMIN' ? '/manager' : '/owner/home';
 
