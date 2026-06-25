@@ -193,6 +193,89 @@ Future<(AuthToken, AppUser)> reactivateAdminDeletion({
   }
 
   @override
+  Future<void> ownerForgotPasswordSendCode({required String email}) async {
+    try {
+      await api.ownerForgotPasswordSendCode(email: email);
+    } on DioException catch (e) {
+      final data = e.response?.data;
+      if (data is Map) {
+        final code = (data['code'] ?? 'OTP_ERROR').toString();
+        final msg = (data['error'] ?? ApiErrorHandler.message(e)).toString();
+        throw AuthFailure(code: code, message: msg);
+      }
+      throw AuthFailure(
+        code: 'NETWORK_ERROR',
+        message: ApiErrorHandler.message(e),
+      );
+    } catch (e) {
+      throw AuthFailure(
+        code: 'OTP_ERROR',
+        message: ApiErrorHandler.message(e),
+      );
+    }
+  }
+
+  @override
+  Future<String> ownerForgotPasswordVerifyCode({
+    required String email,
+    required String code,
+  }) async {
+    try {
+      final res = await api.ownerForgotPasswordVerifyCode(
+        email: email,
+        code: code,
+      );
+
+      return (res.data['resetToken'] ?? '').toString();
+    } on DioException catch (e) {
+      final data = e.response?.data;
+      if (data is Map) {
+        final c = (data['code'] ?? 'OTP_ERROR').toString();
+        final msg = (data['error'] ?? ApiErrorHandler.message(e)).toString();
+        throw AuthFailure(code: c, message: msg);
+      }
+      throw AuthFailure(
+        code: 'NETWORK_ERROR',
+        message: ApiErrorHandler.message(e),
+      );
+    } catch (e) {
+      throw AuthFailure(
+        code: 'OTP_ERROR',
+        message: ApiErrorHandler.message(e),
+      );
+    }
+  }
+
+  @override
+  Future<void> ownerForgotPasswordReset({
+    required String resetToken,
+    required String newPassword,
+  }) async {
+    try {
+      await api.ownerForgotPasswordReset(
+        resetToken: resetToken,
+        newPassword: newPassword,
+      );
+    } on DioException catch (e) {
+      final data = e.response?.data;
+      if (data is Map) {
+        final c = (data['code'] ?? 'RESET_ERROR').toString();
+        final msg = (data['error'] ?? ApiErrorHandler.message(e)).toString();
+        throw AuthFailure(code: c, message: msg);
+      }
+      throw AuthFailure(
+        code: 'NETWORK_ERROR',
+        message: ApiErrorHandler.message(e),
+      );
+    } catch (e) {
+      throw AuthFailure(
+        code: 'RESET_ERROR',
+        message: ApiErrorHandler.message(e),
+      );
+    }
+  }
+
+  @override
   Future<void> ownerSendOtp({
     required String email,
     required String password,

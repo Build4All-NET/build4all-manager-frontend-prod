@@ -2128,6 +2128,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hintPasswordRuleOwner => 'Password must be at least 6 characters';
 
   @override
+  String get lblConfirmPassword => 'Confirm Password';
+
+  @override
+  String get hintConfirmPassword => 'Re-enter your password';
+
+  @override
+  String get errConfirmPasswordRequired => 'Please confirm your password';
+
+  @override
+  String get errPasswordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get forgotPasswordTitle => 'Reset Password';
+
+  @override
+  String get forgotPasswordEmailSubtitle =>
+      'Enter your account email and we will send you a 6-digit code to reset your password.';
+
+  @override
+  String get lblNewPassword => 'New Password';
+
+  @override
+  String get hintNewPassword => 'Enter your new password';
+
+  @override
+  String get btnResetPassword => 'Reset Password';
+
+  @override
+  String get msgPasswordResetSuccess =>
+      'Password reset successfully. Please login.';
+
+  @override
   String get owner_projects_filter_platform_ready => 'Platform Ready';
 
   @override

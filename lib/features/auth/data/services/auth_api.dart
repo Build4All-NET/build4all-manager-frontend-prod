@@ -65,6 +65,39 @@ Future<Response> reactivateAdminDeletion({
     );
   }
 
+  Future<Response> ownerForgotPasswordSendCode({required String email}) {
+    return _dio.post(
+      '/auth/owner/forgot-password/send-code',
+      queryParameters: {'email': email},
+    );
+  }
+
+  Future<Response> ownerForgotPasswordVerifyCode({
+    required String email,
+    required String code,
+  }) {
+    return _dio.post(
+      '/auth/owner/forgot-password/verify-code',
+      data: {
+        'email': email,
+        'code': code,
+      },
+    );
+  }
+
+  Future<Response> ownerForgotPasswordReset({
+    required String resetToken,
+    required String newPassword,
+  }) {
+    return _dio.post(
+      '/auth/owner/forgot-password/reset',
+      data: {
+        'resetToken': resetToken,
+        'newPassword': newPassword,
+      },
+    );
+  }
+
   Future<Response> ownerCompleteProfile({
     required String registrationToken,
     required String username,

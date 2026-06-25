@@ -1600,5 +1600,15 @@
 "accountPendingDeletionTitle": "Compte en attente de suppression",
 "accountPendingDeletionMessage": "Ce compte est programmé pour être supprimé. Vous pouvez le réactiver dans les 30 jours qui précèdent sa suppression définitive.",
 "reactivateAccount": "éactiver le compte",
-"accountReactivatedSuccessfully": "Compte réactivé avec succès"
+"accountReactivatedSuccessfully": "Compte réactivé avec succès",
+"lblConfirmPassword": "Confirmer le mot de passe",
+"hintConfirmPassword": "Saisissez à nouveau votre mot de passe",
+"errConfirmPasswordRequired": "Veuillez confirmer votre mot de passe",
+"errPasswordsDoNotMatch": "Les mots de passe ne correspondent pas",
+"forgotPasswordTitle": "Réinitialiser le mot de passe",
+"forgotPasswordEmailSubtitle": "Saisissez l'e-mail de votre compte et nous vous enverrons un code à 6 chiffres pour réinitialiser votre mot de passe.",
+"lblNewPassword": "Nouveau mot de passe",
+"hintNewPassword": "Saisissez votre nouveau mot de passe",
+"btnResetPassword": "Réinitialiser le mot de passe",
+"msgPasswordResetSuccess": "Mot de passe réinitialisé avec succès. Veuillez vous connecter."
 }
