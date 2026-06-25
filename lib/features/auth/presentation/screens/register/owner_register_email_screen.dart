@@ -22,8 +22,10 @@ class _OwnerRegisterEmailScreenState extends State<OwnerRegisterEmailScreen> {
   final _form = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
+  final _confirm = TextEditingController();
   final _emailNode = FocusNode();
   final _pwNode = FocusNode();
+  final _confirmNode = FocusNode();
 
   bool _submitted = false;
 
@@ -31,10 +33,14 @@ class _OwnerRegisterEmailScreenState extends State<OwnerRegisterEmailScreen> {
   void dispose() {
     _email.dispose();
     _password.dispose();
+    _confirm.dispose();
     _emailNode
       ..unfocus()
       ..dispose();
     _pwNode
+      ..unfocus()
+      ..dispose();
+    _confirmNode
       ..unfocus()
       ..dispose();
     super.dispose();
@@ -68,6 +74,12 @@ class _OwnerRegisterEmailScreenState extends State<OwnerRegisterEmailScreen> {
 
   return null;
 }
+
+  String? _confirmValidator(String? v, AppLocalizations l10n) {
+    if (v == null || v.isEmpty) return l10n.errConfirmPasswordRequired;
+    if (v != _password.text) return l10n.errPasswordsDoNotMatch;
+    return null;
+  }
 
   void _submit(AppLocalizations l10n) {
     final form = _form.currentState;
@@ -148,9 +160,9 @@ class _OwnerRegisterEmailScreenState extends State<OwnerRegisterEmailScreen> {
                         label: l10n.lblPassword,
                         hint: l10n.hintPassword,
                         prefix: const Icon(Icons.lock_outline),
-                        textInputAction: TextInputAction.done,
+                        textInputAction: TextInputAction.next,
                         validator: (v) => _passwordValidator(v, l10n),
-                        onSubmitted: (_) => _submit(l10n),
+                        onSubmitted: (_) => _confirmNode.requestFocus(),
                       ),
 
                       // ✅ clear rule hint
@@ -164,6 +176,18 @@ class _OwnerRegisterEmailScreenState extends State<OwnerRegisterEmailScreen> {
                               .bodySmall
                               ?.copyWith(color: cs.outline),
                         ),
+                      ),
+
+                      const SizedBox(height: 14),
+                      AppPasswordField(
+                        controller: _confirm,
+                        focusNode: _confirmNode,
+                        label: l10n.lblConfirmPassword,
+                        hint: l10n.hintConfirmPassword,
+                        prefix: const Icon(Icons.lock_outline),
+                        textInputAction: TextInputAction.done,
+                        validator: (v) => _confirmValidator(v, l10n),
+                        onSubmitted: (_) => _submit(l10n),
                       ),
 
                       const SizedBox(height: 20),

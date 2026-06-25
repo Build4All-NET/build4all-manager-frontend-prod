@@ -25,6 +25,18 @@ abstract class IAuthRepository {
     required String code,
   });
 
+  Future<void> ownerForgotPasswordSendCode({required String email});
+
+  Future<String> ownerForgotPasswordVerifyCode({
+    required String email,
+    required String code,
+  });
+
+  Future<void> ownerForgotPasswordReset({
+    required String resetToken,
+    required String newPassword,
+  });
+
   Future<(AuthToken, AppUser)> ownerCompleteProfile({
     required String registrationToken,
     required String username,

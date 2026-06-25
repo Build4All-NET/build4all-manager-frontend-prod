@@ -548,7 +548,14 @@ class _LoginFormState extends State<_LoginForm> {
                 validator: (v) => _pwValidator(v, l10n),
                 onSubmitted: (_) => _submit(context, l10n),
               ),
-              const SizedBox(height: 14),
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: TextButton(
+                  onPressed: () => context.push('/owner/forgot-password'),
+                  child: Text(l10n.forgotPassword),
+                ),
+              ),
+              const SizedBox(height: 6),
               AppButton(
                 label: l10n.btnSignIn,
                 expand: true,

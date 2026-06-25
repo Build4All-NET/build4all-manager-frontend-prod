@@ -4279,6 +4279,66 @@ abstract class AppLocalizations {
   /// **'Password must be at least 6 characters'**
   String get hintPasswordRuleOwner;
 
+  /// No description provided for @lblConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get lblConfirmPassword;
+
+  /// No description provided for @hintConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter your password'**
+  String get hintConfirmPassword;
+
+  /// No description provided for @errConfirmPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get errConfirmPasswordRequired;
+
+  /// No description provided for @errPasswordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get errPasswordsDoNotMatch;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @forgotPasswordEmailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your account email and we will send you a 6-digit code to reset your password.'**
+  String get forgotPasswordEmailSubtitle;
+
+  /// No description provided for @lblNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get lblNewPassword;
+
+  /// No description provided for @hintNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your new password'**
+  String get hintNewPassword;
+
+  /// No description provided for @btnResetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get btnResetPassword;
+
+  /// No description provided for @msgPasswordResetSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset successfully. Please login.'**
+  String get msgPasswordResetSuccess;
+
   /// No description provided for @owner_projects_filter_platform_ready.
   ///
   /// In en, this message translates to:

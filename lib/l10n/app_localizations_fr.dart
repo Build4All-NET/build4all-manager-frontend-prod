@@ -2130,6 +2130,40 @@ class AppLocalizationsFr extends AppLocalizations {
   String get hintPasswordRuleOwner => 'Le mot de passe doit contenir au moins 6 caractères.';
 
   @override
+  String get lblConfirmPassword => 'Confirmer le mot de passe';
+
+  @override
+  String get hintConfirmPassword => 'Saisissez à nouveau votre mot de passe';
+
+  @override
+  String get errConfirmPasswordRequired =>
+      'Veuillez confirmer votre mot de passe';
+
+  @override
+  String get errPasswordsDoNotMatch =>
+      'Les mots de passe ne correspondent pas';
+
+  @override
+  String get forgotPasswordTitle => 'Réinitialiser le mot de passe';
+
+  @override
+  String get forgotPasswordEmailSubtitle =>
+      'Saisissez l\'e-mail de votre compte et nous vous enverrons un code à 6 chiffres pour réinitialiser votre mot de passe.';
+
+  @override
+  String get lblNewPassword => 'Nouveau mot de passe';
+
+  @override
+  String get hintNewPassword => 'Saisissez votre nouveau mot de passe';
+
+  @override
+  String get btnResetPassword => 'Réinitialiser le mot de passe';
+
+  @override
+  String get msgPasswordResetSuccess =>
+      'Mot de passe réinitialisé avec succès. Veuillez vous connecter.';
+
+  @override
   String get owner_projects_filter_platform_ready => 'Plateforme prête';
 
   @override
