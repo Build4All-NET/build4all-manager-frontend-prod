@@ -1,7 +1,6 @@
 // lib/features/owner/ownerrequests/presentation/screens/owner_requests_screen.dart
-import 'dart:io';
-
 import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
+import 'package:build4all_manager/shared/widgets/x_file_image.dart';
 import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/runtime_draft.dart';
 import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/runtime_section.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
@@ -53,7 +52,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
   List<CurrencyModel> _currencies = [];
   CurrencyModel? _selectedCurrency;
 
-  File? _logoFile;
+  XFile? _logoFile;
 
   String? _selectedPresetId = 'pink_pop';
   ThemeDraft _draft = ThemePresets.byId('pink_pop').draft;
@@ -136,7 +135,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
     if (res == null) return;
 
     final normalized = await UploadSafeImageNormalizer.normalizeForUpload(
-      File(res.path),
+      res,
       prefix: 'owner_logo_pick',
       quality: 88,
       maxWidth: 1024,
@@ -600,7 +599,7 @@ class _CustomizeColumn extends StatelessWidget {
   final ThemeDraft draft;
   final RuntimeDraft runtime;
 
-  final File? logoFile;
+  final XFile? logoFile;
 
   final ValueChanged<String?> onPresetChanged;
   final ValueChanged<ThemeDraft> onDraftChanged;
@@ -795,7 +794,7 @@ class _IdentityPanel extends StatelessWidget {
   final TextEditingController appNameCtrl;
   final TextEditingController notesCtrl;
 
-  final File? logoFile;
+  final XFile? logoFile;
   final VoidCallback onPickLogo;
   final VoidCallback onRemoveLogo;
 
@@ -889,7 +888,7 @@ class _IdentityPanel extends StatelessWidget {
                       ? Icon(Icons.image_outlined, color: hint)
                       : ClipRRect(
                           borderRadius: BorderRadius.circular(14),
-                          child: Image.file(
+                          child: XFileImage(
                             logoFile!,
                             fit: BoxFit.cover,
                             cacheWidth: 108,

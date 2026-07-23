@@ -1,11 +1,10 @@
-import 'dart:io';
-
 import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
 import 'package:build4all_manager/features/owner/publish/data/services/owner_publish_api.dart';
 import 'package:build4all_manager/features/owner/publish/domain/entities/publish_draft.dart';
 import 'package:build4all_manager/l10n/app_localizations.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
+import 'package:build4all_manager/shared/widgets/x_file_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -49,8 +48,8 @@ class _PublishAssetsUploaderSheetState
     extends State<PublishAssetsUploaderSheet> {
   final _picker = ImagePicker();
 
-  File? _icon;
-  final List<File> _shots = [];
+  XFile? _icon;
+  final List<XFile> _shots = [];
   bool _uploading = false;
 
   String _errText(dynamic e, AppLocalizations l10n) {
@@ -76,7 +75,7 @@ class _PublishAssetsUploaderSheetState
     if (x == null) return;
 
     final normalized = await UploadSafeImageNormalizer.normalizeForUpload(
-      File(x.path),
+      x,
       prefix: 'publish_icon_pick',
       quality: 90,
       maxWidth: 2048,
@@ -92,7 +91,7 @@ class _PublishAssetsUploaderSheetState
     if (xs.isEmpty) return;
 
     final normalized = await UploadSafeImageNormalizer.normalizeMany(
-      xs.map((x) => File(x.path)),
+      xs,
       prefix: 'publish_screenshot_pick',
       quality: 90,
       maxWidth: 2048,
@@ -232,7 +231,7 @@ class _PublishAssetsUploaderSheetState
                             Icons.image_rounded,
                             color: cs.onSurface.withOpacity(.6),
                           )
-                        : Image.file(_icon!, fit: BoxFit.cover),
+                        : XFileImage(_icon!, fit: BoxFit.cover),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
@@ -315,7 +314,7 @@ class _PublishAssetsUploaderSheetState
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(16),
-                            child: Image.file(
+                            child: XFileImage(
                               f,
                               width: 140,
                               height: 92,
