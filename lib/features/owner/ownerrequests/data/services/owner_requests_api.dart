@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart' show XFile;
 
 import '../models/currency_model.dart';
 
@@ -60,7 +60,7 @@ class OwnerRequestApi {
   String? apiBaseUrlOverride,
   String? themeId,
   String? slug,
-  File? logoFile,
+  XFile? logoFile,
 }) async {
   _ensureValidJson(navJson, 'navJson');
   _ensureValidJson(homeJson, 'homeJson');
@@ -111,11 +111,9 @@ class OwnerRequestApi {
     form.files.add(
       MapEntry(
         'logo',
-        await MultipartFile.fromFile(
-          safeLogo.path,
-          filename: safeLogo.uri.pathSegments.isNotEmpty
-              ? safeLogo.uri.pathSegments.last
-              : 'logo.jpg',
+        MultipartFile.fromBytes(
+          await safeLogo.readAsBytes(),
+          filename: safeLogo.name.isNotEmpty ? safeLogo.name : 'logo.jpg',
         ),
       ),
     );

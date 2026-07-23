@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart' show XFile;
 
 
 import '../../../common/data/models/app_request_dto.dart';
@@ -81,7 +82,7 @@ class OwnerRequestApi {
       final f = File(logoFilePath);
       if (await f.exists()) {
         final safeLogo = await UploadSafeImageNormalizer.normalizeForUpload(
-          f,
+          XFile(f.path),
           prefix: 'owner_logo_upload',
           quality: 88,
           maxWidth: 1600,
@@ -91,9 +92,9 @@ class OwnerRequestApi {
         form.files.add(
           MapEntry(
             'logo',
-            await MultipartFile.fromFile(
-              safeLogo.path,
-              filename: safeLogo.path.split(Platform.pathSeparator).last,
+            MultipartFile.fromBytes(
+              await safeLogo.readAsBytes(),
+              filename: safeLogo.name,
             ),
           ),
         );
