@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:build4all_manager/core/bootstrap/app_bootstrap.dart';
 import 'package:build4all_manager/core/network/dio_client.dart';
 import 'package:build4all_manager/core/notifications/firebase_push_service.dart';
 import 'package:build4all_manager/features/auth/data/services/auth_api.dart';
 import 'package:build4all_manager/features/auth/data/datasources/jwt_local_datasource.dart';
+import 'package:build4all_manager/shared/widgets/app_loading_view.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,6 +18,15 @@ class SplashGate extends StatefulWidget {
 }
 
 class _SplashGateState extends State<SplashGate> {
+  /// A silent-refresh round trip should be quick. If the backend is slow or
+  /// unreachable we fall back to the login screen rather than parking the user
+  /// on a spinner for a full 60s receive timeout.
+  static const Duration _refreshTimeout = Duration(seconds: 12);
+
+  /// Push registration is optional, so we only wait a bounded time for the
+  /// background Firebase init to report in.
+  static const Duration _firebaseWait = Duration(seconds: 15);
+
   @override
   void initState() {
     super.initState();
@@ -52,7 +63,7 @@ class _SplashGateState extends State<SplashGate> {
       }
 
       try {
-        final res = await api.refresh(refresh);
+        final res = await api.refresh(refresh).timeout(_refreshTimeout);
         final data = res.data;
 
         if (data is! Map) {
@@ -98,6 +109,17 @@ class _SplashGateState extends State<SplashGate> {
 
     Future.microtask(() async {
       try {
+        // Firebase now boots in the background (see AppBootstrap), so it may
+        // not be ready yet — touching FirebaseMessaging before it is would
+        // throw "No Firebase App '[DEFAULT]' has been created".
+        final ready = await AppBootstrap.firebaseReady
+            .timeout(_firebaseWait, onTimeout: () => false);
+
+        if (!ready) {
+          debugPrint('Push init skipped: Firebase not available');
+          return;
+        }
+
         await FirebasePushService()
             .initForAdmin()
             .timeout(const Duration(seconds: 8));
@@ -154,14 +176,6 @@ class _SplashGateState extends State<SplashGate> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: 28,
-          height: 28,
-          child: CircularProgressIndicator(strokeWidth: 2.6),
-        ),
-      ),
-    );
+    return const AppLoadingView(message: 'Signing you in…');
   }
 }

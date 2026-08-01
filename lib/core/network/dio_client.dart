@@ -9,8 +9,18 @@ import 'server_status_controller.dart';
 class DioClient {
   /// Call once in main() BEFORE runApp()
   static Future<void> init() async {
-    final cfg = await ApiConfig.load();
+    _apply(await ApiConfig.load());
+  }
 
+  /// Synchronous fallback used when [init] failed or timed out, so the widget
+  /// tree never has to deal with an uninitialised Dio.
+  static void initWithDefaults() {
+    _apply(ApiConfig.fallback());
+  }
+
+  static bool get isInitialized => g.appDio != null;
+
+  static void _apply(ApiConfig cfg) {
     // baseUrl: http://host:8080/api
     g.appServerRoot = cfg.baseUrl;
 
@@ -19,6 +29,14 @@ class DioClient {
 
     final client = ApiClient(cfg);
     g.appDio = client.dio;
+
+    // A late-resolving ApiConfig.load() can replace the fallback client after
+    // the token was already restored; carry the header over so the session
+    // does not silently drop.
+    final existingToken = g.authToken;
+    if (existingToken != null && existingToken.isNotEmpty) {
+      client.dio.options.headers['Authorization'] = 'Bearer $existingToken';
+    }
 
     // add global interceptor once
     final dio = ensure();
