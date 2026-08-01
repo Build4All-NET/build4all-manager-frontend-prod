@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:build4all_manager/core/auth/session_manager.dart';
+import 'package:build4all_manager/core/bootstrap/app_bootstrap.dart';
 import 'package:build4all_manager/core/network/dio_client.dart';
 import 'package:build4all_manager/core/notifications/firebase_push_service.dart';
 import 'package:build4all_manager/features/auth/data/datasources/jwt_local_datasource.dart';
@@ -25,6 +26,13 @@ import '../../../../shared/widgets/app_toast.dart';
 
 Future<void> _initPushSafely() async {
   try {
+    // Firebase boots in the background (see AppBootstrap), so it may still be
+    // in flight; calling FirebaseMessaging before it lands would throw.
+    final ready = await AppBootstrap.firebaseReady
+        .timeout(const Duration(seconds: 15), onTimeout: () => false);
+
+    if (!ready) return;
+
     await FirebasePushService().initForAdmin();
   } catch (_) {
     // Ignore push init errors here so login navigation is never blocked.
@@ -336,7 +344,7 @@ class AppLoginScreen extends StatelessWidget {
     ),
     child: ClipOval(
       child: Image.asset(
-        'assets/icon/app_icon.png',
+        'assets/icon/app_logo_192.png',
         fit: BoxFit.contain,
       ),
     ),

@@ -38,6 +38,16 @@ class ApiConfig {
     return ApiConfig._(root, '$root/api', json);
   }
 
+  /// Config built without touching shared preferences or the asset bundle.
+  ///
+  /// Last-resort fallback for when [load] fails or takes too long: a wrong
+  /// base URL still gives a usable app shell, whereas an uninitialised Dio
+  /// throws on the first build and leaves the user staring at the splash.
+  static ApiConfig fallback() {
+    final root = _normalize(_dartDefineDefault);
+    return ApiConfig._(root, '$root/api', const {});
+  }
+
   static String _normalize(String input) {
     var s = input.trim();
     if (s.endsWith('/api')) s = s.substring(0, s.length - 4);

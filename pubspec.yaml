@@ -88,6 +88,10 @@ flutter:
   assets:
     - lib/config/hostIp.json
     - assets/icon/app_icon.png
+    # 192px copy of the launcher icon (identical artwork to web/icons/Icon-192.png).
+    # Used wherever the logo is drawn small — app_icon.png is 1254x1254 / 311 KB,
+    # which is a costly download on web for a 64px avatar.
+    - assets/icon/app_logo_192.png
 
 flutter_icons:
   android: true
