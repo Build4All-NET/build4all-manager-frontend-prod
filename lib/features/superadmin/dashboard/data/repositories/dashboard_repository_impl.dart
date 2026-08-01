@@ -13,8 +13,18 @@ class DashboardRepositoryImpl implements IDashboardRepository {
 
   @override
   Future<(DashboardOverview, List<ProjectSummary>)> load() async {
-    // projects
-    final res = await projects.list();
+    // Both requests are independent, so fire them together — running them in
+    // sequence doubled how long the dashboard takes to show anything.
+    final projectsFuture = projects.list();
+
+    // ✅ pending upgrade requests count (super admin)
+    // A failure here must not take the dashboard down with it.
+    final pendingFuture = licensing.pendingUpgradeRequests().then<int>((r) {
+      final data = r.data;
+      return data is List ? data.length : 0;
+    }).catchError((Object _) => 0);
+
+    final res = await projectsFuture;
     final list = (res.data as List).cast<Map<String, dynamic>>();
     final items = list.map((e) => ProjectDto.fromJson(e).toEntity()).toList();
 
@@ -25,16 +35,7 @@ class DashboardRepositoryImpl implements IDashboardRepository {
     items.sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
     final recent = items.take(8).toList();
 
-    // ✅ pending upgrade requests count (super admin)
-    int pendingCount = 0;
-    try {
-      final r2 = await licensing.pendingUpgradeRequests();
-      final pending = (r2.data as List);
-      pendingCount = pending.length;
-    } catch (_) {
-      // ignore count failure (dashboard should still load)
-      pendingCount = 0;
-    }
+    final pendingCount = await pendingFuture;
 
     return (
       DashboardOverview(

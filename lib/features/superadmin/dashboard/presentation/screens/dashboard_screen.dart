@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:build4all_manager/core/events/app_events.dart';
 import 'package:build4all_manager/core/network/dio_client.dart';
 import 'package:build4all_manager/features/superadmin/dashboard/data/services/licensing_api.dart';
 import 'package:build4all_manager/features/superadmin/dashboard/presentation/screens/projects_screen.dart';
@@ -40,8 +43,50 @@ class DashboardScreen extends StatelessWidget {
 }
 
 /// CONTENT ONLY
-class _DashboardContent extends StatelessWidget {
+class _DashboardContent extends StatefulWidget {
   const _DashboardContent();
+
+  @override
+  State<_DashboardContent> createState() => _DashboardContentState();
+}
+
+class _DashboardContentState extends State<_DashboardContent> {
+  StreamSubscription<void>? _projectsSub;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // This screen stays mounted in the shell's IndexedStack, so creating a
+    // project on another tab would otherwise leave these counts and the
+    // recent-projects list stale until a full page reload.
+    _projectsSub = AppEvents.projectsChanged.listen((_) {
+      if (!mounted) return;
+      context.read<DashboardBloc>().add(RefreshDashboard());
+    });
+  }
+
+  @override
+  void dispose() {
+    _projectsSub?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _refresh() async {
+    final bloc = context.read<DashboardBloc>();
+    bloc.add(RefreshDashboard());
+
+    try {
+      // Hold the pull-to-refresh spinner until the data actually lands.
+      // Returning immediately made the indicator snap back while the request
+      // was still in flight, which reads as "the refresh did nothing".
+      await bloc.stream
+          .firstWhere((s) => !s.loading)
+          .timeout(const Duration(seconds: 20));
+    } catch (_) {
+      // Bloc closed or the request stalled — release the indicator anyway.
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +110,21 @@ class _DashboardContent extends StatelessWidget {
         final ov = state.overview!;
 
         return RefreshIndicator.adaptive(
-          onRefresh: () async {
-            context.read<DashboardBloc>().add(RefreshDashboard());
-          },
+          onRefresh: _refresh,
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
             children: [
+              // Fixed-height slot so showing/hiding the bar never shifts the
+              // page. A background refresh (project created on another tab)
+              // is otherwise completely invisible.
+              SizedBox(
+                height: 2,
+                child: state.loading
+                    ? const LinearProgressIndicator(minHeight: 2)
+                    : null,
+              ),
+              const SizedBox(height: 10),
+
               const _HeroBox(),
               const SizedBox(height: 14),
 
