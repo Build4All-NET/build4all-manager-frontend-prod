@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui' show PlatformDispatcher;
 
 import 'package:build4all_manager/core/bootstrap/app_bootstrap.dart';
 import 'package:build4all_manager/core/localization/locale_cubit.dart';
