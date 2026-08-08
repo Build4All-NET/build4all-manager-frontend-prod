@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
 
+import '../server_status_controller.dart';
 import 'connection_status.dart';
 
 class ConnectionStateModel {
@@ -19,11 +19,23 @@ class ConnectionStateModel {
   }
 }
 
+/// Drives the connection banner.
+///
+/// Two independent signals feed it, and neither one polls:
+///
+///  * the device's own connectivity stream, for "no internet";
+///  * [ServerStatusController], for "server unreachable". That controller is
+///    fed by [GlobalErrorInterceptor] off the requests the app already makes,
+///    so a reachable server proves itself through ordinary traffic.
+///
+/// This used to run its own heartbeat, an unauthenticated GET on the API root
+/// every 8 seconds. The API answers it with 401, which the browser logs as a
+/// failed request — roughly 450 red console lines an hour per open tab, plus
+/// the matching load on the server, to learn what the traffic already told us.
 class ConnectionCubit extends Cubit<ConnectionStateModel> {
   final Connectivity _connectivity;
 
   StreamSubscription? _subscription;
-  Timer? _heartbeatTimer;
 
   //  new: delay before showing "serverDown"
   static const Duration serverDownDelay = Duration(seconds: 2);
@@ -31,11 +43,7 @@ class ConnectionCubit extends Cubit<ConnectionStateModel> {
   Timer? _downTimer;
   String? _downMessage;
 
-  // ✅ pass a real url that exists (example: http://192.168.1.4:8080)
-  final String baseUrl;
-
   ConnectionCubit({
-    required this.baseUrl,
     Connectivity? connectivity,
   })  : _connectivity = connectivity ?? Connectivity(),
         super(const ConnectionStateModel(status: ConnectionStatus.online)) {
@@ -50,6 +58,23 @@ class ConnectionCubit extends Cubit<ConnectionStateModel> {
       final r = await _connectivity.checkConnectivity();
       _updateFromResults(r);
     });
+
+    ServerStatusController.status.addListener(_onServerStatusChanged);
+  }
+
+  void _onServerStatusChanged() {
+    if (state.status == ConnectionStatus.offline) return;
+
+    switch (ServerStatusController.status.value) {
+      case ServerUiStatus.ok:
+        _clearServerDownDelay();
+        if (state.status != ConnectionStatus.online) {
+          emit(const ConnectionStateModel(status: ConnectionStatus.online));
+        }
+      case ServerUiStatus.waiting:
+      case ServerUiStatus.down:
+        _armServerDownDelay('Connecting… (server unreachable)');
+    }
   }
 
   void _updateFromResults(List<ConnectivityResult> results) {
@@ -62,28 +87,15 @@ class ConnectionCubit extends Cubit<ConnectionStateModel> {
         status: ConnectionStatus.offline,
         message: 'No internet connection',
       ));
-      _stopHeartbeat();
       return;
     }
 
-    // Internet available → start heartbeat and re-check server
+    // Internet is back. Probe once so a server that recovered while we were
+    // offline clears the banner without waiting for the next user action.
     if (state.status == ConnectionStatus.offline) {
       emit(const ConnectionStateModel(status: ConnectionStatus.online));
+      unawaited(ServerStatusController.checkNow());
     }
-    _startHeartbeat();
-    _pingServer(); // immediate ping
-  }
-
-  void _startHeartbeat() {
-    _heartbeatTimer ??= Timer.periodic(
-      const Duration(seconds: 8),
-      (_) => _pingServer(),
-    );
-  }
-
-  void _stopHeartbeat() {
-    _heartbeatTimer?.cancel();
-    _heartbeatTimer = null;
   }
 
   void _armServerDownDelay([String? message]) {
@@ -128,29 +140,6 @@ class ConnectionCubit extends Cubit<ConnectionStateModel> {
     _downTimer = null;
   }
 
-  ///  “Server reachable” logic:
-  /// - Any HTTP response (200/401/403/404/200) => reachable => online
-  /// - Timeout/socket => unreachable => serverDown (after 2s debounce)
-  Future<void> _pingServer() async {
-    if (state.status == ConnectionStatus.offline) return;
-
-    try {
-      final uri = Uri.parse('$baseUrl/');
-      final res = await http.get(uri).timeout(const Duration(seconds: 4));
-
-      if (res.statusCode > 0) {
-        //  recovered -> cancel pending "down" + set online
-        _clearServerDownDelay();
-        if (state.status != ConnectionStatus.online) {
-          emit(const ConnectionStateModel(status: ConnectionStatus.online));
-        }
-      }
-    } catch (_) {
-      //  don’t scream immediately — arm 2s delay first
-      _armServerDownDelay('Connecting… (server unreachable)');
-    }
-  }
-
   // Optional: let Dio errors force the state (also debounced)
   void setServerDown([String? message]) {
     if (state.status == ConnectionStatus.offline) return;
@@ -164,8 +153,8 @@ class ConnectionCubit extends Cubit<ConnectionStateModel> {
 
   @override
   Future<void> close() async {
+    ServerStatusController.status.removeListener(_onServerStatusChanged);
     await _subscription?.cancel();
-    _stopHeartbeat();
     _clearServerDownDelay();
     return super.close();
   }

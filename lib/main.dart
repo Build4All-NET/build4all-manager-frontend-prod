@@ -6,7 +6,6 @@ import 'package:build4all_manager/core/localization/locale_storage.dart';
 import 'package:build4all_manager/core/network/connecting/connection_banner.dart';
 import 'package:build4all_manager/core/network/connecting/connection_cubit.dart';
 import 'package:build4all_manager/core/network/connecting/server_down_overlay.dart';
-import 'package:build4all_manager/core/network/dio_client.dart';
 import 'package:build4all_manager/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -67,9 +66,7 @@ class Build4AllManagerApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ThemeCubit(LocalThemeStore())..load()),
         BlocProvider(
-          create: (_) => ConnectionCubit(
-            baseUrl: DioClient.ensure().options.baseUrl,
-          ),
+          create: (_) => ConnectionCubit(),
         ),
         BlocProvider(
           create: (_) => LocaleCubit(LocaleStorage())..loadSavedLocale(),
