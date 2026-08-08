@@ -60,6 +60,17 @@ flutter build web \
   --tree-shake-icons \
   "${EXTRA_ARGS[@]}"
 
+# A source map turns the minified bundle back into readable Dart in the
+# browser's Sources tab — file names, function names and all. Release builds do
+# not emit them unless --source-maps is passed, but a stray flag or a future
+# Flutter default would ship one silently, so delete any that appear.
+maps=$(find build/web -name '*.js.map' -type f)
+if [[ -n "${maps}" ]]; then
+  echo "==> removing source maps (they expose the Dart sources in devtools):"
+  echo "${maps}"
+  find build/web -name '*.js.map' -type f -delete
+fi
+
 echo
 echo "==> build/web contents (largest first)"
 du -h -d 1 build/web | sort -hr | head -20
@@ -76,7 +87,7 @@ Done. Deployment checklist for a fast first load:
      mistake here.
   2. Cache the hashed assets hard, and never cache the entry points:
        Cache-Control: public, max-age=31536000, immutable
-         -> canvaskit/*, assets/*, *.js.map
+         -> canvaskit/*, assets/*
        Cache-Control: no-cache
          -> index.html, flutter_service_worker.js, flutter_bootstrap.js
      Getting this wrong on index.html means users keep an old service worker
