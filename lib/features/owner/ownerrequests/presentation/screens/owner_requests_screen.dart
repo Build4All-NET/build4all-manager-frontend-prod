@@ -2,7 +2,8 @@
 import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
 import 'package:build4all_manager/shared/widgets/x_file_image.dart';
 import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/runtime_draft.dart';
-import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/runtime_section.dart';
+import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/menu_type_pills.dart';
+import 'package:build4all_manager/shared/state/owner_projects_refresh_store.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
 import 'package:dio/dio.dart';
@@ -226,6 +227,11 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
       if (!mounted) return;
 
       AppToast.success(context, l.owner_request_submit_success);
+
+      // The projects tab stays mounted in the nav shell, so navigating to it
+      // does not refetch on its own — without this the new app only shows up
+      // after a full page reload.
+      OwnerProjectsRefreshStore.I.requestRefresh();
       context.go('/owner/projects');
     } catch (e) {
       final msg = ApiErrorHandler.message(e);
@@ -582,7 +588,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
   }
 }
 
-enum _Panel { identity, palette, runtime }
+enum _Panel { identity, palette }
 
 class _CustomizeColumn extends StatelessWidget {
   final TextStyle? titleStyle;
@@ -662,6 +668,8 @@ class _CustomizeColumn extends StatelessWidget {
                 logoFile: logoFile,
                 onPickLogo: onPickLogo,
                 onRemoveLogo: onRemoveLogo,
+                runtime: runtime,
+                onRuntimeChanged: onRuntimeChanged,
               ),
             _Panel.palette => IgnorePointer(
                 key: const ValueKey('palette'),
@@ -675,19 +683,6 @@ class _CustomizeColumn extends StatelessWidget {
                       onChanged: onDraftChanged,
                       onPresetChanged: onPresetChanged,
                       showPreview: false,
-                    ),
-                  ),
-                ),
-              ),
-            _Panel.runtime => IgnorePointer(
-                key: const ValueKey('runtime'),
-                ignoring: loading,
-                child: Opacity(
-                  opacity: loading ? .55 : 1,
-                  child: _PanelCard(
-                    child: RuntimeSection(
-                      draft: runtime,
-                      onChanged: onRuntimeChanged,
                     ),
                   ),
                 ),
@@ -774,11 +769,6 @@ class _PillTabs extends StatelessWidget {
             label: l.owner_request_palette_title,
             icon: Icons.palette_outlined,
           ),
-          tab(
-            value: _Panel.runtime,
-            label: l.owner_request_runtime_title,
-            icon: Icons.tune_rounded,
-          ),
         ],
       ),
     );
@@ -798,6 +788,9 @@ class _IdentityPanel extends StatelessWidget {
   final VoidCallback onPickLogo;
   final VoidCallback onRemoveLogo;
 
+  final RuntimeDraft runtime;
+  final ValueChanged<RuntimeDraft> onRuntimeChanged;
+
   const _IdentityPanel({
     super.key,
     required this.loading,
@@ -808,6 +801,8 @@ class _IdentityPanel extends StatelessWidget {
     required this.logoFile,
     required this.onPickLogo,
     required this.onRemoveLogo,
+    required this.runtime,
+    required this.onRuntimeChanged,
   });
 
   @override
@@ -969,6 +964,26 @@ class _IdentityPanel extends StatelessWidget {
                     ),
                     Icon(Icons.search_rounded, color: hint, size: 18),
                   ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 14),
+            Text(
+              l.runtime_menu_type_title,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w800,
+                color: cs.onSurface.withOpacity(.75),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Opacity(
+              opacity: loading ? .55 : 1,
+              child: MenuTypePills(
+                enabled: !loading,
+                value: runtime.menuType,
+                onChanged: (v) => onRuntimeChanged(
+                  runtime.copyWith(menuType: v).normalized(),
                 ),
               ),
             ),

@@ -21,7 +21,12 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # Nothing may write to the console: `print` and `debugPrint` both keep
+    # emitting in release builds, where the output is readable by anyone with
+    # access to the device (logcat / Console.app / the browser console).
+    # `debugPrint` has no lint of its own — `./scripts/check_no_logs.sh` covers
+    # it, so run that alongside `flutter analyze`.
+    avoid_print: true
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
 # Additional information about this file can be found at

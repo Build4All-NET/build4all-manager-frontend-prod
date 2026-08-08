@@ -16,6 +16,44 @@
   -->
   <base href="$FLUTTER_BASE_HREF">
 
+  <!--
+    Console silencing, first thing on the page so it is in place before the
+    engine or any SDK can log.
+
+    The Dart side is already silent (see main.dart), but that only covers Dart.
+    The Firebase JS SDK, the Flutter bootstrap and the service worker call
+    console.* straight from JavaScript, and on a deployed build any user can
+    read that in devtools.
+
+    Scope, so nobody expects more than this actually does:
+      * this silences console.* calls only;
+      * messages the browser itself emits — "Failed to load resource", CORS,
+        mixed content, [Intervention] — do not go through the console API and
+        keep appearing, and nothing on a page can stop them.
+
+    localhost keeps its console so `flutter run -d chrome` stays debuggable.
+  -->
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      if (host === 'localhost' || host === '127.0.0.1' || host === '') return;
+      if (!window.console) return;
+
+      var noop = function () {};
+      var methods = [
+        'log', 'info', 'warn', 'error', 'debug', 'trace', 'dir', 'dirxml',
+        'table', 'group', 'groupCollapsed', 'groupEnd', 'time', 'timeLog',
+        'timeEnd', 'assert', 'count', 'countReset', 'profile', 'profileEnd'
+      ];
+
+      for (var i = 0; i < methods.length; i++) {
+        if (typeof window.console[methods[i]] === 'function') {
+          window.console[methods[i]] = noop;
+        }
+      }
+    })();
+  </script>
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Build4All owner manager app.">

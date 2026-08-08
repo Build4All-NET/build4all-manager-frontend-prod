@@ -119,23 +119,9 @@ class OwnerRequestApi {
     );
   }
 
-  try {
-    final res = await dio.post(
-      url,
-      data: form,
-    );
-
-    print('AUTO BOTH STATUS => ${res.statusCode}');
-    print('AUTO BOTH DATA => ${res.data}');
-  } on DioException catch (e) {
-    print('AUTO BOTH URL => $url');
-    print('AUTO BOTH STATUS => ${e.response?.statusCode}');
-    print('AUTO BOTH DATA => ${e.response?.data}');
-    print('AUTO BOTH MESSAGE => ${e.message}');
-    rethrow;
-  } catch (e) {
-    print('AUTO BOTH UNKNOWN ERROR => $e');
-    rethrow;
-  }
+  await dio.post(
+    url,
+    data: form,
+  );
 }
 }
