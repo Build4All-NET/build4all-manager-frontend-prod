@@ -16,7 +16,12 @@ cd "$(dirname "$0")/.."
 
 pattern='(^|[^A-Za-z0-9_.])(print|debugPrint|debugPrintStack)\(|LogInterceptor|dart:developer'
 
-if matches=$(grep -rnE "$pattern" lib --include='*.dart'); then
+# Strip `//` comments from the matched lines and re-test, so prose that merely
+# mentions one of these names does not fail the check. Line numbers survive
+# because the `file:line:` prefix grep -n adds contains no `//`.
+if matches=$(grep -rnE "$pattern" lib --include='*.dart' \
+    | sed 's|//.*$||' \
+    | grep -E "$pattern"); then
   echo "Console logging found in lib/ — remove it before shipping:" >&2
   echo "$matches" >&2
   exit 1
