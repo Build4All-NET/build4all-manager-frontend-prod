@@ -17,6 +17,7 @@ import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:build4all_manager/shared/state/owner_projects_refresh_store.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -86,10 +87,21 @@ class _OwnerProjectsScreenState extends State<OwnerProjectsScreen> {
 
     _bloc = OwnerProjectsBloc(getMyApps: GetMyAppsUc(_repo))
       ..add(OwnerProjectsStarted(widget.ownerId));
+
+    // This screen is built once by the nav shell and kept alive in an
+    // IndexedStack, so initState is the only place it would ever load. Anything
+    // that changes the list from elsewhere signals it here instead.
+    OwnerProjectsRefreshStore.I.revision.addListener(_onExternalRefresh);
+  }
+
+  void _onExternalRefresh() {
+    if (!mounted) return;
+    _bloc.add(OwnerProjectsStarted(widget.ownerId));
   }
 
   @override
   void dispose() {
+    OwnerProjectsRefreshStore.I.revision.removeListener(_onExternalRefresh);
     _searchCtrl.dispose();
     _bloc.close();
     super.dispose();

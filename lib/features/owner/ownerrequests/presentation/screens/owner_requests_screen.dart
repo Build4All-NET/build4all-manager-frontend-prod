@@ -3,6 +3,7 @@ import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
 import 'package:build4all_manager/shared/widgets/x_file_image.dart';
 import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/runtime_draft.dart';
 import 'package:build4all_manager/features/owner/ownerrequests/presentation/widgets/menu_type_pills.dart';
+import 'package:build4all_manager/shared/state/owner_projects_refresh_store.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
 import 'package:dio/dio.dart';
@@ -226,6 +227,11 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
       if (!mounted) return;
 
       AppToast.success(context, l.owner_request_submit_success);
+
+      // The projects tab stays mounted in the nav shell, so navigating to it
+      // does not refetch on its own — without this the new app only shows up
+      // after a full page reload.
+      OwnerProjectsRefreshStore.I.requestRefresh();
       context.go('/owner/projects');
     } catch (e) {
       final msg = ApiErrorHandler.message(e);
