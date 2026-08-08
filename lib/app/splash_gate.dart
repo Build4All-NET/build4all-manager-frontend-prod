@@ -85,10 +85,7 @@ class _SplashGateState extends State<SplashGate> {
 
         DioClient.setToken(newToken);
         access = newToken;
-      } catch (e, st) {
-        debugPrint('Splash refresh failed: $e');
-        debugPrint('$st');
-
+      } catch (e) {
         final shouldClear = _shouldClearAfterRefreshFailure(e);
 
         if (shouldClear) {
@@ -116,15 +113,14 @@ class _SplashGateState extends State<SplashGate> {
             .timeout(_firebaseWait, onTimeout: () => false);
 
         if (!ready) {
-          debugPrint('Push init skipped: Firebase not available');
           return;
         }
 
         await FirebasePushService()
             .initForAdmin()
             .timeout(const Duration(seconds: 8));
-      } catch (e) {
-        debugPrint('Push init from SplashGate failed or timed out: $e');
+      } catch (_) {
+        // Push stays disabled for this session.
       }
     });
   }

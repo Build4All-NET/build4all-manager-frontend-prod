@@ -143,9 +143,7 @@ class ProjectTile extends StatelessWidget {
         subject: label,
         sharePositionOrigin: origin,
       );
-    } catch (e, st) {
-      debugPrint('Share failed: $e');
-      debugPrint('$st');
+    } catch (e) {
       AppToast.error(context, '${l10n.owner_project_err_share_failed}: $e');
     }
   }

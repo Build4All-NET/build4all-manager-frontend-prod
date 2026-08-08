@@ -45,8 +45,8 @@ class AppBootstrap {
   static Future<void> initLocal() async {
     try {
       await DioClient.init().timeout(_localStepTimeout);
-    } catch (e) {
-      debugPrint('DioClient.init failed => $e');
+    } catch (_) {
+      // Fall through to the default Dio configuration below.
     }
 
     if (!DioClient.isInitialized) {
@@ -62,8 +62,8 @@ class AppBootstrap {
       await AppBootGuard.run(
         currentApiBaseUrl: DioClient.ensure().options.baseUrl,
       ).timeout(_localStepTimeout);
-    } catch (e) {
-      debugPrint('AppBootGuard.run failed => $e');
+    } catch (_) {
+      // Boot guard is best effort; keep booting with the current session.
     }
 
     try {
@@ -75,8 +75,7 @@ class AppBootstrap {
       } else {
         DioClient.clearToken();
       }
-    } catch (e) {
-      debugPrint('Restore token failed => $e');
+    } catch (_) {
       try {
         DioClient.clearToken();
       } catch (_) {}
@@ -93,16 +92,16 @@ class AppBootstrap {
 
     try {
       await LocalNotificationService().init().timeout(_notificationsTimeout);
-    } catch (e) {
-      debugPrint('LocalNotificationService.init failed => $e');
+    } catch (_) {
+      // Local notifications stay unavailable for this session.
     }
 
     if (!firebaseOk) return;
 
     try {
       _listenToForegroundMessages();
-    } catch (e) {
-      debugPrint('FCM foreground listener failed => $e');
+    } catch (_) {
+      // Foreground messages will simply not be surfaced.
     }
   }
 
@@ -124,8 +123,7 @@ class AppBootstrap {
         options: DefaultFirebaseOptions.currentPlatform,
       ).timeout(_firebaseTimeout);
       return true;
-    } catch (e) {
-      debugPrint('Firebase init failed => $e');
+    } catch (_) {
       return false;
     }
   }
@@ -140,16 +138,14 @@ class AppBootstrap {
           message.data['body']?.toString() ??
           'You have a new notification';
 
-      debugPrint('Foreground FCM received => title=$title, body=$body');
-
       // iOS shows foreground notifications natively via
       // setForegroundNotificationPresentationOptions; showing a local
       // notification on top would cause duplicates.
       if (kIsWeb || defaultTargetPlatform != TargetPlatform.iOS) {
         try {
           await LocalNotificationService().show(title: title, body: body);
-        } catch (e) {
-          debugPrint('Local foreground notification show failed => $e');
+        } catch (_) {
+          // Dropping a single foreground notification is acceptable.
         }
       }
     });
