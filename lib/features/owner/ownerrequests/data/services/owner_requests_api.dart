@@ -42,7 +42,15 @@ class OwnerRequestApi {
     throw Exception('Unexpected currencies response (expected List).');
   }
 
-  Future<void> submitOwnerRequest({
+  /// Creates the app and returns its `ownerProjectLinkId` (aup_id).
+  ///
+  /// The id matters now that an app can be pointed at a WooCommerce store:
+  /// the owner's token still refers to whichever app they were on before, so
+  /// the follow-up call to
+  /// `POST /api/owner/projects/woocommerce/apps/{linkId}/setup` has to name
+  /// the new app explicitly. Returns null if the backend response omits it,
+  /// which callers should treat as "app created, Woo not configured".
+  Future<int?> submitOwnerRequest({
   required int ownerId,
   required int projectId,
   required String appName,
@@ -119,9 +127,17 @@ class OwnerRequestApi {
     );
   }
 
-  await dio.post(
+  final res = await dio.post(
     url,
     data: form,
   );
+
+  final data = res.data;
+  if (data is Map) {
+    final raw = data['ownerProjectLinkId'];
+    if (raw is int) return raw;
+    if (raw != null) return int.tryParse(raw.toString());
+  }
+  return null;
 }
 }
