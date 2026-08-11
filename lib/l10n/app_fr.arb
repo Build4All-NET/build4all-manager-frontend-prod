@@ -1,4 +1,4 @@
-{
+﻿{
   "appTitle": "Build4All",
   "@appTitle": {
     "description": "App name shown in the login header"
@@ -726,6 +726,8 @@
   "owner_project_status_in_production": "IN_PRODUCTION",
   "owner_project_android": "Android",
   "owner_project_ios": "iOS",
+  "owner_project_website": "Site web",
+  "owner_project_website_hint": "Votre application dispose aussi d'un site web. Partagez ce lien avec vos clients.",
   "owner_project_apk": "APK",
   "owner_project_aab": "AAB",
   "owner_project_ipa": "IPA",

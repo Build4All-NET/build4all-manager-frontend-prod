@@ -1800,6 +1800,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get owner_project_ios => 'iOS';
 
   @override
+  String get owner_project_website => 'Site web';
+
+  @override
+  String get owner_project_website_hint => 'Votre application dispose aussi d\'un site web. Partagez ce lien avec vos clients.';
+
+  @override
   String get owner_project_apk => 'APK';
 
   @override
@@ -1981,17 +1987,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get contact_support_title => 'Contacter le support';
 
   @override
-  String get open_ticket_title => 'Ouvrir un ticket';
-
-  @override
-  String get open_ticket_subtitle =>
-      'Soumettez un problème à notre équipe d\'assistance';
-
-  @override
-  String get open_ticket_failed =>
-      'Impossible d\'ouvrir le portail des tickets.';
-
-  @override
   String get contact_support_subtitle => 'Discutez avec nous sur WhatsApp';
 
   @override
@@ -1999,6 +1994,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get contact_support_unavailable => 'Le support n\'est pas disponible pour le moment.';
+
+  @override
+  String get open_ticket_title => 'Ouvrir un ticket';
+
+  @override
+  String get open_ticket_subtitle => 'Soumettez un problème à notre équipe d\'assistance';
+
+  @override
+  String get open_ticket_failed => 'Impossible d\'ouvrir le portail des tickets.';
 
   @override
   String get owner_profile_edit_title => 'Modifier le profil';
@@ -2128,40 +2132,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get hintPasswordRuleOwner => 'Le mot de passe doit contenir au moins 6 caractères.';
-
-  @override
-  String get lblConfirmPassword => 'Confirmer le mot de passe';
-
-  @override
-  String get hintConfirmPassword => 'Saisissez à nouveau votre mot de passe';
-
-  @override
-  String get errConfirmPasswordRequired =>
-      'Veuillez confirmer votre mot de passe';
-
-  @override
-  String get errPasswordsDoNotMatch =>
-      'Les mots de passe ne correspondent pas';
-
-  @override
-  String get forgotPasswordTitle => 'Réinitialiser le mot de passe';
-
-  @override
-  String get forgotPasswordEmailSubtitle =>
-      'Saisissez l\'e-mail de votre compte et nous vous enverrons un code à 6 chiffres pour réinitialiser votre mot de passe.';
-
-  @override
-  String get lblNewPassword => 'Nouveau mot de passe';
-
-  @override
-  String get hintNewPassword => 'Saisissez votre nouveau mot de passe';
-
-  @override
-  String get btnResetPassword => 'Réinitialiser le mot de passe';
-
-  @override
-  String get msgPasswordResetSuccess =>
-      'Mot de passe réinitialisé avec succès. Veuillez vous connecter.';
 
   @override
   String get owner_projects_filter_platform_ready => 'Plateforme prête';
@@ -3696,6 +3666,36 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'Compte réactivé avec succès';
+
+  @override
+  String get lblConfirmPassword => 'Confirmer le mot de passe';
+
+  @override
+  String get hintConfirmPassword => 'Saisissez à nouveau votre mot de passe';
+
+  @override
+  String get errConfirmPasswordRequired => 'Veuillez confirmer votre mot de passe';
+
+  @override
+  String get errPasswordsDoNotMatch => 'Les mots de passe ne correspondent pas';
+
+  @override
+  String get forgotPasswordTitle => 'Réinitialiser le mot de passe';
+
+  @override
+  String get forgotPasswordEmailSubtitle => 'Saisissez l\'e-mail de votre compte et nous vous enverrons un code à 6 chiffres pour réinitialiser votre mot de passe.';
+
+  @override
+  String get lblNewPassword => 'Nouveau mot de passe';
+
+  @override
+  String get hintNewPassword => 'Saisissez votre nouveau mot de passe';
+
+  @override
+  String get btnResetPassword => 'Réinitialiser le mot de passe';
+
+  @override
+  String get msgPasswordResetSuccess => 'Mot de passe réinitialisé avec succès. Veuillez vous connecter.';
 
   @override
   String get owner_request_tab_commerce => 'Boutique';

@@ -3631,6 +3631,18 @@ abstract class AppLocalizations {
   /// **'iOS'**
   String get owner_project_ios;
 
+  /// No description provided for @owner_project_website.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get owner_project_website;
+
+  /// No description provided for @owner_project_website_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your app also has a website. Share this link with your customers.'**
+  String get owner_project_website_hint;
+
   /// No description provided for @owner_project_apk.
   ///
   /// In en, this message translates to:
@@ -3985,24 +3997,6 @@ abstract class AppLocalizations {
   /// **'Contact support'**
   String get contact_support_title;
 
-  /// No description provided for @open_ticket_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Open a ticket'**
-  String get open_ticket_title;
-
-  /// No description provided for @open_ticket_subtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Submit an issue to our support team'**
-  String get open_ticket_subtitle;
-
-  /// No description provided for @open_ticket_failed.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not open the ticket portal.'**
-  String get open_ticket_failed;
-
   /// No description provided for @contact_support_subtitle.
   ///
   /// In en, this message translates to:
@@ -4020,6 +4014,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Support contact is not available right now.'**
   String get contact_support_unavailable;
+
+  /// No description provided for @open_ticket_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a ticket'**
+  String get open_ticket_title;
+
+  /// No description provided for @open_ticket_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit an issue to our support team'**
+  String get open_ticket_subtitle;
+
+  /// No description provided for @open_ticket_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the ticket portal.'**
+  String get open_ticket_failed;
 
   /// No description provided for @owner_profile_edit_title.
   ///
@@ -4278,66 +4290,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters'**
   String get hintPasswordRuleOwner;
-
-  /// No description provided for @lblConfirmPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm Password'**
-  String get lblConfirmPassword;
-
-  /// No description provided for @hintConfirmPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Re-enter your password'**
-  String get hintConfirmPassword;
-
-  /// No description provided for @errConfirmPasswordRequired.
-  ///
-  /// In en, this message translates to:
-  /// **'Please confirm your password'**
-  String get errConfirmPasswordRequired;
-
-  /// No description provided for @errPasswordsDoNotMatch.
-  ///
-  /// In en, this message translates to:
-  /// **'Passwords do not match'**
-  String get errPasswordsDoNotMatch;
-
-  /// No description provided for @forgotPasswordTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Reset Password'**
-  String get forgotPasswordTitle;
-
-  /// No description provided for @forgotPasswordEmailSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your account email and we will send you a 6-digit code to reset your password.'**
-  String get forgotPasswordEmailSubtitle;
-
-  /// No description provided for @lblNewPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'New Password'**
-  String get lblNewPassword;
-
-  /// No description provided for @hintNewPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your new password'**
-  String get hintNewPassword;
-
-  /// No description provided for @btnResetPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'Reset Password'**
-  String get btnResetPassword;
-
-  /// No description provided for @msgPasswordResetSuccess.
-  ///
-  /// In en, this message translates to:
-  /// **'Password reset successfully. Please login.'**
-  String get msgPasswordResetSuccess;
 
   /// No description provided for @owner_projects_filter_platform_ready.
   ///
@@ -7339,6 +7291,66 @@ abstract class AppLocalizations {
   /// **'Account reactivated successfully'**
   String get accountReactivatedSuccessfully;
 
+  /// No description provided for @lblConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get lblConfirmPassword;
+
+  /// No description provided for @hintConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter your password'**
+  String get hintConfirmPassword;
+
+  /// No description provided for @errConfirmPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get errConfirmPasswordRequired;
+
+  /// No description provided for @errPasswordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get errPasswordsDoNotMatch;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @forgotPasswordEmailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your account email and we will send you a 6-digit code to reset your password.'**
+  String get forgotPasswordEmailSubtitle;
+
+  /// No description provided for @lblNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get lblNewPassword;
+
+  /// No description provided for @hintNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your new password'**
+  String get hintNewPassword;
+
+  /// No description provided for @btnResetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get btnResetPassword;
+
+  /// No description provided for @msgPasswordResetSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset successfully. Please login.'**
+  String get msgPasswordResetSuccess;
+
   /// No description provided for @owner_request_tab_commerce.
   ///
   /// In en, this message translates to:
@@ -7465,24 +7477,6 @@ abstract class AppLocalizations {
   /// **'Recommended'**
   String get owner_request_commerce_recommended;
 
-  /// No description provided for @owner_request_submit_connect.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect'**
-  String get owner_request_submit_connect;
-
-  /// No description provided for @owner_request_submit_connect_first.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect your store to continue'**
-  String get owner_request_submit_connect_first;
-
-  /// No description provided for @owner_request_submit_store_details.
-  ///
-  /// In en, this message translates to:
-  /// **'Fill in your store URL and API keys'**
-  String get owner_request_submit_store_details;
-
   /// No description provided for @owner_request_commerce_b4a_pro1.
   ///
   /// In en, this message translates to:
@@ -7524,6 +7518,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Connected — {products} products, {categories} categories found'**
   String owner_request_woo_test_ok_counts(String products, String categories);
+
+  /// No description provided for @owner_request_submit_connect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get owner_request_submit_connect;
+
+  /// No description provided for @owner_request_submit_connect_first.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect your store to continue'**
+  String get owner_request_submit_connect_first;
+
+  /// No description provided for @owner_request_submit_store_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in your store URL and API keys'**
+  String get owner_request_submit_store_details;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

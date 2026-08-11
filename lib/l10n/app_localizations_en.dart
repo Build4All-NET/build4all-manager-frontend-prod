@@ -1800,6 +1800,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get owner_project_ios => 'iOS';
 
   @override
+  String get owner_project_website => 'Website';
+
+  @override
+  String get owner_project_website_hint => 'Your app also has a website. Share this link with your customers.';
+
+  @override
   String get owner_project_apk => 'APK';
 
   @override
@@ -1981,15 +1987,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contact_support_title => 'Contact support';
 
   @override
-  String get open_ticket_title => 'Open a ticket';
-
-  @override
-  String get open_ticket_subtitle => 'Submit an issue to our support team';
-
-  @override
-  String get open_ticket_failed => 'Could not open the ticket portal.';
-
-  @override
   String get contact_support_subtitle => 'Chat with us on WhatsApp';
 
   @override
@@ -1997,6 +1994,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get contact_support_unavailable => 'Support contact is not available right now.';
+
+  @override
+  String get open_ticket_title => 'Open a ticket';
+
+  @override
+  String get open_ticket_subtitle => 'Submit an issue to our support team';
+
+  @override
+  String get open_ticket_failed => 'Could not open the ticket portal.';
 
   @override
   String get owner_profile_edit_title => 'Edit profile';
@@ -2126,38 +2132,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hintPasswordRuleOwner => 'Password must be at least 6 characters';
-
-  @override
-  String get lblConfirmPassword => 'Confirm Password';
-
-  @override
-  String get hintConfirmPassword => 'Re-enter your password';
-
-  @override
-  String get errConfirmPasswordRequired => 'Please confirm your password';
-
-  @override
-  String get errPasswordsDoNotMatch => 'Passwords do not match';
-
-  @override
-  String get forgotPasswordTitle => 'Reset Password';
-
-  @override
-  String get forgotPasswordEmailSubtitle =>
-      'Enter your account email and we will send you a 6-digit code to reset your password.';
-
-  @override
-  String get lblNewPassword => 'New Password';
-
-  @override
-  String get hintNewPassword => 'Enter your new password';
-
-  @override
-  String get btnResetPassword => 'Reset Password';
-
-  @override
-  String get msgPasswordResetSuccess =>
-      'Password reset successfully. Please login.';
 
   @override
   String get owner_projects_filter_platform_ready => 'Platform Ready';
@@ -3692,6 +3666,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'Account reactivated successfully';
+
+  @override
+  String get lblConfirmPassword => 'Confirm Password';
+
+  @override
+  String get hintConfirmPassword => 'Re-enter your password';
+
+  @override
+  String get errConfirmPasswordRequired => 'Please confirm your password';
+
+  @override
+  String get errPasswordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get forgotPasswordTitle => 'Reset Password';
+
+  @override
+  String get forgotPasswordEmailSubtitle => 'Enter your account email and we will send you a 6-digit code to reset your password.';
+
+  @override
+  String get lblNewPassword => 'New Password';
+
+  @override
+  String get hintNewPassword => 'Enter your new password';
+
+  @override
+  String get btnResetPassword => 'Reset Password';
+
+  @override
+  String get msgPasswordResetSuccess => 'Password reset successfully. Please login.';
 
   @override
   String get owner_request_tab_commerce => 'Shop';

@@ -726,6 +726,8 @@
   "owner_project_status_in_production": "IN_PRODUCTION",
   "owner_project_android": "Android",
   "owner_project_ios": "iOS",
+  "owner_project_website": "Website",
+  "owner_project_website_hint": "Your app also has a website. Share this link with your customers.",
   "owner_project_apk": "APK",
   "owner_project_aab": "AAB",
   "owner_project_ipa": "IPA",
