@@ -3698,25 +3698,25 @@ class AppLocalizationsFr extends AppLocalizations {
   String get accountReactivatedSuccessfully => 'Compte réactivé avec succès';
 
   @override
-  String get owner_request_tab_commerce => 'Commerce';
+  String get owner_request_tab_commerce => 'Boutique';
 
   @override
   String get owner_request_commerce_title => 'D\'où viennent les produits ?';
 
   @override
-  String get owner_request_commerce_subtitle => 'À choisir une seule fois. Ce réglage ne peut pas être modifié depuis le tableau de bord.';
+  String get owner_request_commerce_subtitle => 'Choisissez ce qui correspond à votre façon de travailler. Ce réglage ne pourra plus être modifié.';
 
   @override
-  String get owner_request_commerce_build4all => 'Build4All';
+  String get owner_request_commerce_build4all => 'Vendre avec Build4All';
 
   @override
-  String get owner_request_commerce_build4all_hint => 'Gérez produits, stock et commandes dans Build4All.';
+  String get owner_request_commerce_build4all_hint => 'Votre catalogue vit ici';
 
   @override
-  String get owner_request_commerce_woo => 'WooCommerce';
+  String get owner_request_commerce_woo => 'Connecter ma boutique WooCommerce';
 
   @override
-  String get owner_request_commerce_woo_hint => 'Utilisez une boutique WooCommerce existante. Elle reste la source de vérité.';
+  String get owner_request_commerce_woo_hint => 'WordPress reste la source de vérité';
 
   @override
   String get owner_request_woo_store_url => 'URL de la boutique';
@@ -3759,5 +3759,31 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String owner_request_woo_link_failed(String reason) {
     return 'Application créée, mais la liaison a échoué : $reason';
+  }
+
+  @override
+  String get owner_request_commerce_recommended => 'Recommandé';
+
+  @override
+  String get owner_request_commerce_b4a_pro1 => 'Rien à installer, fonctionne immédiatement';
+
+  @override
+  String get owner_request_commerce_b4a_pro2 => 'Produits, stock, commandes et coupons modifiables ici';
+
+  @override
+  String get owner_request_commerce_b4a_con1 => 'Le catalogue d\'un site existant n\'est pas importé';
+
+  @override
+  String get owner_request_commerce_woo_pro1 => 'Produits, prix et stock synchronisés depuis votre site';
+
+  @override
+  String get owner_request_commerce_woo_pro2 => 'Les commandes de l\'app apparaissent dans WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_con1 => 'Produits en lecture seule ici — modifiez-les dans WordPress';
+
+  @override
+  String owner_request_woo_test_ok_counts(String products, String categories) {
+    return 'Connecté — $products produits, $categories catégories';
   }
 }

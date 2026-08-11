@@ -3694,25 +3694,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountReactivatedSuccessfully => 'Account reactivated successfully';
 
   @override
-  String get owner_request_tab_commerce => 'Commerce';
+  String get owner_request_tab_commerce => 'Shop';
 
   @override
   String get owner_request_commerce_title => 'Where do products come from?';
 
   @override
-  String get owner_request_commerce_subtitle => 'Choose once. This cannot be changed from the dashboard later.';
+  String get owner_request_commerce_subtitle => 'Pick the one that matches how you already work. This can\'t be changed later.';
 
   @override
-  String get owner_request_commerce_build4all => 'Build4All';
+  String get owner_request_commerce_build4all => 'Sell with Build4All';
 
   @override
-  String get owner_request_commerce_build4all_hint => 'Manage products, stock and orders inside Build4All.';
+  String get owner_request_commerce_build4all_hint => 'Your catalogue lives here';
 
   @override
-  String get owner_request_commerce_woo => 'WooCommerce';
+  String get owner_request_commerce_woo => 'Connect my WooCommerce store';
 
   @override
-  String get owner_request_commerce_woo_hint => 'Use an existing WooCommerce store. It stays the source of truth.';
+  String get owner_request_commerce_woo_hint => 'WordPress stays the source of truth';
 
   @override
   String get owner_request_woo_store_url => 'Store URL';
@@ -3755,5 +3755,31 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String owner_request_woo_link_failed(String reason) {
     return 'App created, but linking the store failed: $reason';
+  }
+
+  @override
+  String get owner_request_commerce_recommended => 'Recommended';
+
+  @override
+  String get owner_request_commerce_b4a_pro1 => 'Nothing to install, works right away';
+
+  @override
+  String get owner_request_commerce_b4a_pro2 => 'Products, stock, orders, coupons all editable here';
+
+  @override
+  String get owner_request_commerce_b4a_con1 => 'An existing website catalogue is not imported';
+
+  @override
+  String get owner_request_commerce_woo_pro1 => 'Products, prices and stock sync from your site';
+
+  @override
+  String get owner_request_commerce_woo_pro2 => 'App orders appear in WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_con1 => 'Products are read-only here — edit them in WordPress';
+
+  @override
+  String owner_request_woo_test_ok_counts(String products, String categories) {
+    return 'Connected — $products products, $categories categories found';
   }
 }

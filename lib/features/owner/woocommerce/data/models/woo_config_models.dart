@@ -97,17 +97,34 @@ class WooConnectionResult {
   final String? code;
   final String? message;
 
+  /// What the store actually contains. -1 means the store did not report a
+  /// count (some security plugins strip the X-WP-Total header), in which case
+  /// the UI shows a plain "Connected" rather than inventing a number.
+  final int productCount;
+  final int categoryCount;
+
   const WooConnectionResult({
     required this.ok,
     required this.code,
     required this.message,
+    this.productCount = -1,
+    this.categoryCount = -1,
   });
 
+  bool get hasCounts => ok && productCount >= 0 && categoryCount >= 0;
+
   factory WooConnectionResult.fromJson(Map<String, dynamic> json) {
+    int count(Object? v) {
+      if (v is int) return v;
+      return int.tryParse(v?.toString() ?? '') ?? -1;
+    }
+
     return WooConnectionResult(
       ok: json['ok'] == true,
       code: (json['code'] ?? json['error'])?.toString(),
       message: (json['message'] ?? json['error'])?.toString(),
+      productCount: count(json['productCount']),
+      categoryCount: count(json['categoryCount']),
     );
   }
 }

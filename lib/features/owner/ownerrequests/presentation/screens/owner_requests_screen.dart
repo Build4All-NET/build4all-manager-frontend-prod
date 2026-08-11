@@ -76,6 +76,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
 
   bool _wooTesting = false;
   String? _wooTestError;
+  String? _wooTestDetail;
 
   bool get _canSubmit {
     final appOk = _appNameCtrl.text.trim().isNotEmpty;
@@ -206,10 +207,18 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
       setState(() {
         _commerce = _commerce.copyWith(connectionOk: res.ok);
         _wooTestError = res.ok ? null : (res.message ?? res.code);
+
+        // Only claim numbers the store actually reported; a stripped
+        // X-WP-Total leaves the plain "Connected" message instead.
+        _wooTestDetail = res.hasCounts
+            ? l.owner_request_woo_test_ok_counts(
+                '${res.productCount}', '${res.categoryCount}')
+            : null;
       });
 
       if (res.ok) {
-        AppToast.success(context, l.owner_request_woo_test_ok);
+        AppToast.success(
+            context, _wooTestDetail ?? l.owner_request_woo_test_ok);
       } else {
         AppToast.error(
             context, l.owner_request_woo_test_failed(_wooTestError ?? ''));
@@ -220,6 +229,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
       setState(() {
         _commerce = _commerce.copyWith(connectionOk: false);
         _wooTestError = msg;
+        _wooTestDetail = null;
       });
       AppToast.error(context, l.owner_request_woo_test_failed(msg));
     } finally {
@@ -530,6 +540,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
                           wooSecretCtrl: _wooSecretCtrl,
                           wooTesting: _wooTesting,
                           wooTestError: _wooTestError,
+                          wooTestDetail: _wooTestDetail,
                           onTestWoo: _testWooConnection,
                         ),
                       ),
@@ -589,6 +600,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
                       wooSecretCtrl: _wooSecretCtrl,
                       wooTesting: _wooTesting,
                       wooTestError: _wooTestError,
+                      wooTestDetail: _wooTestDetail,
                       onTestWoo: _testWooConnection,
                     ),
                   ],
@@ -747,6 +759,7 @@ class _CustomizeColumn extends StatelessWidget {
   final TextEditingController wooSecretCtrl;
   final bool wooTesting;
   final String? wooTestError;
+  final String? wooTestDetail;
   final VoidCallback onTestWoo;
 
   const _CustomizeColumn({
@@ -775,6 +788,7 @@ class _CustomizeColumn extends StatelessWidget {
     required this.wooSecretCtrl,
     required this.wooTesting,
     required this.wooTestError,
+    required this.wooTestDetail,
     required this.onTestWoo,
   });
 
@@ -825,6 +839,7 @@ class _CustomizeColumn extends StatelessWidget {
                       consumerSecretCtrl: wooSecretCtrl,
                       testing: wooTesting,
                       testError: wooTestError,
+                      testSuccessDetail: wooTestDetail,
                       onTest: onTestWoo,
                     ),
                   ),

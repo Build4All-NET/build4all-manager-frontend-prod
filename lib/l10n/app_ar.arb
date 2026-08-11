@@ -1425,11 +1425,11 @@
   "msgPasswordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول.",
   "owner_request_tab_commerce": "المتجر",
   "owner_request_commerce_title": "من وين بتيجي المنتجات؟",
-  "owner_request_commerce_subtitle": "اختر مرة واحدة. ما بينفع يتغيّر من لوحة التحكم لاحقاً.",
-  "owner_request_commerce_build4all": "Build4All",
-  "owner_request_commerce_build4all_hint": "إدارة المنتجات والمخزون والطلبات داخل Build4All.",
-  "owner_request_commerce_woo": "WooCommerce",
-  "owner_request_commerce_woo_hint": "استخدم متجر WooCommerce موجود. بيضلّ هو مصدر الحقيقة.",
+  "owner_request_commerce_subtitle": "اختر اللي بيناسب طريقة شغلك الحالية. ما بينفع يتغيّر بعدين.",
+  "owner_request_commerce_build4all": "بيع عبر Build4All",
+  "owner_request_commerce_build4all_hint": "كتالوجك بيعيش هون",
+  "owner_request_commerce_woo": "اربط متجر WooCommerce تبعي",
+  "owner_request_commerce_woo_hint": "WordPress بيضلّ مصدر الحقيقة",
   "owner_request_woo_store_url": "رابط المتجر",
   "owner_request_woo_store_url_hint": "https://shop.example.com",
   "owner_request_woo_consumer_key": "Consumer key",
@@ -1453,6 +1453,24 @@
   "@owner_request_woo_link_failed": {
     "placeholders": {
       "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "owner_request_commerce_recommended": "موصى به",
+  "owner_request_commerce_b4a_pro1": "ما في شي تثبّتو، بيشتغل فوراً",
+  "owner_request_commerce_b4a_pro2": "المنتجات والمخزون والطلبات والكوبونات كلها بتتعدّل من هون",
+  "owner_request_commerce_b4a_con1": "كتالوج موقعك الحالي ما بينستورد",
+  "owner_request_commerce_woo_pro1": "المنتجات والأسعار والمخزون بتتزامن من موقعك",
+  "owner_request_commerce_woo_pro2": "طلبات التطبيق بتظهر بـ WooCommerce",
+  "owner_request_commerce_woo_con1": "المنتجات للقراءة فقط هون — عدّلها بـ WordPress",
+  "owner_request_woo_test_ok_counts": "تم الاتصال — {products} منتج و{categories} تصنيف",
+  "@owner_request_woo_test_ok_counts": {
+    "placeholders": {
+      "products": {
+        "type": "String"
+      },
+      "categories": {
         "type": "String"
       }
     }

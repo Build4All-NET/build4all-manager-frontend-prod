@@ -3700,19 +3700,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get owner_request_commerce_title => 'من وين بتيجي المنتجات؟';
 
   @override
-  String get owner_request_commerce_subtitle => 'اختر مرة واحدة. ما بينفع يتغيّر من لوحة التحكم لاحقاً.';
+  String get owner_request_commerce_subtitle => 'اختر اللي بيناسب طريقة شغلك الحالية. ما بينفع يتغيّر بعدين.';
 
   @override
-  String get owner_request_commerce_build4all => 'Build4All';
+  String get owner_request_commerce_build4all => 'بيع عبر Build4All';
 
   @override
-  String get owner_request_commerce_build4all_hint => 'إدارة المنتجات والمخزون والطلبات داخل Build4All.';
+  String get owner_request_commerce_build4all_hint => 'كتالوجك بيعيش هون';
 
   @override
-  String get owner_request_commerce_woo => 'WooCommerce';
+  String get owner_request_commerce_woo => 'اربط متجر WooCommerce تبعي';
 
   @override
-  String get owner_request_commerce_woo_hint => 'استخدم متجر WooCommerce موجود. بيضلّ هو مصدر الحقيقة.';
+  String get owner_request_commerce_woo_hint => 'WordPress بيضلّ مصدر الحقيقة';
 
   @override
   String get owner_request_woo_store_url => 'رابط المتجر';
@@ -3755,5 +3755,31 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String owner_request_woo_link_failed(String reason) {
     return 'انشأ التطبيق، بس ربط المتجر فشل: $reason';
+  }
+
+  @override
+  String get owner_request_commerce_recommended => 'موصى به';
+
+  @override
+  String get owner_request_commerce_b4a_pro1 => 'ما في شي تثبّتو، بيشتغل فوراً';
+
+  @override
+  String get owner_request_commerce_b4a_pro2 => 'المنتجات والمخزون والطلبات والكوبونات كلها بتتعدّل من هون';
+
+  @override
+  String get owner_request_commerce_b4a_con1 => 'كتالوج موقعك الحالي ما بينستورد';
+
+  @override
+  String get owner_request_commerce_woo_pro1 => 'المنتجات والأسعار والمخزون بتتزامن من موقعك';
+
+  @override
+  String get owner_request_commerce_woo_pro2 => 'طلبات التطبيق بتظهر بـ WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_con1 => 'المنتجات للقراءة فقط هون — عدّلها بـ WordPress';
+
+  @override
+  String owner_request_woo_test_ok_counts(String products, String categories) {
+    return 'تم الاتصال — $products منتج و$categories تصنيف';
   }
 }

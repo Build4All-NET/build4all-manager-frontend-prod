@@ -1437,13 +1437,13 @@
   "hintNewPassword": "Enter your new password",
   "btnResetPassword": "Reset Password",
   "msgPasswordResetSuccess": "Password reset successfully. Please login.",
-  "owner_request_tab_commerce": "Commerce",
+  "owner_request_tab_commerce": "Shop",
   "owner_request_commerce_title": "Where do products come from?",
-  "owner_request_commerce_subtitle": "Choose once. This cannot be changed from the dashboard later.",
-  "owner_request_commerce_build4all": "Build4All",
-  "owner_request_commerce_build4all_hint": "Manage products, stock and orders inside Build4All.",
-  "owner_request_commerce_woo": "WooCommerce",
-  "owner_request_commerce_woo_hint": "Use an existing WooCommerce store. It stays the source of truth.",
+  "owner_request_commerce_subtitle": "Pick the one that matches how you already work. This can't be changed later.",
+  "owner_request_commerce_build4all": "Sell with Build4All",
+  "owner_request_commerce_build4all_hint": "Your catalogue lives here",
+  "owner_request_commerce_woo": "Connect my WooCommerce store",
+  "owner_request_commerce_woo_hint": "WordPress stays the source of truth",
   "owner_request_woo_store_url": "Store URL",
   "owner_request_woo_store_url_hint": "https://shop.example.com",
   "owner_request_woo_consumer_key": "Consumer key",
@@ -1467,6 +1467,24 @@
   "@owner_request_woo_link_failed": {
     "placeholders": {
       "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "owner_request_commerce_recommended": "Recommended",
+  "owner_request_commerce_b4a_pro1": "Nothing to install, works right away",
+  "owner_request_commerce_b4a_pro2": "Products, stock, orders, coupons all editable here",
+  "owner_request_commerce_b4a_con1": "An existing website catalogue is not imported",
+  "owner_request_commerce_woo_pro1": "Products, prices and stock sync from your site",
+  "owner_request_commerce_woo_pro2": "App orders appear in WooCommerce",
+  "owner_request_commerce_woo_con1": "Products are read-only here — edit them in WordPress",
+  "owner_request_woo_test_ok_counts": "Connected — {products} products, {categories} categories found",
+  "@owner_request_woo_test_ok_counts": {
+    "placeholders": {
+      "products": {
+        "type": "String"
+      },
+      "categories": {
         "type": "String"
       }
     }

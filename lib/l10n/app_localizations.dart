@@ -7342,7 +7342,7 @@ abstract class AppLocalizations {
   /// No description provided for @owner_request_tab_commerce.
   ///
   /// In en, this message translates to:
-  /// **'Commerce'**
+  /// **'Shop'**
   String get owner_request_tab_commerce;
 
   /// No description provided for @owner_request_commerce_title.
@@ -7354,31 +7354,31 @@ abstract class AppLocalizations {
   /// No description provided for @owner_request_commerce_subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Choose once. This cannot be changed from the dashboard later.'**
+  /// **'Pick the one that matches how you already work. This can\'t be changed later.'**
   String get owner_request_commerce_subtitle;
 
   /// No description provided for @owner_request_commerce_build4all.
   ///
   /// In en, this message translates to:
-  /// **'Build4All'**
+  /// **'Sell with Build4All'**
   String get owner_request_commerce_build4all;
 
   /// No description provided for @owner_request_commerce_build4all_hint.
   ///
   /// In en, this message translates to:
-  /// **'Manage products, stock and orders inside Build4All.'**
+  /// **'Your catalogue lives here'**
   String get owner_request_commerce_build4all_hint;
 
   /// No description provided for @owner_request_commerce_woo.
   ///
   /// In en, this message translates to:
-  /// **'WooCommerce'**
+  /// **'Connect my WooCommerce store'**
   String get owner_request_commerce_woo;
 
   /// No description provided for @owner_request_commerce_woo_hint.
   ///
   /// In en, this message translates to:
-  /// **'Use an existing WooCommerce store. It stays the source of truth.'**
+  /// **'WordPress stays the source of truth'**
   String get owner_request_commerce_woo_hint;
 
   /// No description provided for @owner_request_woo_store_url.
@@ -7458,6 +7458,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'App created, but linking the store failed: {reason}'**
   String owner_request_woo_link_failed(String reason);
+
+  /// No description provided for @owner_request_commerce_recommended.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended'**
+  String get owner_request_commerce_recommended;
+
+  /// No description provided for @owner_request_commerce_b4a_pro1.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to install, works right away'**
+  String get owner_request_commerce_b4a_pro1;
+
+  /// No description provided for @owner_request_commerce_b4a_pro2.
+  ///
+  /// In en, this message translates to:
+  /// **'Products, stock, orders, coupons all editable here'**
+  String get owner_request_commerce_b4a_pro2;
+
+  /// No description provided for @owner_request_commerce_b4a_con1.
+  ///
+  /// In en, this message translates to:
+  /// **'An existing website catalogue is not imported'**
+  String get owner_request_commerce_b4a_con1;
+
+  /// No description provided for @owner_request_commerce_woo_pro1.
+  ///
+  /// In en, this message translates to:
+  /// **'Products, prices and stock sync from your site'**
+  String get owner_request_commerce_woo_pro1;
+
+  /// No description provided for @owner_request_commerce_woo_pro2.
+  ///
+  /// In en, this message translates to:
+  /// **'App orders appear in WooCommerce'**
+  String get owner_request_commerce_woo_pro2;
+
+  /// No description provided for @owner_request_commerce_woo_con1.
+  ///
+  /// In en, this message translates to:
+  /// **'Products are read-only here — edit them in WordPress'**
+  String get owner_request_commerce_woo_con1;
+
+  /// No description provided for @owner_request_woo_test_ok_counts.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected — {products} products, {categories} categories found'**
+  String owner_request_woo_test_ok_counts(String products, String categories);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

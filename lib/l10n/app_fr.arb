@@ -1430,13 +1430,13 @@
   "hintNewPassword": "Saisissez votre nouveau mot de passe",
   "btnResetPassword": "Réinitialiser le mot de passe",
   "msgPasswordResetSuccess": "Mot de passe réinitialisé avec succès. Veuillez vous connecter.",
-  "owner_request_tab_commerce": "Commerce",
+  "owner_request_tab_commerce": "Boutique",
   "owner_request_commerce_title": "D'où viennent les produits ?",
-  "owner_request_commerce_subtitle": "À choisir une seule fois. Ce réglage ne peut pas être modifié depuis le tableau de bord.",
-  "owner_request_commerce_build4all": "Build4All",
-  "owner_request_commerce_build4all_hint": "Gérez produits, stock et commandes dans Build4All.",
-  "owner_request_commerce_woo": "WooCommerce",
-  "owner_request_commerce_woo_hint": "Utilisez une boutique WooCommerce existante. Elle reste la source de vérité.",
+  "owner_request_commerce_subtitle": "Choisissez ce qui correspond à votre façon de travailler. Ce réglage ne pourra plus être modifié.",
+  "owner_request_commerce_build4all": "Vendre avec Build4All",
+  "owner_request_commerce_build4all_hint": "Votre catalogue vit ici",
+  "owner_request_commerce_woo": "Connecter ma boutique WooCommerce",
+  "owner_request_commerce_woo_hint": "WordPress reste la source de vérité",
   "owner_request_woo_store_url": "URL de la boutique",
   "owner_request_woo_store_url_hint": "https://shop.example.com",
   "owner_request_woo_consumer_key": "Clé client",
@@ -1460,6 +1460,24 @@
   "@owner_request_woo_link_failed": {
     "placeholders": {
       "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "owner_request_commerce_recommended": "Recommandé",
+  "owner_request_commerce_b4a_pro1": "Rien à installer, fonctionne immédiatement",
+  "owner_request_commerce_b4a_pro2": "Produits, stock, commandes et coupons modifiables ici",
+  "owner_request_commerce_b4a_con1": "Le catalogue d'un site existant n'est pas importé",
+  "owner_request_commerce_woo_pro1": "Produits, prix et stock synchronisés depuis votre site",
+  "owner_request_commerce_woo_pro2": "Les commandes de l'app apparaissent dans WooCommerce",
+  "owner_request_commerce_woo_con1": "Produits en lecture seule ici — modifiez-les dans WordPress",
+  "owner_request_woo_test_ok_counts": "Connecté — {products} produits, {categories} catégories",
+  "@owner_request_woo_test_ok_counts": {
+    "placeholders": {
+      "products": {
+        "type": "String"
+      },
+      "categories": {
         "type": "String"
       }
     }
