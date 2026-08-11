@@ -3782,4 +3782,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String owner_request_woo_test_ok_counts(String products, String categories) {
     return 'تم الاتصال — $products منتج و$categories تصنيف';
   }
+
+  @override
+  String get owner_request_submit_connect => 'اتصال';
+
+  @override
+  String get owner_request_submit_connect_first => 'اربط متجرك لتكمّل';
+
+  @override
+  String get owner_request_submit_store_details => 'عبّي رابط المتجر ومفاتيح الـ API';
 }

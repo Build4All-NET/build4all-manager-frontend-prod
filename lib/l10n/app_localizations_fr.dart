@@ -3786,4 +3786,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String owner_request_woo_test_ok_counts(String products, String categories) {
     return 'Connecté — $products produits, $categories catégories';
   }
+
+  @override
+  String get owner_request_submit_connect => 'Connecter';
+
+  @override
+  String get owner_request_submit_connect_first => 'Connectez votre boutique pour continuer';
+
+  @override
+  String get owner_request_submit_store_details => 'Renseignez l\'URL et les clés API de la boutique';
 }

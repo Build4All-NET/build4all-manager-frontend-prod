@@ -1488,5 +1488,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "owner_request_submit_connect": "Connect",
+  "owner_request_submit_connect_first": "Connect your store to continue",
+  "owner_request_submit_store_details": "Fill in your store URL and API keys"
 }

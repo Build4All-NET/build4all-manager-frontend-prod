@@ -87,6 +87,31 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
     return !_loading && appOk && logoOk && _commerce.isReadyToSubmit;
   }
 
+  /// The bar turns into a Connect button once a WooCommerce store has been
+  /// described but not yet verified.
+  ///
+  /// A disabled Submit makes the owner guess what is missing; making the
+  /// missing step the button itself tells them, and doing it flips the bar
+  /// back to Submit on its own.
+  bool get _needsConnect =>
+      _commerce.isWoo && _commerce.hasAllFields && !_commerce.connectionOk;
+
+  bool get _canPressPrimary =>
+      _needsConnect ? !_wooTesting && !_loading : _canSubmit;
+
+  /// One line under the heading saying what is actually left to do.
+  String _primaryHint(AppLocalizations l) {
+    if (_commerce.isWoo && !_commerce.hasAllFields) {
+      return l.owner_request_submit_store_details;
+    }
+    if (_needsConnect) {
+      return l.owner_request_submit_connect_first;
+    }
+    return _canSubmit
+        ? l.owner_request_submit_ready_state
+        : l.owner_request_submit_missing_required;
+  }
+
   void _ensureUsdSelected() {
     if (_selectedCurrency != null) return;
     if (_currencies.isEmpty) return;
@@ -442,13 +467,26 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
     return ValueListenableBuilder<TextEditingValue>(
       valueListenable: _appNameCtrl,
       builder: (context, value, _) {
-        final enabled =
+        final l = AppLocalizations.of(context)!;
+
+        final basicsOk =
             !_loading && value.text.trim().isNotEmpty && _logoFile != null;
 
+        final connectMode = _needsConnect;
+
+        // In connect mode the app name and logo are irrelevant: verifying a
+        // store is about the store, and blocking it behind unrelated fields
+        // would just move the guessing game somewhere else.
+        final enabled = connectMode
+            ? (!_wooTesting && !_loading)
+            : (basicsOk && _commerce.isReadyToSubmit);
+
         return _SubmitBar(
-          loading: _loading,
+          loading: connectMode ? _wooTesting : _loading,
           enabled: enabled,
-          onSubmit: _submit,
+          connectMode: connectMode,
+          hint: _primaryHint(l),
+          onSubmit: connectMode ? _testWooConnection : _submit,
         );
       },
     );
@@ -1196,9 +1234,14 @@ class _SubmitBar extends StatelessWidget {
   final bool enabled;
   final VoidCallback onSubmit;
 
+  final bool connectMode;
+  final String hint;
+
   const _SubmitBar({
     required this.loading,
     required this.enabled,
+    required this.connectMode,
+    required this.hint,
     required this.onSubmit,
   });
 
@@ -1231,9 +1274,7 @@ class _SubmitBar extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    enabled
-                        ? l.owner_request_submit_ready_state
-                        : l.owner_request_submit_missing_required,
+                    hint,
                     style: t.bodySmall?.copyWith(
                       color: cs.onSurface.withOpacity(.65),
                     ),
@@ -1253,8 +1294,18 @@ class _SubmitBar extends StatelessWidget {
                         color: cs.onPrimary,
                       ),
                     )
-                  : const Icon(Icons.send_rounded),
-              label: Text(loading ? l.owner_request_submitting : l.submit),
+                  : Icon(connectMode
+                      ? Icons.wifi_tethering
+                      : Icons.send_rounded),
+              label: Text(
+                loading
+                    ? (connectMode
+                        ? l.owner_request_woo_testing
+                        : l.owner_request_submitting)
+                    : (connectMode
+                        ? l.owner_request_submit_connect
+                        : l.submit),
+              ),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 14, vertical: 12),

@@ -1481,5 +1481,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "owner_request_submit_connect": "Connecter",
+  "owner_request_submit_connect_first": "Connectez votre boutique pour continuer",
+  "owner_request_submit_store_details": "Renseignez l'URL et les clés API de la boutique"
 }

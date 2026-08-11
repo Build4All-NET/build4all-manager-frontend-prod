@@ -7465,6 +7465,24 @@ abstract class AppLocalizations {
   /// **'Recommended'**
   String get owner_request_commerce_recommended;
 
+  /// No description provided for @owner_request_submit_connect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get owner_request_submit_connect;
+
+  /// No description provided for @owner_request_submit_connect_first.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect your store to continue'**
+  String get owner_request_submit_connect_first;
+
+  /// No description provided for @owner_request_submit_store_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in your store URL and API keys'**
+  String get owner_request_submit_store_details;
+
   /// No description provided for @owner_request_commerce_b4a_pro1.
   ///
   /// In en, this message translates to:

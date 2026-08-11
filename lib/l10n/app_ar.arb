@@ -1474,5 +1474,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "owner_request_submit_connect": "اتصال",
+  "owner_request_submit_connect_first": "اربط متجرك لتكمّل",
+  "owner_request_submit_store_details": "عبّي رابط المتجر ومفاتيح الـ API"
 }
