@@ -18,6 +18,10 @@ import '../../data/services/owner_requests_api.dart';
 
 import '../widgets/preview_phone.dart';
 import '../widgets/palette_builder.dart';
+import '../widgets/commerce_source_section.dart';
+
+import '../../../woocommerce/data/models/woo_config_models.dart';
+import '../../../woocommerce/data/services/woo_config_api.dart';
 
 class OwnerRequestScreen extends StatefulWidget {
   final String baseUrl;
@@ -62,10 +66,24 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
 
   _Panel _panel = _Panel.identity;
 
+  // ----- commerce source (Build4All vs WooCommerce) -----
+  late final WooConfigApi _wooApi;
+
+  CommerceSourceDraft _commerce = const CommerceSourceDraft();
+  final _wooStoreUrlCtrl = TextEditingController();
+  final _wooKeyCtrl = TextEditingController();
+  final _wooSecretCtrl = TextEditingController();
+
+  bool _wooTesting = false;
+  String? _wooTestError;
+
   bool get _canSubmit {
     final appOk = _appNameCtrl.text.trim().isNotEmpty;
     final logoOk = _logoFile != null;
-    return !_loading && appOk && logoOk;
+    // A WooCommerce app is only submittable once its store has actually
+    // answered — an app pointing at an unreachable store opens on an empty
+    // product list with nothing to explain why.
+    return !_loading && appOk && logoOk && _commerce.isReadyToSubmit;
   }
 
   void _ensureUsdSelected() {
@@ -81,6 +99,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
   void initState() {
     super.initState();
     api = OwnerRequestApi(dio: widget.dio, baseUrl: widget.baseUrl);
+    _wooApi = WooConfigApi(dio: widget.dio, baseUrl: widget.baseUrl);
 
     _appNameCtrl = TextEditingController(text: widget.initialAppName ?? '');
 
@@ -91,6 +110,9 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
   void dispose() {
     _appNameCtrl.dispose();
     _notesCtrl.dispose();
+    _wooStoreUrlCtrl.dispose();
+    _wooKeyCtrl.dispose();
+    _wooSecretCtrl.dispose();
     super.dispose();
   }
 
@@ -157,6 +179,54 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
     AppToast.success(context, l.owner_request_logo_removed);
   }
 
+  Future<void> _testWooConnection() async {
+    if (_wooTesting) return;
+    final l = AppLocalizations.of(context)!;
+
+    if (!_commerce.hasAllFields) {
+      AppToast.error(context, l.owner_request_woo_err_fields);
+      return;
+    }
+
+    FocusScope.of(context).unfocus();
+    setState(() {
+      _wooTesting = true;
+      _wooTestError = null;
+    });
+
+    try {
+      final res = await _wooApi.testConnection(
+        storeUrl: _commerce.storeUrl.trim(),
+        consumerKey: _commerce.consumerKey.trim(),
+        consumerSecret: _commerce.consumerSecret.trim(),
+      );
+
+      if (!mounted) return;
+
+      setState(() {
+        _commerce = _commerce.copyWith(connectionOk: res.ok);
+        _wooTestError = res.ok ? null : (res.message ?? res.code);
+      });
+
+      if (res.ok) {
+        AppToast.success(context, l.owner_request_woo_test_ok);
+      } else {
+        AppToast.error(
+            context, l.owner_request_woo_test_failed(_wooTestError ?? ''));
+      }
+    } catch (e) {
+      if (!mounted) return;
+      final msg = ApiErrorHandler.message(e);
+      setState(() {
+        _commerce = _commerce.copyWith(connectionOk: false);
+        _wooTestError = msg;
+      });
+      AppToast.error(context, l.owner_request_woo_test_failed(msg));
+    } finally {
+      if (mounted) setState(() => _wooTesting = false);
+    }
+  }
+
   Future<void> _submit() async {
     if (_loading) return;
 
@@ -194,6 +264,19 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
       return;
     }
 
+    if (_commerce.isWoo) {
+      if (!_commerce.hasAllFields) {
+        setState(() => _panel = _Panel.commerce);
+        AppToast.error(context, l.owner_request_woo_err_fields);
+        return;
+      }
+      if (!_commerce.connectionOk) {
+        setState(() => _panel = _Panel.commerce);
+        AppToast.error(context, l.owner_request_woo_err_untested);
+        return;
+      }
+    }
+
     setState(() => _loading = true);
 
     try {
@@ -206,7 +289,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
       _runtime = _runtime.normalized();
       final out = _runtime.toJsonOut();
 
-      await api.submitOwnerRequest(
+      final linkId = await api.submitOwnerRequest(
         ownerId: widget.ownerId,
         projectId: projectId,
         appName: _appNameCtrl.text.trim(),
@@ -223,6 +306,30 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
         brandingJson: out.brandingJson,
         logoFile: _logoFile,
       );
+
+      // The app exists now, but the owner's token still points at whichever
+      // app they were on before — so the store is linked by linkId rather
+      // than through the token-scoped endpoint.
+      if (_commerce.isWoo && linkId != null) {
+        try {
+          await _wooApi.setupForApp(
+            linkId: linkId,
+            storeUrl: _commerce.storeUrl.trim(),
+            consumerKey: _commerce.consumerKey.trim(),
+            consumerSecret: _commerce.consumerSecret.trim(),
+          );
+        } catch (e) {
+          // The app was created; only the link failed. Say so precisely
+          // instead of reporting a total failure the owner would retry and
+          // end up with two apps.
+          if (!mounted) return;
+          AppToast.error(
+              context, l.owner_request_woo_link_failed(ApiErrorHandler.message(e)));
+          OwnerProjectsRefreshStore.I.requestRefresh();
+          context.go('/owner/projects');
+          return;
+        }
+      }
 
       if (!mounted) return;
 
@@ -416,6 +523,14 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
                           onRemoveLogo: _removeLogo,
                           panel: _panel,
                           onPanelChanged: (p) => setState(() => _panel = p),
+                          commerce: _commerce,
+                          onCommerceChanged: (c) => setState(() => _commerce = c),
+                          wooStoreUrlCtrl: _wooStoreUrlCtrl,
+                          wooKeyCtrl: _wooKeyCtrl,
+                          wooSecretCtrl: _wooSecretCtrl,
+                          wooTesting: _wooTesting,
+                          wooTestError: _wooTestError,
+                          onTestWoo: _testWooConnection,
                         ),
                       ),
                     ],
@@ -467,6 +582,14 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
                       onRemoveLogo: _removeLogo,
                       panel: _panel,
                       onPanelChanged: (p) => setState(() => _panel = p),
+                      commerce: _commerce,
+                      onCommerceChanged: (c) => setState(() => _commerce = c),
+                      wooStoreUrlCtrl: _wooStoreUrlCtrl,
+                      wooKeyCtrl: _wooKeyCtrl,
+                      wooSecretCtrl: _wooSecretCtrl,
+                      wooTesting: _wooTesting,
+                      wooTestError: _wooTestError,
+                      onTestWoo: _testWooConnection,
                     ),
                   ],
                 ),
@@ -588,7 +711,7 @@ class _OwnerRequestScreenState extends State<OwnerRequestScreen> {
   }
 }
 
-enum _Panel { identity, palette }
+enum _Panel { identity, palette, commerce }
 
 class _CustomizeColumn extends StatelessWidget {
   final TextStyle? titleStyle;
@@ -617,6 +740,15 @@ class _CustomizeColumn extends StatelessWidget {
   final _Panel panel;
   final ValueChanged<_Panel> onPanelChanged;
 
+  final CommerceSourceDraft commerce;
+  final ValueChanged<CommerceSourceDraft> onCommerceChanged;
+  final TextEditingController wooStoreUrlCtrl;
+  final TextEditingController wooKeyCtrl;
+  final TextEditingController wooSecretCtrl;
+  final bool wooTesting;
+  final String? wooTestError;
+  final VoidCallback onTestWoo;
+
   const _CustomizeColumn({
     required this.titleStyle,
     required this.loading,
@@ -636,6 +768,14 @@ class _CustomizeColumn extends StatelessWidget {
     required this.onRemoveLogo,
     required this.panel,
     required this.onPanelChanged,
+    required this.commerce,
+    required this.onCommerceChanged,
+    required this.wooStoreUrlCtrl,
+    required this.wooKeyCtrl,
+    required this.wooSecretCtrl,
+    required this.wooTesting,
+    required this.wooTestError,
+    required this.onTestWoo,
   });
 
   @override
@@ -670,6 +810,25 @@ class _CustomizeColumn extends StatelessWidget {
                 onRemoveLogo: onRemoveLogo,
                 runtime: runtime,
                 onRuntimeChanged: onRuntimeChanged,
+              ),
+            _Panel.commerce => IgnorePointer(
+                key: const ValueKey('commerce'),
+                ignoring: loading,
+                child: Opacity(
+                  opacity: loading ? .55 : 1,
+                  child: _PanelCard(
+                    child: CommerceSourceSection(
+                      draft: commerce,
+                      onChanged: onCommerceChanged,
+                      storeUrlCtrl: wooStoreUrlCtrl,
+                      consumerKeyCtrl: wooKeyCtrl,
+                      consumerSecretCtrl: wooSecretCtrl,
+                      testing: wooTesting,
+                      testError: wooTestError,
+                      onTest: onTestWoo,
+                    ),
+                  ),
+                ),
               ),
             _Panel.palette => IgnorePointer(
                 key: const ValueKey('palette'),
@@ -768,6 +927,11 @@ class _PillTabs extends StatelessWidget {
             value: _Panel.palette,
             label: l.owner_request_palette_title,
             icon: Icons.palette_outlined,
+          ),
+          tab(
+            value: _Panel.commerce,
+            label: l.owner_request_tab_commerce,
+            icon: Icons.storefront_outlined,
           ),
         ],
       ),

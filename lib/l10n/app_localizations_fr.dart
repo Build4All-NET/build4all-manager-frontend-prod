@@ -3696,4 +3696,68 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'Compte réactivé avec succès';
+
+  @override
+  String get owner_request_tab_commerce => 'Commerce';
+
+  @override
+  String get owner_request_commerce_title => 'D\'où viennent les produits ?';
+
+  @override
+  String get owner_request_commerce_subtitle => 'À choisir une seule fois. Ce réglage ne peut pas être modifié depuis le tableau de bord.';
+
+  @override
+  String get owner_request_commerce_build4all => 'Build4All';
+
+  @override
+  String get owner_request_commerce_build4all_hint => 'Gérez produits, stock et commandes dans Build4All.';
+
+  @override
+  String get owner_request_commerce_woo => 'WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_hint => 'Utilisez une boutique WooCommerce existante. Elle reste la source de vérité.';
+
+  @override
+  String get owner_request_woo_store_url => 'URL de la boutique';
+
+  @override
+  String get owner_request_woo_store_url_hint => 'https://shop.example.com';
+
+  @override
+  String get owner_request_woo_consumer_key => 'Clé client';
+
+  @override
+  String get owner_request_woo_consumer_secret => 'Secret client';
+
+  @override
+  String get owner_request_woo_keys_help => 'Admin WordPress → WooCommerce → Réglages → Avancé → REST API → Ajouter une clé (Lecture/Écriture).';
+
+  @override
+  String get owner_request_woo_test => 'Tester la connexion';
+
+  @override
+  String get owner_request_woo_testing => 'Test en cours…';
+
+  @override
+  String get owner_request_woo_test_ok => 'Connecté à la boutique';
+
+  @override
+  String owner_request_woo_test_failed(String reason) {
+    return 'Échec de connexion : $reason';
+  }
+
+  @override
+  String get owner_request_woo_err_fields => 'URL de la boutique, clé et secret sont tous requis';
+
+  @override
+  String get owner_request_woo_err_untested => 'Testez la connexion avant de soumettre';
+
+  @override
+  String get owner_request_woo_readonly_note => 'Produits, stock et commandes seront gérés dans WooCommerce, pas ici.';
+
+  @override
+  String owner_request_woo_link_failed(String reason) {
+    return 'Application créée, mais la liaison a échoué : $reason';
+  }
 }

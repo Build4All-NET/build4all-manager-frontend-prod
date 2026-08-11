@@ -3692,4 +3692,68 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'تم إعادة تنشيط حسابك بنجاح. إذا لم تكن أنت من طلب الحذف، نوصي بتغيير كلمة المرور الخاصة بك كإجراء أمني.';
+
+  @override
+  String get owner_request_tab_commerce => 'المتجر';
+
+  @override
+  String get owner_request_commerce_title => 'من وين بتيجي المنتجات؟';
+
+  @override
+  String get owner_request_commerce_subtitle => 'اختر مرة واحدة. ما بينفع يتغيّر من لوحة التحكم لاحقاً.';
+
+  @override
+  String get owner_request_commerce_build4all => 'Build4All';
+
+  @override
+  String get owner_request_commerce_build4all_hint => 'إدارة المنتجات والمخزون والطلبات داخل Build4All.';
+
+  @override
+  String get owner_request_commerce_woo => 'WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_hint => 'استخدم متجر WooCommerce موجود. بيضلّ هو مصدر الحقيقة.';
+
+  @override
+  String get owner_request_woo_store_url => 'رابط المتجر';
+
+  @override
+  String get owner_request_woo_store_url_hint => 'https://shop.example.com';
+
+  @override
+  String get owner_request_woo_consumer_key => 'Consumer key';
+
+  @override
+  String get owner_request_woo_consumer_secret => 'Consumer secret';
+
+  @override
+  String get owner_request_woo_keys_help => 'لوحة WordPress ← WooCommerce ← Settings ← Advanced ← REST API ← Add key (Read/Write).';
+
+  @override
+  String get owner_request_woo_test => 'اختبار الاتصال';
+
+  @override
+  String get owner_request_woo_testing => 'عم يجرّب…';
+
+  @override
+  String get owner_request_woo_test_ok => 'تم الاتصال بالمتجر';
+
+  @override
+  String owner_request_woo_test_failed(String reason) {
+    return 'ما قدرنا نتصل: $reason';
+  }
+
+  @override
+  String get owner_request_woo_err_fields => 'رابط المتجر والمفاتيح كلهن مطلوبين';
+
+  @override
+  String get owner_request_woo_err_untested => 'جرّب الاتصال بالمتجر قبل الإرسال';
+
+  @override
+  String get owner_request_woo_readonly_note => 'المنتجات والمخزون والطلبات رح تتدار من WooCommerce، مش من هون.';
+
+  @override
+  String owner_request_woo_link_failed(String reason) {
+    return 'انشأ التطبيق، بس ربط المتجر فشل: $reason';
+  }
 }

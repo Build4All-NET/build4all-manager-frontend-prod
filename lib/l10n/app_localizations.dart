@@ -7338,6 +7338,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Account reactivated successfully'**
   String get accountReactivatedSuccessfully;
+
+  /// No description provided for @owner_request_tab_commerce.
+  ///
+  /// In en, this message translates to:
+  /// **'Commerce'**
+  String get owner_request_tab_commerce;
+
+  /// No description provided for @owner_request_commerce_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Where do products come from?'**
+  String get owner_request_commerce_title;
+
+  /// No description provided for @owner_request_commerce_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose once. This cannot be changed from the dashboard later.'**
+  String get owner_request_commerce_subtitle;
+
+  /// No description provided for @owner_request_commerce_build4all.
+  ///
+  /// In en, this message translates to:
+  /// **'Build4All'**
+  String get owner_request_commerce_build4all;
+
+  /// No description provided for @owner_request_commerce_build4all_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage products, stock and orders inside Build4All.'**
+  String get owner_request_commerce_build4all_hint;
+
+  /// No description provided for @owner_request_commerce_woo.
+  ///
+  /// In en, this message translates to:
+  /// **'WooCommerce'**
+  String get owner_request_commerce_woo;
+
+  /// No description provided for @owner_request_commerce_woo_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Use an existing WooCommerce store. It stays the source of truth.'**
+  String get owner_request_commerce_woo_hint;
+
+  /// No description provided for @owner_request_woo_store_url.
+  ///
+  /// In en, this message translates to:
+  /// **'Store URL'**
+  String get owner_request_woo_store_url;
+
+  /// No description provided for @owner_request_woo_store_url_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'https://shop.example.com'**
+  String get owner_request_woo_store_url_hint;
+
+  /// No description provided for @owner_request_woo_consumer_key.
+  ///
+  /// In en, this message translates to:
+  /// **'Consumer key'**
+  String get owner_request_woo_consumer_key;
+
+  /// No description provided for @owner_request_woo_consumer_secret.
+  ///
+  /// In en, this message translates to:
+  /// **'Consumer secret'**
+  String get owner_request_woo_consumer_secret;
+
+  /// No description provided for @owner_request_woo_keys_help.
+  ///
+  /// In en, this message translates to:
+  /// **'WordPress admin → WooCommerce → Settings → Advanced → REST API → Add key (Read/Write).'**
+  String get owner_request_woo_keys_help;
+
+  /// No description provided for @owner_request_woo_test.
+  ///
+  /// In en, this message translates to:
+  /// **'Test connection'**
+  String get owner_request_woo_test;
+
+  /// No description provided for @owner_request_woo_testing.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing…'**
+  String get owner_request_woo_testing;
+
+  /// No description provided for @owner_request_woo_test_ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected to the store'**
+  String get owner_request_woo_test_ok;
+
+  /// No description provided for @owner_request_woo_test_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not connect: {reason}'**
+  String owner_request_woo_test_failed(String reason);
+
+  /// No description provided for @owner_request_woo_err_fields.
+  ///
+  /// In en, this message translates to:
+  /// **'Store URL, consumer key and consumer secret are all required'**
+  String get owner_request_woo_err_fields;
+
+  /// No description provided for @owner_request_woo_err_untested.
+  ///
+  /// In en, this message translates to:
+  /// **'Test the store connection before submitting'**
+  String get owner_request_woo_err_untested;
+
+  /// No description provided for @owner_request_woo_readonly_note.
+  ///
+  /// In en, this message translates to:
+  /// **'Products, stock and orders will be managed in WooCommerce, not here.'**
+  String get owner_request_woo_readonly_note;
+
+  /// No description provided for @owner_request_woo_link_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'App created, but linking the store failed: {reason}'**
+  String owner_request_woo_link_failed(String reason);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

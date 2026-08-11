@@ -3692,4 +3692,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'Account reactivated successfully';
+
+  @override
+  String get owner_request_tab_commerce => 'Commerce';
+
+  @override
+  String get owner_request_commerce_title => 'Where do products come from?';
+
+  @override
+  String get owner_request_commerce_subtitle => 'Choose once. This cannot be changed from the dashboard later.';
+
+  @override
+  String get owner_request_commerce_build4all => 'Build4All';
+
+  @override
+  String get owner_request_commerce_build4all_hint => 'Manage products, stock and orders inside Build4All.';
+
+  @override
+  String get owner_request_commerce_woo => 'WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_hint => 'Use an existing WooCommerce store. It stays the source of truth.';
+
+  @override
+  String get owner_request_woo_store_url => 'Store URL';
+
+  @override
+  String get owner_request_woo_store_url_hint => 'https://shop.example.com';
+
+  @override
+  String get owner_request_woo_consumer_key => 'Consumer key';
+
+  @override
+  String get owner_request_woo_consumer_secret => 'Consumer secret';
+
+  @override
+  String get owner_request_woo_keys_help => 'WordPress admin → WooCommerce → Settings → Advanced → REST API → Add key (Read/Write).';
+
+  @override
+  String get owner_request_woo_test => 'Test connection';
+
+  @override
+  String get owner_request_woo_testing => 'Testing…';
+
+  @override
+  String get owner_request_woo_test_ok => 'Connected to the store';
+
+  @override
+  String owner_request_woo_test_failed(String reason) {
+    return 'Could not connect: $reason';
+  }
+
+  @override
+  String get owner_request_woo_err_fields => 'Store URL, consumer key and consumer secret are all required';
+
+  @override
+  String get owner_request_woo_err_untested => 'Test the store connection before submitting';
+
+  @override
+  String get owner_request_woo_readonly_note => 'Products, stock and orders will be managed in WooCommerce, not here.';
+
+  @override
+  String owner_request_woo_link_failed(String reason) {
+    return 'App created, but linking the store failed: $reason';
+  }
 }
