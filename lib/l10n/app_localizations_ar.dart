@@ -1800,6 +1800,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get owner_project_ios => 'iOS';
 
   @override
+  String get owner_project_website => 'الموقع الإلكتروني';
+
+  @override
+  String get owner_project_website_hint => 'تطبيقك لديه أيضاً موقع إلكتروني. شارك هذا الرابط مع زبائنك.';
+
+  @override
   String get owner_project_apk => 'APK';
 
   @override
@@ -1981,15 +1987,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contact_support_title => 'التواصل مع الدعم';
 
   @override
-  String get open_ticket_title => 'فتح تذكرة';
-
-  @override
-  String get open_ticket_subtitle => 'أرسل مشكلة إلى فريق الدعم لدينا';
-
-  @override
-  String get open_ticket_failed => 'تعذّر فتح بوابة التذاكر.';
-
-  @override
   String get contact_support_subtitle => 'تواصل معنا عبر واتساب';
 
   @override
@@ -1997,6 +1994,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get contact_support_unavailable => 'خدمة الدعم غير متاحة حالياً.';
+
+  @override
+  String get open_ticket_title => 'فتح تذكرة';
+
+  @override
+  String get open_ticket_subtitle => 'أرسل مشكلة إلى فريق الدعم لدينا';
+
+  @override
+  String get open_ticket_failed => 'تعذّر فتح بوابة التذاكر.';
 
   @override
   String get owner_profile_edit_title => 'تعديل الملف الشخصي';
@@ -2126,38 +2132,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get hintPasswordRuleOwner => 'كلمة المرور يجب أن تكون على الأقل 6 أحرف.';
-
-  @override
-  String get lblConfirmPassword => 'تأكيد كلمة المرور';
-
-  @override
-  String get hintConfirmPassword => 'أعد إدخال كلمة المرور';
-
-  @override
-  String get errConfirmPasswordRequired => 'يرجى تأكيد كلمة المرور';
-
-  @override
-  String get errPasswordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
-
-  @override
-  String get forgotPasswordTitle => 'إعادة تعيين كلمة المرور';
-
-  @override
-  String get forgotPasswordEmailSubtitle =>
-      'أدخل البريد الإلكتروني لحسابك وسنرسل لك رمزًا مكونًا من 6 أرقام لإعادة تعيين كلمة المرور.';
-
-  @override
-  String get lblNewPassword => 'كلمة المرور الجديدة';
-
-  @override
-  String get hintNewPassword => 'أدخل كلمة المرور الجديدة';
-
-  @override
-  String get btnResetPassword => 'إعادة تعيين كلمة المرور';
-
-  @override
-  String get msgPasswordResetSuccess =>
-      'تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول.';
 
   @override
   String get owner_projects_filter_platform_ready => 'جاهزية المنصة';
@@ -3692,6 +3666,36 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'تم إعادة تنشيط حسابك بنجاح. إذا لم تكن أنت من طلب الحذف، نوصي بتغيير كلمة المرور الخاصة بك كإجراء أمني.';
+
+  @override
+  String get lblConfirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get hintConfirmPassword => 'أعد إدخال كلمة المرور';
+
+  @override
+  String get errConfirmPasswordRequired => 'يرجى تأكيد كلمة المرور';
+
+  @override
+  String get errPasswordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get forgotPasswordTitle => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get forgotPasswordEmailSubtitle => 'أدخل البريد الإلكتروني لحسابك وسنرسل لك رمزًا مكونًا من 6 أرقام لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get lblNewPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get hintNewPassword => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get btnResetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get msgPasswordResetSuccess => 'تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول.';
 
   @override
   String get owner_request_tab_commerce => 'المتجر';

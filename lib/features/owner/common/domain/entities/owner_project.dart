@@ -11,6 +11,9 @@ class OwnerProject {
 
   final String? apkUrl;
   final String? bundleUrl;
+
+  /// Public URL of the generated storefront site; null until a web build succeeded.
+  final String? webUrl;
   final String? ipaUrl;
 
   final String? logoUrl;
@@ -33,6 +36,7 @@ class OwnerProject {
     required this.appName,
     required this.ipaUrl,
     required this.bundleUrl,
+    this.webUrl,
     required this.logoUrl,
     required this.androidPackageName,
     required this.iosBundleId,
