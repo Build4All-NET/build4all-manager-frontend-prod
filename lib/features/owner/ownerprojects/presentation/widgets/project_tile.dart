@@ -703,10 +703,12 @@ class ProjectTile extends StatelessWidget {
                             color: cs.onSurface,
                           ),
                         ),
+
                         const SizedBox(height: 2),
+
                         Text(
-                          webUrl,
-                          maxLines: 1,
+                          l10n.owner_project_website_hint,
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: small ? 11 : 12,
