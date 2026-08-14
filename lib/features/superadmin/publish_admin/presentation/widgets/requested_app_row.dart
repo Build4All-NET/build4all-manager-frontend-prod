@@ -1,6 +1,7 @@
 import 'package:build4all_manager/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../shared/widgets/ci_run_chip.dart';
 import '../../domain/entities/app_publish_request_admin.dart';
 
 class RequestedAppRow extends StatelessWidget {
@@ -75,7 +76,7 @@ class RequestedAppRow extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              const _MoreMenu(),
+              _MoreMenu(item: item),
             ],
           ),
           const SizedBox(height: 10),
@@ -91,7 +92,7 @@ class RequestedAppRow extends StatelessWidget {
                 label: _platformBadgeLabel(context, true),
               ),
               _StatusPill(status: item.status),
-              if (item.showCiRunLink) _CiRunChip(item: item),
+              if (item.showCiRunLink) CiRunChip(info: item.ciRunInfo),
             ],
           ),
           const SizedBox(height: 10),
@@ -229,7 +230,7 @@ class RequestedAppRow extends StatelessWidget {
                   _StatusPill(status: item.status),
                   if (item.showCiRunLink) ...[
                     const SizedBox(height: 6),
-                    _CiRunChip(item: item),
+                    CiRunChip(info: item.ciRunInfo),
                   ],
                 ],
               ),
@@ -283,7 +284,7 @@ class RequestedAppRow extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                const _MoreMenu(),
+                _MoreMenu(item: item),
               ],
             ),
           ),
@@ -354,68 +355,6 @@ class RequestedAppRow extends StatelessWidget {
     final hh = dt.hour.toString().padLeft(2, '0');
     final mm = dt.minute.toString().padLeft(2, '0');
     return '$y-$m-$d $hh:$mm';
-  }
-}
-
-/// Tappable link to the GitHub Actions run behind this app's latest build.
-///
-/// Only rendered for a failed or in-flight build (see
-/// [AppPublishRequestAdmin.showCiRunLink]) — a successful build has no logs
-/// worth chasing. Super-admin surface only.
-class _CiRunChip extends StatelessWidget {
-  final AppPublishRequestAdmin item;
-
-  const _CiRunChip({required this.item});
-
-  Future<void> _open(BuildContext context) async {
-    final uri = Uri.tryParse(item.ciRunUrl!.trim());
-    if (uri == null) return;
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final l10n = AppLocalizations.of(context)!;
-
-    final tint = item.isBuildFailed ? cs.error : cs.primary;
-
-    final label = item.ciRunNumber != null
-        ? l10n.publish_ci_run_number(item.ciRunNumber!)
-        : l10n.publish_ci_run_open_logs;
-
-    return Tooltip(
-      message: l10n.publish_ci_run_open_logs,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(999),
-        onTap: () => _open(context),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          decoration: BoxDecoration(
-            color: tint.withOpacity(.12),
-            borderRadius: BorderRadius.circular(999),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.terminal_rounded, size: 14, color: tint),
-              const SizedBox(width: 6),
-              Text(
-                label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: tint,
-                      fontWeight: FontWeight.w900,
-                    ),
-              ),
-              const SizedBox(width: 4),
-              Icon(Icons.open_in_new_rounded, size: 12, color: tint),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
 
@@ -585,24 +524,44 @@ class _StatusPill extends StatelessWidget {
 }
 
 class _MoreMenu extends StatelessWidget {
-  const _MoreMenu();
+  final AppPublishRequestAdmin item;
+
+  const _MoreMenu({required this.item});
+
+  Future<void> _openRun() async {
+    final uri = Uri.tryParse((item.ciRunUrl ?? '').trim());
+    if (uri == null) return;
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
+    // "View logs" now has a destination whenever a run URL came back. History is
+    // still unbuilt, so it stays disabled rather than looking clickable.
+    final hasRun = (item.ciRunUrl ?? '').trim().isNotEmpty;
+
     return PopupMenuButton<String>(
       tooltip: l10n.common_more,
-      onSelected: (_) {},
+      onSelected: (value) {
+        if (value == 'logs') _openRun();
+      },
       itemBuilder: (_) => [
         PopupMenuItem(
           value: 'history',
+          enabled: false,
           child: Text(l10n.publish_action_cicd_history_soon),
         ),
         PopupMenuItem(
           value: 'logs',
-          child: Text(l10n.publish_action_view_logs_soon),
+          enabled: hasRun,
+          child: Text(
+            hasRun
+                ? l10n.publish_ci_run_open_logs
+                : l10n.publish_action_view_logs_soon,
+          ),
         ),
       ],
       child: Container(

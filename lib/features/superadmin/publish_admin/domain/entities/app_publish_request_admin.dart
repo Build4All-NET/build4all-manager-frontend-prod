@@ -1,3 +1,4 @@
+import '../../../shared/ci_run_info.dart';
 import 'publisher_profile.dart';
 
 class AppPublishRequestAdmin {
@@ -82,15 +83,11 @@ class AppPublishRequestAdmin {
 
   bool get isSubmitted => status.toUpperCase() == 'SUBMITTED';
 
-  String get _buildStatusUpper => (buildStatus ?? '').toUpperCase();
+  CiRunInfo get ciRunInfo => CiRunInfo(
+        buildStatus: buildStatus,
+        ciRunNumber: ciRunNumber,
+        ciRunUrl: ciRunUrl,
+      );
 
-  bool get isBuildRunning =>
-      _buildStatusUpper == 'RUNNING' || _buildStatusUpper == 'QUEUED';
-
-  bool get isBuildFailed => _buildStatusUpper == 'FAILED';
-
-  /// The run link is only offered while a build still needs looking at — a
-  /// failed or in-flight one. A finished, successful build has nothing to chase.
-  bool get showCiRunLink =>
-      (isBuildFailed || isBuildRunning) && (ciRunUrl ?? '').trim().isNotEmpty;
+  bool get showCiRunLink => ciRunInfo.showLink;
 }
