@@ -41,6 +41,11 @@ class AppPublishRequestAdminModel {
   final String? ipaUrl;
   final String? logoUrl;
 
+  // Latest CI build job (SUPER_ADMIN only — absent from the owner DTO).
+  final String? buildStatus;
+  final int? ciRunNumber;
+  final String? ciRunUrl;
+
   const AppPublishRequestAdminModel({
     required this.id,
     required this.aupId,
@@ -72,7 +77,9 @@ class AppPublishRequestAdminModel {
     required this.bundleUrl,
     required this.ipaUrl,
     required this.logoUrl,
-
+    required this.buildStatus,
+    required this.ciRunNumber,
+    required this.ciRunUrl,
   });
 
   static DateTime? _dt(dynamic v) {
@@ -143,6 +150,10 @@ class AppPublishRequestAdminModel {
       bundleUrl: j['bundleUrl']?.toString(),
       ipaUrl: j['ipaUrl']?.toString(),
       logoUrl: j['logoUrl']?.toString(),
+
+      buildStatus: j['buildStatus']?.toString(),
+      ciRunNumber: _int(j['ciRunNumber']),
+      ciRunUrl: j['ciRunUrl']?.toString(),
     );
   }
 
@@ -184,5 +195,8 @@ class AppPublishRequestAdminModel {
         bundleUrl: bundleUrl,
         ipaUrl: ipaUrl,
         logoUrl: logoUrl,
+        buildStatus: buildStatus,
+        ciRunNumber: ciRunNumber,
+        ciRunUrl: ciRunUrl,
       );
 }

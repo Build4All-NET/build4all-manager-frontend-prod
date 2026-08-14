@@ -2897,6 +2897,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get publish_details_label_version_code => 'رمز الإصدار';
 
   @override
+  String get publish_details_label_ci_run => 'تشغيل CI';
+
+  @override
+  String publish_ci_run_number(int runNumber) {
+    return 'تشغيل رقم $runNumber';
+  }
+
+  @override
+  String get publish_ci_run_open_logs => 'عرض سجلات التشغيل';
+
+  @override
+  String get publish_ci_run_none => 'لا يوجد تشغيل مسجّل';
+
+  @override
   String get publish_details_label_last_build => 'آخر بناء';
 
   @override

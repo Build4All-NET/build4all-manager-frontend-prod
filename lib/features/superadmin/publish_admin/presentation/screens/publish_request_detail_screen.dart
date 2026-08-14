@@ -397,6 +397,7 @@ class _View extends StatelessWidget {
                             l10n.publish_details_label_last_build,
                             _fmtDt(item.requestedAt) ?? '—',
                           ),
+                          _ciRunRow(context, item, isAndroidCard: true),
                           _kvRow(
                             context,
                             l10n.publish_details_file_apk,
@@ -470,6 +471,7 @@ class _View extends StatelessWidget {
                             l10n.publish_details_label_last_build,
                             _fmtDt(item.requestedAt) ?? '—',
                           ),
+                          _ciRunRow(context, item, isAndroidCard: false),
                           _kvRow(
                             context,
                             l10n.publish_details_file_ipa,
@@ -531,6 +533,7 @@ class _View extends StatelessWidget {
                         l10n.publish_details_label_last_build,
                         _fmtDt(item.requestedAt) ?? '—',
                       ),
+                      _ciRunRow(context, item, isAndroidCard: true),
                       _kvRow(
                         context,
                         l10n.publish_details_file_apk,
@@ -601,6 +604,7 @@ class _View extends StatelessWidget {
                         l10n.publish_details_label_last_build,
                         _fmtDt(item.requestedAt) ?? '—',
                       ),
+                      _ciRunRow(context, item, isAndroidCard: false),
                       _kvRow(
                         context,
                         l10n.publish_details_file_ipa,
@@ -877,6 +881,96 @@ class _View extends StatelessWidget {
   static void _comingSoon(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     AppToast.info(context, l10n.publish_details_coming_soon);
+  }
+
+  /// CI run row for a platform card.
+  ///
+  /// The backend attaches the build job matching the *request's* platform, so the
+  /// run only belongs on that platform's card — showing it on both would label an
+  /// Android run as an iOS one.
+  ///
+  /// The link is offered only while a build still needs looking at (FAILED or
+  /// RUNNING). For anything else the run number is shown as plain text.
+  Widget _ciRunRow(
+    BuildContext context,
+    AppPublishRequestAdmin item, {
+    required bool isAndroidCard,
+  }) {
+    final l10n = AppLocalizations.of(context)!;
+    final cs = Theme.of(context).colorScheme;
+
+    final isAndroidRequest = item.platform.toUpperCase() == 'ANDROID';
+    final belongsHere = isAndroidCard == isAndroidRequest;
+
+    if (!belongsHere || item.ciRunNumber == null) {
+      return _kvRow(
+        context,
+        l10n.publish_details_label_ci_run,
+        belongsHere ? l10n.publish_ci_run_none : '—',
+      );
+    }
+
+    final runLabel = l10n.publish_ci_run_number(item.ciRunNumber!);
+
+    if (!item.showCiRunLink) {
+      return _kvRow(context, l10n.publish_details_label_ci_run, runLabel);
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 128,
+            child: Text(
+              l10n.publish_details_label_ci_run,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontWeight: FontWeight.w900, height: 1.15),
+              strutStyle: _strut,
+              textHeightBehavior: _thb,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: InkWell(
+              onTap: () => _openUrl(context, item.ciRunUrl!),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Text(
+                      runLabel,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        height: 1.15,
+                        color: cs.primary,
+                        fontWeight: FontWeight.w800,
+                        decoration: TextDecoration.underline,
+                        decorationColor: cs.primary,
+                      ),
+                      strutStyle: _strut,
+                      textHeightBehavior: _thb,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Tooltip(
+                    message: l10n.publish_ci_run_open_logs,
+                    child: Icon(
+                      Icons.open_in_new_rounded,
+                      size: 15,
+                      color: cs.primary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   static Widget _kvRow(BuildContext context, String k, String v) {

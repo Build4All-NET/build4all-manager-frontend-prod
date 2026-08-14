@@ -5785,6 +5785,30 @@ abstract class AppLocalizations {
   /// **'Version Code'**
   String get publish_details_label_version_code;
 
+  /// No description provided for @publish_details_label_ci_run.
+  ///
+  /// In en, this message translates to:
+  /// **'CI Run'**
+  String get publish_details_label_ci_run;
+
+  /// GitHub Actions run number for the latest CI build of an app
+  ///
+  /// In en, this message translates to:
+  /// **'Run #{runNumber}'**
+  String publish_ci_run_number(int runNumber);
+
+  /// No description provided for @publish_ci_run_open_logs.
+  ///
+  /// In en, this message translates to:
+  /// **'View run logs'**
+  String get publish_ci_run_open_logs;
+
+  /// No description provided for @publish_ci_run_none.
+  ///
+  /// In en, this message translates to:
+  /// **'No run recorded'**
+  String get publish_ci_run_none;
+
   /// No description provided for @publish_details_label_last_build.
   ///
   /// In en, this message translates to:

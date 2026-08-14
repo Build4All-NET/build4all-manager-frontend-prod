@@ -39,6 +39,13 @@ class AppPublishRequestAdmin {
   final String? ipaUrl;
   final String? logoUrl;
 
+  /// Latest CI build job for this app + platform.
+  ///
+  /// SUPER_ADMIN only — the backend never puts these on the owner-facing DTO.
+  final String? buildStatus; // QUEUED / RUNNING / SUCCESS / FAILED
+  final int? ciRunNumber;
+  final String? ciRunUrl;
+
 
   const AppPublishRequestAdmin({
     required this.id,
@@ -68,7 +75,22 @@ class AppPublishRequestAdmin {
     this.bundleUrl,
     this.ipaUrl,
     this.logoUrl,
+    this.buildStatus,
+    this.ciRunNumber,
+    this.ciRunUrl,
   });
 
   bool get isSubmitted => status.toUpperCase() == 'SUBMITTED';
+
+  String get _buildStatusUpper => (buildStatus ?? '').toUpperCase();
+
+  bool get isBuildRunning =>
+      _buildStatusUpper == 'RUNNING' || _buildStatusUpper == 'QUEUED';
+
+  bool get isBuildFailed => _buildStatusUpper == 'FAILED';
+
+  /// The run link is only offered while a build still needs looking at — a
+  /// failed or in-flight one. A finished, successful build has nothing to chase.
+  bool get showCiRunLink =>
+      (isBuildFailed || isBuildRunning) && (ciRunUrl ?? '').trim().isNotEmpty;
 }
