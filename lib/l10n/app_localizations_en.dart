@@ -2897,6 +2897,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get publish_details_label_version_code => 'Version Code';
 
   @override
+  String get publish_details_label_ci_run => 'CI Run';
+
+  @override
+  String publish_ci_run_number(int runNumber) {
+    return 'Run #$runNumber';
+  }
+
+  @override
+  String get publish_ci_run_open_logs => 'View run logs';
+
+  @override
+  String get publish_ci_run_none => 'No run recorded';
+
+  @override
   String get publish_details_label_last_build => 'Last Build';
 
   @override

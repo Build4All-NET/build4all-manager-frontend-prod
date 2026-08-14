@@ -1,3 +1,4 @@
+import '../../../shared/ci_run_info.dart';
 import 'publisher_profile.dart';
 
 class AppPublishRequestAdmin {
@@ -39,6 +40,13 @@ class AppPublishRequestAdmin {
   final String? ipaUrl;
   final String? logoUrl;
 
+  /// Latest CI build job for this app + platform.
+  ///
+  /// SUPER_ADMIN only — the backend never puts these on the owner-facing DTO.
+  final String? buildStatus; // QUEUED / RUNNING / SUCCESS / FAILED
+  final int? ciRunNumber;
+  final String? ciRunUrl;
+
 
   const AppPublishRequestAdmin({
     required this.id,
@@ -68,7 +76,18 @@ class AppPublishRequestAdmin {
     this.bundleUrl,
     this.ipaUrl,
     this.logoUrl,
+    this.buildStatus,
+    this.ciRunNumber,
+    this.ciRunUrl,
   });
 
   bool get isSubmitted => status.toUpperCase() == 'SUBMITTED';
+
+  CiRunInfo get ciRunInfo => CiRunInfo(
+        buildStatus: buildStatus,
+        ciRunNumber: ciRunNumber,
+        ciRunUrl: ciRunUrl,
+      );
+
+  bool get showCiRunLink => ciRunInfo.showLink;
 }
