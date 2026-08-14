@@ -1,7 +1,7 @@
 name: build4all_manager
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.0.0+19
+version: 1.1.0+20
 
 
 environment:
@@ -96,6 +96,7 @@ flutter_icons:
   image_path: "assets/icon/app_icon.png"
   adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/icon/app_icon.png"
+
   web:
     generate: true
     image_path: "assets/icon/app_icon.png"
