@@ -1,15 +1,12 @@
-import 'package:build4all_manager/core/config/app_boot_guard.dart';
+import 'dart:async';
+
+import 'package:build4all_manager/core/bootstrap/app_bootstrap.dart';
 import 'package:build4all_manager/core/localization/locale_cubit.dart';
 import 'package:build4all_manager/core/localization/locale_storage.dart';
 import 'package:build4all_manager/core/network/connecting/connection_banner.dart';
 import 'package:build4all_manager/core/network/connecting/connection_cubit.dart';
 import 'package:build4all_manager/core/network/connecting/server_down_overlay.dart';
-import 'package:build4all_manager/core/network/dio_client.dart';
-import 'package:build4all_manager/core/notifications/local_notification_service.dart';
-import 'package:build4all_manager/features/auth/data/datasources/jwt_local_datasource.dart';
 import 'package:build4all_manager/l10n/app_localizations.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,102 +15,46 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:build4all_manager/app/router/router.dart' as nav;
 import 'package:build4all_manager/features/theme_manager/data/local_theme_store.dart';
 import 'package:build4all_manager/features/theme_manager/presentation/theme_cubit.dart';
-import 'firebase_options.dart';
 
-Future<void> _initFirebase() async {
-  if (kIsWeb) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    return;
-  }
+Future<void> main() {
+  if (!kReleaseMode) return _boot();
 
-  if (defaultTargetPlatform == TargetPlatform.android) {
-    await Firebase.initializeApp();
-    return;
-  }
+  // A release build must leave the console empty. Our own logging is gone, but
+  // three things keep writing there on their own — and on the web every one of
+  // them is a devtools tab away from any user:
+  //
+  //  * `debugPrint`, which the framework and plugins call directly and which
+  //    is *not* stripped from release builds,
+  //  * framework and uncaught async errors, dumped with a full stack trace,
+  //  * a plain console call from a third-party package.
+  //
+  // The app ships no crash reporting, so nothing downstream needs these.
+  debugPrint = (String? message, {int? wrapWidth}) {};
+  FlutterError.onError = (FlutterErrorDetails details) {};
+  PlatformDispatcher.instance.onError = (error, stack) => true;
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  // The binding has to be initialised in the same zone that later calls
+  // runApp(), so the whole boot runs inside the swallowing zone.
+  return runZoned(
+    _boot,
+    zoneSpecification: ZoneSpecification(
+      print: (self, parent, zone, line) {},
+    ),
   );
 }
 
-Future<void> main() async {
+Future<void> _boot() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  try {
-    await DioClient.init();
-  } catch (e) {
-    debugPrint('DioClient.init failed => $e');
-  }
-
-  // VERY IMPORTANT:
-  // Run boot guard BEFORE restoring token, so it cannot clear session later
-  // after the app has already started making requests.
-  try {
-    await AppBootGuard.run(
-      currentApiBaseUrl: DioClient.ensure().options.baseUrl,
-    );
-  } catch (e) {
-    debugPrint('AppBootGuard.run failed => $e');
-  }
-
-  try {
-    await _initFirebase();
-  } catch (e) {
-    debugPrint('Firebase init failed => $e');
-  }
-
-  try {
-    await LocalNotificationService().init();
-  } catch (e) {
-    debugPrint('LocalNotificationService.init failed => $e');
-  }
-
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-    final title =
-        message.notification?.title ??
-        message.data['title']?.toString() ??
-        'Build4All Manager';
-
-    final body =
-        message.notification?.body ??
-        message.data['body']?.toString() ??
-        'You have a new notification';
-
-    debugPrint('Foreground FCM received => title=$title, body=$body');
-
-    // iOS shows foreground notifications natively via setForegroundNotificationPresentationOptions;
-    // showing a local notification on top would cause duplicates.
-    if (kIsWeb || defaultTargetPlatform != TargetPlatform.iOS) {
-      try {
-        await LocalNotificationService().show(
-          title: title,
-          body: body,
-        );
-      } catch (e) {
-        debugPrint('Local foreground notification show failed => $e');
-      }
-    }
-  });
-
-  try {
-    final jwt = JwtLocalDataSource();
-    final (token, _) = await jwt.read();
-
-    if (token.trim().isNotEmpty) {
-      DioClient.setToken(token.trim());
-    } else {
-      DioClient.clearToken();
-    }
-  } catch (e) {
-    debugPrint('Restore token failed => $e');
-    try {
-      DioClient.clearToken();
-    } catch (_) {}
-  }
+  // Only local, no-network setup is awaited here — every await before
+  // runApp() is time the user spends looking at the splash screen.
+  await AppBootstrap.initLocal();
 
   runApp(const Build4AllManagerApp());
+
+  // Firebase / push / local notifications talk to the network and are not
+  // needed to render the first screen, so they boot alongside the UI.
+  unawaited(AppBootstrap.initBackgroundServices());
 }
 
 class Build4AllManagerApp extends StatelessWidget {
@@ -125,9 +66,7 @@ class Build4AllManagerApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ThemeCubit(LocalThemeStore())..load()),
         BlocProvider(
-          create: (_) => ConnectionCubit(
-            baseUrl: DioClient.ensure().options.baseUrl,
-          ),
+          create: (_) => ConnectionCubit(),
         ),
         BlocProvider(
           create: (_) => LocaleCubit(LocaleStorage())..loadSavedLocale(),

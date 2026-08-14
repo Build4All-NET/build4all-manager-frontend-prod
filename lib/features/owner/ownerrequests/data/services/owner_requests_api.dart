@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:build4all_manager/core/utils/upload_safe_image_normalizer.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart' show XFile;
 
 import '../models/currency_model.dart';
 
@@ -42,7 +42,15 @@ class OwnerRequestApi {
     throw Exception('Unexpected currencies response (expected List).');
   }
 
-  Future<void> submitOwnerRequest({
+  /// Creates the app and returns its `ownerProjectLinkId` (aup_id).
+  ///
+  /// The id matters now that an app can be pointed at a WooCommerce store:
+  /// the owner's token still refers to whichever app they were on before, so
+  /// the follow-up call to
+  /// `POST /api/owner/projects/woocommerce/apps/{linkId}/setup` has to name
+  /// the new app explicitly. Returns null if the backend response omits it,
+  /// which callers should treat as "app created, Woo not configured".
+  Future<int?> submitOwnerRequest({
   required int ownerId,
   required int projectId,
   required String appName,
@@ -60,7 +68,7 @@ class OwnerRequestApi {
   String? apiBaseUrlOverride,
   String? themeId,
   String? slug,
-  File? logoFile,
+  XFile? logoFile,
 }) async {
   _ensureValidJson(navJson, 'navJson');
   _ensureValidJson(homeJson, 'homeJson');
@@ -111,33 +119,25 @@ class OwnerRequestApi {
     form.files.add(
       MapEntry(
         'logo',
-        await MultipartFile.fromFile(
-          safeLogo.path,
-          filename: safeLogo.uri.pathSegments.isNotEmpty
-              ? safeLogo.uri.pathSegments.last
-              : 'logo.jpg',
+        MultipartFile.fromBytes(
+          await safeLogo.readAsBytes(),
+          filename: safeLogo.name.isNotEmpty ? safeLogo.name : 'logo.jpg',
         ),
       ),
     );
   }
 
-  try {
-    final res = await dio.post(
-      url,
-      data: form,
-    );
+  final res = await dio.post(
+    url,
+    data: form,
+  );
 
-    print('AUTO BOTH STATUS => ${res.statusCode}');
-    print('AUTO BOTH DATA => ${res.data}');
-  } on DioException catch (e) {
-    print('AUTO BOTH URL => $url');
-    print('AUTO BOTH STATUS => ${e.response?.statusCode}');
-    print('AUTO BOTH DATA => ${e.response?.data}');
-    print('AUTO BOTH MESSAGE => ${e.message}');
-    rethrow;
-  } catch (e) {
-    print('AUTO BOTH UNKNOWN ERROR => $e');
-    rethrow;
+  final data = res.data;
+  if (data is Map) {
+    final raw = data['ownerProjectLinkId'];
+    if (raw is int) return raw;
+    if (raw != null) return int.tryParse(raw.toString());
   }
+  return null;
 }
 }

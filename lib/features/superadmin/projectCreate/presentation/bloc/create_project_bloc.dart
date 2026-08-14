@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:build4all_manager/core/events/app_events.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 
 import '../../domain/usecases/create_project_usecase.dart';
@@ -47,6 +48,10 @@ class CreateProjectBloc extends Bloc<CreateProjectEvent, CreateProjectState> {
       );
 
       emit(CreateProjectSuccess(project));
+
+      // The dashboard and the projects list live on other tabs and stay
+      // mounted, so they only learn about the new project from here.
+      AppEvents.notifyProjectsChanged();
     } catch (err) {
       emit(CreateProjectFailure(ApiErrorHandler.message(err)));
     }

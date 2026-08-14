@@ -143,9 +143,7 @@ class ProjectTile extends StatelessWidget {
         subject: label,
         sharePositionOrigin: origin,
       );
-    } catch (e, st) {
-      debugPrint('Share failed: $e');
-      debugPrint('$st');
+    } catch (e) {
       AppToast.error(context, '${l10n.owner_project_err_share_failed}: $e');
     }
   }
@@ -360,6 +358,8 @@ class ProjectTile extends StatelessWidget {
 
     final iosUrl = _abs(project.ipaUrl);
     final iosHasArtifact = iosUrl.isNotEmpty;
+
+    final webUrl = _abs(project.webUrl);
 
     final androidBuildFromModel = _normalizeBuildStatus(
       project.androidBuildStatus,
@@ -668,6 +668,84 @@ class ProjectTile extends StatelessWidget {
               ],
             ),
           ),
+
+          // The storefront site is a link, not an installable artifact, so it
+          // gets a slim strip instead of a platform card. Hidden entirely until
+          // a web build has produced a URL.
+          if (webUrl.isNotEmpty) ...[
+            Divider(height: 1, color: cs.outlineVariant.withOpacity(.7)),
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                small ? 8 : 10,
+                small ? 6 : 8,
+                small ? 8 : 10,
+                small ? 8 : 10,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.language_rounded,
+                    size: small ? 18 : 20,
+                    color: const Color(0xFF7C3AED),
+                  ),
+                  SizedBox(width: small ? 8 : 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          l10n.owner_project_website,
+                          style: TextStyle(
+                            fontSize: small ? 12 : 13,
+                            fontWeight: FontWeight.w700,
+                            color: cs.onSurface,
+                          ),
+                        ),
+
+                        const SizedBox(height: 2),
+
+                        Text(
+                          l10n.owner_project_website_hint,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: small ? 11 : 12,
+                            color: cs.onSurfaceVariant,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: small ? 6 : 8),
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
+                    splashRadius: 18,
+                    tooltip: l10n.common_copy,
+                    onPressed: () => _copyLink(context, webUrl),
+                    icon: Icon(Icons.copy_rounded, size: small ? 18 : 20),
+                  ),
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
+                    splashRadius: 18,
+                    tooltip: l10n.common_share,
+                    onPressed: () => _shareLink(
+                      context,
+                      webUrl,
+                      l10n.owner_project_website_hint,
+                    ),
+                    icon: Icon(Icons.share_rounded, size: small ? 18 : 20),
+                  ),
+                  TextButton.icon(
+                    onPressed: () => _openUrl(context, webUrl),
+                    icon: Icon(Icons.open_in_new_rounded, size: small ? 16 : 18),
+                    label: Text(l10n.common_open),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ],
       ),
     );

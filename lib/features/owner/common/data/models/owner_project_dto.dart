@@ -13,6 +13,7 @@ class OwnerProjectDto {
   final String appName;
   final String? ipaUrl;
   final String? bundleUrl;
+  final String? webUrl;
 
   final String? logoUrl;
   final String? androidPackageName;
@@ -34,6 +35,7 @@ class OwnerProjectDto {
     required this.appName,
     this.ipaUrl,
     this.bundleUrl,
+    this.webUrl,
     this.logoUrl,
     this.androidPackageName,
     this.iosBundleId,
@@ -98,6 +100,7 @@ class OwnerProjectDto {
       appName: _asString(j['appName'] ?? j['displayName']),
       ipaUrl: _asNullableString(j['ipaUrl'] ?? j['ipa_url']),
       bundleUrl: _asNullableString(j['bundleUrl'] ?? j['bundle_url']),
+      webUrl: _asNullableString(j['webUrl'] ?? j['web_url']),
       logoUrl: logo,
       androidPackageName: _asNullableString(
         j['androidPackageName'] ??
@@ -125,6 +128,7 @@ class OwnerProjectDto {
         appName: appName,
         ipaUrl: ipaUrl,
         bundleUrl: bundleUrl,
+        webUrl: webUrl,
         logoUrl: logoUrl,
         androidPackageName: androidPackageName,
         iosBundleId: iosBundleId,

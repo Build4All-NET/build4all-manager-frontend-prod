@@ -1,8 +1,9 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:build4all_manager/l10n/app_localizations.dart';
+import 'package:build4all_manager/shared/widgets/x_file_image.dart';
+import 'package:image_picker/image_picker.dart' show XFile;
 
 import '../../data/models/currency_model.dart';
 import 'palette_builder.dart';
@@ -10,7 +11,7 @@ import 'palette_builder.dart';
 class PhonePreview extends StatelessWidget {
   final String appName;
   final ThemeDraft draft;
-  final File? logoFile;
+  final XFile? logoFile;
   final CurrencyModel? currency;
 
   final String navJson;
@@ -264,7 +265,7 @@ class _Header extends StatelessWidget {
   final String appName;
   final Color headerColor;
   final String menuType;
-  final File? logoFile;
+  final XFile? logoFile;
 
   const _Header({
     required this.appName,
@@ -283,7 +284,7 @@ class _Header extends StatelessWidget {
     if (logoFile != null) {
       logo = ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Image.file(
+        child: XFileImage(
           logoFile!,
           width: 28,
           height: 28,

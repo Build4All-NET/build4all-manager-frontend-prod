@@ -1800,6 +1800,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get owner_project_ios => 'iOS';
 
   @override
+  String get owner_project_website => 'الموقع الإلكتروني';
+
+  @override
+  String get owner_project_website_hint => 'تطبيقك لديه أيضاً موقع إلكتروني. شارك هذا الرابط مع زبائنك.';
+
+  @override
   String get owner_project_apk => 'APK';
 
   @override
@@ -1981,15 +1987,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contact_support_title => 'التواصل مع الدعم';
 
   @override
-  String get open_ticket_title => 'فتح تذكرة';
-
-  @override
-  String get open_ticket_subtitle => 'أرسل مشكلة إلى فريق الدعم لدينا';
-
-  @override
-  String get open_ticket_failed => 'تعذّر فتح بوابة التذاكر.';
-
-  @override
   String get contact_support_subtitle => 'تواصل معنا عبر واتساب';
 
   @override
@@ -1997,6 +1994,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get contact_support_unavailable => 'خدمة الدعم غير متاحة حالياً.';
+
+  @override
+  String get open_ticket_title => 'فتح تذكرة';
+
+  @override
+  String get open_ticket_subtitle => 'أرسل مشكلة إلى فريق الدعم لدينا';
+
+  @override
+  String get open_ticket_failed => 'تعذّر فتح بوابة التذاكر.';
 
   @override
   String get owner_profile_edit_title => 'تعديل الملف الشخصي';
@@ -2126,38 +2132,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get hintPasswordRuleOwner => 'كلمة المرور يجب أن تكون على الأقل 6 أحرف.';
-
-  @override
-  String get lblConfirmPassword => 'تأكيد كلمة المرور';
-
-  @override
-  String get hintConfirmPassword => 'أعد إدخال كلمة المرور';
-
-  @override
-  String get errConfirmPasswordRequired => 'يرجى تأكيد كلمة المرور';
-
-  @override
-  String get errPasswordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
-
-  @override
-  String get forgotPasswordTitle => 'إعادة تعيين كلمة المرور';
-
-  @override
-  String get forgotPasswordEmailSubtitle =>
-      'أدخل البريد الإلكتروني لحسابك وسنرسل لك رمزًا مكونًا من 6 أرقام لإعادة تعيين كلمة المرور.';
-
-  @override
-  String get lblNewPassword => 'كلمة المرور الجديدة';
-
-  @override
-  String get hintNewPassword => 'أدخل كلمة المرور الجديدة';
-
-  @override
-  String get btnResetPassword => 'إعادة تعيين كلمة المرور';
-
-  @override
-  String get msgPasswordResetSuccess =>
-      'تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول.';
 
   @override
   String get owner_projects_filter_platform_ready => 'جاهزية المنصة';
@@ -3692,4 +3666,133 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'تم إعادة تنشيط حسابك بنجاح. إذا لم تكن أنت من طلب الحذف، نوصي بتغيير كلمة المرور الخاصة بك كإجراء أمني.';
+
+  @override
+  String get lblConfirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get hintConfirmPassword => 'أعد إدخال كلمة المرور';
+
+  @override
+  String get errConfirmPasswordRequired => 'يرجى تأكيد كلمة المرور';
+
+  @override
+  String get errPasswordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get forgotPasswordTitle => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get forgotPasswordEmailSubtitle => 'أدخل البريد الإلكتروني لحسابك وسنرسل لك رمزًا مكونًا من 6 أرقام لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get lblNewPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get hintNewPassword => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get btnResetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get msgPasswordResetSuccess => 'تمت إعادة تعيين كلمة المرور بنجاح. يرجى تسجيل الدخول.';
+
+  @override
+  String get owner_request_tab_commerce => 'المتجر';
+
+  @override
+  String get owner_request_commerce_title => 'من وين بتيجي المنتجات؟';
+
+  @override
+  String get owner_request_commerce_subtitle => 'اختر اللي بيناسب طريقة شغلك الحالية. ما بينفع يتغيّر بعدين.';
+
+  @override
+  String get owner_request_commerce_build4all => 'بيع عبر Build4All';
+
+  @override
+  String get owner_request_commerce_build4all_hint => 'كتالوجك بيعيش هون';
+
+  @override
+  String get owner_request_commerce_woo => 'اربط متجر WooCommerce تبعي';
+
+  @override
+  String get owner_request_commerce_woo_hint => 'WordPress بيضلّ مصدر الحقيقة';
+
+  @override
+  String get owner_request_woo_store_url => 'رابط المتجر';
+
+  @override
+  String get owner_request_woo_store_url_hint => 'https://shop.example.com';
+
+  @override
+  String get owner_request_woo_consumer_key => 'Consumer key';
+
+  @override
+  String get owner_request_woo_consumer_secret => 'Consumer secret';
+
+  @override
+  String get owner_request_woo_keys_help => 'لوحة WordPress ← WooCommerce ← Settings ← Advanced ← REST API ← Add key (Read/Write).';
+
+  @override
+  String get owner_request_woo_test => 'اختبار الاتصال';
+
+  @override
+  String get owner_request_woo_testing => 'عم يجرّب…';
+
+  @override
+  String get owner_request_woo_test_ok => 'تم الاتصال بالمتجر';
+
+  @override
+  String owner_request_woo_test_failed(String reason) {
+    return 'ما قدرنا نتصل: $reason';
+  }
+
+  @override
+  String get owner_request_woo_err_fields => 'رابط المتجر والمفاتيح كلهن مطلوبين';
+
+  @override
+  String get owner_request_woo_err_untested => 'جرّب الاتصال بالمتجر قبل الإرسال';
+
+  @override
+  String get owner_request_woo_readonly_note => 'المنتجات والمخزون والطلبات رح تتدار من WooCommerce، مش من هون.';
+
+  @override
+  String owner_request_woo_link_failed(String reason) {
+    return 'انشأ التطبيق، بس ربط المتجر فشل: $reason';
+  }
+
+  @override
+  String get owner_request_commerce_recommended => 'موصى به';
+
+  @override
+  String get owner_request_commerce_b4a_pro1 => 'ما في شي تثبّتو، بيشتغل فوراً';
+
+  @override
+  String get owner_request_commerce_b4a_pro2 => 'المنتجات والمخزون والطلبات والكوبونات كلها بتتعدّل من هون';
+
+  @override
+  String get owner_request_commerce_b4a_con1 => 'كتالوج موقعك الحالي ما بينستورد';
+
+  @override
+  String get owner_request_commerce_woo_pro1 => 'المنتجات والأسعار والمخزون بتتزامن من موقعك';
+
+  @override
+  String get owner_request_commerce_woo_pro2 => 'طلبات التطبيق بتظهر بـ WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_con1 => 'المنتجات للقراءة فقط هون — عدّلها بـ WordPress';
+
+  @override
+  String owner_request_woo_test_ok_counts(String products, String categories) {
+    return 'تم الاتصال — $products منتج و$categories تصنيف';
+  }
+
+  @override
+  String get owner_request_submit_connect => 'اتصال';
+
+  @override
+  String get owner_request_submit_connect_first => 'اربط متجرك لتكمّل';
+
+  @override
+  String get owner_request_submit_store_details => 'عبّي رابط المتجر ومفاتيح الـ API';
 }

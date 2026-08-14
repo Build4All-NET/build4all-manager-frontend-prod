@@ -1800,6 +1800,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get owner_project_ios => 'iOS';
 
   @override
+  String get owner_project_website => 'Site web';
+
+  @override
+  String get owner_project_website_hint => 'Votre application dispose aussi d\'un site web. Partagez ce lien avec vos clients.';
+
+  @override
   String get owner_project_apk => 'APK';
 
   @override
@@ -1981,17 +1987,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get contact_support_title => 'Contacter le support';
 
   @override
-  String get open_ticket_title => 'Ouvrir un ticket';
-
-  @override
-  String get open_ticket_subtitle =>
-      'Soumettez un problème à notre équipe d\'assistance';
-
-  @override
-  String get open_ticket_failed =>
-      'Impossible d\'ouvrir le portail des tickets.';
-
-  @override
   String get contact_support_subtitle => 'Discutez avec nous sur WhatsApp';
 
   @override
@@ -1999,6 +1994,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get contact_support_unavailable => 'Le support n\'est pas disponible pour le moment.';
+
+  @override
+  String get open_ticket_title => 'Ouvrir un ticket';
+
+  @override
+  String get open_ticket_subtitle => 'Soumettez un problème à notre équipe d\'assistance';
+
+  @override
+  String get open_ticket_failed => 'Impossible d\'ouvrir le portail des tickets.';
 
   @override
   String get owner_profile_edit_title => 'Modifier le profil';
@@ -2128,40 +2132,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get hintPasswordRuleOwner => 'Le mot de passe doit contenir au moins 6 caractères.';
-
-  @override
-  String get lblConfirmPassword => 'Confirmer le mot de passe';
-
-  @override
-  String get hintConfirmPassword => 'Saisissez à nouveau votre mot de passe';
-
-  @override
-  String get errConfirmPasswordRequired =>
-      'Veuillez confirmer votre mot de passe';
-
-  @override
-  String get errPasswordsDoNotMatch =>
-      'Les mots de passe ne correspondent pas';
-
-  @override
-  String get forgotPasswordTitle => 'Réinitialiser le mot de passe';
-
-  @override
-  String get forgotPasswordEmailSubtitle =>
-      'Saisissez l\'e-mail de votre compte et nous vous enverrons un code à 6 chiffres pour réinitialiser votre mot de passe.';
-
-  @override
-  String get lblNewPassword => 'Nouveau mot de passe';
-
-  @override
-  String get hintNewPassword => 'Saisissez votre nouveau mot de passe';
-
-  @override
-  String get btnResetPassword => 'Réinitialiser le mot de passe';
-
-  @override
-  String get msgPasswordResetSuccess =>
-      'Mot de passe réinitialisé avec succès. Veuillez vous connecter.';
 
   @override
   String get owner_projects_filter_platform_ready => 'Plateforme prête';
@@ -3696,4 +3666,133 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get accountReactivatedSuccessfully => 'Compte réactivé avec succès';
+
+  @override
+  String get lblConfirmPassword => 'Confirmer le mot de passe';
+
+  @override
+  String get hintConfirmPassword => 'Saisissez à nouveau votre mot de passe';
+
+  @override
+  String get errConfirmPasswordRequired => 'Veuillez confirmer votre mot de passe';
+
+  @override
+  String get errPasswordsDoNotMatch => 'Les mots de passe ne correspondent pas';
+
+  @override
+  String get forgotPasswordTitle => 'Réinitialiser le mot de passe';
+
+  @override
+  String get forgotPasswordEmailSubtitle => 'Saisissez l\'e-mail de votre compte et nous vous enverrons un code à 6 chiffres pour réinitialiser votre mot de passe.';
+
+  @override
+  String get lblNewPassword => 'Nouveau mot de passe';
+
+  @override
+  String get hintNewPassword => 'Saisissez votre nouveau mot de passe';
+
+  @override
+  String get btnResetPassword => 'Réinitialiser le mot de passe';
+
+  @override
+  String get msgPasswordResetSuccess => 'Mot de passe réinitialisé avec succès. Veuillez vous connecter.';
+
+  @override
+  String get owner_request_tab_commerce => 'Boutique';
+
+  @override
+  String get owner_request_commerce_title => 'D\'où viennent les produits ?';
+
+  @override
+  String get owner_request_commerce_subtitle => 'Choisissez ce qui correspond à votre façon de travailler. Ce réglage ne pourra plus être modifié.';
+
+  @override
+  String get owner_request_commerce_build4all => 'Vendre avec Build4All';
+
+  @override
+  String get owner_request_commerce_build4all_hint => 'Votre catalogue vit ici';
+
+  @override
+  String get owner_request_commerce_woo => 'Connecter ma boutique WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_hint => 'WordPress reste la source de vérité';
+
+  @override
+  String get owner_request_woo_store_url => 'URL de la boutique';
+
+  @override
+  String get owner_request_woo_store_url_hint => 'https://shop.example.com';
+
+  @override
+  String get owner_request_woo_consumer_key => 'Clé client';
+
+  @override
+  String get owner_request_woo_consumer_secret => 'Secret client';
+
+  @override
+  String get owner_request_woo_keys_help => 'Admin WordPress → WooCommerce → Réglages → Avancé → REST API → Ajouter une clé (Lecture/Écriture).';
+
+  @override
+  String get owner_request_woo_test => 'Tester la connexion';
+
+  @override
+  String get owner_request_woo_testing => 'Test en cours…';
+
+  @override
+  String get owner_request_woo_test_ok => 'Connecté à la boutique';
+
+  @override
+  String owner_request_woo_test_failed(String reason) {
+    return 'Échec de connexion : $reason';
+  }
+
+  @override
+  String get owner_request_woo_err_fields => 'URL de la boutique, clé et secret sont tous requis';
+
+  @override
+  String get owner_request_woo_err_untested => 'Testez la connexion avant de soumettre';
+
+  @override
+  String get owner_request_woo_readonly_note => 'Produits, stock et commandes seront gérés dans WooCommerce, pas ici.';
+
+  @override
+  String owner_request_woo_link_failed(String reason) {
+    return 'Application créée, mais la liaison a échoué : $reason';
+  }
+
+  @override
+  String get owner_request_commerce_recommended => 'Recommandé';
+
+  @override
+  String get owner_request_commerce_b4a_pro1 => 'Rien à installer, fonctionne immédiatement';
+
+  @override
+  String get owner_request_commerce_b4a_pro2 => 'Produits, stock, commandes et coupons modifiables ici';
+
+  @override
+  String get owner_request_commerce_b4a_con1 => 'Le catalogue d\'un site existant n\'est pas importé';
+
+  @override
+  String get owner_request_commerce_woo_pro1 => 'Produits, prix et stock synchronisés depuis votre site';
+
+  @override
+  String get owner_request_commerce_woo_pro2 => 'Les commandes de l\'app apparaissent dans WooCommerce';
+
+  @override
+  String get owner_request_commerce_woo_con1 => 'Produits en lecture seule ici — modifiez-les dans WordPress';
+
+  @override
+  String owner_request_woo_test_ok_counts(String products, String categories) {
+    return 'Connecté — $products produits, $categories catégories';
+  }
+
+  @override
+  String get owner_request_submit_connect => 'Connecter';
+
+  @override
+  String get owner_request_submit_connect_first => 'Connectez votre boutique pour continuer';
+
+  @override
+  String get owner_request_submit_store_details => 'Renseignez l\'URL et les clés API de la boutique';
 }

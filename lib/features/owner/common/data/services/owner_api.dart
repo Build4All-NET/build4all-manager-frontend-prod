@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 import '../models/app_config_dto.dart';
 import '../models/app_request_dto.dart';
@@ -29,10 +28,6 @@ class OwnerApi {
     final r = await dio.get('/owner/my-apps');
 
     final list = (r.data as List).cast<Map<String, dynamic>>();
-
-    if (kDebugMode) {
-      debugPrint('MY_APPS count => ${list.length}');
-    }
 
     return list.map(OwnerProjectDto.fromJson).toList();
   }

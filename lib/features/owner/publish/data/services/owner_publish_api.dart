@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart' show XFile;
 import '../../domain/entities/publish_draft.dart';
 
 class OwnerPublishApi {
@@ -71,8 +71,8 @@ class OwnerPublishApi {
   /// - screenshots: MultipartFile[]? (optional)
   Future<PublishDraft> uploadAssets({
     required int requestId,
-    File? appIcon,
-    List<File>? screenshots,
+    XFile? appIcon,
+    List<XFile>? screenshots,
   }) async {
     final form = FormData();
 
@@ -80,9 +80,9 @@ class OwnerPublishApi {
       form.files.add(
         MapEntry(
           'appIcon',
-          await MultipartFile.fromFile(
-            appIcon.path,
-            filename: appIcon.path.split('/').last,
+          MultipartFile.fromBytes(
+            await appIcon.readAsBytes(),
+            filename: appIcon.name,
           ),
         ),
       );
@@ -93,9 +93,9 @@ class OwnerPublishApi {
         form.files.add(
           MapEntry(
             'screenshots',
-            await MultipartFile.fromFile(
-              f.path,
-              filename: f.path.split('/').last,
+            MultipartFile.fromBytes(
+              await f.readAsBytes(),
+              filename: f.name,
             ),
           ),
         );

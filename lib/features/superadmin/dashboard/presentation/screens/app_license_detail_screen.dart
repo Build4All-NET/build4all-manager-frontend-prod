@@ -593,7 +593,9 @@ class _AppLicenseDetailScreenState extends State<AppLicenseDetailScreen> {
       case 'paypal':
         return 'PayPal';
       case 'mpgs':
-        return 'MPGS';
+        // MPGS is the acquiring gateway's technical code — every surface
+        // shows the card option as "Pay by Card".
+        return 'Pay by Card';
       case 'cash':
       case 'manual':
         return 'Cash';

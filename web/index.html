@@ -16,23 +16,314 @@
   -->
   <base href="$FLUTTER_BASE_HREF">
 
+  <!--
+    Console silencing, first thing on the page so it is in place before the
+    engine or any SDK can log.
+
+    The Dart side is already silent (see main.dart), but that only covers Dart.
+    The Firebase JS SDK, the Flutter bootstrap and the service worker call
+    console.* straight from JavaScript, and on a deployed build any user can
+    read that in devtools.
+
+    Scope, so nobody expects more than this actually does:
+      * this silences console.* calls only;
+      * messages the browser itself emits — "Failed to load resource", CORS,
+        mixed content, [Intervention] — do not go through the console API and
+        keep appearing, and nothing on a page can stop them.
+
+    localhost keeps its console so `flutter run -d chrome` stays debuggable.
+  -->
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      if (host === 'localhost' || host === '127.0.0.1' || host === '') return;
+      if (!window.console) return;
+
+      var noop = function () {};
+      var methods = [
+        'log', 'info', 'warn', 'error', 'debug', 'trace', 'dir', 'dirxml',
+        'table', 'group', 'groupCollapsed', 'groupEnd', 'time', 'timeLog',
+        'timeEnd', 'assert', 'count', 'countReset', 'profile', 'profileEnd'
+      ];
+
+      for (var i = 0; i < methods.length; i++) {
+        if (typeof window.console[methods[i]] === 'function') {
+          window.console[methods[i]] = noop;
+        }
+      }
+    })();
+  </script>
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Build4All owner manager app.">
+  <meta name="theme-color" content="#16A34A">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="build4all_manager">
+  <meta name="apple-mobile-web-app-title" content="Build4All">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>build4all_manager</title>
+  <!--
+    Open the TCP/TLS connections to the hosts we are about to hit while the
+    HTML is still parsing, instead of paying DNS + TLS only after
+    main.dart.js has already been requested.
+      * gstatic.com -> CanvasKit (not needed when built with --no-web-resources-cdn)
+      * fonts.*     -> google_fonts downloads Inter at runtime
+  -->
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- The splash logo is the first pixel the user sees; fetch it first. -->
+  <link rel="preload" as="image" href="icons/Icon-192.png">
+
+  <title>Build4All Manager</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    :root {
+      --b4a-brand: #16A34A;
+      --b4a-bg: #F8FAFC;
+      --b4a-surface: #FFFFFF;
+      --b4a-text: #0F172A;
+      --b4a-muted: #64748B;
+      --b4a-track: #E2E8F0;
+      --b4a-border: rgba(15, 23, 42, .08);
+      --b4a-shadow: 0 18px 45px rgba(15, 23, 42, .10);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --b4a-bg: #0F1115;
+        --b4a-surface: #151923;
+        --b4a-text: #E8EDF5;
+        --b4a-muted: #94A3B8;
+        --b4a-track: #232A38;
+        --b4a-border: rgba(255, 255, 255, .07);
+        --b4a-shadow: 0 18px 45px rgba(0, 0, 0, .45);
+      }
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--b4a-bg);
+    }
+
+    /* Full-screen branded splash, shown until Flutter paints its first frame. */
+    #b4a-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+      background: var(--b4a-bg);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      opacity: 1;
+      transition: opacity .28s ease;
+    }
+
+    #b4a-splash.b4a-hiding { opacity: 0; pointer-events: none; }
+
+    .b4a-card {
+      width: 100%;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 32px 26px 28px;
+      box-sizing: border-box;
+      background: var(--b4a-surface);
+      border: 1px solid var(--b4a-border);
+      border-radius: 22px;
+      box-shadow: var(--b4a-shadow);
+    }
+
+    .b4a-logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      object-fit: contain;
+      animation: b4a-breathe 2.4s ease-in-out infinite;
+    }
+
+    @keyframes b4a-breathe {
+      0%, 100% { transform: scale(1);    opacity: 1;   }
+      50%      { transform: scale(.945); opacity: .82; }
+    }
+
+    .b4a-title {
+      margin: 18px 0 0;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -.2px;
+      color: var(--b4a-text);
+    }
+
+    /*
+      Indeterminate bar. We cannot know the real download size up front, so we
+      deliberately never show a fake percentage — only honest motion plus the
+      status text below.
+    */
+    .b4a-track {
+      position: relative;
+      width: 100%;
+      height: 4px;
+      margin: 22px 0 0;
+      border-radius: 999px;
+      background: var(--b4a-track);
+      overflow: hidden;
+    }
+
+    .b4a-track::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 42%;
+      border-radius: 999px;
+      background: linear-gradient(90deg,
+                  rgba(22, 163, 74, 0) 0%,
+                  var(--b4a-brand) 45%,
+                  var(--b4a-brand) 55%,
+                  rgba(22, 163, 74, 0) 100%);
+      animation: b4a-slide 1.25s cubic-bezier(.45, 0, .55, 1) infinite;
+    }
+
+    @keyframes b4a-slide {
+      0%   { transform: translateX(-105%); }
+      100% { transform: translateX(240%);  }
+    }
+
+    .b4a-status {
+      margin: 14px 0 0;
+      min-height: 34px;
+      font-size: 13px;
+      line-height: 1.35;
+      white-space: pre-line;
+      color: var(--b4a-muted);
+    }
+
+    .b4a-reload {
+      display: none;
+      margin: 14px 0 0;
+      padding: 9px 20px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: var(--b4a-brand);
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .b4a-reload:hover { filter: brightness(1.06); }
+    .b4a-reload.b4a-visible { display: inline-block; }
+
+    /* Respect users who asked their OS to stop animations. */
+    @media (prefers-reduced-motion: reduce) {
+      .b4a-logo { animation: none; }
+      .b4a-track::after { animation-duration: 2.5s; }
+      #b4a-splash { transition: none; }
+    }
+  </style>
 </head>
 <body>
+  <div id="b4a-splash" role="status" aria-live="polite">
+    <div class="b4a-card">
+      <img class="b4a-logo" src="icons/Icon-192.png" alt="Build4All" width="76" height="76">
+      <h1 class="b4a-title">Build4All Manager</h1>
+      <div class="b4a-track" role="progressbar" aria-label="Loading"></div>
+      <p class="b4a-status" id="b4a-status">Starting up…</p>
+      <button class="b4a-reload" id="b4a-reload" type="button">Reload</button>
+    </div>
+  </div>
+
+  <noscript>
+    <p style="font-family: sans-serif; text-align: center; padding: 24px;">
+      Build4All Manager needs JavaScript enabled to run.
+    </p>
+  </noscript>
+
+  <script>
+    (function () {
+      var splash = document.getElementById('b4a-splash');
+      var status = document.getElementById('b4a-status');
+      var reload = document.getElementById('b4a-reload');
+      if (!splash) return;
+
+      var started = Date.now();
+      var done = false;
+      var observer = null;
+
+      // Escalating, honest status messages: the user always knows the app is
+      // alive, and after ~25s they get a way out instead of a frozen screen.
+      var stages = [
+        { at: 3000,  text: 'Downloading the application…' },
+        { at: 10000, text: 'Almost there — preparing the interface…' },
+        { at: 25000, text: 'This is taking longer than usual.\nYour connection looks slow.', showReload: true },
+        { at: 60000, text: 'Still loading. Check your internet connection\nand reload the page.', showReload: true }
+      ];
+
+      var timers = stages.map(function (stage) {
+        return setTimeout(function () {
+          if (done) return;
+          status.textContent = stage.text;
+          if (stage.showReload) reload.classList.add('b4a-visible');
+        }, stage.at);
+      });
+
+      reload.addEventListener('click', function () {
+        window.location.reload();
+      });
+
+      function hide(graceMs) {
+        if (done) return;
+        done = true;
+        timers.forEach(clearTimeout);
+        if (observer) observer.disconnect();
+
+        // Hold the splash for a beat on very fast loads so it reads as a
+        // deliberate splash instead of a flash of unstyled content.
+        var wait = Math.max(graceMs || 0, 350 - (Date.now() - started));
+
+        setTimeout(function () {
+          splash.classList.add('b4a-hiding');
+          setTimeout(function () {
+            if (splash.parentNode) splash.parentNode.removeChild(splash);
+          }, 320);
+        }, wait);
+      }
+
+      // Primary signal: the Flutter engine dispatches this once it has painted.
+      window.addEventListener('flutter-first-frame', function () { hide(0); });
+
+      // Safety net for engine/renderer combinations where the event does not
+      // arrive: the host element is attached slightly *before* the first paint,
+      // so give it a grace period rather than uncovering a blank surface.
+      observer = new MutationObserver(function () {
+        if (document.querySelector('flutter-view, flt-glass-pane, flt-scene-host')) {
+          hide(600);
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

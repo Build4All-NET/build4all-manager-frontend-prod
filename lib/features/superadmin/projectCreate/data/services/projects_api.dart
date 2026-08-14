@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import '../models/project_dto.dart';
-import 'package:flutter/foundation.dart';
 
 class ProjectsApi {
   final Dio dio;
@@ -53,12 +52,7 @@ class ProjectsApi {
     );
 
     return ProjectDto.fromJson(res.data as Map<String, dynamic>);
-  } on DioException catch (e) {
-    debugPrint('❌ createProject failed');
-    debugPrint('url: $url');
-    debugPrint('payload: $payload');
-    debugPrint('status: ${e.response?.statusCode}');
-    debugPrint('response: ${e.response?.data}');
+  } on DioException {
     rethrow;
   }
 }

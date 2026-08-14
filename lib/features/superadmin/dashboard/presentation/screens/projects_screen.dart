@@ -1,3 +1,4 @@
+import 'package:build4all_manager/core/events/app_events.dart';
 import 'package:build4all_manager/core/network/dio_client.dart';
 import 'package:build4all_manager/features/superadmin/dashboard/data/models/project_dto.dart';
 import 'package:build4all_manager/features/superadmin/dashboard/data/services/project_api.dart';
@@ -80,6 +81,13 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     }
   }
 
+  /// Reload this list, then tell the rest of the app the projects changed so
+  /// the dashboard behind this screen does not keep showing stale counts.
+  Future<void> _reloadAndAnnounce() async {
+    await _load();
+    AppEvents.notifyProjectsChanged();
+  }
+
   Future<void> _editProject(ProjectSummary project) async {
     final saved = await showDialog<bool>(
       context: context,
@@ -91,7 +99,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
       ),
     );
     if (saved == true) {
-      await _load();
+      await _reloadAndAnnounce();
       if (mounted) AppToast.success(context, 'Project updated');
     }
   }
@@ -103,7 +111,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
     try {
       await _api.enableProject(project.id);
-      await _load();
+      await _reloadAndAnnounce();
 
       if (!mounted) return;
       AppToast.success(context, 'Project enabled');
@@ -124,7 +132,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
     try {
       await _api.disableProject(project.id);
-      await _load();
+      await _reloadAndAnnounce();
 
       if (!mounted) return;
       AppToast.success(context, 'Project disabled');
@@ -148,7 +156,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
     try {
       await _api.archiveProject(project.id);
-      await _load();
+      await _reloadAndAnnounce();
 
       if (!mounted) return;
       AppToast.success(context, 'Project archived');
