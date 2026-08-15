@@ -83,7 +83,7 @@ void main() {
   });
 
   group('dashboard overview', () {
-    test('platform sections stay hidden when the backend serves no counters', () {
+    test('platform sections stay hidden when the endpoint did not answer', () {
       const overview = DashboardOverview(
         totalProjects: 2,
         activeProjects: 2,
@@ -93,15 +93,17 @@ void main() {
       expect(overview.hasPlatformStats, isFalse);
     });
 
-    test('one non-zero group is enough to show the platform sections', () {
+    test('a platform with nothing on it still shows its sections', () {
+      // All zeros is an answer: the sections belong on screen, reading zero.
       const overview = DashboardOverview(
         totalProjects: 2,
         activeProjects: 2,
         inactiveProjects: 0,
-        builds: BuildsStats(total: 3),
+        platformStatsAvailable: true,
       );
 
       expect(overview.hasPlatformStats, isTrue);
+      expect(overview.apps.total, 0);
     });
   });
 

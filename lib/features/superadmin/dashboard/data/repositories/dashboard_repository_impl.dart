@@ -60,6 +60,7 @@ class DashboardRepositoryImpl implements IDashboardRepository {
         // request as the fallback for an older backend.
         pendingUpgradeRequests:
             stats?.licensing.pendingUpgradeRequests ?? pendingCount,
+        platformStatsAvailable: stats != null,
         apps: stats?.apps ?? const AppsStats(),
         owners: stats?.owners ?? const OwnersStats(),
         builds: stats?.builds ?? const BuildsStats(),

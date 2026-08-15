@@ -11,6 +11,14 @@ class DashboardOverview {
 
   final int pendingUpgradeRequests;
 
+  /// Whether the platform-counter endpoint answered at all.
+  ///
+  /// Keyed off the response rather than the numbers in it: a platform that
+  /// genuinely has nothing on it still has sections worth showing — all
+  /// zeros is an answer. Only a backend that cannot serve the endpoint hides
+  /// them.
+  final bool platformStatsAvailable;
+
   final AppsStats apps;
   final OwnersStats owners;
   final BuildsStats builds;
@@ -22,6 +30,7 @@ class DashboardOverview {
     required this.activeProjects,
     required this.inactiveProjects,
     this.pendingUpgradeRequests = 0,
+    this.platformStatsAvailable = false,
     this.apps = const AppsStats(),
     this.owners = const OwnersStats(),
     this.builds = const BuildsStats(),
@@ -29,13 +38,8 @@ class DashboardOverview {
     this.licensing = const LicensingStats(),
   });
 
-  /// Whether the platform-wide groups were actually served. Used to hide the
-  /// extra sections rather than render a wall of zeros.
-  bool get hasPlatformStats =>
-      apps.total > 0 ||
-      owners.total > 0 ||
-      builds.total > 0 ||
-      publishing.total > 0;
+  /// Whether the platform-wide sections should render.
+  bool get hasPlatformStats => platformStatsAvailable;
 }
 
 class AppsStats {
