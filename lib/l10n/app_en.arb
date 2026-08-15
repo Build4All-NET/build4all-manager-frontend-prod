@@ -1126,7 +1126,14 @@
   "publish_details_label_version_code": "Version Code",
   "publish_details_label_ci_run": "CI Run",
   "publish_ci_run_number": "Run #{runNumber}",
-  "@publish_ci_run_number": {"description": "GitHub Actions run number for the latest CI build of an app", "placeholders": {"runNumber": {"type": "int"}}},
+  "@publish_ci_run_number": {
+    "description": "GitHub Actions run number for the latest CI build of an app",
+    "placeholders": {
+      "runNumber": {
+        "type": "int"
+      }
+    }
+  },
   "publish_ci_run_open_logs": "View run logs",
   "publish_ci_run_none": "No run recorded",
   "publish_details_label_last_build": "Last Build",
@@ -1498,5 +1505,77 @@
   },
   "owner_request_submit_connect": "Connect",
   "owner_request_submit_connect_first": "Connect your store to continue",
-  "owner_request_submit_store_details": "Fill in your store URL and API keys"
+  "owner_request_submit_store_details": "Fill in your store URL and API keys",
+  "terms_title": "Terms & Conditions",
+  "@terms_title": {
+    "description": "Title of the terms and conditions screen"
+  },
+  "terms_version_label": "Version",
+  "@terms_version_label": {
+    "description": "Label preceding the terms version number"
+  },
+  "terms_effective_label": "Effective",
+  "@terms_effective_label": {
+    "description": "Label preceding the terms effective date"
+  },
+  "terms_updated_label": "Updated",
+  "@terms_updated_label": {
+    "description": "Label preceding the terms last-updated date"
+  },
+  "terms_contents": "Contents",
+  "@terms_contents": {
+    "description": "Header of the section index on the terms screen"
+  },
+  "terms_accept_action": "I Agree",
+  "@terms_accept_action": {
+    "description": "Button that accepts the terms"
+  },
+  "terms_decline_action": "Not now",
+  "@terms_decline_action": {
+    "description": "Button that leaves the terms screen without accepting"
+  },
+  "terms_scroll_hint": "Scroll to the end to accept",
+  "@terms_scroll_hint": {
+    "description": "Hint shown while the accept button is still disabled"
+  },
+  "terms_read_progress": "read",
+  "@terms_read_progress": {
+    "description": "Suffix after the reading percentage, e.g. \"40% read\""
+  },
+  "terms_consent_text": "I have read and agree to the {terms} and the {privacy}.",
+  "@terms_consent_text": {
+    "description": "Consent sentence next to the register checkbox. {terms} and {privacy} are replaced by tappable links."
+  },
+  "terms_consent_terms_link": "Terms & Conditions",
+  "@terms_consent_terms_link": {
+    "description": "Tappable terms link inside the consent sentence"
+  },
+  "terms_consent_privacy_link": "Privacy Policy",
+  "@terms_consent_privacy_link": {
+    "description": "Tappable privacy policy link inside the consent sentence"
+  },
+  "terms_required_error": "Please read and accept the Terms & Conditions to create your account.",
+  "@terms_required_error": {
+    "description": "Error shown when the user submits registration without accepting the terms"
+  },
+  "terms_accepted_toast": "Terms accepted",
+  "@terms_accepted_toast": {
+    "description": "Confirmation shown after the user accepts the terms"
+  },
+  "terms_open_action": "Read the terms",
+  "@terms_open_action": {
+    "description": "Action that opens the terms screen"
+  },
+  "terms_profile_subtitle": "Read the platform terms you accepted",
+  "@terms_profile_subtitle": {
+    "description": "Subtitle of the terms tile in the profile settings card"
+  },
+  "terms_load_error": "The terms could not be loaded.",
+  "@terms_load_error": {
+    "description": "Error shown when the terms asset fails to load"
+  },
+  "terms_english_notice": "This translation is provided for convenience. The English version prevails.",
+  "@terms_english_notice": {
+    "description": "Notice shown above translated terms"
+  }
 }

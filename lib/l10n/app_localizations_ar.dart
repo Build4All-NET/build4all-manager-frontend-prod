@@ -3809,4 +3809,58 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get owner_request_submit_store_details => 'عبّي رابط المتجر ومفاتيح الـ API';
+
+  @override
+  String get terms_title => 'الشروط والأحكام';
+
+  @override
+  String get terms_version_label => 'الإصدار';
+
+  @override
+  String get terms_effective_label => 'ساري اعتباراً من';
+
+  @override
+  String get terms_updated_label => 'آخر تحديث';
+
+  @override
+  String get terms_contents => 'المحتويات';
+
+  @override
+  String get terms_accept_action => 'أوافق';
+
+  @override
+  String get terms_decline_action => 'ليس الآن';
+
+  @override
+  String get terms_scroll_hint => 'مرّر إلى نهاية النص للموافقة';
+
+  @override
+  String get terms_read_progress => 'تمت قراءته';
+
+  @override
+  String get terms_consent_text => 'لقد قرأت {terms} و{privacy} وأوافق عليهما.';
+
+  @override
+  String get terms_consent_terms_link => 'الشروط والأحكام';
+
+  @override
+  String get terms_consent_privacy_link => 'سياسة الخصوصية';
+
+  @override
+  String get terms_required_error => 'يرجى قراءة الشروط والأحكام والموافقة عليها لإنشاء حسابك.';
+
+  @override
+  String get terms_accepted_toast => 'تمت الموافقة على الشروط';
+
+  @override
+  String get terms_open_action => 'اقرأ الشروط';
+
+  @override
+  String get terms_profile_subtitle => 'اطّلع على شروط المنصّة التي وافقت عليها';
+
+  @override
+  String get terms_load_error => 'تعذّر تحميل الشروط.';
+
+  @override
+  String get terms_english_notice => 'هذه الترجمة مقدّمة للتسهيل فقط، وتسود النسخة الإنجليزية.';
 }

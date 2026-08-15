@@ -1,0 +1,789 @@
+{
+  "language": "fr",
+  "title": "Build4All — Conditions Générales de la Plateforme",
+  "version": "1.0",
+  "effectiveDate": "15 août 2026",
+  "lastUpdated": "15 août 2026",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Acceptation des Conditions",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Les présentes Conditions Générales (les « Conditions ») constituent un accord juridiquement contraignant entre BUILD 4 ALL SARL, une société à responsabilité limitée constituée selon les lois de la République libanaise, immatriculée au registre du commerce sous le numéro 5014382, dont le siège social est situé à Saïda, Liban (« Build4All », « nous », « notre », « nos »), et la personne physique ou morale accédant à la Plateforme ou l'utilisant (« vous », « votre », le « Client »)."
+        },
+        {
+          "type": "p",
+          "text": "En cochant la case d'acceptation, en cliquant sur « J'accepte », en créant un compte, ou en créant ou configurant une Application via la Plateforme, vous confirmez que :"
+        },
+        {
+          "type": "list",
+          "style": "numbered",
+          "items": [
+            {
+              "marker": "1.",
+              "text": "Vous avez lu, compris et acceptez d'être lié par les présentes Conditions ;"
+            },
+            {
+              "marker": "2.",
+              "text": "Vous êtes âgé d'au moins 18 ans et disposez de la pleine capacité juridique pour contracter ;"
+            },
+            {
+              "marker": "3.",
+              "text": "Si vous acceptez au nom d'une société, d'une organisation ou d'un organisme public, vous avez le pouvoir d'engager cette entité, et « vous » désigne alors cette entité ;"
+            },
+            {
+              "marker": "4.",
+              "text": "Vous acceptez notre Politique de confidentialité (https://build4all.net/privacy-policy/) et notre Politique d'utilisation acceptable (https://build4all.net/acceptable-use-policy/), qui sont incorporées aux présentes Conditions par référence."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Si vous n'acceptez pas les présentes Conditions, vous ne devez ni créer d'Application ni utiliser la Plateforme de quelque manière que ce soit."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Définitions",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "Terme",
+            "Signification"
+          ],
+          "rows": [
+            [
+              "Plateforme",
+              "La plateforme logicielle en tant que service Build4All, y compris la console web, l'application Build4All Manager, les API, les services backend, la documentation et l'ensemble de l'infrastructure associée."
+            ],
+            [
+              "Application (ou App)",
+              "Une application mobile et/ou web configurée, générée, compilée ou déployée par vous via la Plateforme."
+            ],
+            [
+              "Contenu Client",
+              "L'ensemble des données, textes, images, logos, marques, catalogues de produits, menus, horaires, tarifs, médias et autres éléments que vous téléversez sur la Plateforme, y configurez ou y générez."
+            ],
+            [
+              "Utilisateur Final",
+              "Toute personne qui télécharge, installe, consulte ou utilise une Application que vous publiez."
+            ],
+            [
+              "Données des Utilisateurs Finaux",
+              "Les données à caractère personnel et autres informations collectées auprès des Utilisateurs Finaux ou à leur sujet par l'intermédiaire de votre Application."
+            ],
+            [
+              "Abonnement",
+              "L'offre payante dans le cadre de laquelle vous accédez à la Plateforme, telle que décrite dans votre commande, votre facture ou votre confirmation de paiement."
+            ],
+            [
+              "Boutiques d'applications",
+              "L'Apple App Store, le Google Play Store et tout autre canal de distribution tiers."
+            ],
+            [
+              "Conditions des Boutiques",
+              "Les accords développeurs, politiques et directives des Boutiques d'applications, y compris l'Apple Developer Program License Agreement, les App Store Review Guidelines, le Google Play Developer Distribution Agreement et les Google Play Developer Program Policies."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Comptes et Éligibilité",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "3.1",
+          "lead": "Inscription.",
+          "text": "Vous devez fournir des informations exactes, à jour et complètes lors de votre inscription et les maintenir à jour. Les comptes créés par des moyens automatisés sont interdits."
+        },
+        {
+          "type": "p",
+          "ref": "3.2",
+          "lead": "Identifiants.",
+          "text": "Vous êtes seul responsable de la protection de vos identifiants, clés d'API, jetons d'accès et de tout identifiant tiers que vous nous communiquez (y compris les identifiants de comptes développeurs des Boutiques d'applications, les certificats de signature et les clés de passerelles de paiement). Vous êtes responsable de toute activité effectuée depuis votre compte."
+        },
+        {
+          "type": "p",
+          "ref": "3.3",
+          "lead": "Notification.",
+          "text": "Vous devez nous informer à l'adresse contact@build4all.net dès que vous avez connaissance d'un accès ou d'une utilisation non autorisés de votre compte."
+        },
+        {
+          "type": "p",
+          "ref": "3.4",
+          "lead": "Sous-utilisateurs.",
+          "text": "Si votre offre autorise des utilisateurs supplémentaires, vous demeurez responsable de leur respect des présentes Conditions ainsi que de tous leurs actes et omissions comme s'il s'agissait des vôtres."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Licence d'utilisation de la Plateforme",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "4.1",
+          "lead": "Octroi.",
+          "text": "Sous réserve du respect continu des présentes Conditions et du paiement des frais applicables, nous vous accordons une licence limitée, non exclusive, non transférable, non sous-licenciable et révocable d'accès et d'utilisation de la Plateforme afin de configurer, compiler, publier et exploiter des Applications pour votre propre entreprise ou organisation pendant la durée de votre Abonnement."
+        },
+        {
+          "type": "p",
+          "ref": "4.2",
+          "lead": "Restrictions.",
+          "text": "Vous ne devez pas, et ne devez permettre à aucun tiers de :"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "copier, modifier, traduire, faire de l'ingénierie inverse, décompiler ou désassembler toute partie de la Plateforme, ni tenter d'en dériver le code source, sauf dans la mesure où une telle restriction est interdite par la loi applicable ;"
+            },
+            {
+              "marker": "b.",
+              "text": "revendre, sous-licencier, louer, donner en location ou mettre de toute autre manière la Plateforme à la disposition d'un tiers en tant que service autonome, ni exploiter un service concurrent de création d'applications à l'aide de la Plateforme ;"
+            },
+            {
+              "marker": "c.",
+              "text": "créer des Applications pour le compte de tiers, sauf dans le cadre d'un accord de revente, d'agence ou de partenariat conclu par écrit avec nous ;"
+            },
+            {
+              "marker": "d.",
+              "text": "contourner ou tenter de contourner toute limite d'utilisation, mesure de comptage, authentification, limitation de débit ou mécanisme de facturation ;"
+            },
+            {
+              "marker": "e.",
+              "text": "accéder à la Plateforme pour développer un produit ou service concurrent ou substantiellement similaire, ou pour l'évaluer à des fins de divulgation publique sans notre consentement écrit préalable ;"
+            },
+            {
+              "marker": "f.",
+              "text": "introduire des logiciels malveillants, réaliser des tests d'intrusion ou effectuer des tests de charge ou de résistance sans notre autorisation écrite préalable ;"
+            },
+            {
+              "marker": "g.",
+              "text": "utiliser la Plateforme d'une manière qui nuit à sa disponibilité, à son intégrité ou à ses performances pour d'autres clients, ou qui enfreint toute loi applicable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Création d'Applications, Contenu et Responsabilité",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "5.1",
+          "lead": "Vous êtes propriétaire de votre Application.",
+          "text": "Dans les rapports entre vous et Build4All, vous conservez l'ensemble des droits, titres et intérêts sur le Contenu Client ainsi que sur les éléments distinctifs de marque, noms commerciaux, marques et données commerciales incorporés dans votre Application."
+        },
+        {
+          "type": "p",
+          "ref": "5.2",
+          "lead": "Licence à notre profit.",
+          "text": "Vous nous accordez une licence mondiale, non exclusive et gratuite pour héberger, stocker, reproduire, transmettre, adapter, compiler et afficher le Contenu Client, uniquement dans la mesure nécessaire pour (a) exploiter et fournir la Plateforme, (b) générer, compiler, signer et déployer votre Application, (c) fournir l'assistance que vous demandez et (d) respecter la loi. Cette licence prend fin lorsque le Contenu Client est supprimé, à l'exception des sauvegardes conservées pendant la période décrite à la Section 13.4."
+        },
+        {
+          "type": "p",
+          "ref": "5.3",
+          "lead": "Vos garanties relatives au contenu.",
+          "text": "Vous déclarez et garantissez que vous détenez ou avez obtenu tous les droits, licences et consentements nécessaires pour l'ensemble du Contenu Client, et que le Contenu Client et votre Application ne peuvent et ne pourront :"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "porter atteinte à un droit d'auteur, une marque, un brevet, un secret d'affaires, un droit moral, un droit à l'image ou tout autre droit de propriété ;"
+            },
+            {
+              "marker": "b.",
+              "text": "être diffamatoires, obscènes, harcelants, haineux ou illicites dans une quelconque juridiction applicable ;"
+            },
+            {
+              "marker": "c.",
+              "text": "contenir des logiciels malveillants, des logiciels espions ou du code de suivi non autorisé ;"
+            },
+            {
+              "marker": "d.",
+              "text": "faciliter les jeux d'argent illégaux, les services financiers non agréés, les produits pharmaceutiques non autorisés, la vente de substances contrôlées ou d'armes, les contenus sexuels impliquant des mineurs, ou toute autre activité interdite ;"
+            },
+            {
+              "marker": "e.",
+              "text": "donner une image trompeuse de votre identité, de votre affiliation à une personne ou entité, ou de votre pouvoir de représenter une entreprise, une marque ou un organisme public ;"
+            },
+            {
+              "marker": "f.",
+              "text": "enfreindre la réglementation applicable en matière de protection des consommateurs, de publicité, de commerce électronique ou propre à un secteur (y compris, selon votre secteur d'activité, la sécurité alimentaire, la santé et le fitness, la billetterie ou les services municipaux)."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "ref": "5.4",
+          "lead": "Absence de contrôle éditorial.",
+          "text": "Nous ne procédons à aucun contrôle préalable du Contenu Client ni des Applications. Nous pouvons, sans y être tenus, examiner, refuser, supprimer ou désactiver l'accès à tout Contenu Client ou Application dont nous estimons raisonnablement qu'il enfreint les présentes Conditions, les Conditions des Boutiques ou la loi applicable."
+        },
+        {
+          "type": "p",
+          "ref": "5.5",
+          "lead": "Secteurs réglementés.",
+          "text": "Certaines fonctionnalités sont mises à disposition pour des secteurs d'activité spécifiques. Il vous appartient exclusivement de déterminer si l'usage que vous envisagez nécessite des licences, permis, enregistrements ou autorisations réglementaires, et de les obtenir. Nous ne garantissons pas que la Plateforme ou une Application soit conforme à la réglementation sectorielle applicable à votre activité."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Publication et Boutiques d'applications tierces",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "6.1",
+          "lead": "Primauté des Conditions des Boutiques.",
+          "text": "La distribution de votre Application via toute Boutique d'applications est soumise aux Conditions des Boutiques de l'opérateur concerné. Ces conditions lient exclusivement vous (ou le titulaire du compte) et l'opérateur de la Boutique. Vous devez les lire, les accepter et les respecter. En cas de conflit entre les Conditions des Boutiques et les présentes Conditions à l'égard de l'Application distribuée, les Conditions des Boutiques prévalent pour cette distribution."
+        },
+        {
+          "type": "p",
+          "ref": "6.2",
+          "lead": "Aucune garantie d'approbation.",
+          "text": "Les opérateurs des Boutiques d'applications exercent un pouvoir d'appréciation exclusif et absolu sur l'examen, l'approbation, le classement, le retrait des applications et le statut des comptes. Nous ne garantissons pas que votre Application sera approuvée, restera disponible, ou ne fera pas l'objet d'un rejet, d'un retard, d'un retrait ou d'une suspension du compte développeur. Nous ne sommes responsables d'aucune de ces conséquences, y compris de toute perte de revenus, d'utilisateurs ou d'opportunités commerciales en résultant."
+        },
+        {
+          "type": "p",
+          "ref": "6.3",
+          "lead": "Comptes développeurs.",
+          "text": "Sauf accord écrit distinct :"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "il vous appartient de maintenir vos propres comptes Apple Developer Program et Google Play Console et d'acquitter tous les frais associés ;"
+            },
+            {
+              "marker": "b.",
+              "text": "lorsque vous nous autorisez à soumettre des builds à l'aide d'identifiants ou de clés d'API que vous fournissez, vous nous autorisez à agir uniquement à cette fin, et vous demeurez le titulaire du compte et le développeur responsable de référence ;"
+            },
+            {
+              "marker": "c.",
+              "text": "vous êtes responsable de l'ensemble des métadonnées destinées aux boutiques, des captures d'écran, des descriptions, des classifications par âge, des déclarations de sécurité des données, des étiquettes de confidentialité et des réponses relatives à la conformité aux règles d'exportation, ainsi que de leur exactitude."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "ref": "6.4",
+          "lead": "Obligations à répercuter.",
+          "text": "Le contrat de licence utilisateur final de votre Application doit, au minimum, satisfaire aux exigences imposées par l'opérateur de la Boutique d'applications concernée, et doit reconnaître que cet opérateur est un tiers bénéficiaire disposant du droit de le faire exécuter, et qu'il n'a aucune obligation de fournir une maintenance ou une assistance pour votre Application."
+        },
+        {
+          "type": "p",
+          "ref": "6.5",
+          "lead": "Environnement de compilation.",
+          "text": "Les chaînes de compilation, la signature et la distribution des artefacts sont fournies dans le cadre d'une obligation de moyens et dépendent de services tiers (y compris les fournisseurs d'intégration continue et d'infrastructure cloud). Les échecs de compilation, les délais d'attente ou les pannes de services tiers ne constituent pas un manquement aux présentes Conditions."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Relation avec vos Utilisateurs Finaux",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "7.1",
+          "lead": "Vous êtes l'exploitant.",
+          "text": "Votre Application est votre produit. Votre relation avec les Utilisateurs Finaux — y compris les conditions d'utilisation, les avis de confidentialité, le consentement aux cookies et au suivi, les remboursements, les retours, la livraison, les garanties, les réclamations et le règlement des litiges — relève exclusivement de vous et de vos Utilisateurs Finaux."
+        },
+        {
+          "type": "p",
+          "ref": "7.2",
+          "lead": "Documents obligatoires pour les Utilisateurs Finaux.",
+          "text": "Vous devez publier et tenir à jour dans votre Application (a) vos propres conditions d'utilisation ou contrat de licence utilisateur final, et (b) votre propre politique de confidentialité décrivant fidèlement votre collecte, votre utilisation, votre partage, votre conservation et votre suppression des Données des Utilisateurs Finaux, vous identifiant comme la partie responsable et fournissant un moyen de contact opérationnel. Les modèles ou documents par défaut fournis par la Plateforme ne sont que des exemples de commodité et ne constituent ni un conseil juridique ni un document conforme à votre situation."
+        },
+        {
+          "type": "p",
+          "ref": "7.3",
+          "lead": "Absence de mandat.",
+          "text": "Build4All n'est partie à aucune transaction entre vous et vos Utilisateurs Finaux. Nous ne sommes ni vendeur, ni marchand de référence, ni agent de billetterie, ni employeur, ni exploitant de salle de sport, ni restaurateur, ni autorité publique au titre de votre Application."
+        },
+        {
+          "type": "p",
+          "ref": "7.4",
+          "lead": "Paiements qui vous sont dus.",
+          "text": "Lorsque la Plateforme intègre des fonctionnalités de paiement, les paiements des Utilisateurs Finaux sont traités par des prestataires de paiement tiers selon leurs propres conditions. Vous êtes responsable de l'inscription, de la vérification, des rétrofacturations, des remboursements, des délais de règlement et des obligations fiscales découlant de ces transactions. Nous ne détenons pas de fonds pour votre compte, sauf mention expresse dans un accord écrit distinct."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Protection des Données",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "8.1",
+          "lead": "Rôles.",
+          "text": "S'agissant des Données des Utilisateurs Finaux traitées via votre Application, vous agissez en qualité de responsable du traitement (ou équivalent) et nous agissons en qualité de sous-traitant agissant sur vos instructions documentées. S'agissant des données de votre propre compte, nous agissons en qualité de responsable du traitement. Les détails figurent dans notre Politique de confidentialité (https://build4all.net/privacy-policy/) et, le cas échéant, dans notre Avenant relatif au traitement des données, disponible sur demande à l'adresse contact@build4all.net, qui est incorporé par référence lorsque la législation sur la protection des données l'exige."
+        },
+        {
+          "type": "p",
+          "ref": "8.2",
+          "lead": "Vos obligations.",
+          "text": "Il vous appartient d'établir une base légale pour le traitement des Données des Utilisateurs Finaux, de fournir les informations requises, d'obtenir et de consigner les consentements (y compris pour le marketing, l'analyse d'audience, la géolocalisation et les notifications push), de donner suite aux demandes d'exercice des droits des personnes concernées et de réaliser toute analyse requise."
+        },
+        {
+          "type": "p",
+          "ref": "8.3",
+          "lead": "Nos obligations.",
+          "text": "Nous mettrons en œuvre des mesures techniques et organisationnelles appropriées destinées à protéger le Contenu Client et les Données des Utilisateurs Finaux, limiterons l'accès au personnel qui en a besoin, ne ferons appel à des sous-traitants ultérieurs que dans le cadre d'engagements écrits offrant un niveau de protection au moins équivalent, et vous notifierons sans retard injustifié après avoir eu connaissance d'une violation de données à caractère personnel affectant vos données."
+        },
+        {
+          "type": "p",
+          "ref": "8.4",
+          "lead": "Lieu d'hébergement.",
+          "text": "L'infrastructure de la Plateforme est hébergée chez des fournisseurs cloud tiers dans la ou les régions indiquées dans notre documentation. Vous reconnaissez que les données peuvent être transférées et traitées dans des juridictions autres que la vôtre, sous réserve de garanties appropriées."
+        },
+        {
+          "type": "p",
+          "ref": "8.5",
+          "lead": "Données interdites.",
+          "text": "Vous ne devez téléverser sur la Plateforme aucune donnée de carte bancaire, numéro d'identification délivré par une autorité publique, identifiant biométrique ou dossier médical, sauf via des fonctionnalités expressément conçues à cette fin et documentées comme telles."
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "Frais, Facturation et Taxes",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "9.1",
+          "lead": "Frais.",
+          "text": "Vous vous engagez à payer l'ensemble des frais liés à votre Abonnement ainsi que tous frais liés à l'usage, tels qu'indiqués au moment de l'achat ou dans votre commande."
+        },
+        {
+          "type": "p",
+          "ref": "9.2",
+          "lead": "Facturation et renouvellement.",
+          "text": "Les Abonnements se renouvellent automatiquement par périodes successives d'une durée égale à la période initiale, sauf résiliation avant la fin de la période en cours. Vous nous autorisez, ainsi que nos prestataires de paiement, à débiter votre moyen de paiement à chaque renouvellement."
+        },
+        {
+          "type": "p",
+          "ref": "9.3",
+          "lead": "Modification des prix.",
+          "text": "Nous pouvons modifier les frais moyennant un préavis d'au moins trente (30) jours, la modification prenant effet lors de votre prochain renouvellement. La poursuite de l'utilisation après la date d'effet vaut acceptation."
+        },
+        {
+          "type": "p",
+          "ref": "9.4",
+          "lead": "Taxes.",
+          "text": "Les frais s'entendent hors TVA, taxe sur les ventes, retenue à la source et prélèvements similaires, dont le paiement vous incombe, à l'exception des impôts sur nos bénéfices nets."
+        },
+        {
+          "type": "p",
+          "ref": "9.5",
+          "lead": "Défaut de paiement.",
+          "text": "En cas d'échec ou de retard de paiement, nous pouvons suspendre l'accès à la Plateforme ainsi qu'aux chaînes de compilation et de publication après un préavis raisonnable. La suspension ne vous dispense pas de payer les sommes échues."
+        },
+        {
+          "type": "p",
+          "ref": "9.6",
+          "lead": "Remboursements.",
+          "text": "Sauf lorsque la loi l'exige ou en cas de mention expresse dans une politique de remboursement publiée, les frais ne sont pas remboursables, y compris pour les périodes partielles et les capacités inutilisées."
+        },
+        {
+          "type": "p",
+          "ref": "9.7",
+          "lead": "Coûts de tiers.",
+          "text": "Les frais de compte développeur des Boutiques d'applications, l'enregistrement de noms de domaine, les frais des prestataires de paiement, les coûts d'envoi de SMS et de notifications push et les autres frais de tiers similaires sont à votre charge et ne sont pas inclus dans l'Abonnement, sauf mention contraire."
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "title": "Propriété Intellectuelle sur la Plateforme",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "10.1",
+          "lead": "Notre propriété intellectuelle.",
+          "text": "La Plateforme, y compris l'ensemble des logiciels, du code source, de l'architecture, des API, des modèles, des composants d'interface, des structures générées, des designs, de la documentation, des marques ainsi que la dénomination et le logo « Build4All », est et demeure notre propriété exclusive ou celle de nos concédants. Aucun droit n'est accordé en dehors de la licence limitée prévue à la Section 4."
+        },
+        {
+          "type": "p",
+          "ref": "10.2",
+          "lead": "Code et modèles générés.",
+          "text": "Le code, les configurations et les ressources générés par la Plateforme et intégrés à votre Application vous sont concédés sous licence au titre de la Section 4 pour un usage au sein de cette Application. Vous ne pouvez pas extraire, redistribuer ou réutiliser les modèles ou composants de la Plateforme en dehors d'une Application développée sur la Plateforme."
+        },
+        {
+          "type": "p",
+          "ref": "10.3",
+          "lead": "Retours d'expérience.",
+          "text": "Si vous nous transmettez des suggestions, des demandes de fonctionnalités ou des retours, vous nous accordez une licence perpétuelle, irrévocable, mondiale et gratuite pour les utiliser et les exploiter sans restriction ni contrepartie."
+        },
+        {
+          "type": "p",
+          "ref": "10.4",
+          "lead": "Attribution.",
+          "text": "Sauf si votre offre inclut expressément la marque blanche, nous pouvons intégrer une mention discrète « Built with Build4All » dans votre Application, et citer votre nom et votre logo en tant que client dans nos supports marketing. Vous pouvez vous opposer aux références marketing en écrivant à contact@build4all.net."
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "title": "Disponibilité du Service et Assistance",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "11.1",
+          "lead": "Disponibilité.",
+          "text": "Nous visons une disponibilité continue mais ne garantissons pas un fonctionnement ininterrompu ou exempt d'erreurs. La Plateforme peut être indisponible lors d'opérations de maintenance planifiée, de maintenance d'urgence ou de pannes de services tiers."
+        },
+        {
+          "type": "p",
+          "ref": "11.2",
+          "lead": "Modifications.",
+          "text": "Nous pouvons ajouter, modifier, déprécier ou supprimer des fonctionnalités. Pour toute modification défavorable substantielle des fonctionnalités essentielles, nous fournirons un préavis d'au moins trente (30) jours lorsque cela est raisonnablement possible."
+        },
+        {
+          "type": "p",
+          "ref": "11.3",
+          "lead": "Fonctionnalités bêta.",
+          "text": "Les fonctionnalités signalées comme bêta, préversion ou expérimentales sont fournies « en l'état », peuvent être retirées à tout moment et sont exclues de tout engagement de service."
+        },
+        {
+          "type": "p",
+          "ref": "11.4",
+          "lead": "Assistance.",
+          "text": "L'assistance est fournie via les canaux et selon les délais de réponse applicables à votre offre. L'assistance ne comprend pas le développement de fonctionnalités sur mesure, les intégrations tierces, ni la résolution de problèmes causés par vos modifications ou par des services tiers."
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "title": "Utilisation Acceptable et Suspension",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "12.1",
+          "lead": "Suspension immédiate.",
+          "text": "Nous pouvons suspendre ou restreindre votre accès, ou retirer une Application, sans préavis, lorsque nous estimons raisonnablement que :"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "il existe un incident de sécurité, un abus en cours ou une menace pour la Plateforme ou pour d'autres clients ;"
+            },
+            {
+              "marker": "b.",
+              "text": "la poursuite de l'exploitation nous exposerait, ou exposerait des tiers, à une responsabilité juridique ;"
+            },
+            {
+              "marker": "c.",
+              "text": "nous recevons une injonction légale valable, une notification de retrait ou une directive d'un opérateur de Boutique d'applications ;"
+            },
+            {
+              "marker": "d.",
+              "text": "votre compte présente un retard de paiement substantiel ;"
+            },
+            {
+              "marker": "e.",
+              "text": "l'Application est utilisée à des fins de fraude, d'hameçonnage ou de diffusion de logiciels malveillants."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "ref": "12.2",
+          "lead": "Mise en demeure et régularisation.",
+          "text": "Pour les manquements non urgents, nous adresserons une notification décrivant le problème et laisserons un délai raisonnable pour y remédier, en principe d'au moins dix (10) jours, avant toute suspension ou résiliation."
+        },
+        {
+          "type": "p",
+          "ref": "12.3",
+          "lead": "Rétablissement.",
+          "text": "Lorsqu'il est remédié à la cause de la suspension, nous rétablirons l'accès dans les meilleurs délais. Des manquements répétés ou délibérés peuvent entraîner une résiliation définitive sans rétablissement."
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "title": "Durée, Résiliation et Export des Données",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "13.1",
+          "lead": "Durée.",
+          "text": "Les présentes Conditions s'appliquent à compter de votre première acceptation et jusqu'à leur résiliation."
+        },
+        {
+          "type": "p",
+          "ref": "13.2",
+          "lead": "Résiliation par vous.",
+          "text": "Vous pouvez résilier à tout moment en annulant votre Abonnement dans la console ou en écrivant à contact@build4all.net. La résiliation prend effet à la fin de la période de facturation en cours."
+        },
+        {
+          "type": "p",
+          "ref": "13.3",
+          "lead": "Résiliation par nous.",
+          "text": "Nous pouvons résilier en cas de manquement substantiel non corrigé au titre de la Section 12.2, en cas d'insolvabilité, ou moyennant un préavis de quatre-vingt-dix (90) jours pour convenance, avec remboursement au prorata des frais prépayés et non utilisés."
+        },
+        {
+          "type": "p",
+          "ref": "13.4",
+          "lead": "Effets de la résiliation.",
+          "text": "À la résiliation : votre licence prend fin ; les Applications hébergées et les services backend cessent de fonctionner ; et nous conserverons votre Contenu Client dans un état inactif pendant trente (30) jours, période durant laquelle vous pouvez demander un export dans un format couramment utilisé et lisible par machine. Passé ce délai, le Contenu Client pourra être définitivement supprimé des systèmes actifs, les copies résiduelles expirant des sauvegardes dans un délai supplémentaire de quatre-vingt-dix (90) jours."
+        },
+        {
+          "type": "p",
+          "ref": "13.5",
+          "lead": "Applications publiées.",
+          "text": "Les Applications déjà distribuées via les Boutiques d'applications sous votre propre compte développeur restent sous votre contrôle, mais perdront l'accès aux services backend, aux API et à la gestion de contenu de la Plateforme à la résiliation et cesseront très probablement de fonctionner. Il vous appartient de les dépublier ou de les migrer."
+        },
+        {
+          "type": "p",
+          "ref": "13.6",
+          "lead": "Survie.",
+          "text": "Les Sections 5.3, 7, 9 (pour les sommes échues), 10, 14, 15, 16, 17 et 19 survivent à la résiliation."
+        }
+      ]
+    },
+    {
+      "number": "14",
+      "title": "Exclusions de Garantie",
+      "blocks": [
+        {
+          "type": "caution",
+          "text": "DANS TOUTE LA MESURE PERMISE PAR LA LOI, LA PLATEFORME EST FOURNIE « EN L'ÉTAT » ET « SELON SA DISPONIBILITÉ », SANS GARANTIE D'AUCUNE SORTE, QU'ELLE SOIT EXPRESSE, IMPLICITE OU LÉGALE, Y COMPRIS LES GARANTIES IMPLICITES DE QUALITÉ MARCHANDE, D'ADÉQUATION À UN USAGE PARTICULIER, DE TITRE, D'ABSENCE DE CONTREFAÇON, D'EXACTITUDE, AINSI QUE TOUTE GARANTIE DÉCOULANT DES USAGES COMMERCIAUX OU DES PRATIQUES ÉTABLIES ENTRE LES PARTIES."
+        },
+        {
+          "type": "caution",
+          "text": "NOUS NE GARANTISSONS PAS QUE : (a) LA PLATEFORME RÉPONDRA À VOS BESOINS ; (b) SON FONCTIONNEMENT SERA ININTERROMPU, PONCTUEL, SÉCURISÉ OU EXEMPT D'ERREURS ; (c) UNE APPLICATION SERA APPROUVÉE PAR UNE BOUTIQUE D'APPLICATIONS OU Y RESTERA DISPONIBLE ; (d) LES DÉFAUTS SERONT CORRIGÉS ; OU (e) UN QUELCONQUE RÉSULTAT COMMERCIAL, CHIFFRE D'AFFAIRES, VOLUME DE TÉLÉCHARGEMENTS OU TAUX D'ADOPTION SERA ATTEINT."
+        },
+        {
+          "type": "caution",
+          "text": "AUCUNE DISPOSITION DES PRÉSENTES CONDITIONS N'EXCLUT LA RESPONSABILITÉ QUI NE PEUT LÉGALEMENT ÊTRE EXCLUE, NOTAMMENT EN CAS DE DÉCÈS OU DE DOMMAGE CORPOREL CAUSÉ PAR UNE NÉGLIGENCE, OU EN CAS DE FRAUDE."
+        }
+      ]
+    },
+    {
+      "number": "15",
+      "title": "Limitation de Responsabilité",
+      "blocks": [
+        {
+          "type": "caution",
+          "ref": "15.1",
+          "lead": "Préjudices exclus.",
+          "text": "DANS TOUTE LA MESURE PERMISE PAR LA LOI, AUCUNE DES PARTIES NE SERA RESPONSABLE DES DOMMAGES INDIRECTS, ACCESSOIRES, SPÉCIAUX, CONSÉCUTIFS OU PUNITIFS, NI DES PERTES DE BÉNÉFICES, DE CHIFFRE D'AFFAIRES, DE CLIENTÈLE, D'OPPORTUNITÉS COMMERCIALES, D'ÉCONOMIES ESCOMPTÉES OU DE DONNÉES, QUELLE QU'EN SOIT LA CAUSE ET QUEL QUE SOIT LE FONDEMENT DE LA RESPONSABILITÉ, MÊME SI ELLE A ÉTÉ INFORMÉE DE LA POSSIBILITÉ DE TELS DOMMAGES."
+        },
+        {
+          "type": "caution",
+          "ref": "15.2",
+          "lead": "Plafond.",
+          "text": "NOTRE RESPONSABILITÉ GLOBALE TOTALE DÉCOULANT DES PRÉSENTES CONDITIONS OU S'Y RAPPORTANT N'EXCÉDERA PAS LE MONTANT LE PLUS ÉLEVÉ ENTRE (a) LE TOTAL DES FRAIS QUE VOUS NOUS AVEZ VERSÉS AU COURS DES DOUZE (12) MOIS PRÉCÉDANT IMMÉDIATEMENT LE FAIT GÉNÉRATEUR DE LA RÉCLAMATION ET (b) CENT DOLLARS DES ÉTATS-UNIS (100 USD)."
+        },
+        {
+          "type": "p",
+          "ref": "15.3",
+          "lead": "Répartition des risques.",
+          "text": "Vous reconnaissez que les frais reflètent cette répartition des risques et que nous ne fournirions pas la Plateforme à ces conditions commerciales sans ces limitations."
+        }
+      ]
+    },
+    {
+      "number": "16",
+      "title": "Indemnisation",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Vous défendrez, indemniserez et garantirez Build4All, ses affiliés, dirigeants, administrateurs, employés et agents contre toute réclamation, demande, procédure, perte, responsabilité, dommage, amende, pénalité, coût ou frais de tiers (y compris les frais de justice raisonnables) découlant de ou liés à :"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "le Contenu Client ou votre Application, y compris toute allégation de contrefaçon, de diffamation ou de contenu illicite ;"
+            },
+            {
+              "marker": "b.",
+              "text": "votre manquement aux présentes Conditions, aux Conditions des Boutiques ou à la loi applicable ;"
+            },
+            {
+              "marker": "c.",
+              "text": "votre relation, vos transactions ou vos litiges avec les Utilisateurs Finaux, y compris les actions en responsabilité du fait des produits, les remboursements, la fourniture de services et les réclamations en matière de protection des consommateurs ;"
+            },
+            {
+              "marker": "d.",
+              "text": "votre traitement des Données des Utilisateurs Finaux, y compris toute enquête réglementaire, réclamation de personne concernée ou coût de notification de violation ;"
+            },
+            {
+              "marker": "e.",
+              "text": "les impôts, droits ou prélèvements découlant de vos activités commerciales exercées via une Application."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Nous vous notifierons la réclamation, vous en confierons la défense (étant précisé que vous ne pouvez transiger d'une manière imposant des obligations à notre charge sans notre accord écrit) et vous apporterons une coopération raisonnable à vos frais."
+        }
+      ]
+    },
+    {
+      "number": "17",
+      "title": "Droit Applicable et Litiges",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "17.1",
+          "lead": "Droit applicable.",
+          "text": "Les présentes Conditions sont régies par le droit de la République libanaise, sans égard aux règles de conflit de lois. La Convention des Nations Unies sur les contrats de vente internationale de marchandises ne s'applique pas."
+        },
+        {
+          "type": "p",
+          "ref": "17.2",
+          "lead": "Règlement des litiges.",
+          "text": "Les parties s'efforceront d'abord de bonne foi de résoudre tout litige par la négociation dans un délai de trente (30) jours à compter d'une notification écrite. À défaut de résolution, les litiges seront tranchés définitivement par arbitrage contraignant, siégeant à Beyrouth, Liban, conduit en anglais par un arbitre unique, la sentence pouvant être exécutée devant toute juridiction compétente. Chaque partie peut solliciter des mesures conservatoires devant toute juridiction compétente afin de protéger ses droits de propriété intellectuelle ou ses informations confidentielles."
+        },
+        {
+          "type": "p",
+          "ref": "17.3",
+          "lead": "Absence d'actions collectives.",
+          "text": "Dans la mesure permise par la loi, les litiges seront portés uniquement à titre individuel et non en qualité de demandeur ou de membre d'un groupe dans le cadre d'une action collective ou représentative."
+        },
+        {
+          "type": "p",
+          "ref": "17.4",
+          "lead": "Droits des consommateurs.",
+          "text": "Si vous contractez en qualité de consommateur au titre de dispositions impératives de votre pays de résidence, aucune disposition de la présente Section ne vous prive de la protection de ces dispositions ni du droit d'agir devant vos juridictions locales."
+        }
+      ]
+    },
+    {
+      "number": "18",
+      "title": "Modifications des Présentes Conditions",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "18.1",
+          "text": "Nous pouvons mettre à jour les présentes Conditions de temps à autre. Nous publierons la version mise à jour avec un nouveau numéro de version et une nouvelle Date d'entrée en vigueur."
+        },
+        {
+          "type": "p",
+          "ref": "18.2",
+          "text": "Pour les modifications substantielles, nous fournirons un préavis d'au moins trente (30) jours par e-mail et/ou par notification dans la console."
+        },
+        {
+          "type": "p",
+          "ref": "18.3",
+          "text": "La poursuite de l'utilisation de la Plateforme, ou la création de toute nouvelle Application, après la Date d'entrée en vigueur d'une version mise à jour vaut acceptation. Lorsque la loi l'exige, ou lorsque les modifications réduisent substantiellement vos droits, nous solliciterons une nouvelle acceptation expresse avant que vous puissiez continuer à créer des Applications."
+        },
+        {
+          "type": "p",
+          "ref": "18.4",
+          "text": "Si vous n'acceptez pas une version mise à jour, votre seul recours est de résilier conformément à la Section 13.2."
+        }
+      ]
+    },
+    {
+      "number": "19",
+      "title": "Dispositions Générales",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "19.1",
+          "lead": "Intégralité de l'accord.",
+          "text": "Les présentes Conditions, avec les documents incorporés par référence et tout bon de commande écrit, constituent l'intégralité de l'accord et remplacent tous les accords antérieurs portant sur le même objet."
+        },
+        {
+          "type": "p",
+          "ref": "19.2",
+          "lead": "Ordre de priorité.",
+          "text": "En cas de conflit : (1) un accord écrit signé entre les parties ; (2) un Avenant relatif au traitement des données applicable ; (3) les présentes Conditions ; (4) la documentation et les politiques."
+        },
+        {
+          "type": "p",
+          "ref": "19.3",
+          "lead": "Cession.",
+          "text": "Vous ne pouvez céder les présentes Conditions sans notre accord écrit préalable, sauf à un successeur dans le cadre d'une fusion ou d'une cession de la quasi-totalité des actifs, moyennant notification écrite. Nous pouvons céder librement à un affilié ou à un successeur."
+        },
+        {
+          "type": "p",
+          "ref": "19.4",
+          "lead": "Divisibilité.",
+          "text": "Si une disposition est jugée inapplicable, elle sera modifiée dans la mesure minimale nécessaire et les autres dispositions resteront pleinement en vigueur."
+        },
+        {
+          "type": "p",
+          "ref": "19.5",
+          "lead": "Absence de renonciation.",
+          "text": "Le fait de ne pas faire appliquer une disposition ne vaut pas renonciation au droit de l'invoquer ultérieurement."
+        },
+        {
+          "type": "p",
+          "ref": "19.6",
+          "lead": "Force majeure.",
+          "text": "Aucune des parties n'est responsable d'un retard ou d'une défaillance causés par des événements échappant à son contrôle raisonnable, y compris les catastrophes naturelles, la guerre, les troubles civils, les actes des autorités, les pannes d'électricité ou de télécommunications, les interruptions d'Internet ou d'un fournisseur cloud, ou la défaillance d'un service tiers. Les obligations de paiement ne sont pas suspendues."
+        },
+        {
+          "type": "p",
+          "ref": "19.7",
+          "lead": "Indépendance des parties.",
+          "text": "Aucune disposition ne crée de partenariat, de coentreprise, de mandat, de franchise ou de relation d'emploi."
+        },
+        {
+          "type": "p",
+          "ref": "19.8",
+          "lead": "Notifications.",
+          "text": "Les notifications qui nous sont adressées doivent être envoyées à contact@build4all.net. Les notifications qui vous sont adressées seront envoyées à l'adresse e-mail figurant sur votre compte ou affichées dans la console, et sont réputées reçues à la date de leur envoi."
+        },
+        {
+          "type": "p",
+          "ref": "19.9",
+          "lead": "Exportation et sanctions.",
+          "text": "Vous déclarez que vous n'êtes pas situé dans un pays faisant l'objet de sanctions globales, ni ressortissant ou résident d'un tel pays, et que vous ne figurez sur aucune liste de parties soumises à restrictions. Vous n'utiliserez pas la Plateforme en violation des lois applicables en matière de contrôle des exportations ou de sanctions."
+        },
+        {
+          "type": "p",
+          "ref": "19.10",
+          "lead": "Langue.",
+          "text": "Les présentes Conditions sont rédigées en anglais. Toute traduction est fournie à titre de commodité uniquement ; la version anglaise prévaut."
+        }
+      ]
+    },
+    {
+      "number": "20",
+      "title": "Contact",
+      "blocks": [
+        {
+          "type": "contact",
+          "lines": [
+            "BUILD 4 ALL SARL",
+            "Registre du commerce n° 5014382",
+            "Saïda, Liban",
+            "Assistance générale : contact@build4all.net",
+            "Questions juridiques et confidentialité : contact@build4all.net"
+          ]
+        }
+      ]
+    }
+  ],
+  "acknowledgement": {
+    "title": "Reconnaissance",
+    "text": "En cochant la case ci-dessous et en poursuivant, vous confirmez avoir lu et accepté d'être lié par les présentes Conditions Générales (Version 1.0), la Politique de confidentialité et la Politique d'utilisation acceptable.",
+    "checkbox": "J'ai lu et j'accepte les Conditions Générales et la Politique de confidentialité de Build4All."
+  }
+}

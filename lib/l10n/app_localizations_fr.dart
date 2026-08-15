@@ -3809,4 +3809,58 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get owner_request_submit_store_details => 'Renseignez l\'URL et les clés API de la boutique';
+
+  @override
+  String get terms_title => 'Conditions Générales';
+
+  @override
+  String get terms_version_label => 'Version';
+
+  @override
+  String get terms_effective_label => 'En vigueur le';
+
+  @override
+  String get terms_updated_label => 'Mis à jour le';
+
+  @override
+  String get terms_contents => 'Sommaire';
+
+  @override
+  String get terms_accept_action => 'J\'accepte';
+
+  @override
+  String get terms_decline_action => 'Pas maintenant';
+
+  @override
+  String get terms_scroll_hint => 'Faites défiler jusqu’à la fin pour accepter';
+
+  @override
+  String get terms_read_progress => 'lu';
+
+  @override
+  String get terms_consent_text => 'J\'ai lu et j\'accepte les {terms} et la {privacy}.';
+
+  @override
+  String get terms_consent_terms_link => 'Conditions Générales';
+
+  @override
+  String get terms_consent_privacy_link => 'Politique de confidentialité';
+
+  @override
+  String get terms_required_error => 'Veuillez lire et accepter les Conditions Générales pour créer votre compte.';
+
+  @override
+  String get terms_accepted_toast => 'Conditions acceptées';
+
+  @override
+  String get terms_open_action => 'Lire les conditions';
+
+  @override
+  String get terms_profile_subtitle => 'Consultez les conditions de la plateforme que vous avez acceptées';
+
+  @override
+  String get terms_load_error => 'Les conditions n’ont pas pu être chargées.';
+
+  @override
+  String get terms_english_notice => 'Cette traduction est fournie à titre de commodité. La version anglaise prévaut.';
 }
