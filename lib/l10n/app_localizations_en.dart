@@ -2953,7 +2953,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upgrade_requests_empty_search_title => 'No matching requests found';
 
   @override
-  String get upgrade_requests_empty_search_subtitle => 'Try another keyword for app name, slug, request ID, or plan.';
+  String get upgrade_requests_empty_search_subtitle => 'Try another keyword for shop, owner, e-mail, app name, slug, request ID, or plan.';
 
   @override
   String get upgrade_requests_hero_subtitle => 'Review, approve, or reject owner plan upgrade requests.';
@@ -2968,7 +2968,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upgrade_requests_stat_pending => 'Pending';
 
   @override
-  String get upgrade_requests_search_hint => 'Search by app, slug, request ID, or plan...';
+  String get upgrade_requests_search_hint => 'Search by shop, owner, e-mail, app, slug, or plan...';
 
   @override
   String upgrade_requests_visible_count(Object count) {
@@ -3863,4 +3863,127 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get terms_english_notice => 'This translation is provided for convenience. The English version prevails.';
+
+  @override
+  String get upgrade_requests_requested_by => 'Requested by';
+
+  @override
+  String get upgrade_requests_owner_unknown => 'Owner name not set';
+
+  @override
+  String get upgrade_requests_more_shops => 'more shops';
+
+  @override
+  String get dash_section_projects => 'Projects';
+
+  @override
+  String get dash_section_apps => 'Apps & owners';
+
+  @override
+  String get dash_section_builds => 'Builds';
+
+  @override
+  String get dash_section_publishing => 'Publishing';
+
+  @override
+  String get dash_section_licensing => 'Licensing';
+
+  @override
+  String get dash_total_apps => 'Total apps';
+
+  @override
+  String get dash_active_apps => 'Active apps';
+
+  @override
+  String get dash_owners => 'Owners';
+
+  @override
+  String get dash_owners_with_apps => 'Owners with apps';
+
+  @override
+  String get dash_builds_total => 'Total builds';
+
+  @override
+  String get dash_builds_in_flight => 'Running now';
+
+  @override
+  String get dash_builds_failed => 'Failed builds';
+
+  @override
+  String get dash_builds_last_7_days => 'Last 7 days';
+
+  @override
+  String get dash_published_apps => 'Published apps';
+
+  @override
+  String get dash_publish_awaiting => 'Awaiting review';
+
+  @override
+  String get dash_publish_total => 'Publish requests';
+
+  @override
+  String get dash_licenses_expiring => 'Expiring in 30 days';
+
+  @override
+  String get dash_licenses_expired => 'Expired licences';
+
+  @override
+  String get builds_title => 'Builds';
+
+  @override
+  String get builds_search_hint => 'Search by app, owner, platform, or run...';
+
+  @override
+  String get builds_filter_all => 'All';
+
+  @override
+  String get builds_empty => 'No builds to show';
+
+  @override
+  String get builds_ci_run => 'CI run';
+
+  @override
+  String get owners_title => 'App owners';
+
+  @override
+  String get owners_search_hint => 'Search by name, e-mail, or phone...';
+
+  @override
+  String get owners_empty => 'No owners yet';
+
+  @override
+  String get owners_apps_count => 'apps';
+
+  @override
+  String get app_content_title => 'App content';
+
+  @override
+  String get app_content_tab_items => 'Catalogue';
+
+  @override
+  String get app_content_tab_customers => 'Customers';
+
+  @override
+  String get app_content_items => 'Items';
+
+  @override
+  String get app_content_categories => 'Categories';
+
+  @override
+  String get app_content_customers => 'Customers';
+
+  @override
+  String get app_content_orders => 'Orders';
+
+  @override
+  String get app_content_shops => 'Shops';
+
+  @override
+  String get app_content_stock => 'Stock';
+
+  @override
+  String get app_content_items_empty => 'This app has no catalogue yet';
+
+  @override
+  String get app_content_customers_empty => 'No customers yet';
 }
