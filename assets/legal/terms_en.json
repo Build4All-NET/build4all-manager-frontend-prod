@@ -1,0 +1,789 @@
+{
+  "language": "en",
+  "title": "Build4All — Platform Terms and Conditions",
+  "version": "1.0",
+  "effectiveDate": "15 August 2026",
+  "lastUpdated": "15 August 2026",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Agreement to Terms",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "These Terms and Conditions (the \"Terms\") form a binding legal agreement between BUILD 4 ALL SARL, a société à responsabilité limitée organised under the laws of the Lebanese Republic, commercial registration number 5014382, with its registered office in Saida, Lebanon (\"Build4All\", \"we\", \"us\", \"our\"), and the individual or legal entity accessing or using the Platform (\"you\", \"your\", the \"Customer\")."
+        },
+        {
+          "type": "p",
+          "text": "By checking the acceptance box, clicking \"I Agree\", creating an account, or creating or configuring any Application through the Platform, you confirm that:"
+        },
+        {
+          "type": "list",
+          "style": "numbered",
+          "items": [
+            {
+              "marker": "1.",
+              "text": "You have read, understood, and agree to be bound by these Terms;"
+            },
+            {
+              "marker": "2.",
+              "text": "You are at least 18 years of age and have full legal capacity to enter into contracts;"
+            },
+            {
+              "marker": "3.",
+              "text": "If you are accepting on behalf of a company, organisation, or public body, you have the authority to bind that entity, and \"you\" refers to that entity;"
+            },
+            {
+              "marker": "4.",
+              "text": "You agree to our Privacy Policy (https://build4all.net/privacy-policy/) and Acceptable Use Policy (https://build4all.net/acceptable-use-policy/), which are incorporated into these Terms by reference."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "If you do not agree to these Terms, you must not create an Application or otherwise use the Platform."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Definitions",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": [
+            "Term",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Platform",
+              "The Build4All software-as-a-service platform, including the web console, the Build4All Manager application, APIs, backend services, documentation, and all related infrastructure."
+            ],
+            [
+              "Application (or App)",
+              "A mobile and/or web application configured, generated, built, or deployed by you through the Platform."
+            ],
+            [
+              "Customer Content",
+              "All data, text, images, logos, trademarks, product catalogues, menus, schedules, pricing, media, and other materials that you upload to, configure in, or generate through the Platform."
+            ],
+            [
+              "End User",
+              "Any person who downloads, installs, accesses, or uses an Application you publish."
+            ],
+            [
+              "End User Data",
+              "Personal data and other information collected from or about End Users through your Application."
+            ],
+            [
+              "Subscription",
+              "The paid plan under which you access the Platform, as described in your order, invoice, or checkout confirmation."
+            ],
+            [
+              "App Stores",
+              "The Apple App Store, Google Play Store, and any other third-party distribution channel."
+            ],
+            [
+              "Store Terms",
+              "The developer agreements, policies, and guidelines of the App Stores, including the Apple Developer Program License Agreement, App Store Review Guidelines, Google Play Developer Distribution Agreement, and Google Play Developer Program Policies."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Accounts and Eligibility",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "3.1",
+          "lead": "Registration.",
+          "text": "You must provide accurate, current, and complete information when registering and keep it up to date. Accounts registered by automated means are prohibited."
+        },
+        {
+          "type": "p",
+          "ref": "3.2",
+          "lead": "Credentials.",
+          "text": "You are solely responsible for safeguarding your credentials, API keys, access tokens, and any third-party credentials you supply to us (including App Store developer account credentials, signing certificates, and payment gateway keys). You are responsible for all activity occurring under your account."
+        },
+        {
+          "type": "p",
+          "ref": "3.3",
+          "lead": "Notification.",
+          "text": "You must notify us at contact@build4all.net immediately upon becoming aware of any unauthorised access to or use of your account."
+        },
+        {
+          "type": "p",
+          "ref": "3.4",
+          "lead": "Sub-users.",
+          "text": "If your plan permits additional users, you remain responsible for their compliance with these Terms and for all acts and omissions of such users as if they were your own."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Licence to Use the Platform",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "4.1",
+          "lead": "Grant.",
+          "text": "Subject to your continuous compliance with these Terms and payment of applicable fees, we grant you a limited, non-exclusive, non-transferable, non-sublicensable, revocable licence to access and use the Platform to configure, build, publish, and operate Applications for your own business or organisation during the term of your Subscription."
+        },
+        {
+          "type": "p",
+          "ref": "4.2",
+          "lead": "Restrictions.",
+          "text": "You must not, and must not permit any third party to:"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "copy, modify, translate, reverse engineer, decompile, or disassemble any part of the Platform, or attempt to derive its source code, except to the extent such restriction is prohibited by applicable law;"
+            },
+            {
+              "marker": "b.",
+              "text": "resell, sublicense, rent, lease, or otherwise make the Platform available to any third party as a standalone service, or operate a competing app-building service using the Platform;"
+            },
+            {
+              "marker": "c.",
+              "text": "create Applications on behalf of third parties except under a reseller, agency, or partner agreement executed in writing with us;"
+            },
+            {
+              "marker": "d.",
+              "text": "circumvent or attempt to circumvent any usage limits, metering, authentication, rate limiting, or billing mechanism;"
+            },
+            {
+              "marker": "e.",
+              "text": "access the Platform to build a competing or substantially similar product or service, or to benchmark it for public disclosure without our prior written consent;"
+            },
+            {
+              "marker": "f.",
+              "text": "introduce malware, conduct penetration testing, or perform load or stress testing without our prior written authorisation;"
+            },
+            {
+              "marker": "g.",
+              "text": "use the Platform in any manner that impairs its availability, integrity, or performance for other customers, or that violates any applicable law."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Application Creation, Content, and Responsibility",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "5.1",
+          "lead": "You own your Application.",
+          "text": "As between you and Build4All, you retain all right, title, and interest in Customer Content and in the distinctive branding, trade names, trademarks, and business data embodied in your Application."
+        },
+        {
+          "type": "p",
+          "ref": "5.2",
+          "lead": "Licence to us.",
+          "text": "You grant us a worldwide, non-exclusive, royalty-free licence to host, store, reproduce, transmit, adapt, compile, and display Customer Content solely to the extent necessary to (a) operate and provide the Platform, (b) generate, build, sign, and deploy your Application, (c) provide support you request, and (d) comply with law. This licence ends when the Customer Content is deleted, except for backups retained for the period described in Section 13.4."
+        },
+        {
+          "type": "p",
+          "ref": "5.3",
+          "lead": "Your warranties regarding content.",
+          "text": "You represent and warrant that you own or have all necessary rights, licences, and consents for all Customer Content, and that Customer Content and your Application do not and will not:"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "infringe any copyright, trademark, patent, trade secret, moral right, right of publicity, or other proprietary right;"
+            },
+            {
+              "marker": "b.",
+              "text": "be defamatory, obscene, harassing, hateful, or unlawful in any applicable jurisdiction;"
+            },
+            {
+              "marker": "c.",
+              "text": "contain malware, spyware, or unauthorised tracking code;"
+            },
+            {
+              "marker": "d.",
+              "text": "facilitate illegal gambling, unlicensed financial services, unlicensed pharmaceuticals, sale of controlled substances or weapons, sexual content involving minors, or any other prohibited activity;"
+            },
+            {
+              "marker": "e.",
+              "text": "misrepresent your identity, your affiliation with any person or entity, or your authority to represent a business, brand, or public body;"
+            },
+            {
+              "marker": "f.",
+              "text": "violate applicable consumer protection, advertising, e-commerce, or sector-specific regulation (including, where relevant to your vertical, food safety, health and fitness, ticketing, or municipal service regulations)."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "ref": "5.4",
+          "lead": "No editorial control.",
+          "text": "We do not pre-screen Customer Content or Applications. We may, but are not obliged to, review, refuse, remove, or disable access to any Customer Content or Application that we reasonably believe violates these Terms, Store Terms, or applicable law."
+        },
+        {
+          "type": "p",
+          "ref": "5.5",
+          "lead": "Regulated verticals.",
+          "text": "Certain features are made available for specific business verticals. You are solely responsible for determining whether your intended use requires licences, permits, registrations, or regulatory approvals, and for obtaining them. We make no representation that the Platform or any Application is compliant with sector-specific regulation applicable to your business."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Publishing and Third-Party App Stores",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "6.1",
+          "lead": "Store Terms govern.",
+          "text": "Distribution of your Application through any App Store is subject to the Store Terms of the relevant App Store operator. Those terms are between you (or the account holder) and the App Store operator. You must read, accept, and comply with them. Where the Store Terms conflict with these Terms in respect of the distributed Application, the Store Terms prevail as to that distribution."
+        },
+        {
+          "type": "p",
+          "ref": "6.2",
+          "lead": "No guarantee of approval.",
+          "text": "App Store operators exercise sole and absolute discretion over app review, approval, ranking, removal, and account status. We do not guarantee that your Application will be approved, remain available, or be free from rejection, delay, removal, or developer account suspension. We are not liable for any such outcome, including any resulting loss of revenue, users, or business opportunity."
+        },
+        {
+          "type": "p",
+          "ref": "6.3",
+          "lead": "Developer accounts.",
+          "text": "Unless separately agreed in writing:"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "you are responsible for maintaining your own Apple Developer Program and Google Play Console accounts and paying all associated fees;"
+            },
+            {
+              "marker": "b.",
+              "text": "where you authorise us to submit builds using credentials or API keys you supply, you grant us permission to act solely for that purpose, and you remain the account holder and the responsible developer of record;"
+            },
+            {
+              "marker": "c.",
+              "text": "you are responsible for all store-facing metadata, screenshots, descriptions, age ratings, data-safety declarations, privacy nutrition labels, and export compliance answers, and for their accuracy."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "ref": "6.4",
+          "lead": "Pass-through obligations.",
+          "text": "Your Application's end-user licence agreement must, at minimum, meet the requirements imposed by the applicable App Store operator, and must acknowledge that the App Store operator is a third-party beneficiary with the right to enforce it, and that the App Store operator has no obligation to furnish maintenance or support for your Application."
+        },
+        {
+          "type": "p",
+          "ref": "6.5",
+          "lead": "Build environment.",
+          "text": "Build pipelines, signing, and artifact distribution are provided on a best-effort basis and depend on third-party services (including CI providers and cloud infrastructure). Build failures, queue delays, or third-party outages are not a breach of these Terms."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Relationship with Your End Users",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "7.1",
+          "lead": "You are the operator.",
+          "text": "Your Application is your product. Your relationship with End Users — including terms of use, privacy notices, cookie and tracking consent, refunds, returns, delivery, warranties, complaints, and dispute resolution — is solely between you and your End Users."
+        },
+        {
+          "type": "p",
+          "ref": "7.2",
+          "lead": "Mandatory End User documents.",
+          "text": "You must publish and maintain within your Application (a) your own terms of use or end-user licence agreement, and (b) your own privacy policy that accurately describes your collection, use, sharing, retention, and deletion of End User Data, identifies you as the responsible party, and provides a working contact method. Templates or defaults provided by the Platform are convenience samples only and do not constitute legal advice or a compliant document for your circumstances."
+        },
+        {
+          "type": "p",
+          "ref": "7.3",
+          "lead": "No agency.",
+          "text": "Build4All is not a party to any transaction between you and your End Users. We are not a seller, merchant of record, ticketing agent, employer, gym operator, restaurateur, or public authority in respect of your Application."
+        },
+        {
+          "type": "p",
+          "ref": "7.4",
+          "lead": "Payments to you.",
+          "text": "Where the Platform integrates payment functionality, payments from End Users are processed by third-party payment providers under their own terms. You are responsible for onboarding, verification, chargebacks, refunds, settlement timing, and tax obligations arising from those transactions. We do not hold funds on your behalf unless expressly stated in a separate written agreement."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Data Protection",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "8.1",
+          "lead": "Roles.",
+          "text": "With respect to End User Data processed through your Application, you act as the data controller (or equivalent) and we act as a data processor acting on your documented instructions. With respect to your own account data, we act as controller. Details are set out in our Privacy Policy (https://build4all.net/privacy-policy/) and, where applicable, our Data Processing Addendum, available on request from contact@build4all.net, which is incorporated by reference where data protection law requires it."
+        },
+        {
+          "type": "p",
+          "ref": "8.2",
+          "lead": "Your obligations.",
+          "text": "You are responsible for establishing a lawful basis for processing End User Data, providing required notices, obtaining and recording consents (including for marketing, analytics, location, and push notifications), honouring data subject rights requests, and completing any required assessments."
+        },
+        {
+          "type": "p",
+          "ref": "8.3",
+          "lead": "Our obligations.",
+          "text": "We will implement appropriate technical and organisational measures designed to protect Customer Content and End User Data, will restrict access to personnel who need it, will engage sub-processors only under written terms no less protective than these, and will notify you without undue delay after becoming aware of a personal data breach affecting your data."
+        },
+        {
+          "type": "p",
+          "ref": "8.4",
+          "lead": "Hosting location.",
+          "text": "Platform infrastructure is hosted with third-party cloud providers in the region(s) disclosed in our documentation. You acknowledge that data may be transferred to and processed in jurisdictions other than your own, subject to appropriate safeguards."
+        },
+        {
+          "type": "p",
+          "ref": "8.5",
+          "lead": "Prohibited data.",
+          "text": "You must not upload to the Platform any payment card data, government identification numbers, biometric identifiers, or health records except through features expressly designed for that purpose and documented as such."
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "Fees, Billing, and Taxes",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "9.1",
+          "lead": "Fees.",
+          "text": "You agree to pay all fees for your Subscription and any usage-based charges, as set out at the point of purchase or in your order."
+        },
+        {
+          "type": "p",
+          "ref": "9.2",
+          "lead": "Billing and renewal.",
+          "text": "Subscriptions renew automatically for successive periods equal to the initial term unless cancelled before the end of the then-current period. You authorise us and our payment providers to charge your payment method on each renewal."
+        },
+        {
+          "type": "p",
+          "ref": "9.3",
+          "lead": "Price changes.",
+          "text": "We may change fees on at least thirty (30) days' notice, effective at your next renewal. Continued use after the effective date constitutes acceptance."
+        },
+        {
+          "type": "p",
+          "ref": "9.4",
+          "lead": "Taxes.",
+          "text": "Fees are exclusive of VAT, sales tax, withholding tax, and similar levies, which you are responsible for paying, other than taxes on our net income."
+        },
+        {
+          "type": "p",
+          "ref": "9.5",
+          "lead": "Non-payment.",
+          "text": "If payment fails or is overdue, we may suspend access to the Platform and to build and publishing pipelines after reasonable notice. Suspension does not relieve you of the obligation to pay accrued fees."
+        },
+        {
+          "type": "p",
+          "ref": "9.6",
+          "lead": "Refunds.",
+          "text": "Except where required by law or expressly stated in a published refund policy, fees are non-refundable, including for partial periods and unused capacity."
+        },
+        {
+          "type": "p",
+          "ref": "9.7",
+          "lead": "Third-party costs.",
+          "text": "App Store developer fees, domain registration, payment processor fees, SMS and push delivery costs, and similar third-party charges are your responsibility and are not included in the Subscription unless stated."
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "title": "Intellectual Property in the Platform",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "10.1",
+          "lead": "Our IP.",
+          "text": "The Platform, including all software, source code, architecture, APIs, templates, UI components, generated scaffolding, designs, documentation, trademarks, and the \"Build4All\" name and logo, is and remains our exclusive property or that of our licensors. No rights are granted other than the limited licence in Section 4."
+        },
+        {
+          "type": "p",
+          "ref": "10.2",
+          "lead": "Generated code and templates.",
+          "text": "Code, configuration, and assets generated by the Platform and incorporated into your Application are licensed to you under Section 4 for use within that Application. You may not extract, redistribute, or reuse Platform templates or components outside an Application built on the Platform."
+        },
+        {
+          "type": "p",
+          "ref": "10.3",
+          "lead": "Feedback.",
+          "text": "If you provide suggestions, feature requests, or feedback, you grant us a perpetual, irrevocable, worldwide, royalty-free licence to use and exploit them without restriction or compensation."
+        },
+        {
+          "type": "p",
+          "ref": "10.4",
+          "lead": "Attribution.",
+          "text": "Unless your plan expressly includes white-labelling, we may include a discreet \"Built with Build4All\" attribution in your Application, and may reference your name and logo as a customer in our marketing materials. You may opt out of marketing references by writing to contact@build4all.net."
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "title": "Service Availability and Support",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "11.1",
+          "lead": "Availability.",
+          "text": "We aim to provide continuous availability but do not warrant uninterrupted or error-free operation. The Platform may be unavailable during planned maintenance, emergency maintenance, or third-party outages."
+        },
+        {
+          "type": "p",
+          "ref": "11.2",
+          "lead": "Modifications.",
+          "text": "We may add, modify, deprecate, or discontinue features. For material adverse changes to core functionality, we will give at least thirty (30) days' notice where reasonably practicable."
+        },
+        {
+          "type": "p",
+          "ref": "11.3",
+          "lead": "Beta features.",
+          "text": "Features labelled beta, preview, or experimental are provided as-is, may be withdrawn at any time, and are excluded from any service commitments."
+        },
+        {
+          "type": "p",
+          "ref": "11.4",
+          "lead": "Support.",
+          "text": "Support is provided through the channels and within the response targets applicable to your plan. Support does not include development of custom features, third-party integrations, or resolution of issues caused by your modifications or third-party services."
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "title": "Acceptable Use and Suspension",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "12.1",
+          "lead": "Immediate suspension.",
+          "text": "We may suspend or restrict your access, or take down an Application, without prior notice where we reasonably determine that:"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "there is a security incident, active abuse, or a threat to the Platform or other customers;"
+            },
+            {
+              "marker": "b.",
+              "text": "continued operation would expose us or others to legal liability;"
+            },
+            {
+              "marker": "c.",
+              "text": "we receive a valid legal order, takedown notice, or App Store operator directive;"
+            },
+            {
+              "marker": "d.",
+              "text": "your account is materially overdue on payment;"
+            },
+            {
+              "marker": "e.",
+              "text": "the Application is being used for fraud, phishing, or distribution of malware."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "ref": "12.2",
+          "lead": "Notice and cure.",
+          "text": "For non-urgent breaches, we will give notice describing the issue and a reasonable opportunity to cure, normally not less than ten (10) days, before suspension or termination."
+        },
+        {
+          "type": "p",
+          "ref": "12.3",
+          "lead": "Reinstatement.",
+          "text": "Where the cause of suspension is remedied, we will restore access promptly. Repeated or wilful breaches may result in permanent termination without reinstatement."
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "title": "Term, Termination, and Data Export",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "13.1",
+          "lead": "Term.",
+          "text": "These Terms apply from your first acceptance until terminated."
+        },
+        {
+          "type": "p",
+          "ref": "13.2",
+          "lead": "Termination by you.",
+          "text": "You may terminate at any time by cancelling your Subscription in the console or by writing to contact@build4all.net. Cancellation takes effect at the end of the current billing period."
+        },
+        {
+          "type": "p",
+          "ref": "13.3",
+          "lead": "Termination by us.",
+          "text": "We may terminate for material breach not cured under Section 12.2, for insolvency, or on ninety (90) days' notice for convenience with a pro-rata refund of prepaid, unused fees."
+        },
+        {
+          "type": "p",
+          "ref": "13.4",
+          "lead": "Effect of termination.",
+          "text": "On termination: your licence ends; hosted Applications and backend services cease to operate; and we will retain your Customer Content in an inactive state for thirty (30) days, during which you may request an export in a commonly used machine-readable format. After that period, Customer Content may be permanently deleted from active systems, with residual copies expiring from backups within a further ninety (90) days."
+        },
+        {
+          "type": "p",
+          "ref": "13.5",
+          "lead": "Published Applications.",
+          "text": "Applications already distributed through App Stores under your own developer account remain under your control, but will lose access to Platform backend services, APIs, and content management on termination and will likely cease to function. It is your responsibility to unpublish or migrate them."
+        },
+        {
+          "type": "p",
+          "ref": "13.6",
+          "lead": "Survival.",
+          "text": "Sections 5.3, 7, 9 (for accrued amounts), 10, 14, 15, 16, 17, and 19 survive termination."
+        }
+      ]
+    },
+    {
+      "number": "14",
+      "title": "Disclaimers",
+      "blocks": [
+        {
+          "type": "caution",
+          "text": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE PLATFORM IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, AND ANY WARRANTIES ARISING FROM COURSE OF DEALING OR USAGE OF TRADE."
+        },
+        {
+          "type": "caution",
+          "text": "WE DO NOT WARRANT THAT: (a) THE PLATFORM WILL MEET YOUR REQUIREMENTS; (b) OPERATION WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE; (c) ANY APPLICATION WILL BE APPROVED BY, OR REMAIN AVAILABLE ON, ANY APP STORE; (d) DEFECTS WILL BE CORRECTED; OR (e) ANY COMMERCIAL RESULT, REVENUE, DOWNLOAD VOLUME, OR USER ADOPTION WILL BE ACHIEVED."
+        },
+        {
+          "type": "caution",
+          "text": "NOTHING IN THESE TERMS EXCLUDES LIABILITY THAT CANNOT LAWFULLY BE EXCLUDED, INCLUDING FOR DEATH OR PERSONAL INJURY CAUSED BY NEGLIGENCE, OR FOR FRAUD."
+        }
+      ]
+    },
+    {
+      "number": "15",
+      "title": "Limitation of Liability",
+      "blocks": [
+        {
+          "type": "caution",
+          "ref": "15.1",
+          "lead": "Excluded losses.",
+          "text": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER PARTY WILL BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR LOSS OF PROFITS, REVENUE, GOODWILL, BUSINESS OPPORTUNITY, ANTICIPATED SAVINGS, OR DATA, HOWEVER CAUSED AND UNDER ANY THEORY OF LIABILITY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES."
+        },
+        {
+          "type": "caution",
+          "ref": "15.2",
+          "lead": "Cap.",
+          "text": "OUR TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THESE TERMS WILL NOT EXCEED THE GREATER OF (a) THE TOTAL FEES YOU PAID TO US IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM, OR (b) ONE HUNDRED UNITED STATES DOLLARS (USD 100)."
+        },
+        {
+          "type": "p",
+          "ref": "15.3",
+          "lead": "Allocation of risk.",
+          "text": "You acknowledge that the fees reflect this allocation of risk and that we would not provide the Platform on these commercial terms without these limitations."
+        }
+      ]
+    },
+    {
+      "number": "16",
+      "title": "Indemnification",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "You will defend, indemnify, and hold harmless Build4All, its affiliates, officers, directors, employees, and agents from and against any third-party claim, demand, proceeding, loss, liability, damage, fine, penalty, cost, or expense (including reasonable legal fees) arising out of or relating to:"
+        },
+        {
+          "type": "list",
+          "style": "lettered",
+          "items": [
+            {
+              "marker": "a.",
+              "text": "Customer Content or your Application, including any claim of infringement, defamation, or unlawful content;"
+            },
+            {
+              "marker": "b.",
+              "text": "your breach of these Terms, the Store Terms, or applicable law;"
+            },
+            {
+              "marker": "c.",
+              "text": "your relationship, transactions, or disputes with End Users, including product liability, refunds, service delivery, and consumer protection claims;"
+            },
+            {
+              "marker": "d.",
+              "text": "your handling of End User Data, including any regulatory investigation, data subject claim, or breach notification cost;"
+            },
+            {
+              "marker": "e.",
+              "text": "taxes, duties, or levies arising from your business activities conducted through an Application."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "We will notify you of the claim, give you control of the defence (except that you may not settle in a way that imposes obligations on us without our written consent), and provide reasonable cooperation at your expense."
+        }
+      ]
+    },
+    {
+      "number": "17",
+      "title": "Governing Law and Disputes",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "17.1",
+          "lead": "Governing law.",
+          "text": "These Terms are governed by the laws of the Lebanese Republic, without regard to conflict-of-laws rules. The UN Convention on Contracts for the International Sale of Goods does not apply."
+        },
+        {
+          "type": "p",
+          "ref": "17.2",
+          "lead": "Dispute resolution.",
+          "text": "The parties will first attempt in good faith to resolve any dispute through negotiation within thirty (30) days of written notice. Failing resolution, disputes will be finally settled by binding arbitration seated in Beirut, Lebanon, conducted in English by a single arbitrator, and judgment on the award may be entered in any court of competent jurisdiction. Either party may seek injunctive relief in any competent court to protect its intellectual property or confidential information."
+        },
+        {
+          "type": "p",
+          "ref": "17.3",
+          "lead": "No class actions.",
+          "text": "To the extent permitted by law, disputes will be brought only in an individual capacity and not as a plaintiff or class member in any class, collective, or representative proceeding."
+        },
+        {
+          "type": "p",
+          "ref": "17.4",
+          "lead": "Consumer rights.",
+          "text": "If you contract as a consumer under mandatory law in your country of residence, nothing in this Section deprives you of the protection of that law or of the right to bring proceedings in your local courts."
+        }
+      ]
+    },
+    {
+      "number": "18",
+      "title": "Changes to These Terms",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "18.1",
+          "text": "We may update these Terms from time to time. We will publish the updated version with a new version number and Effective Date."
+        },
+        {
+          "type": "p",
+          "ref": "18.2",
+          "text": "For material changes, we will provide at least thirty (30) days' advance notice by email and/or in-console notification."
+        },
+        {
+          "type": "p",
+          "ref": "18.3",
+          "text": "Continued use of the Platform, or creation of any new Application, after the Effective Date of an updated version constitutes acceptance. Where required by law, or where changes materially reduce your rights, we will request renewed express acceptance before you may continue to create Applications."
+        },
+        {
+          "type": "p",
+          "ref": "18.4",
+          "text": "If you do not accept an updated version, your sole remedy is to terminate under Section 13.2."
+        }
+      ]
+    },
+    {
+      "number": "19",
+      "title": "General",
+      "blocks": [
+        {
+          "type": "p",
+          "ref": "19.1",
+          "lead": "Entire agreement.",
+          "text": "These Terms, together with the documents incorporated by reference and any written order form, constitute the entire agreement and supersede all prior understandings on the subject matter."
+        },
+        {
+          "type": "p",
+          "ref": "19.2",
+          "lead": "Order of precedence.",
+          "text": "In the event of conflict: (1) a signed written agreement between the parties; (2) an applicable Data Processing Addendum; (3) these Terms; (4) documentation and policies."
+        },
+        {
+          "type": "p",
+          "ref": "19.3",
+          "lead": "Assignment.",
+          "text": "You may not assign these Terms without our prior written consent, except to a successor in a merger or sale of substantially all assets on written notice. We may assign freely to an affiliate or successor."
+        },
+        {
+          "type": "p",
+          "ref": "19.4",
+          "lead": "Severability.",
+          "text": "If any provision is held unenforceable, it will be modified to the minimum extent necessary and the remaining provisions remain in full force."
+        },
+        {
+          "type": "p",
+          "ref": "19.5",
+          "lead": "No waiver.",
+          "text": "Failure to enforce any provision is not a waiver of the right to enforce it later."
+        },
+        {
+          "type": "p",
+          "ref": "19.6",
+          "lead": "Force majeure.",
+          "text": "Neither party is liable for delay or failure caused by events beyond its reasonable control, including natural disasters, war, civil unrest, government action, power or telecommunications failure, internet or cloud provider outage, or third-party service failure. Payment obligations are not excused."
+        },
+        {
+          "type": "p",
+          "ref": "19.7",
+          "lead": "Independent contractors.",
+          "text": "Nothing creates a partnership, joint venture, agency, franchise, or employment relationship."
+        },
+        {
+          "type": "p",
+          "ref": "19.8",
+          "lead": "Notices.",
+          "text": "Notices to us must be sent to contact@build4all.net. Notices to you will be sent to the email address on your account or displayed in the console, and are deemed received on the date sent."
+        },
+        {
+          "type": "p",
+          "ref": "19.9",
+          "lead": "Export and sanctions.",
+          "text": "You represent that you are not located in, or a national or resident of, any country subject to comprehensive sanctions, and are not on any restricted party list. You will not use the Platform in violation of applicable export control or sanctions laws."
+        },
+        {
+          "type": "p",
+          "ref": "19.10",
+          "lead": "Language.",
+          "text": "These Terms are drafted in English. Any translation is for convenience only; the English version prevails."
+        }
+      ]
+    },
+    {
+      "number": "20",
+      "title": "Contact",
+      "blocks": [
+        {
+          "type": "contact",
+          "lines": [
+            "BUILD 4 ALL SARL",
+            "Commercial Registration No. 5014382",
+            "Saida, Lebanon",
+            "General support: contact@build4all.net",
+            "Legal and privacy: contact@build4all.net"
+          ]
+        }
+      ]
+    }
+  ],
+  "acknowledgement": {
+    "title": "Acknowledgement",
+    "text": "By checking the box below and proceeding, you confirm that you have read and agree to be bound by these Terms and Conditions (Version 1.0), the Privacy Policy, and the Acceptable Use Policy.",
+    "checkbox": "I have read and agree to the Build4All Terms and Conditions and Privacy Policy."
+  }
+}

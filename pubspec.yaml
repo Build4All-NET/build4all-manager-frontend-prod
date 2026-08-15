@@ -89,6 +89,11 @@ flutter:
     # Used wherever the logo is drawn small — app_icon.png is 1254x1254 / 311 KB,
     # which is a costly download on web for a 64px avatar.
     - assets/icon/app_logo_192.png
+    # Terms & Conditions shipped as static data (no backend call): the English
+    # source document plus its French and Arabic translations.
+    - assets/legal/terms_en.json
+    - assets/legal/terms_fr.json
+    - assets/legal/terms_ar.json
 
 flutter_icons:
   android: true

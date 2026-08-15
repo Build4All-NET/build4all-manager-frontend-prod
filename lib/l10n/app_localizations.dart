@@ -7560,6 +7560,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fill in your store URL and API keys'**
   String get owner_request_submit_store_details;
+
+  /// No description provided for @terms_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get terms_title;
+
+  /// No description provided for @terms_version_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get terms_version_label;
+
+  /// No description provided for @terms_effective_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Effective'**
+  String get terms_effective_label;
+
+  /// No description provided for @terms_updated_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get terms_updated_label;
+
+  /// No description provided for @terms_contents.
+  ///
+  /// In en, this message translates to:
+  /// **'Contents'**
+  String get terms_contents;
+
+  /// No description provided for @terms_accept_action.
+  ///
+  /// In en, this message translates to:
+  /// **'I Agree'**
+  String get terms_accept_action;
+
+  /// No description provided for @terms_decline_action.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get terms_decline_action;
+
+  /// No description provided for @terms_scroll_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll to the end to accept'**
+  String get terms_scroll_hint;
+
+  /// No description provided for @terms_read_progress.
+  ///
+  /// In en, this message translates to:
+  /// **'read'**
+  String get terms_read_progress;
+
+  /// No description provided for @terms_consent_text.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read and agree to the {terms} and the {privacy}.'**
+  String get terms_consent_text;
+
+  /// No description provided for @terms_consent_terms_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get terms_consent_terms_link;
+
+  /// No description provided for @terms_consent_privacy_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get terms_consent_privacy_link;
+
+  /// No description provided for @terms_required_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read and accept the Terms & Conditions to create your account.'**
+  String get terms_required_error;
+
+  /// No description provided for @terms_accepted_toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms accepted'**
+  String get terms_accepted_toast;
+
+  /// No description provided for @terms_open_action.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the terms'**
+  String get terms_open_action;
+
+  /// No description provided for @terms_profile_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the platform terms you accepted'**
+  String get terms_profile_subtitle;
+
+  /// No description provided for @terms_load_error.
+  ///
+  /// In en, this message translates to:
+  /// **'The terms could not be loaded.'**
+  String get terms_load_error;
+
+  /// No description provided for @terms_english_notice.
+  ///
+  /// In en, this message translates to:
+  /// **'This translation is provided for convenience. The English version prevails.'**
+  String get terms_english_notice;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

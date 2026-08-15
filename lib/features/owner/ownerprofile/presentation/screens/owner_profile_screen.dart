@@ -705,6 +705,48 @@ class _PreferencesCard extends StatelessWidget {
             height: 1,
             color: cs.outlineVariant.withOpacity(.7),
           ),
+          // Read-only access to the terms the owner accepted when registering.
+          ListTile(
+            onTap: () => context.push('/legal/terms'),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+            leading: CircleAvatar(
+              radius: 18,
+              backgroundColor: cs.primary.withOpacity(.12),
+              child: Icon(
+                Icons.description_outlined,
+                color: cs.primary,
+                size: 18,
+              ),
+            ),
+            title: AutoSizeText(
+              l10n.terms_title,
+              maxLines: 1,
+              minFontSize: 12,
+              stepGranularity: 0.5,
+              overflow: TextOverflow.ellipsis,
+              style: tt.titleSmall?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            subtitle: AutoSizeText(
+              l10n.terms_profile_subtitle,
+              maxLines: 2,
+              minFontSize: 11,
+              stepGranularity: 0.5,
+              overflow: TextOverflow.ellipsis,
+              style: tt.bodyMedium?.copyWith(
+                color: cs.onSurfaceVariant,
+              ),
+            ),
+            trailing: Icon(
+              Icons.chevron_right_rounded,
+              color: cs.onSurfaceVariant,
+            ),
+          ),
+          Divider(
+            height: 1,
+            color: cs.outlineVariant.withOpacity(.7),
+          ),
           ListTile(
             onTap: onDeleteAccount,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16),

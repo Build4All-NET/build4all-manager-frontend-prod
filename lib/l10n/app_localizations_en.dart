@@ -3809,4 +3809,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get owner_request_submit_store_details => 'Fill in your store URL and API keys';
+
+  @override
+  String get terms_title => 'Terms & Conditions';
+
+  @override
+  String get terms_version_label => 'Version';
+
+  @override
+  String get terms_effective_label => 'Effective';
+
+  @override
+  String get terms_updated_label => 'Updated';
+
+  @override
+  String get terms_contents => 'Contents';
+
+  @override
+  String get terms_accept_action => 'I Agree';
+
+  @override
+  String get terms_decline_action => 'Not now';
+
+  @override
+  String get terms_scroll_hint => 'Scroll to the end to accept';
+
+  @override
+  String get terms_read_progress => 'read';
+
+  @override
+  String get terms_consent_text => 'I have read and agree to the {terms} and the {privacy}.';
+
+  @override
+  String get terms_consent_terms_link => 'Terms & Conditions';
+
+  @override
+  String get terms_consent_privacy_link => 'Privacy Policy';
+
+  @override
+  String get terms_required_error => 'Please read and accept the Terms & Conditions to create your account.';
+
+  @override
+  String get terms_accepted_toast => 'Terms accepted';
+
+  @override
+  String get terms_open_action => 'Read the terms';
+
+  @override
+  String get terms_profile_subtitle => 'Read the platform terms you accepted';
+
+  @override
+  String get terms_load_error => 'The terms could not be loaded.';
+
+  @override
+  String get terms_english_notice => 'This translation is provided for convenience. The English version prevails.';
 }
