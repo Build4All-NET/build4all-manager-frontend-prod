@@ -46,3 +46,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Ruby tooling (Gemfile is CI-only; the lockfile is resolved per run)
+/.bundle/
+/vendor/bundle/
+/Gemfile.lock

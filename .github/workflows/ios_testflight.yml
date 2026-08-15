@@ -115,38 +115,26 @@ jobs:
         run: |
           set -euo pipefail
 
-          cat > ci_fastlane <<'BASH'
+          # Single dispatcher: the Gemfile lives at the repo root, but some steps
+          # run from a subdirectory (the Pods step runs inside ios/), so resolve
+          # it from GITHUB_WORKSPACE instead of the current directory.
+          cat > ci_bundle_exec <<'BASH'
           #!/usr/bin/env bash
           set -euo pipefail
-          if [ -f Gemfile ]; then
-            bundle exec fastlane "$@"
-          else
-            fastlane "$@"
+          ROOT="${GITHUB_WORKSPACE:-$PWD}"
+          if [ -f "$ROOT/Gemfile" ]; then
+            export BUNDLE_GEMFILE="$ROOT/Gemfile"
+            exec bundle exec "$@"
           fi
+          exec "$@"
           BASH
-          chmod +x ci_fastlane
+          chmod +x ci_bundle_exec
 
-          cat > ci_pod <<'BASH'
-          #!/usr/bin/env bash
-          set -euo pipefail
-          if [ -f Gemfile ]; then
-            bundle exec pod "$@"
-          else
-            pod "$@"
-          fi
-          BASH
-          chmod +x ci_pod
-
-          cat > ci_ruby <<'BASH'
-          #!/usr/bin/env bash
-          set -euo pipefail
-          if [ -f Gemfile ]; then
-            bundle exec ruby "$@"
-          else
-            ruby "$@"
-          fi
-          BASH
-          chmod +x ci_ruby
+          for tool in fastlane pod ruby; do
+            printf '#!/usr/bin/env bash\nset -euo pipefail\nexec "%s/ci_bundle_exec" %s "$@"\n' \
+              "${GITHUB_WORKSPACE}" "$tool" > "ci_${tool}"
+            chmod +x "ci_${tool}"
+          done
 
       - name: Force iOS minimum deployment target (Podfile)
         shell: bash
@@ -170,16 +158,25 @@ jobs:
 
           if [ -f Gemfile ]; then
             echo "✅ Gemfile found → using Bundler (recommended)"
-            gem install bundler -N || true
+            # Pin the 2.x line: Bundler 4 changed enough defaults that an
+            # unpinned `gem install bundler` can silently change how this step
+            # behaves from one run to the next.
+            gem install bundler -N -v "~> 2.7" || true
             bundle --version
-            bundle config set path vendor/bundle
+            # Deliberately NOT `bundle config set path vendor/bundle`: `flutter
+            # build ios` shells out to a bare `pod`, so CocoaPods has to stay on
+            # PATH. Installing into the default gem home keeps the binstubs
+            # visible while Bundler still pins the resolved versions.
             bundle install --jobs 4 --retry 3
             ./ci_pod --version
             ./ci_fastlane --version
           else
-            echo "⚠️ No Gemfile → fallback to gem install (with --force to avoid console conflicts)"
+            echo "⚠️ No Gemfile → fallback to gem install"
+            # Never pass --force here: it bypasses dependency checks, so the gem home
+            # ends up with a set RubyGems cannot activate and the very next `fastlane`
+            # invocation blows up in the resolver ("Unable to satisfy ... excon").
             gem install cocoapods -N
-            gem install fastlane -N --force
+            gem install fastlane -N
             # xcodeproj is usually pulled by cocoapods, but keep this to guarantee patch step works:
             gem install xcodeproj -N || true
             pod --version
