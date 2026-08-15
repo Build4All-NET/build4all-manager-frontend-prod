@@ -1589,5 +1589,113 @@
   "upgrade_requests_more_shops": "more shops",
   "@upgrade_requests_more_shops": {
     "description": "Suffix after a count, e.g. \"+2 more shops\" under the same app"
+  },
+  "dash_section_projects": "Projects",
+  "@dash_section_projects": {
+    "description": "Dashboard section header for project counters"
+  },
+  "dash_section_apps": "Apps & owners",
+  "@dash_section_apps": {
+    "description": "Dashboard section header for app and owner counters"
+  },
+  "dash_section_builds": "Builds",
+  "@dash_section_builds": {
+    "description": "Dashboard section header for CI build counters"
+  },
+  "dash_section_publishing": "Publishing",
+  "@dash_section_publishing": {
+    "description": "Dashboard section header for store publishing counters"
+  },
+  "dash_section_licensing": "Licensing",
+  "@dash_section_licensing": {
+    "description": "Dashboard section header for licence and upgrade counters"
+  },
+  "dash_total_apps": "Total apps",
+  "@dash_total_apps": {
+    "description": "Count of all apps on the platform"
+  },
+  "dash_active_apps": "Active apps",
+  "@dash_active_apps": {
+    "description": "Count of apps in ACTIVE status"
+  },
+  "dash_owners": "Owners",
+  "@dash_owners": {
+    "description": "Count of registered app owners"
+  },
+  "dash_owners_with_apps": "Owners with apps",
+  "@dash_owners_with_apps": {
+    "description": "Owners who created at least one app"
+  },
+  "dash_builds_total": "Total builds",
+  "@dash_builds_total": {
+    "description": "Count of all CI build jobs"
+  },
+  "dash_builds_in_flight": "Running now",
+  "@dash_builds_in_flight": {
+    "description": "Builds queued or running right now"
+  },
+  "dash_builds_failed": "Failed builds",
+  "@dash_builds_failed": {
+    "description": "Count of failed CI builds"
+  },
+  "dash_builds_last_7_days": "Last 7 days",
+  "@dash_builds_last_7_days": {
+    "description": "Builds started in the last seven days"
+  },
+  "dash_published_apps": "Published apps",
+  "@dash_published_apps": {
+    "description": "Apps that reached a store"
+  },
+  "dash_publish_awaiting": "Awaiting review",
+  "@dash_publish_awaiting": {
+    "description": "Publish requests waiting on us or the store"
+  },
+  "dash_publish_total": "Publish requests",
+  "@dash_publish_total": {
+    "description": "All publish requests"
+  },
+  "dash_licenses_expiring": "Expiring in 30 days",
+  "@dash_licenses_expiring": {
+    "description": "Licences ending within 30 days"
+  },
+  "dash_licenses_expired": "Expired licences",
+  "@dash_licenses_expired": {
+    "description": "Licences whose period already ended"
+  },
+  "builds_title": "Builds",
+  "@builds_title": {
+    "description": "Title of the platform-wide builds screen"
+  },
+  "builds_search_hint": "Search by app, owner, platform, or run...",
+  "@builds_search_hint": {
+    "description": "Search hint on the builds screen"
+  },
+  "builds_filter_all": "All",
+  "@builds_filter_all": {
+    "description": "Chip that clears the build status filter"
+  },
+  "builds_empty": "No builds to show",
+  "@builds_empty": {
+    "description": "Empty state on the builds screen"
+  },
+  "builds_ci_run": "CI run",
+  "@builds_ci_run": {
+    "description": "Link that opens the CI run behind a build"
+  },
+  "owners_title": "App owners",
+  "@owners_title": {
+    "description": "Title of the owners screen"
+  },
+  "owners_search_hint": "Search by name, e-mail, or phone...",
+  "@owners_search_hint": {
+    "description": "Search hint on the owners screen"
+  },
+  "owners_empty": "No owners yet",
+  "@owners_empty": {
+    "description": "Empty state on the owners screen"
+  },
+  "owners_apps_count": "apps",
+  "@owners_apps_count": {
+    "description": "Suffix after the number of apps an owner holds"
   }
 }

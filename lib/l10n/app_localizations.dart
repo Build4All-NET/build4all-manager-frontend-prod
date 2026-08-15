@@ -7686,6 +7686,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'more shops'**
   String get upgrade_requests_more_shops;
+
+  /// No description provided for @dash_section_projects.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get dash_section_projects;
+
+  /// No description provided for @dash_section_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps & owners'**
+  String get dash_section_apps;
+
+  /// No description provided for @dash_section_builds.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds'**
+  String get dash_section_builds;
+
+  /// No description provided for @dash_section_publishing.
+  ///
+  /// In en, this message translates to:
+  /// **'Publishing'**
+  String get dash_section_publishing;
+
+  /// No description provided for @dash_section_licensing.
+  ///
+  /// In en, this message translates to:
+  /// **'Licensing'**
+  String get dash_section_licensing;
+
+  /// No description provided for @dash_total_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Total apps'**
+  String get dash_total_apps;
+
+  /// No description provided for @dash_active_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Active apps'**
+  String get dash_active_apps;
+
+  /// No description provided for @dash_owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners'**
+  String get dash_owners;
+
+  /// No description provided for @dash_owners_with_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners with apps'**
+  String get dash_owners_with_apps;
+
+  /// No description provided for @dash_builds_total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total builds'**
+  String get dash_builds_total;
+
+  /// No description provided for @dash_builds_in_flight.
+  ///
+  /// In en, this message translates to:
+  /// **'Running now'**
+  String get dash_builds_in_flight;
+
+  /// No description provided for @dash_builds_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed builds'**
+  String get dash_builds_failed;
+
+  /// No description provided for @dash_builds_last_7_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get dash_builds_last_7_days;
+
+  /// No description provided for @dash_published_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Published apps'**
+  String get dash_published_apps;
+
+  /// No description provided for @dash_publish_awaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting review'**
+  String get dash_publish_awaiting;
+
+  /// No description provided for @dash_publish_total.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish requests'**
+  String get dash_publish_total;
+
+  /// No description provided for @dash_licenses_expiring.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiring in 30 days'**
+  String get dash_licenses_expiring;
+
+  /// No description provided for @dash_licenses_expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired licences'**
+  String get dash_licenses_expired;
+
+  /// No description provided for @builds_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds'**
+  String get builds_title;
+
+  /// No description provided for @builds_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by app, owner, platform, or run...'**
+  String get builds_search_hint;
+
+  /// No description provided for @builds_filter_all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get builds_filter_all;
+
+  /// No description provided for @builds_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'No builds to show'**
+  String get builds_empty;
+
+  /// No description provided for @builds_ci_run.
+  ///
+  /// In en, this message translates to:
+  /// **'CI run'**
+  String get builds_ci_run;
+
+  /// No description provided for @owners_title.
+  ///
+  /// In en, this message translates to:
+  /// **'App owners'**
+  String get owners_title;
+
+  /// No description provided for @owners_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, e-mail, or phone...'**
+  String get owners_search_hint;
+
+  /// No description provided for @owners_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'No owners yet'**
+  String get owners_empty;
+
+  /// No description provided for @owners_apps_count.
+  ///
+  /// In en, this message translates to:
+  /// **'apps'**
+  String get owners_apps_count;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

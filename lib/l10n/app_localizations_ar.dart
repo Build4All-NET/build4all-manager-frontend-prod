@@ -3872,4 +3872,85 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get upgrade_requests_more_shops => 'محلات أخرى';
+
+  @override
+  String get dash_section_projects => 'المشاريع';
+
+  @override
+  String get dash_section_apps => 'التطبيقات والمالكين';
+
+  @override
+  String get dash_section_builds => 'البيلدات';
+
+  @override
+  String get dash_section_publishing => 'النشر';
+
+  @override
+  String get dash_section_licensing => 'التراخيص';
+
+  @override
+  String get dash_total_apps => 'مجموع التطبيقات';
+
+  @override
+  String get dash_active_apps => 'تطبيقات فعّالة';
+
+  @override
+  String get dash_owners => 'المالكون';
+
+  @override
+  String get dash_owners_with_apps => 'مالكون عندهم تطبيق';
+
+  @override
+  String get dash_builds_total => 'مجموع البيلدات';
+
+  @override
+  String get dash_builds_in_flight => 'قيد التنفيذ';
+
+  @override
+  String get dash_builds_failed => 'بيلدات فشلت';
+
+  @override
+  String get dash_builds_last_7_days => 'آخر 7 أيام';
+
+  @override
+  String get dash_published_apps => 'تطبيقات منشورة';
+
+  @override
+  String get dash_publish_awaiting => 'بانتظار المراجعة';
+
+  @override
+  String get dash_publish_total => 'طلبات النشر';
+
+  @override
+  String get dash_licenses_expiring => 'بتخلص خلال 30 يوم';
+
+  @override
+  String get dash_licenses_expired => 'تراخيص منتهية';
+
+  @override
+  String get builds_title => 'البيلدات';
+
+  @override
+  String get builds_search_hint => 'ابحث بالتطبيق، المالك، المنصّة، أو رقم الـ run...';
+
+  @override
+  String get builds_filter_all => 'الكل';
+
+  @override
+  String get builds_empty => 'ما في بيلدات';
+
+  @override
+  String get builds_ci_run => 'تشغيل CI';
+
+  @override
+  String get owners_title => 'مالكو التطبيقات';
+
+  @override
+  String get owners_search_hint => 'ابحث بالاسم، الإيميل، أو التلفون...';
+
+  @override
+  String get owners_empty => 'ما في مالكين';
+
+  @override
+  String get owners_apps_count => 'تطبيق';
 }

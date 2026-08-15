@@ -3872,4 +3872,85 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get upgrade_requests_more_shops => 'autres boutiques';
+
+  @override
+  String get dash_section_projects => 'Projets';
+
+  @override
+  String get dash_section_apps => 'Applications et propriétaires';
+
+  @override
+  String get dash_section_builds => 'Builds';
+
+  @override
+  String get dash_section_publishing => 'Publication';
+
+  @override
+  String get dash_section_licensing => 'Licences';
+
+  @override
+  String get dash_total_apps => 'Applications';
+
+  @override
+  String get dash_active_apps => 'Applications actives';
+
+  @override
+  String get dash_owners => 'Propriétaires';
+
+  @override
+  String get dash_owners_with_apps => 'Propriétaires avec app';
+
+  @override
+  String get dash_builds_total => 'Builds au total';
+
+  @override
+  String get dash_builds_in_flight => 'En cours';
+
+  @override
+  String get dash_builds_failed => 'Builds échoués';
+
+  @override
+  String get dash_builds_last_7_days => '7 derniers jours';
+
+  @override
+  String get dash_published_apps => 'Apps publiées';
+
+  @override
+  String get dash_publish_awaiting => 'En attente de revue';
+
+  @override
+  String get dash_publish_total => 'Demandes de publication';
+
+  @override
+  String get dash_licenses_expiring => 'Expire sous 30 jours';
+
+  @override
+  String get dash_licenses_expired => 'Licences expirées';
+
+  @override
+  String get builds_title => 'Builds';
+
+  @override
+  String get builds_search_hint => 'Rechercher par app, propriétaire, plateforme ou run...';
+
+  @override
+  String get builds_filter_all => 'Tous';
+
+  @override
+  String get builds_empty => 'Aucun build à afficher';
+
+  @override
+  String get builds_ci_run => 'Run CI';
+
+  @override
+  String get owners_title => 'Propriétaires';
+
+  @override
+  String get owners_search_hint => 'Rechercher par nom, e-mail ou téléphone...';
+
+  @override
+  String get owners_empty => 'Aucun propriétaire';
+
+  @override
+  String get owners_apps_count => 'apps';
 }
