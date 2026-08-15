@@ -5785,6 +5785,30 @@ abstract class AppLocalizations {
   /// **'Version Code'**
   String get publish_details_label_version_code;
 
+  /// No description provided for @publish_details_label_ci_run.
+  ///
+  /// In en, this message translates to:
+  /// **'CI Run'**
+  String get publish_details_label_ci_run;
+
+  /// GitHub Actions run number for the latest CI build of an app
+  ///
+  /// In en, this message translates to:
+  /// **'Run #{runNumber}'**
+  String publish_ci_run_number(int runNumber);
+
+  /// No description provided for @publish_ci_run_open_logs.
+  ///
+  /// In en, this message translates to:
+  /// **'View run logs'**
+  String get publish_ci_run_open_logs;
+
+  /// No description provided for @publish_ci_run_none.
+  ///
+  /// In en, this message translates to:
+  /// **'No run recorded'**
+  String get publish_ci_run_none;
+
   /// No description provided for @publish_details_label_last_build.
   ///
   /// In en, this message translates to:
@@ -7536,6 +7560,360 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fill in your store URL and API keys'**
   String get owner_request_submit_store_details;
+
+  /// No description provided for @terms_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get terms_title;
+
+  /// No description provided for @terms_version_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get terms_version_label;
+
+  /// No description provided for @terms_effective_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Effective'**
+  String get terms_effective_label;
+
+  /// No description provided for @terms_updated_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get terms_updated_label;
+
+  /// No description provided for @terms_contents.
+  ///
+  /// In en, this message translates to:
+  /// **'Contents'**
+  String get terms_contents;
+
+  /// No description provided for @terms_accept_action.
+  ///
+  /// In en, this message translates to:
+  /// **'I Agree'**
+  String get terms_accept_action;
+
+  /// No description provided for @terms_decline_action.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get terms_decline_action;
+
+  /// No description provided for @terms_scroll_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll to the end to accept'**
+  String get terms_scroll_hint;
+
+  /// No description provided for @terms_read_progress.
+  ///
+  /// In en, this message translates to:
+  /// **'read'**
+  String get terms_read_progress;
+
+  /// No description provided for @terms_consent_text.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read and agree to the {terms} and the {privacy}.'**
+  String get terms_consent_text;
+
+  /// No description provided for @terms_consent_terms_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms & Conditions'**
+  String get terms_consent_terms_link;
+
+  /// No description provided for @terms_consent_privacy_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get terms_consent_privacy_link;
+
+  /// No description provided for @terms_required_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Please read and accept the Terms & Conditions to create your account.'**
+  String get terms_required_error;
+
+  /// No description provided for @terms_accepted_toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms accepted'**
+  String get terms_accepted_toast;
+
+  /// No description provided for @terms_open_action.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the terms'**
+  String get terms_open_action;
+
+  /// No description provided for @terms_profile_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the platform terms you accepted'**
+  String get terms_profile_subtitle;
+
+  /// No description provided for @terms_load_error.
+  ///
+  /// In en, this message translates to:
+  /// **'The terms could not be loaded.'**
+  String get terms_load_error;
+
+  /// No description provided for @terms_english_notice.
+  ///
+  /// In en, this message translates to:
+  /// **'This translation is provided for convenience. The English version prevails.'**
+  String get terms_english_notice;
+
+  /// No description provided for @upgrade_requests_requested_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested by'**
+  String get upgrade_requests_requested_by;
+
+  /// No description provided for @upgrade_requests_owner_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner name not set'**
+  String get upgrade_requests_owner_unknown;
+
+  /// No description provided for @upgrade_requests_more_shops.
+  ///
+  /// In en, this message translates to:
+  /// **'more shops'**
+  String get upgrade_requests_more_shops;
+
+  /// No description provided for @dash_section_projects.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get dash_section_projects;
+
+  /// No description provided for @dash_section_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps & owners'**
+  String get dash_section_apps;
+
+  /// No description provided for @dash_section_builds.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds'**
+  String get dash_section_builds;
+
+  /// No description provided for @dash_section_publishing.
+  ///
+  /// In en, this message translates to:
+  /// **'Publishing'**
+  String get dash_section_publishing;
+
+  /// No description provided for @dash_section_licensing.
+  ///
+  /// In en, this message translates to:
+  /// **'Licensing'**
+  String get dash_section_licensing;
+
+  /// No description provided for @dash_total_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Total apps'**
+  String get dash_total_apps;
+
+  /// No description provided for @dash_active_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Active apps'**
+  String get dash_active_apps;
+
+  /// No description provided for @dash_owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners'**
+  String get dash_owners;
+
+  /// No description provided for @dash_owners_with_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners with apps'**
+  String get dash_owners_with_apps;
+
+  /// No description provided for @dash_builds_total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total builds'**
+  String get dash_builds_total;
+
+  /// No description provided for @dash_builds_in_flight.
+  ///
+  /// In en, this message translates to:
+  /// **'Running now'**
+  String get dash_builds_in_flight;
+
+  /// No description provided for @dash_builds_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed builds'**
+  String get dash_builds_failed;
+
+  /// No description provided for @dash_builds_last_7_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get dash_builds_last_7_days;
+
+  /// No description provided for @dash_published_apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Published apps'**
+  String get dash_published_apps;
+
+  /// No description provided for @dash_publish_awaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting review'**
+  String get dash_publish_awaiting;
+
+  /// No description provided for @dash_publish_total.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish requests'**
+  String get dash_publish_total;
+
+  /// No description provided for @dash_licenses_expiring.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiring in 30 days'**
+  String get dash_licenses_expiring;
+
+  /// No description provided for @dash_licenses_expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired licences'**
+  String get dash_licenses_expired;
+
+  /// No description provided for @builds_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds'**
+  String get builds_title;
+
+  /// No description provided for @builds_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by app, owner, platform, or run...'**
+  String get builds_search_hint;
+
+  /// No description provided for @builds_filter_all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get builds_filter_all;
+
+  /// No description provided for @builds_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'No builds to show'**
+  String get builds_empty;
+
+  /// No description provided for @builds_ci_run.
+  ///
+  /// In en, this message translates to:
+  /// **'CI run'**
+  String get builds_ci_run;
+
+  /// No description provided for @owners_title.
+  ///
+  /// In en, this message translates to:
+  /// **'App owners'**
+  String get owners_title;
+
+  /// No description provided for @owners_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, e-mail, or phone...'**
+  String get owners_search_hint;
+
+  /// No description provided for @owners_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'No owners yet'**
+  String get owners_empty;
+
+  /// No description provided for @owners_apps_count.
+  ///
+  /// In en, this message translates to:
+  /// **'apps'**
+  String get owners_apps_count;
+
+  /// No description provided for @app_content_title.
+  ///
+  /// In en, this message translates to:
+  /// **'App content'**
+  String get app_content_title;
+
+  /// No description provided for @app_content_tab_items.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogue'**
+  String get app_content_tab_items;
+
+  /// No description provided for @app_content_tab_customers.
+  ///
+  /// In en, this message translates to:
+  /// **'Customers'**
+  String get app_content_tab_customers;
+
+  /// No description provided for @app_content_items.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get app_content_items;
+
+  /// No description provided for @app_content_categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get app_content_categories;
+
+  /// No description provided for @app_content_customers.
+  ///
+  /// In en, this message translates to:
+  /// **'Customers'**
+  String get app_content_customers;
+
+  /// No description provided for @app_content_orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get app_content_orders;
+
+  /// No description provided for @app_content_shops.
+  ///
+  /// In en, this message translates to:
+  /// **'Shops'**
+  String get app_content_shops;
+
+  /// No description provided for @app_content_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock'**
+  String get app_content_stock;
+
+  /// No description provided for @app_content_items_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'This app has no catalogue yet'**
+  String get app_content_items_empty;
+
+  /// No description provided for @app_content_customers_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'No customers yet'**
+  String get app_content_customers_empty;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,5 +1,7 @@
 import 'package:build4all_manager/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../shared/widgets/ci_run_chip.dart';
 import '../../domain/entities/app_publish_request_admin.dart';
 
 class RequestedAppRow extends StatelessWidget {
@@ -74,7 +76,7 @@ class RequestedAppRow extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              const _MoreMenu(),
+              _MoreMenu(item: item),
             ],
           ),
           const SizedBox(height: 10),
@@ -90,6 +92,7 @@ class RequestedAppRow extends StatelessWidget {
                 label: _platformBadgeLabel(context, true),
               ),
               _StatusPill(status: item.status),
+              if (item.showCiRunLink) CiRunChip(info: item.ciRunInfo),
             ],
           ),
           const SizedBox(height: 10),
@@ -220,7 +223,17 @@ class RequestedAppRow extends StatelessWidget {
             flex: 16,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: _StatusPill(status: item.status),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _StatusPill(status: item.status),
+                  if (item.showCiRunLink) ...[
+                    const SizedBox(height: 6),
+                    CiRunChip(info: item.ciRunInfo),
+                  ],
+                ],
+              ),
             ),
           ),
           if (showRequested)
@@ -271,7 +284,7 @@ class RequestedAppRow extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                const _MoreMenu(),
+                _MoreMenu(item: item),
               ],
             ),
           ),
@@ -511,24 +524,44 @@ class _StatusPill extends StatelessWidget {
 }
 
 class _MoreMenu extends StatelessWidget {
-  const _MoreMenu();
+  final AppPublishRequestAdmin item;
+
+  const _MoreMenu({required this.item});
+
+  Future<void> _openRun() async {
+    final uri = Uri.tryParse((item.ciRunUrl ?? '').trim());
+    if (uri == null) return;
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
+    // "View logs" now has a destination whenever a run URL came back. History is
+    // still unbuilt, so it stays disabled rather than looking clickable.
+    final hasRun = (item.ciRunUrl ?? '').trim().isNotEmpty;
+
     return PopupMenuButton<String>(
       tooltip: l10n.common_more,
-      onSelected: (_) {},
+      onSelected: (value) {
+        if (value == 'logs') _openRun();
+      },
       itemBuilder: (_) => [
         PopupMenuItem(
           value: 'history',
+          enabled: false,
           child: Text(l10n.publish_action_cicd_history_soon),
         ),
         PopupMenuItem(
           value: 'logs',
-          child: Text(l10n.publish_action_view_logs_soon),
+          enabled: hasRun,
+          child: Text(
+            hasRun
+                ? l10n.publish_ci_run_open_logs
+                : l10n.publish_action_view_logs_soon,
+          ),
         ),
       ],
       child: Container(

@@ -2897,6 +2897,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get publish_details_label_version_code => 'رمز الإصدار';
 
   @override
+  String get publish_details_label_ci_run => 'تشغيل CI';
+
+  @override
+  String publish_ci_run_number(int runNumber) {
+    return 'تشغيل رقم $runNumber';
+  }
+
+  @override
+  String get publish_ci_run_open_logs => 'عرض سجلات التشغيل';
+
+  @override
+  String get publish_ci_run_none => 'لا يوجد تشغيل مسجّل';
+
+  @override
   String get publish_details_label_last_build => 'آخر بناء';
 
   @override
@@ -2939,7 +2953,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get upgrade_requests_empty_search_title => 'لم يتم العثور على طلبات مطابقة';
 
   @override
-  String get upgrade_requests_empty_search_subtitle => 'جرّب كلمة أخرى لاسم التطبيق أو الرابط أو رقم الطلب أو الخطة.';
+  String get upgrade_requests_empty_search_subtitle => 'جرّب كلمة مفتاحية تانية: المحل، المالك، الإيميل، اسم التطبيق، الـ slug، رقم الطلب، أو الخطة.';
 
   @override
   String get upgrade_requests_hero_subtitle => 'راجع ووافق أو ارفض طلبات ترقية خطة المالك.';
@@ -2954,7 +2968,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get upgrade_requests_stat_pending => 'قيد الانتظار';
 
   @override
-  String get upgrade_requests_search_hint => 'ابحث باسم التطبيق أو الرابط أو رقم الطلب أو الخطة...';
+  String get upgrade_requests_search_hint => 'ابحث بالمحل، المالك، الإيميل، التطبيق، الـ slug، أو الخطة...';
 
   @override
   String upgrade_requests_visible_count(Object count) {
@@ -3795,4 +3809,181 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get owner_request_submit_store_details => 'عبّي رابط المتجر ومفاتيح الـ API';
+
+  @override
+  String get terms_title => 'الشروط والأحكام';
+
+  @override
+  String get terms_version_label => 'الإصدار';
+
+  @override
+  String get terms_effective_label => 'ساري اعتباراً من';
+
+  @override
+  String get terms_updated_label => 'آخر تحديث';
+
+  @override
+  String get terms_contents => 'المحتويات';
+
+  @override
+  String get terms_accept_action => 'أوافق';
+
+  @override
+  String get terms_decline_action => 'ليس الآن';
+
+  @override
+  String get terms_scroll_hint => 'مرّر إلى نهاية النص للموافقة';
+
+  @override
+  String get terms_read_progress => 'تمت قراءته';
+
+  @override
+  String get terms_consent_text => 'لقد قرأت {terms} و{privacy} وأوافق عليهما.';
+
+  @override
+  String get terms_consent_terms_link => 'الشروط والأحكام';
+
+  @override
+  String get terms_consent_privacy_link => 'سياسة الخصوصية';
+
+  @override
+  String get terms_required_error => 'يرجى قراءة الشروط والأحكام والموافقة عليها لإنشاء حسابك.';
+
+  @override
+  String get terms_accepted_toast => 'تمت الموافقة على الشروط';
+
+  @override
+  String get terms_open_action => 'اقرأ الشروط';
+
+  @override
+  String get terms_profile_subtitle => 'اطّلع على شروط المنصّة التي وافقت عليها';
+
+  @override
+  String get terms_load_error => 'تعذّر تحميل الشروط.';
+
+  @override
+  String get terms_english_notice => 'هذه الترجمة مقدّمة للتسهيل فقط، وتسود النسخة الإنجليزية.';
+
+  @override
+  String get upgrade_requests_requested_by => 'مقدّم الطلب';
+
+  @override
+  String get upgrade_requests_owner_unknown => 'اسم المالك غير محدّد';
+
+  @override
+  String get upgrade_requests_more_shops => 'محلات أخرى';
+
+  @override
+  String get dash_section_projects => 'المشاريع';
+
+  @override
+  String get dash_section_apps => 'التطبيقات والمالكين';
+
+  @override
+  String get dash_section_builds => 'البيلدات';
+
+  @override
+  String get dash_section_publishing => 'النشر';
+
+  @override
+  String get dash_section_licensing => 'التراخيص';
+
+  @override
+  String get dash_total_apps => 'مجموع التطبيقات';
+
+  @override
+  String get dash_active_apps => 'تطبيقات فعّالة';
+
+  @override
+  String get dash_owners => 'المالكون';
+
+  @override
+  String get dash_owners_with_apps => 'مالكون عندهم تطبيق';
+
+  @override
+  String get dash_builds_total => 'مجموع البيلدات';
+
+  @override
+  String get dash_builds_in_flight => 'قيد التنفيذ';
+
+  @override
+  String get dash_builds_failed => 'بيلدات فشلت';
+
+  @override
+  String get dash_builds_last_7_days => 'آخر 7 أيام';
+
+  @override
+  String get dash_published_apps => 'تطبيقات منشورة';
+
+  @override
+  String get dash_publish_awaiting => 'بانتظار المراجعة';
+
+  @override
+  String get dash_publish_total => 'طلبات النشر';
+
+  @override
+  String get dash_licenses_expiring => 'بتخلص خلال 30 يوم';
+
+  @override
+  String get dash_licenses_expired => 'تراخيص منتهية';
+
+  @override
+  String get builds_title => 'البيلدات';
+
+  @override
+  String get builds_search_hint => 'ابحث بالتطبيق، المالك، المنصّة، أو رقم الـ run...';
+
+  @override
+  String get builds_filter_all => 'الكل';
+
+  @override
+  String get builds_empty => 'ما في بيلدات';
+
+  @override
+  String get builds_ci_run => 'تشغيل CI';
+
+  @override
+  String get owners_title => 'مالكو التطبيقات';
+
+  @override
+  String get owners_search_hint => 'ابحث بالاسم، الإيميل، أو التلفون...';
+
+  @override
+  String get owners_empty => 'ما في مالكين';
+
+  @override
+  String get owners_apps_count => 'تطبيق';
+
+  @override
+  String get app_content_title => 'محتوى التطبيق';
+
+  @override
+  String get app_content_tab_items => 'الكتالوج';
+
+  @override
+  String get app_content_tab_customers => 'الزبائن';
+
+  @override
+  String get app_content_items => 'المنتجات';
+
+  @override
+  String get app_content_categories => 'الفئات';
+
+  @override
+  String get app_content_customers => 'الزبائن';
+
+  @override
+  String get app_content_orders => 'الطلبيات';
+
+  @override
+  String get app_content_shops => 'المحلات';
+
+  @override
+  String get app_content_stock => 'المخزون';
+
+  @override
+  String get app_content_items_empty => 'هالتطبيق لسا ما عندو كتالوج';
+
+  @override
+  String get app_content_customers_empty => 'ما في زبائن بعد';
 }

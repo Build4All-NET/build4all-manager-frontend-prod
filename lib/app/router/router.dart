@@ -29,6 +29,8 @@ import 'package:build4all_manager/features/owner/ownerhome/presentation/screens/
 import 'package:build4all_manager/features/owner/ownerprojects/presentation/screens/owner_projects_screen.dart';
 import 'package:build4all_manager/features/owner/ownerprofile/presentation/screens/owner_profile_screen.dart';
 
+import 'package:build4all_manager/features/legal/presentation/screens/terms_screen.dart';
+
 import 'package:build4all_manager/l10n/app_localizations.dart';
 
 import 'package:build4all_manager/features/auth/domain/repositories/i_auth_repository.dart';
@@ -173,6 +175,7 @@ const _publicPaths = <String>{
   '/owner/forgot-password',
   '/owner/forgot-password/otp',
   '/owner/forgot-password/reset',
+  '/legal/terms',
 };
 
 final _ownerSessionShellKey =
@@ -383,6 +386,16 @@ final router = GoRouter(
           ),
         ),
       ],
+    ),
+
+    // Terms & Conditions reader. `?accept=1` turns it into the acceptance
+    // step used by registration, which pops `true` once the user agrees.
+    GoRoute(
+      path: '/legal/terms',
+      builder: (ctx, st) => TermsScreen(
+        requireAcceptance: st.uri.queryParameters['accept'] == '1',
+        alreadyAccepted: st.uri.queryParameters['accepted'] == '1',
+      ),
     ),
   ],
   redirect: _authRedirect,

@@ -1,4 +1,5 @@
 import 'package:build4all_manager/core/network/dio_client.dart';
+import 'app_content_screen.dart';
 import 'package:build4all_manager/l10n/app_localizations.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
@@ -135,6 +136,19 @@ class _AppLicenseDetailScreenState extends State<AppLicenseDetailScreen> {
       appBar: AppBar(
         title: Text(item.appName, maxLines: 1, overflow: TextOverflow.ellipsis),
         actions: [
+          IconButton(
+            tooltip: l10n.app_content_title,
+            icon: const Icon(Icons.inventory_2_outlined),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => AppContentScreen(
+                  aupId: item.aupId,
+                  appTitle: item.appName,
+                ),
+              ),
+            ),
+          ),
           if (widget.canCancel)
             PopupMenuButton<String>(
               onSelected: (v) {

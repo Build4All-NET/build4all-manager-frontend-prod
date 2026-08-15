@@ -10,6 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/repositories/dashboard_repository_impl.dart';
+import '../../data/services/superadmin_dashboard_api.dart';
+import 'builds_screen.dart';
+import 'owners_screen.dart';
+import 'upgrade_requests_screen.dart';
+import 'apps_licenses_screen.dart';
+import '../../../publish_admin/presentation/screens/publish_requests_screen.dart';
 import '../../data/services/project_api.dart';
 import '../bloc/dashboard_bloc.dart';
 import '../bloc/dashboard_event.dart';
@@ -35,6 +41,7 @@ class DashboardScreen extends StatelessWidget {
         DashboardRepositoryImpl(
           ProjectApi(resolvedDio),
           LicensingApi(resolvedDio),
+          SuperAdminDashboardApi(resolvedDio),
         ),
       )..add(LoadDashboard()),
       child: const _DashboardContent(),
@@ -128,58 +135,193 @@ class _DashboardContentState extends State<_DashboardContent> {
               const _HeroBox(),
               const SizedBox(height: 14),
 
-              LayoutBuilder(
-                builder: (ctx, c) {
-                  final w = c.maxWidth;
-                  final cols = w > 980 ? 3 : (w > 620 ? 2 : 1);
+              // ── Projects ────────────────────────────────────────────
+              _StatSection(
+                title: l10n.dash_section_projects,
+                cards: [
+                  ProKpiCard(
+                    icon: Icons.folder_copy_rounded,
+                    label: l10n.dash_total_projects,
+                    value: ov.totalProjects,
+                    gradient: _g(context).primary,
+                    delayMs: 0,
+                    onTap: () => _open(context, const ProjectsScreen()),
+                  ),
+                  ProKpiCard(
+                    icon: Icons.check_circle_rounded,
+                    label: l10n.dash_active_projects,
+                    value: ov.activeProjects,
+                    gradient: _g(context).success,
+                    delayMs: 70,
+                    onTap: () => _open(context, const ProjectsScreen()),
+                  ),
+                  ProKpiCard(
+                    icon: Icons.pause_circle_filled_rounded,
+                    label: l10n.dash_inactive_projects,
+                    value: ov.inactiveProjects,
+                    gradient: _g(context).warning,
+                    delayMs: 140,
+                    onTap: () => _open(context, const ProjectsScreen()),
+                  ),
+                ],
+              ),
 
-                  final cards = [
+              // The platform groups come from a newer endpoint; an older
+              // backend simply does not render them.
+              if (ov.hasPlatformStats) ...[
+                const SizedBox(height: 14),
+
+                // ── Apps & owners ─────────────────────────────────────
+                _StatSection(
+                  title: l10n.dash_section_apps,
+                  cards: [
                     ProKpiCard(
-                      icon: Icons.folder_copy_rounded,
-                      label: l10n.dash_total_projects,
-                      value: ov.totalProjects,
+                      icon: Icons.apps_rounded,
+                      label: l10n.dash_total_apps,
+                      value: ov.apps.total,
                       gradient: _g(context).primary,
-                      delayMs: 0,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const ProjectsScreen(),
-                          ),
-                        );
-                      },
+                      onTap: () => _open(context, const AppsLicensesScreen()),
                     ),
                     ProKpiCard(
-                      icon: Icons.check_circle_rounded,
-                      label: l10n.dash_active_projects,
-                      value: ov.activeProjects,
+                      icon: Icons.rocket_launch_rounded,
+                      label: l10n.dash_active_apps,
+                      value: ov.apps.active,
                       gradient: _g(context).success,
                       delayMs: 70,
+                      onTap: () => _open(context, const AppsLicensesScreen()),
                     ),
                     ProKpiCard(
-                      icon: Icons.pause_circle_filled_rounded,
-                      label: l10n.dash_inactive_projects,
-                      value: ov.inactiveProjects,
+                      icon: Icons.people_alt_rounded,
+                      label: l10n.dash_owners,
+                      value: ov.owners.total,
+                      gradient: _g(context).primary,
+                      delayMs: 140,
+                      onTap: () => _open(context, const SuperAdminOwnersScreen()),
+                    ),
+                    ProKpiCard(
+                      icon: Icons.how_to_reg_rounded,
+                      label: l10n.dash_owners_with_apps,
+                      value: ov.owners.withApps,
+                      gradient: _g(context).success,
+                      delayMs: 210,
+                      onTap: () => _open(context, const SuperAdminOwnersScreen()),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 14),
+
+                // ── Builds ────────────────────────────────────────────
+                _StatSection(
+                  title: l10n.dash_section_builds,
+                  cards: [
+                    ProKpiCard(
+                      icon: Icons.build_circle_rounded,
+                      label: l10n.dash_builds_total,
+                      value: ov.builds.total,
+                      gradient: _g(context).primary,
+                      onTap: () => _open(context, const SuperAdminBuildsScreen()),
+                    ),
+                    ProKpiCard(
+                      icon: Icons.autorenew_rounded,
+                      label: l10n.dash_builds_in_flight,
+                      value: ov.builds.inFlight,
+                      gradient: _g(context).warning,
+                      delayMs: 70,
+                      onTap: () => _open(
+                        context,
+                        const SuperAdminBuildsScreen(initialStatus: 'RUNNING'),
+                      ),
+                    ),
+                    ProKpiCard(
+                      icon: Icons.error_rounded,
+                      label: l10n.dash_builds_failed,
+                      value: ov.builds.failed,
                       gradient: _g(context).warning,
                       delayMs: 140,
+                      onTap: () => _open(
+                        context,
+                        const SuperAdminBuildsScreen(initialStatus: 'FAILED'),
+                      ),
                     ),
-                  ];
+                    ProKpiCard(
+                      icon: Icons.history_rounded,
+                      label: l10n.dash_builds_last_7_days,
+                      value: ov.builds.lastSevenDays,
+                      gradient: _g(context).success,
+                      delayMs: 210,
+                      onTap: () => _open(context, const SuperAdminBuildsScreen()),
+                    ),
+                  ],
+                ),
 
-                  return GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: cards.length,
-                    gridDelegate:
-                        SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: cols,
-                      mainAxisExtent: 120,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
+                const SizedBox(height: 14),
+
+                // ── Publishing ────────────────────────────────────────
+                _StatSection(
+                  title: l10n.dash_section_publishing,
+                  cards: [
+                    ProKpiCard(
+                      icon: Icons.store_rounded,
+                      label: l10n.dash_published_apps,
+                      value: ov.publishing.published,
+                      gradient: _g(context).success,
+                      onTap: () => _open(context, PublishRequestsScreen(dio: DioClient.ensure())),
                     ),
-                    itemBuilder: (_, i) => cards[i],
-                  );
-                },
-              ),
+                    ProKpiCard(
+                      icon: Icons.pending_actions_rounded,
+                      label: l10n.dash_publish_awaiting,
+                      value: ov.publishing.awaitingReview,
+                      gradient: _g(context).warning,
+                      delayMs: 70,
+                      onTap: () => _open(context, PublishRequestsScreen(dio: DioClient.ensure())),
+                    ),
+                    ProKpiCard(
+                      icon: Icons.outbox_rounded,
+                      label: l10n.dash_publish_total,
+                      value: ov.publishing.total,
+                      gradient: _g(context).primary,
+                      delayMs: 140,
+                      onTap: () => _open(context, PublishRequestsScreen(dio: DioClient.ensure())),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 14),
+
+                // ── Licensing ─────────────────────────────────────────
+                _StatSection(
+                  title: l10n.dash_section_licensing,
+                  cards: [
+                    ProKpiCard(
+                      icon: Icons.upgrade_rounded,
+                      label: l10n.dash_upgrade_requests,
+                      value: ov.licensing.pendingUpgradeRequests,
+                      gradient: _g(context).primary,
+                      onTap: () => _open(
+                        context,
+                        const SuperAdminUpgradeRequestsScreen(),
+                      ),
+                    ),
+                    ProKpiCard(
+                      icon: Icons.hourglass_bottom_rounded,
+                      label: l10n.dash_licenses_expiring,
+                      value: ov.licensing.expiringWithin30Days,
+                      gradient: _g(context).warning,
+                      delayMs: 70,
+                      onTap: () => _open(context, const AppsLicensesScreen()),
+                    ),
+                    ProKpiCard(
+                      icon: Icons.block_rounded,
+                      label: l10n.dash_licenses_expired,
+                      value: ov.licensing.expired,
+                      gradient: _g(context).warning,
+                      delayMs: 140,
+                      onTap: () => _open(context, const AppsLicensesScreen()),
+                    ),
+                  ],
+                ),
+              ],
 
               const SizedBox(height: 14),
 
@@ -405,6 +547,67 @@ class _SkeletonLoader extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Opens a drill-down for a stat card.
+void _open(BuildContext context, Widget screen) {
+  Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+}
+
+/// A titled group of KPI cards that reflows from one to four columns.
+class _StatSection extends StatelessWidget {
+  final String title;
+  final List<Widget> cards;
+
+  const _StatSection({required this.title, required this.cards});
+
+  @override
+  Widget build(BuildContext context) {
+    final tt = Theme.of(context).textTheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8, left: 2),
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: tt.titleSmall?.copyWith(
+              fontWeight: FontWeight.w900,
+              letterSpacing: .2,
+            ),
+          ),
+        ),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final width = constraints.maxWidth;
+            final columns = width > 1180
+                ? 4
+                : width > 860
+                    ? 3
+                    : width > 560
+                        ? 2
+                        : 1;
+
+            return GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: cards.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: columns,
+                mainAxisExtent: 120,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+              ),
+              itemBuilder: (_, i) => cards[i],
+            );
+          },
+        ),
+      ],
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:intl_phone_field/countries.dart' as phone_countries;
 import 'package:phone_numbers_parser/phone_numbers_parser.dart' as pnp;
 
 import '../../../../../l10n/app_localizations.dart';
+import '../../../../legal/presentation/widgets/terms_consent_field.dart';
 import '../../../../../shared/widgets/app_text_field.dart';
 import '../../../../../shared/widgets/app_button.dart';
 import '../../bloc/register/OwnerRegisterBloc.dart';
@@ -49,6 +50,11 @@ class _OwnerRegisterProfileScreenState
   int? _selectedCountryId;
   List<CountryModel> _countries = [];
   bool _loadingCountries = true;
+
+  /// The account cannot be created until the terms have been opened, read to
+  /// the end, and accepted on the terms screen.
+  bool _termsAccepted = false;
+  bool _showTermsError = false;
 
   @override
   void initState() {
@@ -134,10 +140,37 @@ class _OwnerRegisterProfileScreenState
     }
   }
 
+  /// Opens the terms in acceptance mode and returns to this screen with the
+  /// consent box ticked when the user agrees.
+  Future<void> _openTerms(AppLocalizations l10n) async {
+    FocusScope.of(context).unfocus();
+
+    final accepted = await context.push<bool>(
+      '/legal/terms?accept=1${_termsAccepted ? '&accepted=1' : ''}',
+    );
+
+    if (!mounted || accepted != true) return;
+
+    setState(() {
+      _termsAccepted = true;
+      _showTermsError = false;
+    });
+
+    AppToast.success(context, l10n.terms_accepted_toast);
+  }
+
+  void _revokeTerms() => setState(() => _termsAccepted = false);
+
   void _submit(AppLocalizations l10n) {
     final form = _form.currentState;
     if (form == null) return;
     if (!form.validate()) return;
+
+    if (!_termsAccepted) {
+      setState(() => _showTermsError = true);
+      AppToast.info(context, l10n.terms_required_error);
+      return;
+    }
 
     final phone = (_fullPhone ?? '').trim();
     if (phone.isEmpty) {
@@ -370,15 +403,34 @@ class _OwnerRegisterProfileScreenState
                               : null,
                         ),
 
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 20),
 
-                        AppButton(
-                          label: l10n.btnCreateAccount,
-                          isBusy: state.loading,
-                          expand: true,
-                          trailing: const Icon(Icons.check_circle_rounded),
-                          onPressed:
-                              state.loading ? null : () => _submit(l10n),
+                        // Terms acceptance gate for "Create account".
+                        TermsConsentField(
+                          accepted: _termsAccepted,
+                          showError: _showTermsError,
+                          onOpenTerms: () => _openTerms(l10n),
+                          onRevoke: _revokeTerms,
+                        ),
+
+                        const SizedBox(height: 20),
+
+                        // Surfaces the reason while the button is disabled:
+                        // a disabled AppButton has no tap callback of its own.
+                        Listener(
+                          onPointerDown: (_) {
+                            if (_termsAccepted || _showTermsError) return;
+                            setState(() => _showTermsError = true);
+                          },
+                          child: AppButton(
+                            label: l10n.btnCreateAccount,
+                            isBusy: state.loading,
+                            expand: true,
+                            trailing: const Icon(Icons.check_circle_rounded),
+                            onPressed: state.loading || !_termsAccepted
+                                ? null
+                                : () => _submit(l10n),
+                          ),
                         ),
 
                         const SizedBox(height: 10),

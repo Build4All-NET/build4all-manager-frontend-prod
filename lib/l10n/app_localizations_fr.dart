@@ -2897,6 +2897,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get publish_details_label_version_code => 'Code de version';
 
   @override
+  String get publish_details_label_ci_run => 'Exécution CI';
+
+  @override
+  String publish_ci_run_number(int runNumber) {
+    return 'Exécution n° $runNumber';
+  }
+
+  @override
+  String get publish_ci_run_open_logs => 'Voir les journaux';
+
+  @override
+  String get publish_ci_run_none => 'Aucune exécution enregistrée';
+
+  @override
   String get publish_details_label_last_build => 'Dernier build';
 
   @override
@@ -2939,7 +2953,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upgrade_requests_empty_search_title => 'Aucune demande correspondante trouvée';
 
   @override
-  String get upgrade_requests_empty_search_subtitle => 'Essayez un autre mot-clé pour le nom de l’application, le slug, l’identifiant de la demande ou le plan.';
+  String get upgrade_requests_empty_search_subtitle => 'Essayez un autre mot-clé : boutique, propriétaire, e-mail, nom de l’app, slug, ID de demande ou forfait.';
 
   @override
   String get upgrade_requests_hero_subtitle => 'Examinez, approuvez ou rejetez les demandes de mise à niveau du plan propriétaire.';
@@ -2954,7 +2968,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upgrade_requests_stat_pending => 'En attente';
 
   @override
-  String get upgrade_requests_search_hint => 'Rechercher par application, slug, identifiant de demande ou plan...';
+  String get upgrade_requests_search_hint => 'Rechercher par boutique, propriétaire, e-mail, app, slug ou forfait...';
 
   @override
   String upgrade_requests_visible_count(Object count) {
@@ -3795,4 +3809,181 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get owner_request_submit_store_details => 'Renseignez l\'URL et les clés API de la boutique';
+
+  @override
+  String get terms_title => 'Conditions Générales';
+
+  @override
+  String get terms_version_label => 'Version';
+
+  @override
+  String get terms_effective_label => 'En vigueur le';
+
+  @override
+  String get terms_updated_label => 'Mis à jour le';
+
+  @override
+  String get terms_contents => 'Sommaire';
+
+  @override
+  String get terms_accept_action => 'J\'accepte';
+
+  @override
+  String get terms_decline_action => 'Pas maintenant';
+
+  @override
+  String get terms_scroll_hint => 'Faites défiler jusqu’à la fin pour accepter';
+
+  @override
+  String get terms_read_progress => 'lu';
+
+  @override
+  String get terms_consent_text => 'J\'ai lu et j\'accepte les {terms} et la {privacy}.';
+
+  @override
+  String get terms_consent_terms_link => 'Conditions Générales';
+
+  @override
+  String get terms_consent_privacy_link => 'Politique de confidentialité';
+
+  @override
+  String get terms_required_error => 'Veuillez lire et accepter les Conditions Générales pour créer votre compte.';
+
+  @override
+  String get terms_accepted_toast => 'Conditions acceptées';
+
+  @override
+  String get terms_open_action => 'Lire les conditions';
+
+  @override
+  String get terms_profile_subtitle => 'Consultez les conditions de la plateforme que vous avez acceptées';
+
+  @override
+  String get terms_load_error => 'Les conditions n’ont pas pu être chargées.';
+
+  @override
+  String get terms_english_notice => 'Cette traduction est fournie à titre de commodité. La version anglaise prévaut.';
+
+  @override
+  String get upgrade_requests_requested_by => 'Demande de';
+
+  @override
+  String get upgrade_requests_owner_unknown => 'Nom du propriétaire non renseigné';
+
+  @override
+  String get upgrade_requests_more_shops => 'autres boutiques';
+
+  @override
+  String get dash_section_projects => 'Projets';
+
+  @override
+  String get dash_section_apps => 'Applications et propriétaires';
+
+  @override
+  String get dash_section_builds => 'Builds';
+
+  @override
+  String get dash_section_publishing => 'Publication';
+
+  @override
+  String get dash_section_licensing => 'Licences';
+
+  @override
+  String get dash_total_apps => 'Applications';
+
+  @override
+  String get dash_active_apps => 'Applications actives';
+
+  @override
+  String get dash_owners => 'Propriétaires';
+
+  @override
+  String get dash_owners_with_apps => 'Propriétaires avec app';
+
+  @override
+  String get dash_builds_total => 'Builds au total';
+
+  @override
+  String get dash_builds_in_flight => 'En cours';
+
+  @override
+  String get dash_builds_failed => 'Builds échoués';
+
+  @override
+  String get dash_builds_last_7_days => '7 derniers jours';
+
+  @override
+  String get dash_published_apps => 'Apps publiées';
+
+  @override
+  String get dash_publish_awaiting => 'En attente de revue';
+
+  @override
+  String get dash_publish_total => 'Demandes de publication';
+
+  @override
+  String get dash_licenses_expiring => 'Expire sous 30 jours';
+
+  @override
+  String get dash_licenses_expired => 'Licences expirées';
+
+  @override
+  String get builds_title => 'Builds';
+
+  @override
+  String get builds_search_hint => 'Rechercher par app, propriétaire, plateforme ou run...';
+
+  @override
+  String get builds_filter_all => 'Tous';
+
+  @override
+  String get builds_empty => 'Aucun build à afficher';
+
+  @override
+  String get builds_ci_run => 'Run CI';
+
+  @override
+  String get owners_title => 'Propriétaires';
+
+  @override
+  String get owners_search_hint => 'Rechercher par nom, e-mail ou téléphone...';
+
+  @override
+  String get owners_empty => 'Aucun propriétaire';
+
+  @override
+  String get owners_apps_count => 'apps';
+
+  @override
+  String get app_content_title => 'Contenu de l\'app';
+
+  @override
+  String get app_content_tab_items => 'Catalogue';
+
+  @override
+  String get app_content_tab_customers => 'Clients';
+
+  @override
+  String get app_content_items => 'Articles';
+
+  @override
+  String get app_content_categories => 'Catégories';
+
+  @override
+  String get app_content_customers => 'Clients';
+
+  @override
+  String get app_content_orders => 'Commandes';
+
+  @override
+  String get app_content_shops => 'Boutiques';
+
+  @override
+  String get app_content_stock => 'Stock';
+
+  @override
+  String get app_content_items_empty => 'Cette app n\'a pas encore de catalogue';
+
+  @override
+  String get app_content_customers_empty => 'Aucun client';
 }

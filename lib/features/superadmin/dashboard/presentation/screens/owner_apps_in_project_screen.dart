@@ -9,6 +9,7 @@ import 'package:build4all_manager/features/superadmin/ai/presentation/widgets/ow
 import 'package:build4all_manager/features/superadmin/dashboard/data/models/owner_app_in_project_dto.dart';
 import 'package:build4all_manager/features/superadmin/dashboard/data/services/project_api.dart';
 import 'package:build4all_manager/features/superadmin/dashboard/presentation/screens/owner_app_orders_screen.dart';
+import 'package:build4all_manager/features/superadmin/shared/widgets/ci_run_chip.dart';
 import 'package:build4all_manager/l10n/app_localizations.dart';
 import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/utils/search_match.dart';
@@ -88,7 +89,16 @@ class _OwnerAppsInProjectScreenState extends State<OwnerAppsInProjectScreen> {
         .where(
           (a) => searchMatch(
             _q,
-            [a.appName, a.slug, a.status, a.apkUrl, a.bundleUrl, a.ipaUrl],
+            [
+              a.appName,
+              a.slug,
+              a.status,
+              a.apkUrl,
+              a.bundleUrl,
+              a.ipaUrl,
+              // Lets a super admin paste a run number from GitHub and land on the app.
+              a.ciRunNumber?.toString(),
+            ],
           ),
         )
         .toList();
@@ -156,9 +166,31 @@ class _OwnerAppsInProjectScreenState extends State<OwnerAppsInProjectScreen> {
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                subtitle: Text(
-                                  t.ownerAppsSlugStatus(a.slug, a.status),
+                                subtitle: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      t.ownerAppsSlugStatus(a.slug, a.status),
+                                    ),
+                                    // An app may never raise a publish request, so
+                                    // this is the only place a super admin can reach
+                                    // the run behind a failed or in-flight build.
+                                    if (a.ciRunInfo.showLink) ...[
+                                      const SizedBox(height: 6),
+                                      Align(
+                                        alignment: AlignmentDirectional
+                                            .centerStart,
+                                        child: CiRunChip(
+                                          info: a.ciRunInfo,
+                                          dense: true,
+                                        ),
+                                      ),
+                                    ],
+                                  ],
                                 ),
+                                isThreeLine: a.ciRunInfo.showLink,
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
