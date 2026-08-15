@@ -4,6 +4,7 @@ import 'package:build4all_manager/shared/utils/ApiErrorHandler.dart';
 import 'package:build4all_manager/shared/widgets/app_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../dashboard/data/services/licensing_api.dart';
 
@@ -206,6 +207,9 @@ class _SuperAdminUpgradeRequestsScreenState
 
     return _items.where((r) {
       final text = [
+        r.businessName,
+        r.ownerName,
+        r.ownerEmail,
         r.appName,
         r.slug,
         r.requestedPlanCode,
@@ -457,9 +461,17 @@ class _ProUpgradeRequestCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final cs = Theme.of(context).colorScheme;
 
-    final appTitle = row.appName.trim().isNotEmpty
-        ? row.appName.trim()
-        : (row.slug.trim().isNotEmpty ? row.slug.trim() : '—');
+    // Lead with the shop, because that is what the owner calls their business.
+    // The app name — often never set — and the slug follow underneath.
+    final shopName = row.businessName.trim();
+    final appName = row.appName.trim();
+    final slug = row.slug.trim();
+
+    final cardTitle = shopName.isNotEmpty
+        ? shopName
+        : (appName.isNotEmpty
+            ? appName
+            : (slug.isNotEmpty ? slug : '—'));
 
     String fmtDate(DateTime? dt) {
       if (dt == null) return '—';
@@ -579,11 +591,17 @@ class _ProUpgradeRequestCard extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
-                  appTitle,
+                  cardTitle,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w900,
                       ),
                 ),
+                if (row.businessCount > 1)
+                  softChip(
+                    '+${row.businessCount - 1} ${l10n.upgrade_requests_more_shops}',
+                    Colors.blueGrey,
+                    icon: Icons.storefront_outlined,
+                  ),
                 softChip(
                   statusText,
                   statusColor,
@@ -605,14 +623,45 @@ class _ProUpgradeRequestCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 6),
-            Text(
-              row.slug.trim().isNotEmpty
-                  ? row.slug
-                  : l10n.upgrade_requests_no_slug_available,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: cs.onSurfaceVariant,
-                    fontWeight: FontWeight.w600,
-                  ),
+            Builder(
+              builder: (context) {
+                // Whatever the title already used is dropped here, so an app
+                // with no shop and no name does not print its slug twice.
+                final parts = [
+                  if (appName.isNotEmpty) appName,
+                  if (slug.isNotEmpty) slug,
+                ]..removeWhere((part) => part == cardTitle);
+
+                if (parts.isEmpty) {
+                  // Nothing left to add: either the slug is already the title,
+                  // or the request carries no app identity at all.
+                  return slug.isEmpty
+                      ? Text(
+                          l10n.upgrade_requests_no_slug_available,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                color: cs.onSurfaceVariant,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        )
+                      : const SizedBox.shrink();
+                }
+
+                return Text(
+                  parts.join(' · '),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: cs.onSurfaceVariant,
+                        fontWeight: FontWeight.w600,
+                      ),
+                );
+              },
+            ),
+            const SizedBox(height: 12),
+            _RequesterStrip(
+              ownerName: row.ownerName.trim(),
+              ownerEmail: row.ownerEmail.trim(),
             ),
             const SizedBox(height: 14),
             LayoutBuilder(
@@ -764,6 +813,108 @@ class _ProUpgradeRequestCard extends StatelessWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Who submitted the request — the one thing the queue used to leave out.
+///
+/// The e-mail is tappable so the super-admin can reach the owner before
+/// deciding, without hunting for them in the licenses screen.
+class _RequesterStrip extends StatelessWidget {
+  final String ownerName;
+  final String ownerEmail;
+
+  const _RequesterStrip({
+    required this.ownerName,
+    required this.ownerEmail,
+  });
+
+  Future<void> _mailOwner() async {
+    await launchUrl(
+      Uri(scheme: 'mailto', path: ownerEmail),
+      mode: LaunchMode.externalApplication,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final cs = Theme.of(context).colorScheme;
+    final tt = Theme.of(context).textTheme;
+
+    final hasName = ownerName.isNotEmpty;
+    final hasEmail = ownerEmail.isNotEmpty;
+
+    return Container(
+      padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+      decoration: BoxDecoration(
+        color: cs.primary.withOpacity(.06),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: cs.primary.withOpacity(.18)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 16,
+            backgroundColor: cs.primary.withOpacity(.14),
+            child: Icon(Icons.person_outline_rounded, size: 18, color: cs.primary),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.upgrade_requests_requested_by,
+                  style: tt.labelSmall?.copyWith(
+                    color: cs.onSurfaceVariant,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  hasName ? ownerName : l10n.upgrade_requests_owner_unknown,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: tt.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w900,
+                    color: hasName ? null : cs.onSurfaceVariant,
+                  ),
+                ),
+                if (hasEmail) ...[
+                  const SizedBox(height: 4),
+                  InkWell(
+                    onTap: _mailOwner,
+                    borderRadius: BorderRadius.circular(6),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.mail_outline_rounded, size: 14, color: cs.primary),
+                        const SizedBox(width: 6),
+                        Flexible(
+                          child: Text(
+                            ownerEmail,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: tt.bodySmall?.copyWith(
+                              color: cs.primary,
+                              fontWeight: FontWeight.w700,
+                              decoration: TextDecoration.underline,
+                              decorationColor: cs.primary,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1030,6 +1181,16 @@ class UpgradeRequestRow {
   final int aupId;
   final String appName;
   final String slug;
+
+  /// Who is asking: the app owner and the shop the app belongs to. Without
+  /// these a request is just a slug, and there is no way to tell whose it is.
+  final String ownerName;
+  final String ownerEmail;
+  final String businessName;
+
+  /// Shops registered under this app; > 1 means [businessName] is one of many.
+  final int businessCount;
+
   final String requestedPlanCode;
   final String billingCycle; // MONTHLY | YEARLY | "" (legacy rows)
   final int? usersAllowedOverride;
@@ -1040,6 +1201,10 @@ class UpgradeRequestRow {
     required this.aupId,
     required this.appName,
     required this.slug,
+    required this.ownerName,
+    required this.ownerEmail,
+    required this.businessName,
+    required this.businessCount,
     required this.requestedPlanCode,
     required this.billingCycle,
     required this.usersAllowedOverride,
@@ -1063,6 +1228,10 @@ class UpgradeRequestRow {
       aupId: asInt(j['aupId']),
       appName: (j['appName'] ?? '').toString(),
       slug: (j['slug'] ?? '').toString(),
+      ownerName: (j['ownerName'] ?? '').toString(),
+      ownerEmail: (j['ownerEmail'] ?? '').toString(),
+      businessName: (j['businessName'] ?? '').toString(),
+      businessCount: asInt(j['businessCount']),
       requestedPlanCode: (j['requestedPlanCode'] ?? '').toString(),
       billingCycle: (j['billingCycle'] ?? '').toString(),
       usersAllowedOverride: j['usersAllowedOverride'] == null

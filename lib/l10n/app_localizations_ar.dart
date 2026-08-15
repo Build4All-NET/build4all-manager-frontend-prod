@@ -2953,7 +2953,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get upgrade_requests_empty_search_title => 'لم يتم العثور على طلبات مطابقة';
 
   @override
-  String get upgrade_requests_empty_search_subtitle => 'جرّب كلمة أخرى لاسم التطبيق أو الرابط أو رقم الطلب أو الخطة.';
+  String get upgrade_requests_empty_search_subtitle => 'جرّب كلمة مفتاحية تانية: المحل، المالك، الإيميل، اسم التطبيق، الـ slug، رقم الطلب، أو الخطة.';
 
   @override
   String get upgrade_requests_hero_subtitle => 'راجع ووافق أو ارفض طلبات ترقية خطة المالك.';
@@ -2968,7 +2968,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get upgrade_requests_stat_pending => 'قيد الانتظار';
 
   @override
-  String get upgrade_requests_search_hint => 'ابحث باسم التطبيق أو الرابط أو رقم الطلب أو الخطة...';
+  String get upgrade_requests_search_hint => 'ابحث بالمحل، المالك، الإيميل، التطبيق، الـ slug، أو الخطة...';
 
   @override
   String upgrade_requests_visible_count(Object count) {
@@ -3863,4 +3863,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get terms_english_notice => 'هذه الترجمة مقدّمة للتسهيل فقط، وتسود النسخة الإنجليزية.';
+
+  @override
+  String get upgrade_requests_requested_by => 'مقدّم الطلب';
+
+  @override
+  String get upgrade_requests_owner_unknown => 'اسم المالك غير محدّد';
+
+  @override
+  String get upgrade_requests_more_shops => 'محلات أخرى';
 }

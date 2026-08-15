@@ -2953,7 +2953,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upgrade_requests_empty_search_title => 'Aucune demande correspondante trouvée';
 
   @override
-  String get upgrade_requests_empty_search_subtitle => 'Essayez un autre mot-clé pour le nom de l’application, le slug, l’identifiant de la demande ou le plan.';
+  String get upgrade_requests_empty_search_subtitle => 'Essayez un autre mot-clé : boutique, propriétaire, e-mail, nom de l’app, slug, ID de demande ou forfait.';
 
   @override
   String get upgrade_requests_hero_subtitle => 'Examinez, approuvez ou rejetez les demandes de mise à niveau du plan propriétaire.';
@@ -2968,7 +2968,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upgrade_requests_stat_pending => 'En attente';
 
   @override
-  String get upgrade_requests_search_hint => 'Rechercher par application, slug, identifiant de demande ou plan...';
+  String get upgrade_requests_search_hint => 'Rechercher par boutique, propriétaire, e-mail, app, slug ou forfait...';
 
   @override
   String upgrade_requests_visible_count(Object count) {
@@ -3863,4 +3863,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get terms_english_notice => 'Cette traduction est fournie à titre de commodité. La version anglaise prévaut.';
+
+  @override
+  String get upgrade_requests_requested_by => 'Demande de';
+
+  @override
+  String get upgrade_requests_owner_unknown => 'Nom du propriétaire non renseigné';
+
+  @override
+  String get upgrade_requests_more_shops => 'autres boutiques';
 }

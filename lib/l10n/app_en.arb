@@ -1150,12 +1150,12 @@
   "publish_details_file_aab": "AAB",
   "publish_details_file_ipa": "IPA",
   "upgrade_requests_empty_search_title": "No matching requests found",
-  "upgrade_requests_empty_search_subtitle": "Try another keyword for app name, slug, request ID, or plan.",
+  "upgrade_requests_empty_search_subtitle": "Try another keyword for shop, owner, e-mail, app name, slug, request ID, or plan.",
   "upgrade_requests_hero_subtitle": "Review, approve, or reject owner plan upgrade requests.",
   "upgrade_requests_stat_total": "Total",
   "upgrade_requests_stat_shown": "Shown",
   "upgrade_requests_stat_pending": "Pending",
-  "upgrade_requests_search_hint": "Search by app, slug, request ID, or plan...",
+  "upgrade_requests_search_hint": "Search by shop, owner, e-mail, app, slug, or plan...",
   "upgrade_requests_visible_count": "{count} requests visible",
   "@upgrade_requests_visible_count": {
     "placeholders": {
@@ -1577,5 +1577,17 @@
   "terms_english_notice": "This translation is provided for convenience. The English version prevails.",
   "@terms_english_notice": {
     "description": "Notice shown above translated terms"
+  },
+  "upgrade_requests_requested_by": "Requested by",
+  "@upgrade_requests_requested_by": {
+    "description": "Label above the owner who submitted an upgrade request"
+  },
+  "upgrade_requests_owner_unknown": "Owner name not set",
+  "@upgrade_requests_owner_unknown": {
+    "description": "Shown when the requesting owner has no name on record"
+  },
+  "upgrade_requests_more_shops": "more shops",
+  "@upgrade_requests_more_shops": {
+    "description": "Suffix after a count, e.g. \"+2 more shops\" under the same app"
   }
 }

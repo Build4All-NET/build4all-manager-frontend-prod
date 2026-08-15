@@ -7668,6 +7668,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This translation is provided for convenience. The English version prevails.'**
   String get terms_english_notice;
+
+  /// No description provided for @upgrade_requests_requested_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested by'**
+  String get upgrade_requests_requested_by;
+
+  /// No description provided for @upgrade_requests_owner_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner name not set'**
+  String get upgrade_requests_owner_unknown;
+
+  /// No description provided for @upgrade_requests_more_shops.
+  ///
+  /// In en, this message translates to:
+  /// **'more shops'**
+  String get upgrade_requests_more_shops;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -2953,7 +2953,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upgrade_requests_empty_search_title => 'No matching requests found';
 
   @override
-  String get upgrade_requests_empty_search_subtitle => 'Try another keyword for app name, slug, request ID, or plan.';
+  String get upgrade_requests_empty_search_subtitle => 'Try another keyword for shop, owner, e-mail, app name, slug, request ID, or plan.';
 
   @override
   String get upgrade_requests_hero_subtitle => 'Review, approve, or reject owner plan upgrade requests.';
@@ -2968,7 +2968,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upgrade_requests_stat_pending => 'Pending';
 
   @override
-  String get upgrade_requests_search_hint => 'Search by app, slug, request ID, or plan...';
+  String get upgrade_requests_search_hint => 'Search by shop, owner, e-mail, app, slug, or plan...';
 
   @override
   String upgrade_requests_visible_count(Object count) {
@@ -3863,4 +3863,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get terms_english_notice => 'This translation is provided for convenience. The English version prevails.';
+
+  @override
+  String get upgrade_requests_requested_by => 'Requested by';
+
+  @override
+  String get upgrade_requests_owner_unknown => 'Owner name not set';
+
+  @override
+  String get upgrade_requests_more_shops => 'more shops';
 }
