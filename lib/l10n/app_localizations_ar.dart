@@ -3953,4 +3953,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get owners_apps_count => 'تطبيق';
+
+  @override
+  String get app_content_title => 'محتوى التطبيق';
+
+  @override
+  String get app_content_tab_items => 'الكتالوج';
+
+  @override
+  String get app_content_tab_customers => 'الزبائن';
+
+  @override
+  String get app_content_items => 'المنتجات';
+
+  @override
+  String get app_content_categories => 'الفئات';
+
+  @override
+  String get app_content_customers => 'الزبائن';
+
+  @override
+  String get app_content_orders => 'الطلبيات';
+
+  @override
+  String get app_content_shops => 'المحلات';
+
+  @override
+  String get app_content_stock => 'المخزون';
+
+  @override
+  String get app_content_items_empty => 'هالتطبيق لسا ما عندو كتالوج';
+
+  @override
+  String get app_content_customers_empty => 'ما في زبائن بعد';
 }

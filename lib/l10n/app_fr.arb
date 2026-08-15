@@ -1538,5 +1538,16 @@
   "owners_title": "Propriétaires",
   "owners_search_hint": "Rechercher par nom, e-mail ou téléphone...",
   "owners_empty": "Aucun propriétaire",
-  "owners_apps_count": "apps"
+  "owners_apps_count": "apps",
+  "app_content_title": "Contenu de l'app",
+  "app_content_tab_items": "Catalogue",
+  "app_content_tab_customers": "Clients",
+  "app_content_items": "Articles",
+  "app_content_categories": "Catégories",
+  "app_content_customers": "Clients",
+  "app_content_orders": "Commandes",
+  "app_content_shops": "Boutiques",
+  "app_content_stock": "Stock",
+  "app_content_items_empty": "Cette app n'a pas encore de catalogue",
+  "app_content_customers_empty": "Aucun client"
 }

@@ -1697,5 +1697,49 @@
   "owners_apps_count": "apps",
   "@owners_apps_count": {
     "description": "Suffix after the number of apps an owner holds"
+  },
+  "app_content_title": "App content",
+  "@app_content_title": {
+    "description": "Title of the read-only app content screen"
+  },
+  "app_content_tab_items": "Catalogue",
+  "@app_content_tab_items": {
+    "description": "Tab listing an app catalogue items"
+  },
+  "app_content_tab_customers": "Customers",
+  "@app_content_tab_customers": {
+    "description": "Tab listing an app end users"
+  },
+  "app_content_items": "Items",
+  "@app_content_items": {
+    "description": "Count of catalogue items"
+  },
+  "app_content_categories": "Categories",
+  "@app_content_categories": {
+    "description": "Count of categories"
+  },
+  "app_content_customers": "Customers",
+  "@app_content_customers": {
+    "description": "Count of end users"
+  },
+  "app_content_orders": "Orders",
+  "@app_content_orders": {
+    "description": "Count of orders placed in the app"
+  },
+  "app_content_shops": "Shops",
+  "@app_content_shops": {
+    "description": "Count of shops under the app"
+  },
+  "app_content_stock": "Stock",
+  "@app_content_stock": {
+    "description": "Label before an item stock quantity"
+  },
+  "app_content_items_empty": "This app has no catalogue yet",
+  "@app_content_items_empty": {
+    "description": "Empty state for the catalogue tab"
+  },
+  "app_content_customers_empty": "No customers yet",
+  "@app_content_customers_empty": {
+    "description": "Empty state for the customers tab"
   }
 }

@@ -7848,6 +7848,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'apps'**
   String get owners_apps_count;
+
+  /// No description provided for @app_content_title.
+  ///
+  /// In en, this message translates to:
+  /// **'App content'**
+  String get app_content_title;
+
+  /// No description provided for @app_content_tab_items.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogue'**
+  String get app_content_tab_items;
+
+  /// No description provided for @app_content_tab_customers.
+  ///
+  /// In en, this message translates to:
+  /// **'Customers'**
+  String get app_content_tab_customers;
+
+  /// No description provided for @app_content_items.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get app_content_items;
+
+  /// No description provided for @app_content_categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get app_content_categories;
+
+  /// No description provided for @app_content_customers.
+  ///
+  /// In en, this message translates to:
+  /// **'Customers'**
+  String get app_content_customers;
+
+  /// No description provided for @app_content_orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get app_content_orders;
+
+  /// No description provided for @app_content_shops.
+  ///
+  /// In en, this message translates to:
+  /// **'Shops'**
+  String get app_content_shops;
+
+  /// No description provided for @app_content_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock'**
+  String get app_content_stock;
+
+  /// No description provided for @app_content_items_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'This app has no catalogue yet'**
+  String get app_content_items_empty;
+
+  /// No description provided for @app_content_customers_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'No customers yet'**
+  String get app_content_customers_empty;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

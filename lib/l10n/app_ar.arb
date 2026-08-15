@@ -1531,5 +1531,16 @@
   "owners_title": "مالكو التطبيقات",
   "owners_search_hint": "ابحث بالاسم، الإيميل، أو التلفون...",
   "owners_empty": "ما في مالكين",
-  "owners_apps_count": "تطبيق"
+  "owners_apps_count": "تطبيق",
+  "app_content_title": "محتوى التطبيق",
+  "app_content_tab_items": "الكتالوج",
+  "app_content_tab_customers": "الزبائن",
+  "app_content_items": "المنتجات",
+  "app_content_categories": "الفئات",
+  "app_content_customers": "الزبائن",
+  "app_content_orders": "الطلبيات",
+  "app_content_shops": "المحلات",
+  "app_content_stock": "المخزون",
+  "app_content_items_empty": "هالتطبيق لسا ما عندو كتالوج",
+  "app_content_customers_empty": "ما في زبائن بعد"
 }

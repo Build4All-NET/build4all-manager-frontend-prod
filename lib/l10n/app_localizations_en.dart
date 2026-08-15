@@ -3953,4 +3953,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get owners_apps_count => 'apps';
+
+  @override
+  String get app_content_title => 'App content';
+
+  @override
+  String get app_content_tab_items => 'Catalogue';
+
+  @override
+  String get app_content_tab_customers => 'Customers';
+
+  @override
+  String get app_content_items => 'Items';
+
+  @override
+  String get app_content_categories => 'Categories';
+
+  @override
+  String get app_content_customers => 'Customers';
+
+  @override
+  String get app_content_orders => 'Orders';
+
+  @override
+  String get app_content_shops => 'Shops';
+
+  @override
+  String get app_content_stock => 'Stock';
+
+  @override
+  String get app_content_items_empty => 'This app has no catalogue yet';
+
+  @override
+  String get app_content_customers_empty => 'No customers yet';
 }

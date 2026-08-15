@@ -13,6 +13,22 @@ class SuperAdminDashboardApi {
   /// GET /api/superadmin/dashboard/owners
   Future<Response> owners() => dio.get('/superadmin/dashboard/owners');
 
+  /// GET /api/superadmin/apps/{aupId}/content/summary
+  Future<Response> appContentSummary(int aupId) =>
+      dio.get('/superadmin/apps/$aupId/content/summary');
+
+  /// GET /api/superadmin/apps/{aupId}/content/items
+  Future<Response> appItems(int aupId, {int limit = 100}) => dio.get(
+        '/superadmin/apps/$aupId/content/items',
+        queryParameters: {'limit': limit},
+      );
+
+  /// GET /api/superadmin/apps/{aupId}/content/customers
+  Future<Response> appCustomers(int aupId, {int limit = 100}) => dio.get(
+        '/superadmin/apps/$aupId/content/customers',
+        queryParameters: {'limit': limit},
+      );
+
   /// GET /api/superadmin/build-jobs — newest first, optionally one status.
   Future<Response> buildJobs({String? status, int limit = 100}) => dio.get(
         '/superadmin/build-jobs',
